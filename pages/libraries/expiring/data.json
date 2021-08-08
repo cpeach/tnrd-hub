@@ -1,0 +1,18 @@
+
+{
+	"id" : "60e877ca1df0680bcd41f2ad",
+	"account" : {},
+	"header" : {
+		"visable":true,
+		"title":{"sub":"TNRD","label":"Expiring Patrons"}
+	},
+	"content":"",
+	"navigation":{ 
+		"visable":true,
+		"items":[
+			{"icon":"ApartmentOutlined","label":"Departments","href":"/admin/console/departments/"},
+			{"icon":"AppstoreAddOutlined","label":"Applications","href":"/admin/console/applications/"},
+			{"icon":"TeamOutlined","label":"Users","href":"/admin/console/users/"}
+		]
+	}
+}

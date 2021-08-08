@@ -1,0 +1,18 @@
+
+{
+	"account" : {},
+	"header" : {
+		"visable":true,
+		"title":{"sub":"TNRD","label":"Hub Console"}
+	},
+	"content":"",
+	"navigation":{ 
+		"visable":true,
+		"items":[
+			{"icon":"ApartmentOutlined","label":"Departments","href":"/admin/console/departments/"},
+			{"icon":"AppstoreAddOutlined","label":"Applications","href":"/admin/console/applications/"},
+			{"icon":"UnlockOutlined","label":"Roles","href":""},
+			{"icon":"TeamOutlined","label":"Users","href":"/admin/console/users/"}
+		]
+	}
+}

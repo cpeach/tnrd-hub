@@ -1,0 +1,28 @@
+
+
+{
+	"title" : "Users",
+	"path":[
+		{"label":"Home","href":"/"},
+		{"label":"Administration","href":"/admin"},
+		{"label":"Console","href":"/admin/console"},
+		{"label":"users","href":"/admin/console/users"}
+	],
+	"table":{
+		"buttons" : {"action":{"label":"New User","href":"/admin/console/users/modify/insert"}},
+		"columns" : [
+			{"key":"uname","title":"User Name","dataIndex":"username"},
+			{"key":"reference","title":"Reference","dataIndex":"reference"},
+			{"key":"source","title":"Source","dataIndex":"source"},
+			{"key":"action","title":"Action","dataIndex":""}
+		],
+		"expandable":{
+			"title":"Details",
+			"details":[
+				{"ref":"_id","attributes":{"label":"ID","span":"4"}},
+				{"ref":"username","attributes":{"label":"User Name","span":"2"}},
+				{"ref":"reference","attributes":{"label":"Reference","span":"2"}}
+			]
+		}
+	}
+}

@@ -1,0 +1,31 @@
+
+
+{
+	"title" : "Applications",
+	"path":[
+		{"label":"Home","href":"/"},
+		{"label":"Administration","href":"/admin"},
+		{"label":"Console","href":"/admin/console"},
+		{"label":"Applications","href":"/admin/console/applications"}
+	],
+	"table":{
+		"buttons" : {"action" : {"label":"New Application","href":"/admin/console/applications/modify/insert"}},
+		"columns" : [
+			{"key":"name","title":"Full Name","dataIndex":"name"},
+			{"key":"code","title":"Code","dataIndex":"short"},
+			{"key":"dept","title":"Departments","dataIndex":"departments"},
+			{"key":"action","title":"Action","dataIndex":""}
+		],
+		"expandable":{
+			"title":"Details",
+			"details":[
+				{"ref":"_id","attributes":{"label":"ID","span":"4"}},
+				{"ref":"name","attributes":{"label":"Name","span":"2"}},
+				{"ref":"short","attributes":{"label":"Short Code","span":"2"}},
+				{"ref":"path","attributes":{"label":"API Path","span":"4"}},
+				{"ref":"link","attributes":{"label":"Location","span":"4"}},
+				{"ref":"description","attributes":{"label":"Description","span":"4"}}
+			]
+		}
+	}
+}

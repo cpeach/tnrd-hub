@@ -1,0 +1,41 @@
+
+/*
+	Header
+*/
+
+.header {
+	background-color: white;
+	font-size: 0px;
+	width: 100%;
+	box-sizing: border-box;
+	height: 100%;
+	border-bottom: 1px solid rgb(230,230,230);
+	font-size: 0px;
+	box-shadow:0 1px 1px rgb(0 0 0 / 1%), 0 6px 20px rgb(0 0 0 / 6%);
+	z-index: 200;
+	position: relative;
+}
+
+
+.header_left{display: inline-block;height:100%;width:50%;padding:0px 30px}
+.header_right{display: inline-block;height:100%;width:50%;text-align: right}
+
+.header_left>label{display:inline-block;box-sizing:border-box;vertical-align: middle;margin-right:6px;font-size: 17px}
+.header_left>.label_bold{font-weight: 700;color:black}
+
+.header_sep{width: 1px; height:100%;vertical-align: middle;background-color: rgb(230,230,230);display: inline-block}
+.header_btn{display:inline-block;height:100%;cursor: pointer; text-align: center;padding:0px 28px}
+/* .header_btn:hover{background-color:rgb(248,248,248)} */
+.header_btn>.header_btn_inner{display:inline-block;vertical-align: middle}
+.header_btn .header_btn_label{padding:0px 15px 0px 21px;font-size: 15px;font-weight: 400;letter-spacing: 0.6px}
+
+
+
+/*
+	.header>div{width:50%;display:inline-block;box-sizing:border-box;vertical-align:middle}
+	.header>div:last-child{height:100%;width:0px;display:inline-block;box-sizing:border-box;vertical-align: middle;height:100%}
+	.header>div:first-child>label{display:inline-block;box-sizing:border-box;vertical-align: middle;margin-right:6px;font-size: 18px}
+	.header>div:first-child>label:first-child{font-weight: 700;color:black}
+   
+*/
+
