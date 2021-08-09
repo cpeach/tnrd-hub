@@ -11,11 +11,11 @@ module.exports = {
       },
       {
         source: '/api-console',
-        destination: `localhost:3001/api-console`,
+        destination: 'localhost:3001/',
       },
       {
         source: '/api-console/:path*',
-        destination: `localhost:3001/api-console:path*`,
+        destination: 'localhost:3001/:path*',
       },
     ]
   },
