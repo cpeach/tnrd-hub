@@ -16,6 +16,7 @@ module.exports = {
       {
         source: '/api-console/:path*',
         destination: 'http://localhost:3001/:path*',
+      }
     ]
   },
 
