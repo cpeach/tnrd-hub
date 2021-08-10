@@ -1,5 +1,5 @@
 import Link   from 'next/link';
-import Image   from 'next/image';
+import Image  from 'next/image';
 import style  from './Frames.module.css';
 import Header from '/components/headers/header.js';
 import AntIcon from '/components/icons/antd/icons.js';
