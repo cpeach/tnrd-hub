@@ -9,8 +9,6 @@ import Content from '/components/layout/stacks/index.js';
 
 import { Empty } from 'antd';
 
-
-
 export default function Departments() { 
 	
 	var l_data = JSON.parse(JSON.stringify(ld))
@@ -21,7 +19,6 @@ export default function Departments() {
 	l_data.content 	= getContent(applications,l_data);
 	g_data.content  = (<Content data={l_data} />);
 
-	
 	return (<Frame data={g_data} active="1" />)
 } 
 									
