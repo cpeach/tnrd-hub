@@ -45,7 +45,7 @@ export default function _Index() {
 
 
 
-	if(departments && applications){
+	if(departments && applications && applications.unauthorized !== true){
 		applications.map((item)=>{
 			filters[item._id] = item.departments.map(dep=>(dep._id));
 		});
