@@ -1,8 +1,16 @@
 import '../styles/globals.css'
 import 'antd/dist/antd.compact.min.css';
 import App from 'next/app';
-import Router from 'next/router';
-import UserContext from '/components/context/small.js'; 
+
+//import Router from 'next/router';
+
+default export function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
+
+
+/* 
+//import UserContext from '/components/context/small.js'; 
 
 export default class Hub extends App {
 
@@ -33,7 +41,7 @@ export default class Hub extends App {
       </UserContext.Provider>
     );
   }
-}
+} */
 
 /*
 

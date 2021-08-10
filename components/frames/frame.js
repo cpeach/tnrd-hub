@@ -29,7 +29,6 @@ export default function Frame(props) {
 	};
 	const onClose    = () => {setVisible(false);};
 
-
 	props.data.header.account = {};
 	props.data.header.account.hover = showDrawer
 	
