@@ -44,7 +44,6 @@ export default function Frame(props) {
 	data.header = {account:{},"title":{"sub":"TNRD","label":"Application Hub"}}
 	data.header.account 	  = {}
 	data.header.account.hover = showDrawer
-	
 	return (
 		<div className={style.frame}>
 
@@ -81,9 +80,11 @@ export default function Frame(props) {
 			</div>
 			
 			<div key="body" className={style.frame_body +" "+ background()}>
+				
 				<div key="left" className={props.navigation!=="false"?style.frame_body_left:style.frame_body_left_hide}>
-					{data.navigation ? navigation(props) : null}
+					{data.navigation ? navigation(data.navigation,props.active) : null}
 				</div>
+				
 				<div key="right" className={style.frame_body_right}>
 					{data.content}
 				</div>	
@@ -119,16 +120,16 @@ export default function Frame(props) {
 }
 
 
-export function navigation(props){
+export function navigation(data,active){
 	
 	return (
 	
 		<nav key="name" className={style.nav}>
 
 			{
-				data.navigation.items.map((item,i)=>(
+				data.items.map((item,i)=>(
 					<Link key={"link-"+i} href={item.href}>
-						<div className={parseInt(props.active)===i ?style.nav_item_active:style.nav_item}>
+						<div className={parseInt(active)===i ?style.nav_item_active:style.nav_item}>
 							<i><AntIcon name={item.icon?item.icon:"t"} /></i>
 							<div>{item.label}</div>
 						</div>

@@ -30,7 +30,6 @@ export function getContent(applications,data){
 	if(applications && applications.length>0){
 		applications.map((item,i)=>{
 			let names = "";
-			console.log(item)
 			if(typeof item.departments!=='string'){
 				item.departments.map((department,d)=>{
 					names += department.name+","
