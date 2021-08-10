@@ -3,7 +3,7 @@ import Image      from 'next/image';
 import api       from '/scripts/api.js';
 import Frame     from '/components/frames/frame.js';
 import Container from '/components/layout/containers/index.js';
-import Content  from '/components/layout/stacks/content.js';
+import Content  from '/components/layout/stacks/index.js';
 import { SearchOutlined } from '@ant-design/icons';
 import { Empty } from 'antd';	
 import gd        from '../data.json'; 

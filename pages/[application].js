@@ -22,7 +22,6 @@ function _Application(props) {
 
 	var _application     = api({url:'/admin/hub/applications/'+application}) || {};
 	if(_application.ui){
-		//data.content = (<Landing data={_application} />);
 		data.content = (
 		<>
 			<Container size="12" color="primary" align="left" padding={{y:"md",x:"xxl"}}>

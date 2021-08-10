@@ -5,7 +5,7 @@ import api 	   from '/scripts/api.js';
 import client 	from '/scripts/client-api.js';
 import Form     from '/components/form/form.js';
 import Frame    from '/components/frames/frame.js';
-import Content  from '/components/layout/stacks/content.js';
+import Content  from '/components/layout/stacks/index.js';
 import {notification} from 'antd';
 import gd   from '../../data.json';
 import ld   from './data.json';
