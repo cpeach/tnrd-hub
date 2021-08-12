@@ -8,7 +8,7 @@ function _Card(props){
 	return ( 	
 		<Container id={props.id?props.id:''} name={props.name?props.name:''} key={props.name} size="4" padding={{all:"sm"}} visable={props.visable} >
 			<div className={style.card} onClick={()=>{props.link.indexOf('http')>-1?window.open(props.link):props.router.push(props.link) }}>
-				<Container  key={props.name} size="12" padding={{all:"lg"}} align="left" >
+				<Container  key={props.name} size="12" padding={{all:"md"}} align="left" >
 					<img src={props.image===''?"/icons/app.png":props.image} width={42} height={42} />
 					<h3   className={style.card_title}>{props.title}</h3>
 					<div  className={style.card_dash}></div>

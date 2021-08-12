@@ -1,5 +1,6 @@
 import style  from './Frames.module.css';
 import client from '/scripts/client-api.js';
+import Router from 'next/router';
 
 import { useEffect,useState } from 'react';
 import Link   from 'next/link';
@@ -16,10 +17,12 @@ export default function Frame(props) {
 	const [drawerWidth, setdrawerWidth] = useState('300');
 
 	useEffect(async () => {
+		let isMounted = true;
 		var ref   = localStorage.getItem('user');
 		var _user = await client({url:"/admin/hub/users/"+ref});
-		setUser(_user)
-	});
+		isMounted?setUser(_user):null;
+		return () => (isMounted = false)
+	},[]);
 
 
 	const background=()=>{
@@ -52,14 +55,22 @@ export default function Frame(props) {
 				<header className={style.header}>
 					<div className={style.header_left}>
 						<div className="vam"></div>
-						<label className={style.label_bold}>{data.header.title.sub}</label>
-						<label>{data.header.title.label}</label>
+
+						<div className={style.header_logo}>
+							<Image src="/icons/tnrd-logo.png" width="84" height="60" />
+						</div>
+
+						<div className={style.header_title}>
+							<label className={style.label_bold}>{data.header.title.sub}</label>
+							<label>{data.header.title.label}</label>						
+						</div>
+
 					</div>
 					<div className={style.header_right}>
 						<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
-							<div className={style.header_btn} onClick={()=>{props.router.push('/')}}>
+							<div className={style.header_btn} onClick={()=>{Router.push('/')}}>
 								<div className={style.header_btn_inner}>
-									<Image src="/icons/applications.svg" width={32} height={32} />
+									<Image src="/icons/applications.svg" width={36} height={36} />
 								</div>
 								<div className="vam"></div>
 							</div>
@@ -96,7 +107,7 @@ export default function Frame(props) {
 					visible={visible}
 					getContainer={false}
 					width={drawerWidth}
-					style={{marginTop:"84px"}}
+					style={{marginTop:"96px"}}
 					maskStyle={{backgroundColor:"rgba(0,0,0,0.0)",overflow:"hidden"}}	
 				>
 					<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>

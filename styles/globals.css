@@ -251,6 +251,9 @@ div#__next{height: 100%;}
 
 /*	upload */
 
-
 	.ant-upload-drag-icon{margin:24px 0px !important;}
 	.ant-upload-list-item-info{padding:12px 0px !important}
+	
+/*	divider */
+
+.ant-divider-inner-text{}
