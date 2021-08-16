@@ -54,7 +54,7 @@
 	.list>ul>li>div>div{
 		display: inline-block;
 		vertical-align: middle;
-		width:30px;
+		width:12px;
 		
 	}
 	.list>ul>li>label{font-size:15px;display: inline-block;vertical-align: middle;cursor: pointer;width:84%;padding:0px 24px}
@@ -95,7 +95,7 @@
 
 	.list_add{text-align: center;}
 	.list_add:hover{background-color: transparent !important;}
-	.list_add>div{text-align: center !important; padding:9px;color:white !important;background-color:rgb(120,162,47);font-size:14px !important}
+	.list_add>div{width:180px !important;text-align: center !important; padding:9px;color:white !important;background-color:rgb(120,162,47);font-size:14px !important}
 	.list_add>div:hover{background-color:rgb(98, 133, 40);cursor: pointer;}
 	
 

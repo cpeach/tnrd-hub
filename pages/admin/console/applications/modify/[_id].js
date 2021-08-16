@@ -16,32 +16,18 @@ import ld from './data.json';
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
 	let {_id} =  props.router.query
-	/* 
-	const [application, setApplication] = useState();
-	const [departments, setDepartments] = useState();
 
-	useEffect(async () => {
-		//if(props.router.isReady){
-			let {_id} =  props.router.query
-			let isMounted = true;
-			let _application = await client({url:'/admin/hub/applications/'+_id});
-			let _departments = await client({url:'/admin/hub/departments'});
-			if(isMounted){
-				setApplication(_application);
-				setDepartments(_departments);
-			}
-			return () => (isMounted = false)
-		//}
-	},[]);  */
 
 	const handleSubmit = async (data)=> {
 
 		var notice = {duration:4}
 
 		data._id = _id;
-		
-		data.ui = {menu:data.menu}
+		data.ui = data.ui ? data.ui : {};
+		data.ui.menu = data.menu;
+		data.ui.resources = data.resources
 		delete data.menu;
+		delete data.resources;
 	
 		var results = await client({url:"/admin/hub/applications",params:{method:"PUT",body:data}})
 		if(results.nModified===1){
@@ -53,7 +39,6 @@ import ld from './data.json';
 			notice.description = 'The contents of '+data.name+' were not able to be updated!' 
 			notification['error'](notice);
 		}
-		//props.router.push('/admin/console/applications') 
 		window.location.href = '/admin/console/applications'
 	}
 	
@@ -87,6 +72,7 @@ import ld from './data.json';
 			form.fields[6].attributes.defaultValue = data.image?data.image:'';
 			form.fields[6].meta = data.image_meta;
 			form.fields[7].attributes.defaultValue = data.ui&&data.ui.menu?data.ui.menu:'';
+			form.fields[8].attributes.defaultValue = data.ui&&data.ui.resources?data.ui.resources:'';
 
 			return (<Form key="form" size="10" form={form} onSubmit={handleSubmit} onDelete={handleDelete} ></Form>);
 	}
@@ -95,8 +81,6 @@ import ld from './data.json';
 	var departments = api({url:"/admin/hub/departments/"})
 	
 	if(application && departments && departments.length>0){
-		console.log(application)
-		console.log(departments)
 		l_data.title   = "Update"
 		l_data.path[4] = {"label":"Update","href":"/admin/console/application"}	
 		l_data.content = getForm(application,departments,l_data);
