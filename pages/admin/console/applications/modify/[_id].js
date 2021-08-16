@@ -1,5 +1,6 @@
-import React        from 'react';
-import {withRouter} from 'next/router'
+import React         from 'react';
+import {withRouter} from 'next/router';
+import {useState,useEffect}    from 'react';
 import api 	   from '/scripts/api.js';
 import client 	from '/scripts/client-api.js';
 import Form     from '/components/form/form.js';
@@ -10,12 +11,28 @@ import gd from '../../data.json';
 import ld from './data.json';
 
 
-function Update(props){
+ function Update(props){
 	
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
-	
-	const {_id} = props.router.query
+	let {_id} =  props.router.query
+	/* 
+	const [application, setApplication] = useState();
+	const [departments, setDepartments] = useState();
+
+	useEffect(async () => {
+		//if(props.router.isReady){
+			let {_id} =  props.router.query
+			let isMounted = true;
+			let _application = await client({url:'/admin/hub/applications/'+_id});
+			let _departments = await client({url:'/admin/hub/departments'});
+			if(isMounted){
+				setApplication(_application);
+				setDepartments(_departments);
+			}
+			return () => (isMounted = false)
+		//}
+	},[]);  */
 
 	const handleSubmit = async (data)=> {
 
@@ -36,8 +53,8 @@ function Update(props){
 			notice.description = 'The contents of '+data.name+' were not able to be updated!' 
 			notification['error'](notice);
 		}
-		props.router.push('/admin/console/applications') 
-		
+		//props.router.push('/admin/console/applications') 
+		window.location.href = '/admin/console/applications'
 	}
 	
 	const handleDelete = async ()=>{
@@ -77,15 +94,17 @@ function Update(props){
 	var application = api({url:"/admin/hub/applications/"+_id})
 	var departments = api({url:"/admin/hub/departments/"})
 	
-	if(application && departments){
+	if(application && departments && departments.length>0){
+		console.log(application)
+		console.log(departments)
 		l_data.title   = "Update"
 		l_data.path[4] = {"label":"Update","href":"/admin/console/application"}	
 		l_data.content = getForm(application,departments,l_data);
 		g_data.content = (<Content data={l_data} />);	
-		return (<Frame data={g_data} active="1" />)
-	}else{
-		return <></>
+		
 	}
+
+	return (<Frame data={g_data} active="1" />)
 	
 }
 

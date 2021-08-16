@@ -11,7 +11,11 @@ export default async function ClientAPI(args){
 	params.method = params.method || 'GET';
 
 	params.headers = params.headers || {};
+
 	params.headers['Content-Type']   = params.headers['Content-Type']  || 'application/json';
+	params.headers['Content-Type']==="delete"?delete params.headers['Content-Type'] : null;
+	params.headers['Content-Type']==="delete"?delete params.headers['content-type'] : null;
+
 	params.headers['x-application']  = params.headers['x-application'] || '60906b4cf5e24d7d2498642b';
 	params.headers['Authorization']  = params.headers['Authorization'] || 'Bearer '+localStorage.token;
 
@@ -22,6 +26,6 @@ export default async function ClientAPI(args){
 	
 	if(res.status===401){Router.push('/signin')}
 	
-	return type.toLowerCase()!=='json'?await res.text():await res.json();;
+	return type.toLowerCase()!=='json'?await res.text():await res.json();
 	
 }

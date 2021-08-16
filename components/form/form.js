@@ -13,24 +13,25 @@ export default class Form extends React.Component {
 	constructor(props) {
 		super(props); 
 		this.state = {count:'',fields:[]};
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleDelete = this.handleDelete.bind(this);
-		this.getSection   = this.getSection.bind(this);
+		this.handleChange  = this.handleChange.bind(this);
+		this.handleSubmit  = this.handleSubmit.bind(this);
+		this.handleDelete  = this.handleDelete.bind(this);
+		this.getSection    = this.getSection.bind(this);
 		this.getContainers = this.getContainers.bind(this);
-		this.getField     = this.getField.bind(this);
+		this.getField      = this.getField.bind(this);
 	}
 
-	handleSubmit(e) {
+	async handleSubmit(e) {
 		e.preventDefault();
 		
 		let valid = true;
-		let data  = {};
+		let data = {};
 		for(let ref in this.refs){
-			data[this.refs[ref].getName()] = this.refs[ref].getValue()
+			data[this.refs[ref].getName()] = await this.refs[ref].getValue();
 			valid = this.refs[ref].validate().valid ? valid : false;
 		}
-		valid ? this.props.onSubmit(data): alert("You have issues")
+		console.log(data)
+		valid ? this.props.onSubmit(data) : alert("You have issues")
 		
 	}
 	
