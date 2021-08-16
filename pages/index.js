@@ -75,21 +75,28 @@ export default function _Index() {
 		});
 		data.content = (
 			<div>
-				<Container padding={{all:'xs'}} valign="top" size="8" align="center" >
+				<Container valign="top" size="12" align="center" color="primary" >
+					<div className={style.main_search}>
 					
-					<div  className="main_search">
-						<input type="text" placeholder="Search Applications" />
-						<SearchOutlined key="icon"  style={{"fontSize":"21px","width":"10%"}} />
+						<h2>Application and Resource Directory</h2>
+						<div className={style.main_search_wrapper}>
+							<SearchOutlined key="icon"  style={{"fontSize":"21px","width":"8%","marginBottom":"-5px"}} />
+							<input type="text" placeholder="Search for Applications..." />
+						</div>
 					</div>
-					<div id="filters" className="main_filters">
-						<span id="all" className="active" onClick={filter}>All</span>
+				</Container>
+				<Container size="12" align="center" >
+					<div id="filters" className={style.main_filters}>
+						<span id="all" className={style.main_filters_active} onClick={filter}>All</span>
 						{
 							departments.map((item,i)=>{
 								return <span key={"filter-"+i} id={item._id} onClick={filter}>{item.name}</span>
 							})
 						}
-					</div>
+					</div>					
 				</Container>
+
+
 				<div className={style.divider}><Divider>{(count!=undefined?count:applications.length) +" / "+ applications.length + " Applications"}</Divider></div>
 				<Container id="cards" padding={{all:'sm'}} valign="top" size="12" align="left">
 					{cards(applications)}

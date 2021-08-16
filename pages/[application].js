@@ -43,10 +43,10 @@ function _Application(props) {
 					_application.ui ?  (
 					<Container key="nav" size="12" padding={{x:"xl"}}>
 						
-							<div className={style.landing_actions}>
-								{menu(_application.ui.menu,"primary")}
-								{menu(_application.ui.menu,"secondary")}
-							</div>
+						<div className={style.landing_actions}>
+							{menu(_application.ui.menu,"primary")}
+							{menu(_application.ui.menu,"secondary")}
+						</div>
 					
 					</Container>) : <></>
 				}

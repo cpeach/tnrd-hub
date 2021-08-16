@@ -107,7 +107,7 @@ export default function Frame(props) {
 					visible={visible}
 					getContainer={false}
 					width={drawerWidth}
-					style={{marginTop:"96px"}}
+					style={{marginTop:"84px"}}
 					maskStyle={{backgroundColor:"rgba(0,0,0,0.0)",overflow:"hidden"}}	
 				>
 					<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>

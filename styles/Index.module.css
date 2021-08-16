@@ -8,6 +8,104 @@
 	}
 
 /*
+	Main root page pages/index.js
+*/
+.main_heading{
+	margin:48px;
+	color : rgb(70, 70, 70);
+	font-weight: 900 !important;
+	font-size:42px
+}
+.main_search{
+
+	width:900px;
+	text-align: left;
+	display: inline-block;
+	margin:48px 0px;
+}
+.main_search>h1{
+	display: inline-block;
+	margin-top:30px;
+	font-size:30px;
+	font-weight:900 !important;
+	color:white !important;
+}
+
+.main_search>h2{
+	font-size:30px;
+	line-height: 30px;
+	font-weight:300 !important;
+	padding-bottom:30px;
+	color:white !important;
+}
+
+.main_search_wrapper{
+	overflow: hidden;
+	color:white;
+	background-color: rgba(255,255,255,0.2);
+	width:100%;
+	text-align: center;
+	display: inline-block;
+	border-radius: 4px;
+}
+.main_search_wrapper>input{
+	outline:none;
+	border:none;
+	font-size: 19px;
+	padding:20px 0px 20px 0px;
+	background-color: transparent;
+	width: 92%;
+	display: inline-block;
+	color:rgba(255,255,255,0.7);
+	letter-spacing: 0.3px;
+	font-family:'Lato' !important;
+	
+
+	
+}
+.main_search_wrapper>input::placeholder{
+	font-weight: 300;
+	color:white;
+}
+
+.main_filters{
+
+	width:900px;
+	display: inline-block;
+	text-align: left;
+	margin:36px 0px
+
+}
+
+
+.main_filters > span{
+	border:1px solid rgb(180,180,180);
+	padding:9px 20px;
+	font-size:13px;
+	color:rgb(90,90,90);
+	border-radius:4px;
+	/* border-radius:50px; */
+	margin:5px;
+	min-width: 30px;
+	display: inline-block;
+	cursor: pointer;
+	letter-spacing: 0.4px;
+	background-color: white;
+	cursor: pointer;
+	transition: 225ms;
+}
+.main_filters > span:hover{
+	border:1px solid rgb(140,140,140);
+	background-color: rgb(248,248,248);
+}
+.main_filters>.main_filters_active{
+	background-color: rgb(117, 158, 46);
+	color:white;
+}
+
+
+
+/*
 	LANDING
 */
 
@@ -18,9 +116,9 @@
 	.landing_actions{padding:48px 0px 0px 0px  }
 	.landing_actions>a{
 		font-size:14px;
-		color:rgb(120,162,47) !important;
+		color:rgb(117, 158, 46) !important;
 		padding:21px 30px;
-		border:1px solid rgb(120,162,47);
+		border:1px solid rgb(117, 158, 46);
 		letter-spacing: 0.6px;
 		border-radius: 0px;
 		font-weight: 600;
@@ -33,11 +131,11 @@
 		font-size:14px;
 		color:white !important;
 		padding:21px 30px;
-		border:1px solid rgb(120,162,47);
+		border:1px solid rgb(117, 158, 46);
 		letter-spacing: 1px;
 		border-radius: 0px;
 		font-weight: 400;
-		background-color: rgb(120,162,47);
+		background-color: rgb(117, 158, 46);
 	}
 	.landing_actions>a:first-child:hover{
 		border:1px solid rgb(99, 134, 39);
@@ -63,9 +161,9 @@
 	.landing_links>ul{padding:0px; border:1px solid rgb(220,220,220);list-style: none;margin:30px 0px}
 	.landing_links>ul:last-child{margin-bottom:120px}
 	.landing_links>ul>li{background-color:rgb(250,250,250);cursor:pointer;color:rgb(99, 134, 39); border-left:2px solid rgb(220,220,220);margin:0px;padding:15px 15px;font-size:15px;border-bottom:1px solid rgb(220,220,220);}
-	.landing_links>ul>li:hover{border-left:2px solid rgb(120,162,47);color:rgb(120,162,47);}
+	.landing_links>ul>li:hover{border-left:2px solid rgb(117, 158, 46);color:rgb(117, 158, 46);}
 	.landing_links>ul>li>last-child{border-bottom: none;}
-	.landing_links>ul>li>a{color:rgb(120,162,47) !important;display: block;}
+	.landing_links>ul>li>a{color:rgb(117, 158, 46) !important;display: block;}
 	.landing_links>ul>li>a:hover{color:rgb(99, 134, 39) !important;text-decoration: underline;}
 	
 
@@ -79,4 +177,4 @@
 	.content_heading{padding:36px 0px 48px 0px;font-size:0px}
 	.content_heading>h1{display:inline-block;vertical-align:middle;width:70%}
 	.content_heading>div{display:inline-block;vertical-align:middle;width:30%; text-align:right}
-	.content_heading>div>div{display:inline-block;padding:9px 16px; background-color: rgb(120,162,47);color:white;cursor:pointer;border-radius:5px;font-size:12px}
+	.content_heading>div>div{display:inline-block;padding:9px 16px; background-color: rgb(117, 158, 46);color:white;cursor:pointer;border-radius:5px;font-size:12px}
