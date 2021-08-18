@@ -21,7 +21,7 @@
 	width:900px;
 	text-align: left;
 	display: inline-block;
-	margin:48px 0px;
+	margin:48px 0px 60px 0px;
 }
 .main_search>h1{
 	display: inline-block;
@@ -35,7 +35,7 @@
 	font-size:30px;
 	line-height: 30px;
 	font-weight:300 !important;
-	padding-bottom:30px;
+	padding-bottom:36px;
 	color:white !important;
 }
 
@@ -47,20 +47,22 @@
 	text-align: center;
 	display: inline-block;
 	border-radius: 4px;
+	transition: 400ms;
 }
+.main_search_wrapper:hover{background-color: rgba(255,255,255,1);color:black}
+.main_search_wrapper:hover>input:hover{color:black !important}
+.main_search_wrapper:hover>input::placeholder{color:rgb(109, 109, 109) !important;font-weight: 400;}
 .main_search_wrapper>input{
 	outline:none;
 	border:none;
-	font-size: 19px;
-	padding:20px 0px 20px 0px;
+	font-size: 20px;
+	padding:15px 0px 15px 0px;
 	background-color: transparent;
 	width: 92%;
 	display: inline-block;
 	color:rgba(255,255,255,0.7);
 	letter-spacing: 0.3px;
 	font-family:'Lato' !important;
-	
-
 	
 }
 .main_search_wrapper>input::placeholder{
@@ -101,6 +103,41 @@
 .main_filters>.main_filters_active{
 	background-color: rgb(117, 158, 46);
 	color:white;
+}
+.main_filters>.main_filters_active:hover{
+	background-color: rgb(117, 158, 46);
+	color:white;
+}
+
+
+/*
+	CARD
+*/
+.cards{width:1100px;display: inline-block;text-align: left;}
+.card{
+	border-radius:2px;
+	border:1px solid rgb(220,220,220);
+	cursor: pointer;
+	transition: 0.3s;
+	background-color: white;;
+}
+.card:hover{
+	border:rgb(210,210,210) 1px solid;
+	margin-top:-3px;
+	/* border:1px solid rgba(101, 145, 43,0.6); 
+	box-shadow: 0px 0px 12px rgba(101, 145, 43, 0.1);*/
+}
+
+.card_title{font-size: 16px;font-weight: 900; letter-spacing:0.8px;margin:15px 0px 0px 0px !important;line-height: 27px}
+.card_dash{height:1px;width:36px;background-color: black;margin:18px 0px 18px 0px}
+.card_details{
+	font-size: 13px;
+	letter-spacing:0.8px;
+	line-height: 22px;
+	margin:0px;
+	height: 48px;   
+	  overflow: hidden;
+	  margin-top:15px
 }
 
 

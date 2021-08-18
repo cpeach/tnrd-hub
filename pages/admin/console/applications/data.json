@@ -3,9 +3,8 @@
 {
 	"title" : "Applications",
 	"path":[
-		{"label":"Home","href":"/"},
-		{"label":"Administration","href":"/admin"},
-		{"label":"Console","href":"/admin/console"},
+		{"label":"API Console","href":"/60906b4cf5e24d7d2498642b"},
+		{"label":"Administration","href":"/admin/console/applications"},
 		{"label":"Applications","href":"/admin/console/applications"}
 	],
 	"table":{

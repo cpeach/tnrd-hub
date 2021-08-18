@@ -9,8 +9,8 @@ export default function _Content(props){
 	
 	return(
 	
-		<Container className={style.content} size={props.width?props.width:"10"} padding={{y:"lg"}} align="left">
-			{props.data.path?(<Path data={props.data.path} />):(<></>)}
+		<Container className={style.content} size={props.width?props.width:"10"} padding={{y:"sm"}} align="left">
+			
 			<div className={style.content_heading}>
 				<h1>{props.data.title}</h1>
 			</div>
@@ -20,3 +20,4 @@ export default function _Content(props){
 	)
 	
 }
+/* {props.data.path?(<Path data={props.data.path} />):(<></>)} */

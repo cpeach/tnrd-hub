@@ -1,6 +1,9 @@
 
 import style     from '/styles/Index.module.css';
 import api     from '/scripts/api.js';
+import Link    from 'next/link';
+import Router from 'next/router';
+import Image from 'next/image';
 import Frame   from '/components/frames/frame.js';
 import Card    from '/components/layout/cards/card.js';
 import Container from '/components/layout/containers/index.js';
@@ -30,9 +33,9 @@ export default function _Index() {
 			}
 			var _filters = document.getElementById("filters").children;
 			for(var i=0; i<_filters.length;i++){
-				_filters[i].className = _filters[i].className.replace("active","")
+				_filters[i].className = '';//_filters[i].className.replace("active","")
 			}
-			document.getElementById("all").className="active";
+			document.getElementById("all").className=style.main_filters_active;
 		}else{
 			
 			for(var i=0; i<cards.length;i++){
@@ -44,9 +47,9 @@ export default function _Index() {
 
 			var _filters = document.getElementById("filters").children;
 			for(var i=0; i<_filters.length;i++){
-				_filters[i].className = _filters[i].className.replace("active","")
+				_filters[i].className = '';//_filters[i].className.replace("active","")
 			}
-			e.currentTarget.className = "active"
+			e.currentTarget.className =style.main_filters_active;
 		}
 		setCount(_count);
 	}
@@ -58,7 +61,16 @@ export default function _Index() {
 		var out;
 		if(p && p.length>0){
 			out = p.map((card,i)=>(
-				 <Card id={card._id} image={card.image?card.image.url:''} key={"card-"+i} title={card.name} link={"/"+card._id} details={card.description} name={'card-'+i} />
+				<Container id={card.id?card.id:''} name={card.name?card.name:''} key={card.name} size="4" padding={{all:"xs"}} visable={card.visable} >
+					<div className={style.card} onClick={()=>{Router.push("/"+card._id)}}>
+						<Container  key={card.name} size="12" padding={{all:"md"}} align="left" >
+							<img src={(card.image?card.image.url:'')===''?"/icons/app.png":card.image} width={42} height={42} />
+							<h3   className={style.card_title}>{card.name}</h3>
+							<p    className={style.card_details}>{card.description.substr(0,94)+" ..."}</p>
+						</Container>
+					</div>
+				</Container>
+				/* { <Card id={card._id} image={card.image?card.image.url:''} key={"card-"+i} title={card.name} link={"/"+card._id}  name={'card-'+i} /> }*/
 			))
 		}else{
 			out = <Empty key="empty" image={Empty.PRESENTED_IMAGE_SIMPLE} />
@@ -74,18 +86,18 @@ export default function _Index() {
 			filters[item._id] = item.departments.map(dep=>(dep._id));
 		});
 		data.content = (
-			<div>
+			<>
 				<Container valign="top" size="12" align="center" color="primary" >
 					<div className={style.main_search}>
 					
-						<h2>Application and Resource Directory</h2>
+						<h2>Applications and Online Services</h2>
 						<div className={style.main_search_wrapper}>
-							<SearchOutlined key="icon"  style={{"fontSize":"21px","width":"8%","marginBottom":"-5px"}} />
+							<SearchOutlined key="icon"  style={{"fontSize":"21px","width":"8%","paddingTop":"5px"}} />
 							<input type="text" placeholder="Search for Applications..." />
 						</div>
 					</div>
 				</Container>
-				<Container size="12" align="center" >
+				<Container size="12" align="center"  color="light">
 					<div id="filters" className={style.main_filters}>
 						<span id="all" className={style.main_filters_active} onClick={filter}>All</span>
 						{
@@ -97,15 +109,18 @@ export default function _Index() {
 				</Container>
 
 
-				<div className={style.divider}><Divider>{(count!=undefined?count:applications.length) +" / "+ applications.length + " Applications"}</Divider></div>
-				<Container id="cards" padding={{all:'sm'}} valign="top" size="12" align="left">
-					{cards(applications)}
+				<Container id="cards" valign="top" size="12" align="center" padding={{"y":"md"}} color="light">
+				
+					<div className={style.cards}>{cards(applications)}</div>
+						
 					<div className="overlay"></div>
 				</Container>
-			</div>
+			</>
 		);	
 	}			
 							
-	return (<Frame key="frame" data={data}  active="1" navigation="false" />)
+	return (<Frame key="frame" data={data}  active="1" navigation="false" path={false} />)
 } 
 
+
+{/* <div className={style.divider}><Divider>{(count!=undefined?count:applications.length) +" / "+ applications.length + " Applications"}</Divider></div> */}

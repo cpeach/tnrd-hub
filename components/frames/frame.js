@@ -8,7 +8,7 @@ import Image  from 'next/image';
 
 import { Drawer, Button, Tooltip, Popover } from 'antd';
 import AntIcon 	from '/components/icons/antd/icons.js';
-import { CloseCircleFilled  } from '@ant-design/icons';
+import { CloseCircleFilled,RightOutlined  } from '@ant-design/icons';
 
 export default function Frame(props) {
 
@@ -40,7 +40,13 @@ export default function Frame(props) {
 		size = size < 420 ? size : 420;
 		setdrawerWidth(size);
 	};
-
+	const getPath = (path) =>{
+		if(path){
+			return path.map((item,i)=>((<><a key={"link"+i} href={item.href}>{item.label}</a><span key={"sep"+i}><RightOutlined /></span></>)));
+		}else{
+			return (<></>)
+		}
+	};
 	const onClose    = () => {setVisible(false);};
 
 	var data = props.data?props.data:{};
@@ -50,7 +56,7 @@ export default function Frame(props) {
 	return (
 		<div className={style.frame}>
 
-			<div key="header" className={style.frame_header}>
+			<div className={style.frame_header}>
 			
 				<header className={style.header}>
 					<div className={style.header_left}>
@@ -70,13 +76,12 @@ export default function Frame(props) {
 						<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
 							<div className={style.header_btn} onClick={()=>{Router.push('/')}}>
 								<div className={style.header_btn_inner}>
-									<Image src="/icons/applications.svg" width={36} height={36} />
+									<Image src="/icons/applications.svg" width={38} height={38} />
 								</div>
 								<div className="vam"></div>
 							</div>
 						</Tooltip>
 						<div className={style.header_sep}></div>
-						
 						<div id="header_account_label" className={style.header_btn} onMouseEnter={data.header.account.hover} >
 							<div className={style.header_btn_inner}><Image src="/icons/account.svg" width={28} height={28} /></div>
 							<div className={style.header_btn_inner} >
@@ -87,17 +92,28 @@ export default function Frame(props) {
 						</div>	
 					</div>
 				</header>
-			
 			</div>
-			
-			<div key="body" className={style.frame_body +" "+ background()}>
-				
+			{
+				props.path!==false?
+					<div className={style.frame_body_path}>
+						<div></div>
+						{
+							getPath(props.data.path)
+						}
+						
+					</div> : <></>
+			}
+			<div className={style.frame_body +" "+ background()}>
+			 	
+
 				<div key="left" className={props.navigation!=="false"?style.frame_body_left:style.frame_body_left_hide}>
 					{data.navigation ? navigation(data.navigation,props.active) : null}
 				</div>
 				
 				<div key="right" className={style.frame_body_right}>
-					{data.content}
+						
+						{data.content}
+					
 				</div>	
 
 				<Drawer
@@ -107,7 +123,7 @@ export default function Frame(props) {
 					visible={visible}
 					getContainer={false}
 					width={drawerWidth}
-					style={{marginTop:"84px"}}
+					style={{marginTop:"96px"}}
 					maskStyle={{backgroundColor:"rgba(0,0,0,0.0)",overflow:"hidden"}}	
 				>
 					<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>
@@ -122,7 +138,6 @@ export default function Frame(props) {
 						</ul>
 					</div>
 				</Drawer>
-
 
 			</div>
 		</div>

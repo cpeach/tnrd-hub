@@ -26,12 +26,12 @@ export default function Departments() {
 	},[]);
 
 
-	//var applications = api({url:'/admin/hub/applications'});
+	g_data.path = l_data.path;
 	
 	l_data.content 	= getContent(applications,l_data);
 	g_data.content  = (<Content data={l_data} />);
 
-	return (<Frame data={g_data} active="1" />)
+	return (<Frame data={g_data} active="1"  />)
 } 
 									
 export function getContent(applications,data){

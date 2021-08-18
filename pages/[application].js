@@ -74,7 +74,7 @@ function _Application(props) {
 		)
 	}
 		
-	return (<Frame key="frame" data={data} active="1" navigation="false" />)		
+	return (<Frame key="frame" data={data} active="1" navigation="false" path={false} />)		
 } 
 
 export default withRouter(_Application)
