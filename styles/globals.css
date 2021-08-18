@@ -215,7 +215,8 @@ div#__next{height: 100%;}
 
 
 /*	table */
-	.ant-table{font-size:15px !important;letter-spacing:0.2px !important;border-top: 1px solid rgb(220,220,220) !important;border-left: 1px solid rgb(230,230,230) !important;}
+	.ant-table{
+		box-shadow: 0 0px 7px rgb(0 0 0 / 7%); font-size:15px !important;letter-spacing:0.2px !important;border-top: 1px solid rgb(220,220,220) !important;border-left: 1px solid rgb(230,230,230) !important;}
 	.ant-table-thead .ant-table-cell{font-weight:700 !important;background-color:rgb(241, 241, 241) !important ;}
 	.ant-table-tbody>tr>td{border-bottom: 1px solid rgb(220,220,220) !important; }
 

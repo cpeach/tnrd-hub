@@ -1,6 +1,7 @@
 import Link    from 'next/link'
 import style   from './Table.module.css';
 import {Table} from 'antd';
+import { MenuOutlined,FunnelPlotOutlined,PrinterOutlined,DownloadOutlined,PlusOutlined  } from '@ant-design/icons';
 
 
 export default function _Table(props)  {
@@ -17,16 +18,22 @@ export default function _Table(props)  {
 		if(props.actions!=='false' || props.actions!==false){
 			return (
 				<div className={style.table_options}>
-					<div><div className={style.action}>
+					<div>
+						<div className={style.action_filter}><span>Filters</span><FunnelPlotOutlined /></div>
+						<div className={style.action}>
 						{
 							props.data.buttons.action.href ? 
 								<Link href={props.data.buttons.action.href}>{props.data.buttons.action.label}</Link>
 								:
 								<div onClick={props.data.buttons.action.click}>{props.data.buttons.action.label}</div>
 						}
-						
-					</div></div>
-					<div></div>
+						</div>
+					</div>
+					<div>
+						<div className={style.action_icon}><DownloadOutlined /></div>
+						<div className={style.action_icon}><PrinterOutlined /></div>
+						<div className={style.action_add}><PlusOutlined /></div>
+					</div>
 				</div>
 			)
 		}
