@@ -53,7 +53,7 @@ div#__next{height: 100%;}
 
 	h1,h2{margin-bottom:0px !important}
 
-	h1{font-size: 40px;line-height:33px;font-weight: 700 !important;letter-spacing: -1px}
+	h1{font-size: 33px;line-height:33px;font-weight: 700 !important;letter-spacing: -1px;color: rgb(70,70,70) !important;}
 	h2{font-weight: 400;font-size:19px;color: rgb(80,80,80)}
 	h3{font-weight: 700;font-size:17px;color: rgb(80,80,80)}
 
@@ -257,5 +257,9 @@ div#__next{height: 100%;}
 	.ant-upload-list-item-info{padding:12px 0px !important}
 	
 /*	divider */
-
 .ant-divider-inner-text{}
+
+/*	switch */
+.ant-switch-checked{
+	background-color:rgb(117, 158, 46) !important ;
+}

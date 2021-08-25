@@ -1,10 +1,10 @@
 
 /* Refer to /styles/global.css for additional ant override styles */
 
-.table{background-color:transparent;}
+.table{background-color:transparent;width:100%}
 
 .table_options{font-size: 0px;margin: 15px 0px;  }
-.table_options>div:first-child{width:30%;display:inline-block;vertical-align:middle}
+.table_options>div:first-child{width:30%;display:inline-block;vertical-align:middle;text-align: left;}
 .table_options>div:last-child{width:70%;display:inline-block;vertical-align:middle;text-align: right}
 
 .action{display:inline-block;padding:12px 12px; cursor:pointer;border-radius:2px;background-color:rgb(117, 158, 46) ; display:none}

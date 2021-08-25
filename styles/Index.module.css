@@ -18,7 +18,7 @@
 }
 .main_search{
 
-	width:900px;
+	width:960px;
 	text-align: left;
 	display: inline-block;
 	margin:48px 0px 60px 0px;
@@ -71,11 +71,10 @@
 }
 
 .main_filters{
-
-	width:900px;
+	width:960px;
 	display: inline-block;
 	text-align: left;
-	margin:36px 0px
+	margin:36px 0px;
 
 }
 
@@ -113,7 +112,7 @@
 /*
 	CARD
 */
-.cards{width:1100px;display: inline-block;text-align: left;}
+.cards{width:978px;display: inline-block;text-align: left;}
 .card{
 	border-radius:2px;
 	border:1px solid rgb(220,220,220);

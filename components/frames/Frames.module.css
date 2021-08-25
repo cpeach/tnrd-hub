@@ -17,10 +17,12 @@
 
 
 .frame_body_path{height: 50px;background-color: rgb(117, 158, 46);width: 100%;color:white;text-align: left;padding:0px 48px;}
-.frame_body_path>a{color:white !important;font-size:12px;font-weight:400 !important;display: inline-block !important;vertical-align: middle;}
-.frame_body_path>div{height:100%;display: inline-block !important;vertical-align: middle;}
-.frame_body_path>span{display: inline-block !important;vertical-align: middle;width:30px;text-align: center;}
-.frame_body_path>span:last-child{display: none !important}
+.frame_body_path>div:first-child{height:100%;display: inline-block !important;vertical-align: middle;}
+.frame_body_path>div{display: inline-block !important;vertical-align: middle;}
+.frame_body_path>div>a{color:white !important;font-size:12px;font-weight:400 !important;display: inline-block !important;}
+
+.frame_body_path>div>span{display: inline-block !important;vertical-align: middle;width:30px;text-align: center;}
+.frame_body_path>div>span:last-child{display: none;}
 
 
 .frame_body_left{display:flex;flex-direction: column;flex-shrink:0;width:300px;padding:0px;overflow-x: hidden;text-align: center; }

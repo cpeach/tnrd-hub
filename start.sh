@@ -5,6 +5,9 @@ pm2 start npm --name "hub" -- run dev
 
 ## Start apps 
 
-cd /server/apps/api-console
-pm2 start npm --name "api-console" -- run dev
+cd /server/test
+pm2 start npm --name "test" -- run dev
 
+
+## Back to hub
+cd /server/hub

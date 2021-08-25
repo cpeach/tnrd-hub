@@ -1,4 +1,5 @@
 
+
 import style     from '/styles/Index.module.css';
 import api     from '/scripts/api.js';
 import Link    from 'next/link';
@@ -10,6 +11,9 @@ import Container from '/components/layout/containers/index.js';
 import { SearchOutlined } from '@ant-design/icons';
 import { Empty,Divider  } from 'antd';	
 import { useState,useEffect  } from 'react';
+
+
+
 export default function _Index() { 
 	
 	var data = {}
@@ -62,7 +66,7 @@ export default function _Index() {
 		if(p && p.length>0){
 			out = p.map((card,i)=>(
 				<Container id={card.id?card.id:''} name={card.name?card.name:''} key={card.name} size="4" padding={{all:"xs"}} visable={card.visable} >
-					<div className={style.card} onClick={()=>{Router.push("/"+card._id)}}>
+					<div className={style.card} onClick={()=>{Router.push("/application/"+card._id)}}>
 						<Container  key={card.name} size="12" padding={{all:"md"}} align="left" >
 							<img src={(card.image?card.image.url:'')===''?"/icons/app.png":card.image} width={42} height={42} />
 							<h3   className={style.card_title}>{card.name}</h3>
@@ -97,7 +101,7 @@ export default function _Index() {
 						</div>
 					</div>
 				</Container>
-				<Container size="12" align="center"  color="light">
+				<Container size="12" align="center"  color="white" style={{"backgroundColor":"white","borderBottom":"1px solid rgb(220,220,220)"}}>
 					<div id="filters" className={style.main_filters}>
 						<span id="all" className={style.main_filters_active} onClick={filter}>All</span>
 						{

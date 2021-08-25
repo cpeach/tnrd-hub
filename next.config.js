@@ -10,13 +10,14 @@ module.exports = {
         destination: `/:path*`,
       },
       {
-        source: '/api-console',
-        destination: 'http://localhost:3001/',
+        source: '/test',
+        destination: 'http://localhost:3004/test',
       },
       {
-        source: '/api-console/:path*',
-        destination: 'http://localhost:3001/:path*',
+        source: '/test/:path*',
+        destination: 'http://localhost:3004/test/:path*',
       }
+
     ]
   },
 

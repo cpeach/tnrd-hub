@@ -25,7 +25,6 @@ export default function Departments() {
 		return () => (isMounted = false)
 	},[]);
 
-
 	g_data.path = l_data.path;
 	
 	l_data.content 	= getContent(applications,l_data);

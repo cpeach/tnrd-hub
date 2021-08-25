@@ -1,3 +1,4 @@
+//import { Button } from 'tnrd-components';
 
 import Container from '/components/layout/containers/index.js';
 import Link      from 'next/link';
@@ -8,7 +9,7 @@ import Frame    from '/components/frames/frame.js';
 import { FileTextOutlined } from '@ant-design/icons';
 function _Application(props) { 
 	
-	const {application}  = props.router.query
+	const {_id}  = props.router.query
 	const data           = {};
 
 	const menu = (menu,type)=>{
@@ -27,8 +28,8 @@ function _Application(props) {
 		return items; 
 	}
 
-	var _application     = api({url:'/admin/hub/applications/'+application});
-		console.log(_application)
+	var _application     = api({url:'/admin/hub/applications/'+_id});
+	
 		if(_application){
 			data.content = (
 			<>

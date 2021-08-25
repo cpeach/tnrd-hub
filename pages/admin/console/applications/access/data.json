@@ -1,0 +1,19 @@
+
+
+{
+	"title" : "Permissions",
+	"path":[
+		{"label":"API Console","href":"/application/60906b4cf5e24d7d2498642b"},
+		{"label":"Applications","href":"/admin/console/applications"},
+		{"label":"Access","href":"/admin/console/applications/access"}
+	]	,
+	"table":{
+		"columns" : [
+			{"key":"name","title":"Full Name","dataIndex":"name"},
+			{"key":"Role","title":"Role","dataIndex":"role"},
+			{"key":"action","title":"Allow","dataIndex":""}
+		]
+		
+	}	
+	
+}

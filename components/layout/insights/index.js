@@ -18,7 +18,7 @@ export default function _Insights(props)  {
 
 	const getBlock=(b,i,k)=>{
 		if(b.container==i){
-			var sep = b.separator?{'borderRight':'1px solid rgb(240,240,240)','height':'100%'}:{'height':'100%'}
+			var sep = b.separator?{'borderRight':'1px solid rgb(220,220,220)','height':'100%'}:{'height':'100%'}
 			switch(b.type){
 				case 'statistic' :
 					return (

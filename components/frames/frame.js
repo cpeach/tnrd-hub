@@ -42,7 +42,7 @@ export default function Frame(props) {
 	};
 	const getPath = (path) =>{
 		if(path){
-			return path.map((item,i)=>((<><a key={"link"+i} href={item.href}>{item.label}</a><span key={"sep"+i}><RightOutlined /></span></>)));
+			return path.map((item,i)=>((<div key={"link"+i} ><a href={item.href}>{item.label}</a><span><RightOutlined /></span></div>)));
 		}else{
 			return (<></>)
 		}
