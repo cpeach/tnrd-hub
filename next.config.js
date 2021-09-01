@@ -8,15 +8,7 @@ module.exports = {
       {
         source: '/:path*',
         destination: `/:path*`,
-      },
-      {
-        source: '/api-console',
-        destination: `localhost:3001/api-console`,
-      },
-      {
-        source: '/api-console/:path*',
-        destination: `localhost:3001/api-console:path*`,
-      },
+      }
     ]
   },
 
