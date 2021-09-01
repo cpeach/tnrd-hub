@@ -42,9 +42,9 @@ div#__next{height: 100%;}
 */
 	.light{background-color: rgb(250,250,250);}
 	.white{background-color: white;}
-	.primary{background-color:rgb(120,162,47) !important}
+	.primary{background-color:rgb(117, 158, 46) !important}
 	.text-white{color:white !important}
-	.text-primary{color:rgb(120,162,47) !important}
+	.text-primary{color:rgb(117, 158, 46) !important}
 
 /*	weight */
 	bold{font-weight: 900}
@@ -53,7 +53,7 @@ div#__next{height: 100%;}
 
 	h1,h2{margin-bottom:0px !important}
 
-	h1{font-size: 40px;line-height:33px;font-weight: 700 !important;letter-spacing: -1px}
+	h1{font-size: 33px;line-height:33px;font-weight: 700 !important;letter-spacing: -1px;color: rgb(70,70,70) !important;}
 	h2{font-weight: 400;font-size:19px;color: rgb(80,80,80)}
 	h3{font-weight: 700;font-size:17px;color: rgb(80,80,80)}
 
@@ -71,11 +71,11 @@ div#__next{height: 100%;}
 /*
 	LINKS
 */
-	a,a.button{cursor: pointer;display:inline-block;  border-radius: 6px; font-size: 15px; font-weight:400; color:rgb(120,162,47) ;letter-spacing: 0.4px;cursor: pointer}
+	a,a.button{cursor: pointer;display:inline-block;  border-radius: 6px; font-size: 15px; font-weight:400; color:rgb(117, 158, 46) ;letter-spacing: 0.4px;cursor: pointer}
 	a:hover{text-decoration: underline}
 
 	a.button{border: 1px solid rgb(210,210,210);padding:10px 15px;}
-	a.button{text-decoration:none;border: 1px solid rgb(120,162,47);}
+	a.button{text-decoration:none;border: 1px solid rgb(117, 158, 46);}
 
 /*	paper */
 	.paper{background-color:white;border: 1px solid rgb(220,220,220);border-radius: 6px;padding:30px;font-size: 0px}
@@ -176,7 +176,7 @@ div#__next{height: 100%;}
 	background-color: rgb(250,250,250);
 }
 .main_filters > span.active{
-	background-color: rgb(120,162,47);
+	background-color: rgb(117, 158, 46);
 	color:white;
 }
 .main_search{
@@ -207,7 +207,7 @@ div#__next{height: 100%;}
 }
 
 /*
-
+117, 158, 46
 	ANT Overide
 
 */
@@ -215,42 +215,56 @@ div#__next{height: 100%;}
 
 
 /*	table */
-	.ant-table{font-size:15px !important;letter-spacing:0.2px !important;border-top: 1px solid rgb(220,220,220) !important;border-left: 1px solid rgb(230,230,230) !important;}
-	.ant-table-thead .ant-table-cell{font-weight:700 !important}
-	.ant-table-tbody>tr>td{border-bottom: 1px solid rgb(220,220,220) !important;}
+	.ant-table{
+		box-shadow: 0 0px 7px rgb(0 0 0 / 7%); font-size:15px !important;letter-spacing:0.2px !important;border-top: 1px solid rgb(220,220,220) !important;border-left: 1px solid rgb(230,230,230) !important;}
+	.ant-table-thead .ant-table-cell{font-weight:700 !important;background-color:rgb(241, 241, 241) !important ;}
+	.ant-table-tbody>tr>td{border-bottom: 1px solid rgb(220,220,220) !important; }
+
 	.ant-table-cell{padding:21px 15px !important;border-right: 1px solid rgb(220,220,220) !important;}
-	.ant-table-cell a{color:rgb(120,162,47) !important}
+	.ant-table-cell a{color:rgb(117, 158, 46) !important}
 	.ant-table-container{}
 	.ant-table-cell.ant-table-row-expand-icon-cell>button{text-align:center !important;float: none!important}
 	.ant-table-expanded-row>td{background-color:white !important;padding-left:64px !important;padding-right:64px !important}
 	
-	.ant-pagination-item-active{color:rgb(120,162,47) !important;border:1px solid rgb(120,162,47);}
-	.ant-pagination-item-active:hover{color:rgb(120,162,47) !important;border:1px solid rgb(120,162,47);}
+	.ant-pagination-item-active{color:rgb(117, 158, 46) !important;border:1px solid rgb(117, 158, 46);}
+	.ant-pagination-item-active:hover{color:rgb(117, 158, 46) !important;border:1px solid rgb(117, 158, 46);}
 	
-	.ant-pagination-item-active a{color:rgb(120,162,47)}
-	.ant-pagination-item-active a:hover{color:rgb(120,162,47)}
+	.ant-pagination-item-active a{color:rgb(117, 158, 46)}
+	.ant-pagination-item-active a:hover{color:rgb(117, 158, 46)}
 
 /*	descriptions */
 	.ant-descriptions-title{margin-bottom:7px}
 
 /*	breadcrumb */
-	.ant-breadcrumb a:hover{color:rgb(120,162,47) !important}
+	.ant-breadcrumb a:hover{color:rgb(117, 158, 46) !important}
 	.ant-breadcrumb a{font-size:13px}
 
 /*	popconfirm */
-	.ant-btn-primary,.ant-btn-primary:active,.ant-btn-primary:hover{background-color:rgb(120,162,47) !important;border-color:rgb(120,162,47) !important}
+	.ant-btn-primary,.ant-btn-primary:active,.ant-btn-primary:hover{background-color:rgb(117, 158, 46) !important;border-color:rgb(117, 158, 46) !important}
 
 	.ant-select-multiple .ant-select-selection-item{background-color: white !important;}
 	.ant-divider-inner-text{color:rgb(180,180,180)}
-	.ant-upload-drag:hover{border:1px solid rgb(120,162,47) !important}
+	.ant-upload-drag:hover{border:1px solid rgb(117, 158, 46) !important}
 
 /*	drawer */
 
-	.ant-drawer-content-wrapper{box-shadow: -2px 7px 9px 0px #e2e2e2 !important}
+	/* .ant-drawer-content-wrapper{box-shadow: -2px 7px 9px 0px #e2e2e2 !important} */
 	.ant-drawer-body{padding:0px !important}
 
 /*	upload */
 
-
 	.ant-upload-drag-icon{margin:24px 0px !important;}
 	.ant-upload-list-item-info{padding:12px 0px !important}
+	
+/*	divider */
+.ant-divider-inner-text{}
+
+/*	switch */
+.ant-switch-checked{
+	background-color:rgb(117, 158, 46) !important ;
+}
+
+/*	select */
+.ant-select{
+	width:100%
+}

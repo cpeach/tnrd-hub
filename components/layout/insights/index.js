@@ -18,11 +18,11 @@ export default function _Insights(props)  {
 
 	const getBlock=(b,i,k)=>{
 		if(b.container==i){
-			var sep = b.separator?{'borderRight':'1px solid rgb(240,240,240)','height':'100%'}:{'height':'100%'}
+			var sep = b.separator?{'borderRight':'1px solid rgb(220,220,220)','height':'100%'}:{'height':'100%'}
 			switch(b.type){
 				case 'statistic' :
 					return (
-						<Container size={b.size} align="center" color={b.shade?"light":""} style={sep} >
+						<Container size={b.size} align="center" color={b.shade?"light":"white"} style={sep} >
 							<>
 								<div className={style.statistic}>
 									<label>{b.label}</label>
@@ -34,7 +34,7 @@ export default function _Insights(props)  {
 					);
 				case 'legend' :
 					return (
-						<Container size={b.size} align="center" color={b.shade?"light":""} style={sep} >
+						<Container  size={b.size} align="center" color={b.shade?"light":"white"} style={sep} >
 							<>
 							<div className={style.legend}>
 								{
@@ -59,10 +59,10 @@ export default function _Insights(props)  {
 	
 
 	return (
-		<Container size={props.size?props.size:12}  padding={{y:'md'}} style={{'display':'flex'}}>
+		<Container size={props.size?props.size:12}  padding={{y:'md'}} style={{'display':'flex'}} >
 				{
 					containers.map((container,i)=>(
-						<Container key={"c-"+i}  size={containerSize(container.division)} padding={getMargin(i)} style={divisionStyle} >
+						<Container key={"c-"+i}  size={containerSize(container.division)} padding={getMargin(i)} style={divisionStyle} shadow={true} >
 						{	
 							<Container color="white" border="true" touch="true" size="12"  style={{'overflow':'hidden','height':"100%"}} >
 								{blocks.map((block,k)=>(getBlock(block,i,k)))}

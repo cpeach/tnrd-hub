@@ -3,7 +3,7 @@ import {withRouter} from 'next/router'
 import api 		from '/api/console.js';
 import Form     from '/components/form/form.js';
 import Frame    from '/components/frames/frame.js';
-import Content  from '/components/layout/stacks/content.js';
+import Content  from '/components/layout/stacks/index.js';
 import {notification} from 'antd';
 import g_data   from '../../data.json';
 import l_data   from './data.json';

@@ -5,7 +5,7 @@ import api 	   from '/scripts/api.js';
 import Frame   from '/components/frames/frame.js';
 import Table   from '/components/layout/tables/table.js';
 import Description from '/components/layout/descriptions/description.js';
-import Content from '/components/layout/stacks/content.js';
+import Content from '/components/layout/stacks/index.js';
 
 
 

@@ -8,7 +8,16 @@ module.exports = {
       {
         source: '/:path*',
         destination: `/:path*`,
+      },
+      {
+        source: '/test',
+        destination: 'http://localhost:3004/test',
+      },
+      {
+        source: '/test/:path*',
+        destination: 'http://localhost:3004/test/:path*',
       }
+
     ]
   },
 

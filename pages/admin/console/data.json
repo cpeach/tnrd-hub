@@ -1,11 +1,5 @@
 
 {
-	"account" : {},
-	"header" : {
-		"visable":true,
-		"title":{"sub":"TNRD","label":"Hub Console"}
-	},
-	"content":"",
 	"navigation":{ 
 		"visable":true,
 		"items":[

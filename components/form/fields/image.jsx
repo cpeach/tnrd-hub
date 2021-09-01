@@ -4,6 +4,7 @@ import style      			from '../Form.module.css';
 import { Upload, message }  from 'antd';
 import { InboxOutlined }   	from '@ant-design/icons';
 import ImgCrop 				from 'antd-img-crop';
+import client				from '/scripts/client-api.js';
 const { Dragger } = Upload;
 
 export default class _Image extends React.Component {
@@ -18,35 +19,57 @@ export default class _Image extends React.Component {
 			descriptions : {
 				valid   : "",
 				invalid : "This field requires a value"
-			}
+			},
+			file : undefined,
+			img : this.props.data.meta ? this.props.data.meta.url : '/icons/upload.svg',
+			changed : false
 		};
 		this.handleChange = this.handleChange.bind(this);
-		this.handleDrop   = this.handleDrop.bind(this);
 		this.getValue     = this.getValue.bind(this);
 		this.getName      = this.getName.bind(this);
 		this.validate     = this.validate.bind(this);
 	  }
 
 	async handleChange(info) {
-
 		if (info.file.status === 'done') {
-			this.state.value = info.file.response._id;
-			message.success(`${info.file.name} file uploaded successfully.`);
-		} else if (info.file.status === 'error') {
-			console.log('error')
+			this.setState({file:info.file.originFileObj})
+			this.setState({changed:true})
+			message.success(`${info.file.name} file uploaded is pending.`);
+			var reader = new FileReader();
+			var id = "img-"+this.props.data.attributes.name;
+			console.log(id)
+			console.log(document.getElementById(id))
+			reader.onload = (event)=>{document.getElementById(id).src = event.target.result}
+			reader.readAsDataURL(this.state.file);
+
+		} 
+		 else if (info.file.status === 'error') {
 			message.error(`${info.file.name} file upload failed.`);
 		}
-		/*
-		console.log(p)
-		
-		this.setState({value:p},function(){
-			this.props.onChange?this.props.onChange(this.validate()):null;	  
-		});*/
 	}
-	handleDrop(e) {
-   		console.log('Dropped files', e.dataTransfer.files);
-  	}
-	getValue(){return this.state.value}
+
+	async getValue(){
+		
+		const original = this.state.value;
+		if(this.state.changed){
+			
+			const fd = new FormData();
+			fd.append("image", this.state.file);
+			var params = {method:"POST",body:fd,headers:{'x-application':this.state.application}}
+			var res = await fetch("https://api.tnrdit.ca/admin/hub/images",params);
+			var out = await res.json();
+			
+			if(original){
+				var params = {method:"DELETE",headers:{'x-application':this.state.application}}
+				await fetch("https://api.tnrdit.ca/admin/hub/images/"+original,params);
+			}
+			this.state.value = out._id 
+			return this.state.value;
+		}else{
+			return this.state.value;
+		}
+		
+	}
 	getName(){return this.state.name}
 	
 	validate(){
@@ -54,19 +77,18 @@ export default class _Image extends React.Component {
 		var valid = true;
 		
 	// 	check string
-		valid = this.props.required?v.length>0?true:false:valid;
-		let description = valid ? this.state.descriptions.valid : this.state.descriptions.invalid;
+		//valid = this.props.required?v.length>0?true:false:valid;
+		//let description = valid ? this.state.descriptions.valid : this.state.descriptions.invalid;
 		
-		this.setState({value:v,valid:valid,description:description})
+		//this.setState({value:v,valid:valid,description:""})
 		
-		return {valid:valid,value:v,description:description};
+		return {valid:valid,value:v,description:''};
 	}
 
 	
-
-
+	
+	
 	render() { 
-		var headers = {'x-application':this.state.application};
 		var fileList = [
 			{
 				uid: '-1',
@@ -76,15 +98,21 @@ export default class _Image extends React.Component {
 				thumbUrl: this.props.data.meta?this.props.data.meta.url:'',
 			}
 		]
+		
 		var body = (
-			<Dragger  defaultFileList={[...fileList]} multiple={false} maxCount={1} name={this.state.name} headers={headers} {...this.props.data.attributes} action="https://api.tnrdit.ca/admin/hub/images" onChange={this.handleChange} handleDrop={this.handleDrop}>
+			<Dragger 
+				
+				defaultFileList={[...fileList]} 
+				multiple={false} 
+				maxCount={1} 
+				name={this.state.name} 
+				onChange={this.handleChange}
+				{...this.props.data.attributes}>  
+				
 				<p className="ant-upload-drag-icon">
 					{
 						
-						this.state.value === ''?
-							<InboxOutlined style={{ color: 'rgb(120,162,47)' }}  />
-							:
-							<img src={this.props.data.meta.url} width="60px" height="60px" />
+						<img id={"img-"+this.props.data.attributes.name} src={this.state.img} width="60px" height="60px" />
 					
 					}
 				</p>

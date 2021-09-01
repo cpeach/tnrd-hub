@@ -1,28 +1,36 @@
 import Link    from 'next/link';
+import {useState,useEffect}    from 'react';
 import gd      from '../data.json'; // global data
 import ld      from './data.json';  // local data
 import api 	   from '/scripts/api.js';
+import client  from '/scripts/client-api.js';
 import Frame   from '/components/frames/frame.js';
 import Table   from '/components/layout/tables/table.js';
 import Description from '/components/layout/descriptions/description.js';
-import Content from '/components/layout/stacks/content.js';
+import Content from '/components/layout/stacks/index.js';
 
 import { Empty } from 'antd';
 
-
-
 export default function Departments() { 
-	
+
 	var l_data = JSON.parse(JSON.stringify(ld))
 	var g_data = JSON.parse(JSON.stringify(gd))
+
+	const [applications, setApplication] = useState({});
 	
-	var applications = api({url:'/admin/hub/applications'});
+	useEffect(async () => {
+		let isMounted = true;
+		let _applications = await client({url:'/admin/hub/applications'});
+		isMounted?setApplication(_applications):null;
+		return () => (isMounted = false)
+	},[]);
+
+	g_data.path = l_data.path;
 	
 	l_data.content 	= getContent(applications,l_data);
 	g_data.content  = (<Content data={l_data} />);
 
-	
-	return (<Frame data={g_data} active="1" />)
+	return (<Frame data={g_data} active="1"  />)
 } 
 									
 export function getContent(applications,data){
@@ -30,7 +38,6 @@ export function getContent(applications,data){
 	if(applications && applications.length>0){
 		applications.map((item,i)=>{
 			let names = "";
-			console.log(item)
 			if(typeof item.departments!=='string'){
 				item.departments.map((department,d)=>{
 					names += department.name+","

@@ -1,30 +1,33 @@
-import React        from 'react';
-import {withRouter} from 'next/router'
+import React         from 'react';
+import {withRouter} from 'next/router';
+import {useState,useEffect}    from 'react';
 import api 	   from '/scripts/api.js';
 import client 	from '/scripts/client-api.js';
 import Form     from '/components/form/form.js';
 import Frame    from '/components/frames/frame.js';
-import Content  from '/components/layout/stacks/content.js';
+import Content  from '/components/layout/stacks/index.js';
 import {notification,message} from 'antd';
 import gd from '../../data.json';
 import ld from './data.json';
 
 
-function Update(props){
+ function Update(props){
 	
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
-	
-	const {_id} = props.router.query
+	let {_id} =  props.router.query
+
 
 	const handleSubmit = async (data)=> {
 
 		var notice = {duration:4}
 
 		data._id = _id;
-		
-		data.ui = {menu:data.menu}
+		data.ui = data.ui ? data.ui : {};
+		data.ui.menu = data.menu;
+		data.ui.resources = data.resources
 		delete data.menu;
+		delete data.resources;
 	
 		var results = await client({url:"/admin/hub/applications",params:{method:"PUT",body:data}})
 		if(results.nModified===1){
@@ -36,8 +39,7 @@ function Update(props){
 			notice.description = 'The contents of '+data.name+' were not able to be updated!' 
 			notification['error'](notice);
 		}
-		props.router.push('/admin/console/applications') 
-		
+		window.location.href = '/admin/console/applications'
 	}
 	
 	const handleDelete = async ()=>{
@@ -70,6 +72,7 @@ function Update(props){
 			form.fields[6].attributes.defaultValue = data.image?data.image:'';
 			form.fields[6].meta = data.image_meta;
 			form.fields[7].attributes.defaultValue = data.ui&&data.ui.menu?data.ui.menu:'';
+			form.fields[8].attributes.defaultValue = data.ui&&data.ui.resources?data.ui.resources:'';
 
 			return (<Form key="form" size="10" form={form} onSubmit={handleSubmit} onDelete={handleDelete} ></Form>);
 	}
@@ -77,15 +80,15 @@ function Update(props){
 	var application = api({url:"/admin/hub/applications/"+_id})
 	var departments = api({url:"/admin/hub/departments/"})
 	
-	if(application && departments){
+	if(application && departments && departments.length>0){
 		l_data.title   = "Update"
 		l_data.path[4] = {"label":"Update","href":"/admin/console/application"}	
 		l_data.content = getForm(application,departments,l_data);
 		g_data.content = (<Content data={l_data} />);	
-		return (<Frame data={g_data} active="1" />)
-	}else{
-		return <></>
+		
 	}
+
+	return (<Frame data={g_data} active="1" />)
 	
 }
 

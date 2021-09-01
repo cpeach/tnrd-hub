@@ -33,27 +33,11 @@ export default class _List extends React.Component {
 		var index   = this.state.index;
 		var values  = this.state.values;
 		var current = this.state.current;
-		console.log(index);
-		console.log(values);
-		console.log(current)
 		for(var c in current){
 			values[index][c] = current[c];
 		}
 		this.setState({values:values})
 		this.setState({isModalVisible:false})
-		/*
-		var value = [];
-		for(var ref in this.refs){
-			var r = this.refs[ref];
-			value.push({[ref]:'23'})
-		}
-		console.log(value)*/
-		/*
-		console.log(p)
-		
-		this.setState({value:p},function(){
-			this.props.onChange?this.props.onChange(this.validate()):null;	  
-		});*/
 	}
 	
 	getValue(){return this.state.values}
@@ -218,7 +202,7 @@ export default class _List extends React.Component {
 									</label>
 									<div>
 										<EditOutlined onClick={this.update}/>
-										<div className={style.list_sep}></div>
+										<div ></div>
 										 <Popconfirm title="Are you sure to delete this item?"  onConfirm={this.delete} okText="Yes" cancelText="No" >
 											<DeleteFilled />	
 										</Popconfirm>

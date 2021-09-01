@@ -35,6 +35,15 @@
 						{"type":"select","name":"type","label":"Type","attributes":{"defaultValue":"primary"},"options":[{"name":"primary","value":"Primary"},{"name":"secondary","value":"Secondary"}]}
 					]
 				}
+			},
+			{"tag":"list","ref":"title","label":"Resources","container":2,"size":12,
+				"attributes":{
+					"name":"resources",
+					"fields":[
+						{"type":"input","name":"title","label":"Title"},
+						{"type":"input","name":"link","label":"Link"}
+					]
+				}
 			}
 		]
 	}

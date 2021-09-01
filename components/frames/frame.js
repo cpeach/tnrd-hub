@@ -1,15 +1,30 @@
-import Link   from 'next/link';
-import Image   from 'next/image';
 import style  from './Frames.module.css';
-import Header from '/components/headers/header.js';
-import AntIcon from '/components/icons/antd/icons.js';
+import client from '/scripts/client-api.js';
+import Router from 'next/router';
 
-import { CloseCircleFilled  } from '@ant-design/icons';
-import { useState } from 'react';
-import { Drawer, Button } from 'antd';
+import { useEffect,useState } from 'react';
+import Link   from 'next/link';
+import Image  from 'next/image';
 
+import { Drawer, Button, Tooltip, Popover } from 'antd';
+import AntIcon 	from '/components/icons/antd/icons.js';
+import { CloseCircleFilled,RightOutlined  } from '@ant-design/icons';
 
 export default function Frame(props) {
+
+	const [user, setUser] = useState({profile:{first_name:'Account',last_name:''}});
+	const [visible, setVisible] = useState(false);
+	const [drawerWidth, setdrawerWidth] = useState('300');
+
+	useEffect(async () => {
+		let isMounted = true;
+		var ref   = localStorage.getItem('user');
+		var _user = await client({url:"/admin/hub/users/"+ref});
+		isMounted?setUser(_user):null;
+		return () => (isMounted = false)
+	},[]);
+
+
 	const background=()=>{
 		switch(props.background){
 			case 'light':
@@ -17,8 +32,6 @@ export default function Frame(props) {
 		}
 	}
 
-	const [visible, setVisible] = useState(false);
-	const [drawerWidth, setdrawerWidth] = useState('300');
 	const showDrawer = () =>{
 		setVisible(true);
 		var e = document.getElementById('header_account_label');
@@ -27,24 +40,81 @@ export default function Frame(props) {
 		size = size < 420 ? size : 420;
 		setdrawerWidth(size);
 	};
+	const getPath = (path) =>{
+		if(path){
+			return path.map((item,i)=>((<div key={"link"+i} ><a href={item.href}>{item.label}</a><span><RightOutlined /></span></div>)));
+		}else{
+			return (<></>)
+		}
+	};
 	const onClose    = () => {setVisible(false);};
 
-
-	props.data.header.account = {};
-	props.data.header.account.hover = showDrawer
-	
+	var data = props.data?props.data:{};
+	data.header = {account:{},"title":{"sub":"TNRD","label":"Application Hub"}}
+	data.header.account 	  = {}
+	data.header.account.hover = showDrawer
 	return (
 		<div className={style.frame}>
 
-			<div key="header" className={style.frame_header}><Header data={props.data.header} /></div>
-			<div key="body" className={style.frame_body +" "+ background()}>
-				<div key="left" className={props.navigation!=="false"?style.frame_body_left:style.frame_body_left_hide}>
-					{props.data.navigation ? navigation(props) : null}
-				</div>
-				<div key="right" className={style.frame_body_right}>
-					{props.data.content}
-				</div>	
+			<div className={style.frame_header}>
+			
+				<header className={style.header}>
+					<div className={style.header_left}>
+						<div className="vam"></div>
 
+						<div className={style.header_logo}>
+							<Image src="/icons/tnrd-logo.png" width="84" height="60" />
+						</div>
+
+						<div className={style.header_title}>
+							<label className={style.label_bold}>{data.header.title.sub}</label>
+							<label>{data.header.title.label}</label>						
+						</div>
+
+					</div>
+					<div className={style.header_right}>
+						<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
+							<div className={style.header_btn} onClick={()=>{Router.push('/')}}>
+								<div className={style.header_btn_inner}>
+									<Image src="/icons/applications.svg" width={38} height={38} />
+								</div>
+								<div className="vam"></div>
+							</div>
+						</Tooltip>
+						<div className={style.header_sep}></div>
+						<div id="header_account_label" className={style.header_btn} onMouseEnter={data.header.account.hover} >
+							<div className={style.header_btn_inner}><Image src="/icons/account.svg" width={28} height={28} /></div>
+							<div className={style.header_btn_inner} >
+								<label className={style.header_btn_label}>{user.profile.first_name +" "+ user.profile.last_name}</label>
+							</div>
+							<div className={style.header_btn_inner}><Image src="/icons/d-arrow.svg" width={28} height={28} /></div>
+							<div className="vam"></div>
+						</div>	
+					</div>
+				</header>
+			</div>
+			{
+				props.path!==false?
+					<div className={style.frame_body_path}>
+						<div></div>
+						{
+							getPath(props.data.path)
+						}
+						
+					</div> : <></>
+			}
+			<div className={style.frame_body +" "+ background()}>
+			 	
+
+				<div key="left" className={props.navigation!=="false"?style.frame_body_left:style.frame_body_left_hide}>
+					{data.navigation ? navigation(data.navigation,props.active) : null}
+				</div>
+				
+				<div key="right" className={style.frame_body_right}>
+						
+						{data.content}
+					
+				</div>	
 
 				<Drawer
 					placement="right"
@@ -53,7 +123,7 @@ export default function Frame(props) {
 					visible={visible}
 					getContainer={false}
 					width={drawerWidth}
-					style={{marginTop:"84px"}}
+					style={{marginTop:"96px"}}
 					maskStyle={{backgroundColor:"rgba(0,0,0,0.0)",overflow:"hidden"}}	
 				>
 					<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>
@@ -69,7 +139,6 @@ export default function Frame(props) {
 					</div>
 				</Drawer>
 
-
 			</div>
 		</div>
 	)
@@ -77,16 +146,16 @@ export default function Frame(props) {
 }
 
 
-export function navigation(props){
+export function navigation(data,active){
 	
 	return (
 	
 		<nav key="name" className={style.nav}>
 
 			{
-				props.data.navigation.items.map((item,i)=>(
+				data.items.map((item,i)=>(
 					<Link key={"link-"+i} href={item.href}>
-						<div className={parseInt(props.active)===i ?style.nav_item_active:style.nav_item}>
+						<div className={parseInt(active)===i ?style.nav_item_active:style.nav_item}>
 							<i><AntIcon name={item.icon?item.icon:"t"} /></i>
 							<div>{item.label}</div>
 						</div>
