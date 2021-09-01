@@ -15,7 +15,7 @@ export default function _Table(props)  {
 	}
 
 	const actions = ()=>{
-		if(props.actions!=='false' || props.actions!==false || props.options!==false){
+		if(props.actions!=='false' && props.actions!==false && props.options!==false){
 			return (
 				<div className={style.table_options}>
 					<div>

@@ -35,6 +35,11 @@ function _Application(props) {
 			<>
 				<Container key="heading" size="12" color="primary" align="center" padding={{y:"sm",x:"xxl"}}>
 					<div className={style.landing_content} >
+						
+						<div  className={style.landing_icon}>
+							<div></div>
+							<img src={(_application.image?_application.image.url:'')===''?"/icons/app.png":_application.image} width={30} height={30} />
+						</div>
 						<h1 className={style.landing_title}>{_application.name}</h1>
 						<div  className={style.landing_dash}></div>
 						<p className={style.landing_description}>{_application.description}</p>

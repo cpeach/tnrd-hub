@@ -263,3 +263,8 @@ div#__next{height: 100%;}
 .ant-switch-checked{
 	background-color:rgb(117, 158, 46) !important ;
 }
+
+/*	select */
+.ant-select{
+	width:100%
+}

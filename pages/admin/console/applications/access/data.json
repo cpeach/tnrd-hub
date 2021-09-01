@@ -10,8 +10,8 @@
 	"table":{
 		"columns" : [
 			{"key":"name","title":"Full Name","dataIndex":"name"},
-			{"key":"Role","title":"Role","dataIndex":"role"},
-			{"key":"action","title":"Allow","dataIndex":""}
+			{"key":"role","title":"Role","dataIndex":""},
+			{"key":"blocked","title":"Blocked?","dataIndex":""}
 		]
 		
 	}	

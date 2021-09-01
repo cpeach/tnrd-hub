@@ -145,10 +145,16 @@
 	LANDING
 */
 
-	.landing_content{display: inline-block;width:720px;color:white;padding:30px 0px;text-align: center;}
-	.landing_title{color:white;font-size: 42px;}
+	.landing_content{display: inline-block;width:720px;color:white;padding:15px;text-align: center;}
+	
+	.landing_icon{background-color:white ;font-size: 0px;width:60px;height: 60px;border-radius: 50%;display:inline-block}
+	.landing_icon>div{display: inline-block;height: 100%;vertical-align: middle;}
+	.landing_icon>img{display: inline-block;vertical-align: middle;}
+	
+	
+	.landing_title{color:white !important;font-size: 36px;padding:15px}
 	.landing_dash{display:none;height:1px;width:36px;background-color: white;margin:15px 0px 15px 0px;}
-	.landing_description{padding:0px 0px;text-align:left;margin:30px 0px 0px 0px;font-weight:300; font-size: 19px;line-height: 26px;letter-spacing: 0.6px;}
+	.landing_description{margin:0px;padding:0px 0px;text-align:left;font-weight:300; font-size: 18px;line-height: 26px;letter-spacing: 0.6px;}
 	.landing_actions{padding:48px 0px 0px 0px  }
 	.landing_actions>a{
 		font-size:14px;
