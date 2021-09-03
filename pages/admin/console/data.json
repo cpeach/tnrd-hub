@@ -5,7 +5,7 @@
 		"items":[
 			{"icon":"ApartmentOutlined","label":"Departments","href":"/admin/console/departments/"},
 			{"icon":"AppstoreAddOutlined","label":"Applications","href":"/admin/console/applications/"},
-			{"icon":"UnlockOutlined","label":"Roles","href":""},
+			{"icon":"UnlockOutlined","label":"Roles","href":"/admin/console/roles/"},
 			{"icon":"TeamOutlined","label":"Users","href":"/admin/console/users/"}
 		]
 	}

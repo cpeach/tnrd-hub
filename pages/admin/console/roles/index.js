@@ -8,16 +8,26 @@ import Description from '/components/layout/descriptions/description.js';
 import Content from '/components/layout/stacks/index.js';
 
 
-export default function Users(props) { 
+export default function Roles(props) { 
 		
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
 	
-	const users = api({url:'/admin/hub/users'});
-	
-	if(users){
-		l_data.table.columns[3].render = (record)=><Link href={"/admin/console/users/modify/"+record._id}>Edit</Link>;
-		l_data.table.dataSource = users;
+	const roles = api({url:'/admin/hub/roles'});
+	if(roles){
+		
+		roles.sort((a,b)=>{return a.application.localeCompare(b.application);});
+		
+		var values = []
+		roles.map((item,i)=>{values.includes(item.application)?null:values[i]=item.application});
+		var filters = values.map(item=>({text:item,value:item}));
+		
+		l_data.table.columns[0].sortDirections = ['ascend','descend'];
+		l_data.table.columns[0].filters=filters;
+		l_data.table.columns[0].onFilter = (value, record) => {return record.application.includes(value);}
+		
+		l_data.table.columns[2].render = (record)=><Link href={"/admin/console/roles/modify/"+record._id}>Edit</Link>;
+		l_data.table.dataSource = roles;
 		l_data.table.dataSource.forEach((item)=>{
 			item.key=item._id;
 			item._expandable = (<Description data={{...l_data.table.expandable}} record={{...item}} />)
@@ -27,7 +37,7 @@ export default function Users(props) {
 		g_data.content  = (<Content data={l_data} />);
 
 
-		return ( <Frame user={props.user} apps={props.apps} data={g_data} active="3" />)
+		return ( <Frame user={props.user} apps={props.apps} data={g_data} active="2" />)
 	}else{
 		return <></>									
 	}

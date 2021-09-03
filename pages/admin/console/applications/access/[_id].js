@@ -109,7 +109,7 @@ function User(props){
 		);	
 	}
 
-	return (<Frame data={l_data} active="1" navigation="false"/>)
+	return ( <Frame user={props.user} apps={props.apps} data={l_data} active="1" navigation="false" permissions={['role']} />)
 
 }
 

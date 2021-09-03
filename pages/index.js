@@ -12,9 +12,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Empty,Divider  } from 'antd';	
 import { useState,useEffect  } from 'react';
 
-
-
-export default function _Index() { 
+export default function _Index(props) { 
 	
 	var data = {}
 
@@ -65,6 +63,7 @@ export default function _Index() {
 		var out;
 		if(p && p.length>0){
 			out = p.map((card,i)=>(
+				 
 				<Container id={card.id?card.id:''} name={card.name?card.name:''} key={card.name} size="4" padding={{all:"xs"}} visable={card.visable} >
 					<div className={style.card} onClick={()=>{Router.push("/application/"+card._id)}}>
 						<Container  key={card.name} size="12" padding={{all:"md"}} align="left" >
@@ -123,7 +122,7 @@ export default function _Index() {
 		);	
 	}			
 							
-	return (<Frame key="frame" data={data}  active="1" navigation="false" path={false} />)
+	return ( <Frame user={props.user} apps={props.apps} key="frame" data={data} active="1" navigation="false" path={false} />)
 } 
 
 

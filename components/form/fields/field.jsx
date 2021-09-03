@@ -1,6 +1,7 @@
 import React       from 'react';
 import style       from '../Form.module.css';
 import Text        from './text.js';
+import Select      from './select.jsx';
 import MultiSelect from './multi_select.jsx';
 import Image       from './image.jsx';
 import List        from './list.jsx';
@@ -32,12 +33,12 @@ export default class Field extends React.Component {
 	getName(){return this.refs.field.getName();}
 	validate(){return this.refs.field.validate();}
 	
-	
-	
 	inputs(){
 		switch(this.props.data.tag){
 			case 'text':
 				return <Text ref="field" required={this.props.data.required} key="input-text" data={this.props.data} onChange={this.handleChange} />
+			case 'select':
+				return <Select ref="field" key="input-list" data={this.props.data} onChange={this.handleChange} />;
 			case 'multi_select':
 				return <MultiSelect ref="field" required={this.props.data.required} key="input-multi_select" data={this.props.data} onChange={this.handleChange} />
 			case 'image':

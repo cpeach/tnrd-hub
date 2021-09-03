@@ -112,31 +112,32 @@
 /*
 	CARD
 */
-.cards{width:978px;display: inline-block;text-align: left;}
+.cards{width:1200px;display: inline-block;text-align: left;}
 .card{
 	border-radius:2px;
 	border:1px solid rgb(220,220,220);
 	cursor: pointer;
 	transition: 0.3s;
 	background-color: white;;
+	height: 210px;
 }
 .card:hover{
 	border:rgb(210,210,210) 1px solid;
-	margin-top:-3px;
+	box-shadow: 0px 0px 15px rgba(177, 177, 177, 0.1);
 	/* border:1px solid rgba(101, 145, 43,0.6); 
-	box-shadow: 0px 0px 12px rgba(101, 145, 43, 0.1);*/
+	*/
 }
 
-.card_title{font-size: 16px;font-weight: 900; letter-spacing:0.8px;margin:15px 0px 0px 0px !important;line-height: 27px}
+.card_title{font-size: 18px;font-weight: 900; letter-spacing:0.8px;margin:15px 0px 0px 0px !important;line-height: 27px}
 .card_dash{height:1px;width:36px;background-color: black;margin:18px 0px 18px 0px}
 .card_details{
 	font-size: 13px;
 	letter-spacing:0.8px;
 	line-height: 22px;
 	margin:0px;
-	height: 48px;   
-	  overflow: hidden;
-	  margin-top:15px
+	height: 60px;   
+	overflow: hidden;
+	margin-top:15px
 }
 
 
@@ -150,7 +151,6 @@
 	.landing_icon{background-color:white ;font-size: 0px;width:60px;height: 60px;border-radius: 50%;display:inline-block}
 	.landing_icon>div{display: inline-block;height: 100%;vertical-align: middle;}
 	.landing_icon>img{display: inline-block;vertical-align: middle;}
-	
 	
 	.landing_title{color:white !important;font-size: 36px;padding:15px}
 	.landing_dash{display:none;height:1px;width:36px;background-color: white;margin:15px 0px 15px 0px;}

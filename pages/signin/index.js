@@ -4,7 +4,7 @@ import {useState} from 'react';
 import Router from 'next/router';
 import Container from '/components/layout/containers/index.js';
 
-export default function Signin() { 
+export default function Signin(props) { 
 	
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');

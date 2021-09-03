@@ -46,7 +46,7 @@ function Update(props){
 		l_data.path[3] = {"label":"Update","href":"/admin/console/department"}	
 		l_data.content = getForm(department,l_data,handleSubmit,handleDelete);
 		g_data.content = (<Content data={l_data} />);	
-		return (<Frame data={g_data} active="1" />)
+		return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1" />)
 	}else{
 		return <></>
 	}

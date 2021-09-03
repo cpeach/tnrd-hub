@@ -11,17 +11,17 @@ import Content from '/components/layout/stacks/index.js';
 
 import { Empty } from 'antd';
 
-export default function Departments() { 
+export default function Departments(props) { 
 
 	var l_data = JSON.parse(JSON.stringify(ld))
 	var g_data = JSON.parse(JSON.stringify(gd))
 
-	const [applications, setApplication] = useState({});
+	const [applications, setApplications] = useState({});
 	
 	useEffect(async () => {
 		let isMounted = true;
 		let _applications = await client({url:'/admin/hub/applications'});
-		isMounted?setApplication(_applications):null;
+		isMounted?setApplications(_applications):null;
 		return () => (isMounted = false)
 	},[]);
 
@@ -30,7 +30,7 @@ export default function Departments() {
 	l_data.content 	= getContent(applications,l_data);
 	g_data.content  = (<Content data={l_data} />);
 
-	return (<Frame data={g_data} active="1"  />)
+	return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1"  />)
 } 
 									
 export function getContent(applications,data){

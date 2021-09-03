@@ -11,6 +11,9 @@ export default function _Table(props)  {
 	const change = (pagination, filters, sorter,extra)=>{
 		console.log(pagination);
 		console.log(extra);
+		//if(action==='sort'){
+		//	console.log("SORT THIS")
+		//}
 
 	}
 
