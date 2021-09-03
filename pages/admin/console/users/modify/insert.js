@@ -47,7 +47,7 @@ export default function Insert(props){
 	l_data.content = (<Form  key="form" size="10" form={l_data.form} onSubmit={handleSubmit} ></Form>)
 	g_data.content = (<Content data={l_data} />);	
 
-	return (<Frame data={g_data} active="1" />)
+	return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1" />)
 	
 	
 }
@@ -69,7 +69,7 @@ export default function Insert(props){
 		l_data.content = (<Form key="form" size="10" form={l_data.form} onSubmit={handleSubmit} ></Form>)
 		g_data.content = (<Content data={l_data} />);	
 			
-		return (<Frame data={g_data} active="3" />)
+		return ( <Frame user={props.user} apps={props.apps} data={g_data} active="3" />)
 	}else{
 		return <></>
 	}

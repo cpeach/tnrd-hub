@@ -13,7 +13,7 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 const { confirm } = Modal;
 
 
-export default function Notifications() { 
+export default function Notifications(props) { 
 	
 	var l_data = JSON.parse(JSON.stringify(ld))
 	var g_data = JSON.parse(JSON.stringify(gd))
@@ -22,7 +22,7 @@ export default function Notifications() {
 	l_data.content 	= getContent(records,l_data);
 	g_data.content  = (<Content width="8" data={l_data} />);
 
-	return (<Frame navigation="false" background="white" data={g_data} />)
+	return ( <Frame user={props.user} apps={props.apps} navigation="false" background="white" data={g_data} />)
 } 
 									
 export function getContent(records,data){

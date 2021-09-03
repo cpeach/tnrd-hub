@@ -10,7 +10,7 @@ import Content from '/components/layout/stacks/index.js';
 
 
 
-export default function Departments() { 
+export default function Departments(props) { 
 	
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
@@ -30,7 +30,7 @@ export default function Departments() {
 		g_data.content  = (<Content data={l_data} />);
 
 
-		return (<Frame data={g_data} active="0" />)
+		return ( <Frame user={props.user} apps={props.apps} data={g_data} active="0" />)
 	}else{
 		return (<></>)								
 	}

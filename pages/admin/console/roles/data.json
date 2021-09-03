@@ -1,0 +1,23 @@
+
+
+{
+	"title" : "Roles",
+	"path":[
+		{"label":"Home","href":"/"},
+		{"label":"Administration","href":"/admin"},
+		{"label":"Console","href":"/admin/console"},
+		{"label":"Roles","href":"/admin/console/roles"}
+	],
+	"table":{
+		"buttons" : {"action":{"label":"New Role","href":"/admin/console/roles/modify/insert"}},
+		"columns" : [
+			{"key":"app","title":"Application","dataIndex":"application"},
+			{"key":"name","title":"Permission","dataIndex":"name"},
+			{"key":"action","title":"Action","dataIndex":""}
+		],
+		"expandable":{
+			"title":"Scope",
+			"details":[ {"ref":"scope","attributes":{"label":"JSON","span":"4"}}]
+		}
+	}
+}

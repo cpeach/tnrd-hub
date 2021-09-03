@@ -41,7 +41,7 @@ class Update extends React.Component {
 		l_data.content = (<Form ref="form" key="form" size="10" form={l_data.form} onSubmit={this.handleSubmit} ></Form>)
 		g_data.content = (<Content data={l_data} />);	
 			
-		return (<Frame data={g_data} active="1" />)
+		return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1" />)
 	}
 }
 

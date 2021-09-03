@@ -257,14 +257,10 @@ div#__next{height: 100%;}
 	.ant-upload-list-item-info{padding:12px 0px !important}
 	
 /*	divider */
-.ant-divider-inner-text{}
+	.ant-divider-inner-text{}
 
 /*	switch */
-.ant-switch-checked{
-	background-color:rgb(117, 158, 46) !important ;
-}
+	.ant-switch-checked{background-color:rgb(117, 158, 46) !important ;}
 
 /*	select */
-.ant-select{
-	width:100%
-}
+	.ant-select{width:100%}

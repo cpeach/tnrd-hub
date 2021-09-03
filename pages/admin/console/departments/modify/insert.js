@@ -42,7 +42,7 @@ import { Empty } from 'antd';
 	l_data.path[4] = {"label":"Insert","href":"/admin/console/departments"}	
 	l_data.content = (<Form key="form" size="10" form={l_data.form} onSubmit={handleSubmit} ></Form>)
 	g_data.content = (<Content data={l_data} />);	
-	return (<Frame data={g_data} active="0" />)
+	return ( <Frame user={props.user} apps={props.apps} data={g_data} active="0" />)
 
 } 
 

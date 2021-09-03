@@ -8,7 +8,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Empty } from 'antd';	
 import gd        from '../data.json'; 
 
-export default function Settings() { 
+export default function Settings(props) { 
 	
 	var g_data = JSON.parse(JSON.stringify(gd))
 
@@ -36,6 +36,6 @@ export default function Settings() {
 		);	
 	}			
 							
-	return (<Frame key="frame" data={g_data}  active="1" navigation="false" />)
+	return ( <Frame user={props.user} apps={props.apps} key="frame" data={g_data}  active="1" navigation="false" />)
 } 
 

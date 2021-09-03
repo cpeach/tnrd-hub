@@ -11,7 +11,7 @@ import gd from '../../data.json';
 import ld from './data.json';
 
 
- function Update(props){
+function Update(props){
 	
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
@@ -88,7 +88,7 @@ import ld from './data.json';
 		
 	}
 
-	return (<Frame data={g_data} active="1" />)
+	return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1" />)
 	
 }
 
