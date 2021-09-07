@@ -1,0 +1,12 @@
+
+{
+	"navigation":{ 
+		"visable":true,
+		"items":[
+			{"icon":"ApartmentOutlined","label":"Departments","href":"/api-console/departments/"},
+			{"icon":"AppstoreAddOutlined","label":"Applications","href":"/api-console/applications/"},
+			{"icon":"UnlockOutlined","label":"Roles","href":"/api-console/roles/"},
+			{"icon":"TeamOutlined","label":"Users","href":"/api-console/users/"}
+		]
+	}
+}
