@@ -13,7 +13,6 @@ export default function TestNPM(props) {
 		
 			<div style={{"display":"inline-block","margin-top":"120px"}}>
 				<Button label="test" kind="primary"/>
-				<Button label="test" kind="primary"/>
         
 			</div>
 	)
