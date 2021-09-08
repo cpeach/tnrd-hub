@@ -8,9 +8,9 @@ export default function Signin(props) {
 	
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const onSubmit = async(e)=>{
-
 
 /* 
 		var application = "60906b4cf5e24d7d2498642b";
@@ -55,6 +55,7 @@ export default function Signin(props) {
 						<input type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
 					</div>
 					<button id="signin-btn" onClick={onSubmit}>
+						<LoadingOutlined style={{display:"none",fontSize: 16 }} spin />
 						Signin
 					</button>
 					<hr />
