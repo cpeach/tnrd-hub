@@ -3,20 +3,23 @@ import style from './Signin.module.css';
 import {useState} from 'react';
 import Router from 'next/router';
 import Container from '/components/layout/containers/index.js';
-
+import { LoadingOutlined } from '@ant-design/icons';
 export default function Signin(props) { 
 	
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const onSubmit = async(e)=>{
-		console.log('signin')
+
+/* 
 		var application = "60906b4cf5e24d7d2498642b";
 		var p = {
 			application:application,
 			user:username,
 			pass:password
 		}
+		
 		//params.headers['Content-Type']   = params.headers['Content-Type'] || 'application/json';
 		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({params:p})}
 		var res    = await fetch('https://api.tnrdit.ca/accounts/signin',params);
@@ -26,33 +29,44 @@ export default function Signin(props) {
 			localStorage.setItem("user",res.payload.identity.sub);
 			Router.push('/');
 			//this.props.setUser(res.payload.refresh)
-		}
+		} */
 		//console.log(res)
 		
 	}
 
 
 	return (
-		<div className={style.auth}>
-			<div className={style.shim}></div>
-			<Container color="light" size="6" padding={{y:'lg'}} align="left">
-				<h1 className={style.auth_title}>Account Signin</h1>
-				<Container size="12" padding={{all:"lg"}} color="white" >
-					<div className={style.auth_field}>
-						<label>Username</label>
-						<input name="username" type="text" onChange={(e)=>{setUsername(e.target.value)}}/>
-						<span></span>  
+		<div className={style.signin}>
+			<div className={style.signin_left}>
+				
+				<div className={style.signin_shim_middle}></div>
+				<div className={style.signin_panel}>
+					<h2>Welcome to TNRD Application Hub</h2>
+					<h1>Sign In</h1>
+					<p>Not sure if you have an application hub account yet? Please contact support</p>
+					<label>Sign into your account.</label>
+
+					<div className={style.signin_field}>
+						<label>Email Address</label>
+						<input type="email" onChange={(e)=>{setUsername(e.target.value)}}/>
 					</div>
-					<div className={style.auth_field}>
+					<div className={style.signin_field}>
 						<label>Password</label>
-						<input name="password" type="password" onChange={(e)=>{setPassword(e.target.value)}} />
-						<span></span>  
+						<input type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
 					</div>
-					<div className={style.auth_field}>
-						<button className={style.auth_submit} onClick={onSubmit}>Signin</button>
-					</div>
-				</Container>
-			</Container>	  
+					<button id="signin-btn" onClick={onSubmit}>
+						<LoadingOutlined style={{display:"none",fontSize: 16 }} spin />
+						Signin
+					</button>
+					<hr />
+					<a href="">Forgot your Password?</a>
+				</div>
+
+			</div>
+			<div className={style.signin_right}>
+				<div className={style.signin_shim_bottom}></div>
+				<img src="icons/signin.png" />
+			</div>
 		</div>
 	)
 } 

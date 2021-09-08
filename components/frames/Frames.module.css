@@ -44,8 +44,8 @@
 */
 
 .nav{margin:15px 0px;display: inline-block;text-align: left} 
-.nav_item_active,.nav_item{width:100%;border-left:5px solid transparent;padding:15px 15px;cursor:pointer;font-size:0px}
-.nav_item_active{border-left:5px solid rgb(117, 158, 46);background-color:rgb(241,241,241)}
+.nav_item_active,.nav_item{width:100%;border-left:6px solid transparent;padding:15px 15px;cursor:pointer;font-size:0px}
+.nav_item_active{border-left:6px solid rgb(117, 158, 46);background-color:rgb(241,241,241)}
 .nav_item:hover{color:rgb(117, 158, 46)}
 .nav_item>i,.nav_item_active>i{display:inline-block;width:30%;font-size:21px;text-align: center}
 .nav_item>div,.nav_item_active>div{display:inline-block;width:70%;letter-spacing:0.6px; font-size:18px;font-weight:400;}
@@ -53,23 +53,7 @@
 .nav_item_active>div{color:rgb(117, 158, 46)}
 
 
-/*
-	Frame - Auth
-*/
-/* 	.shim{height:100%;display: inline-block;vertical-align: middle}
 
-	.auth{background-color:rgb(248,248,248);text-align:center;height:100%}
-	.auth_title{margin-bottom:60px !important}
-
-	.auth_field{margin:12px}
-	.auth_field>label{font-size: 14px}
-	.auth_field>input{font-family:'Lato' !important;padding:12px 6px;border:1px solid rgb(220,220,220);margin:15px 0px;width: 100%;border-radius:6px;font-size:17px}
-	.auth_field>input:active{padding:12px 6px;border:1px solid rgb(220,220,220);margin:15px 0px;width: 100%;border-radius:6px;font-size:17px}
-	.auth_field>span{font-size:13px}
-
-	.auth_submit{font-size:15px;color:white; background-color: black;border-radius: 3px;padding:12px 0px;width:100%; display:block;margin-top:30px}
- */
-	
 
 /*
 	Frame - Menu
@@ -92,6 +76,9 @@
 		font-family: 'Lato';
 		border-bottom:1px solid rgb(220,220,220);
 		cursor: pointer;
+		color:rgb(120,120,120)
+	}
+	.frame_menu_nav>li>a{
 		color:rgb(120,120,120)
 	}
 	.frame_menu_nav>li:hover{
@@ -122,8 +109,8 @@
 .header_right{display: inline-block;height:100%;width:50%;text-align: right}
 .header_logo{display: inline-block;vertical-align: middle;}
 .header_title{display:inline-block; vertical-align: middle;margin-left:15px}
-.header_title>label{line-height:21px;display:block;box-sizing:border-box;vertical-align: middle;margin-right:6px;font-size: 18px}
-.header_title>.label_bold{font-weight: 900;color:black}
+.header_title>label{line-height:21px;display:block;box-sizing:border-box;vertical-align: middle;margin-right:6px;font-size: 17px}
+.header_title>.label_bold{font-weight: 900;color:black;font-size: 19px}
 
 .header_sep{width: 1px; height:100%;vertical-align: middle;background-color: rgb(220,220,220);display: inline-block}
 .header_btn{display:inline-block;height:100%;cursor: pointer; text-align: center;padding:0px 28px}

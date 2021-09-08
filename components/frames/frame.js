@@ -2,7 +2,7 @@ import style  from './Frames.module.css';
 import client from '/scripts/client-api.js';
 import Router from 'next/router';
 
-import Permission from '/components/Permissions/permission.js';
+import Permission from '/components/permissions/index.js';
 
 import { useEffect,useState } from 'react';
 import Link   from 'next/link';
@@ -129,12 +129,11 @@ export default function Frame(props) {
 							>
 								<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>
 									<div className={style.frame_menu_profile} >
-										<Image src="/icons/profile.png" width="84px" height="84px" />
+										<Image src="/icons/profile.png" width="90px" height="90px" />
 									</div>
 									<ul className={style.frame_menu_nav}>
-										<li>Dashboard</li>
+										<li><Link href="/profile/">Profile</Link></li>
 										<li>Notifications</li>
-										<li>Settings</li>
 										<li>Signout</li>
 									</ul>
 								</div>
