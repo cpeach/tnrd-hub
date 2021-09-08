@@ -8,11 +8,11 @@ export default function Signin(props) {
 	
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState('none');
 
 	const onSubmit = async(e)=>{
+	setLoading('');
 
-/* 
 		var application = "60906b4cf5e24d7d2498642b";
 		var p = {
 			application:application,
@@ -29,7 +29,7 @@ export default function Signin(props) {
 			localStorage.setItem("user",res.payload.identity.sub);
 			Router.push('/');
 			//this.props.setUser(res.payload.refresh)
-		} */
+		} 
 		//console.log(res)
 		
 	}
@@ -55,7 +55,7 @@ export default function Signin(props) {
 						<input type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
 					</div>
 					<button id="signin-btn" onClick={onSubmit}>
-						<LoadingOutlined style={{display:"none",fontSize: 16 }} spin />
+						<LoadingOutlined style={{display:`${loading}`,marginRight:"9px",fontSize: 16 }} spin />
 						Signin
 					</button>
 					<hr />
