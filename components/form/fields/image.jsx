@@ -4,7 +4,6 @@ import style      			from '../Form.module.css';
 import { Upload, message }  from 'antd';
 import { InboxOutlined }   	from '@ant-design/icons';
 import ImgCrop 				from 'antd-img-crop';
-import client				from '/scripts/client-api.js';
 const { Dragger } = Upload;
 
 export default class _Image extends React.Component {

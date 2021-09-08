@@ -46,8 +46,8 @@ export function getContent(applications,data){
 				applications[i].departments = names;
 			}
 		})	
-
-		data.table.columns[3].render = (record)=><Link href={"/api-console/applications/modify/"+record._id}>Edit</Link>;
+		data.table.columns[0].render = (record)=><img src={(record.image?record.image.url:'')===''?"/icons/app.png":record.image.url} width={36} height={36} />;
+		data.table.columns[4].render = (record)=><Link href={"/api-console/applications/modify/"+record._id}>Edit</Link>;
 		data.table.dataSource = applications;
 		data.table.dataSource.forEach((item)=>{
 			item.key=item.short;
