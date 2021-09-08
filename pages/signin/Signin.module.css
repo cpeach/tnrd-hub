@@ -13,14 +13,19 @@
 	height: 100%;
 	text-align: center;
 }
-.signin_shim{
+.signin_shim_middle{
+	display: inline-block;
+	height:100%;
+	vertical-align: middle;
+}
+.signin_shim_bottom{
 	display: inline-block;
 	height:100%;
 	vertical-align: top;
 }
 .signin_panel{
 	display: inline-block;
-	vertical-align: top;
+	vertical-align: middle;
 	width: 50%;
 	text-align: left;
 }
@@ -110,5 +115,6 @@
 	display: inline-block;
 	vertical-align: bottom;
 	width:80%;
+	max-width: 600px;
 	opacity: 0.7;
 }
