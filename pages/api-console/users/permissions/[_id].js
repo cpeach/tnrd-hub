@@ -91,9 +91,9 @@ function User(props){
 
 		l_data.content = (
 			<div className={style.permissions}>
-				<h1>Manage Access</h1>
+				<h1>Permissions</h1>
 				<div className={style.permissions_details}>
-					<label>Application User: </label>
+					<label>User: </label>
 					<span>{name}</span>
 				</div>
 				<Table data={l_data.table} options={false} />

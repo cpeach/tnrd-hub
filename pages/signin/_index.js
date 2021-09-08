@@ -10,13 +10,13 @@ export default function Signin(props) {
 	const [password, setPassword] = useState('');
 
 	const onSubmit = async(e)=>{
+		console.log('signin')
 		var application = "60906b4cf5e24d7d2498642b";
 		var p = {
 			application:application,
 			user:username,
 			pass:password
 		}
-		console.log(p)
 		//params.headers['Content-Type']   = params.headers['Content-Type'] || 'application/json';
 		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({params:p})}
 		var res    = await fetch('https://api.tnrdit.ca/accounts/signin',params);
@@ -33,33 +33,26 @@ export default function Signin(props) {
 
 
 	return (
-		<div className={style.signin}>
-			<div className={style.signin_left}>
-				
-				<div className={style.signin_panel}>
-					<h2>Welcome to TNRD Application Hub</h2>
-					<h1>Sign In</h1>
-					<p>Not sure if you have an application hub account yet? Please contact support</p>
-					<label>Sign into your account.</label>
-
-					<div className={style.signin_field}>
-						<label>Email Address</label>
-						<input type="email" onChange={(e)=>{setUsername(e.target.value)}}/>
+		<div className={style.auth}>
+			<div className={style.shim}></div>
+			<Container color="light" size="6" padding={{y:'lg'}} align="left">
+				<h1 className={style.auth_title}>Account Signin</h1>
+				<Container size="12" padding={{all:"lg"}} color="white" >
+					<div className={style.auth_field}>
+						<label>Username</label>
+						<input name="username" type="text" onChange={(e)=>{setUsername(e.target.value)}}/>
+						<span></span>  
 					</div>
-					<div className={style.signin_field}>
+					<div className={style.auth_field}>
 						<label>Password</label>
-						<input type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
+						<input name="password" type="password" onChange={(e)=>{setPassword(e.target.value)}} />
+						<span></span>  
 					</div>
-					<button onClick={onSubmit}>Signin</button>
-					<hr />
-					<a href="">Forgot your Password?</a>
-				</div>
-
-			</div>
-			<div className={style.signin_right}>
-				<div className={style.signin_shim}></div>
-				<img src="icons/signin.png" />
-			</div>
+					<div className={style.auth_field}>
+						<button className={style.auth_submit} onClick={onSubmit}>Signin</button>
+					</div>
+				</Container>
+			</Container>	  
 		</div>
 	)
 } 
