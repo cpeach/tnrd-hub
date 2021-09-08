@@ -3,20 +3,23 @@ import style from './Signin.module.css';
 import {useState} from 'react';
 import Router from 'next/router';
 import Container from '/components/layout/containers/index.js';
-
+import { LoadingOutlined } from '@ant-design/icons';
 export default function Signin(props) { 
 	
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
 	const onSubmit = async(e)=>{
+
+
+/* 
 		var application = "60906b4cf5e24d7d2498642b";
 		var p = {
 			application:application,
 			user:username,
 			pass:password
 		}
-		console.log(p)
+		
 		//params.headers['Content-Type']   = params.headers['Content-Type'] || 'application/json';
 		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({params:p})}
 		var res    = await fetch('https://api.tnrdit.ca/accounts/signin',params);
@@ -26,7 +29,7 @@ export default function Signin(props) {
 			localStorage.setItem("user",res.payload.identity.sub);
 			Router.push('/');
 			//this.props.setUser(res.payload.refresh)
-		}
+		} */
 		//console.log(res)
 		
 	}
@@ -36,6 +39,7 @@ export default function Signin(props) {
 		<div className={style.signin}>
 			<div className={style.signin_left}>
 				
+				<div className={style.signin_shim_middle}></div>
 				<div className={style.signin_panel}>
 					<h2>Welcome to TNRD Application Hub</h2>
 					<h1>Sign In</h1>
@@ -50,14 +54,16 @@ export default function Signin(props) {
 						<label>Password</label>
 						<input type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
 					</div>
-					<button onClick={onSubmit}>Signin</button>
+					<button id="signin-btn" onClick={onSubmit}>
+						Signin
+					</button>
 					<hr />
 					<a href="">Forgot your Password?</a>
 				</div>
 
 			</div>
 			<div className={style.signin_right}>
-				<div className={style.signin_shim}></div>
+				<div className={style.signin_shim_bottom}></div>
 				<img src="icons/signin.png" />
 			</div>
 		</div>

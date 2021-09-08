@@ -5,13 +5,14 @@ export default function Permissions(props){
    
    let role,app;
    let app_name = router.route.split("/")[1];
-   props.apps.map((item,i)=>{
-      app = item.short === app_name ? props.user.applications[item._id] : app;
-   }) 
+   if(props.apps){
+      props.apps.map((item,i)=>{
+         app = item.short === app_name ? props.user.applications[item._id] : app;
+      }) 
+      role = app ? app.role.name : app;
+      //console.log(role)
+   }
    
-   role = app ? app.role.name : app;
-   
-   console.log(role)
 
    return (
      <>    
