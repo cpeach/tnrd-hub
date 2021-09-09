@@ -28,7 +28,7 @@ function _Application(props) {
 		return items; 
 	}
 
-	var _application     = api({url:'/admin/hub/applications/'+_id});
+	var _application     = api({url:'/api-console/applications/'+_id});
 	
 		if(_application){
 			

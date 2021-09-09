@@ -16,7 +16,7 @@ export default function Departments(props) {
 	const g_data = JSON.parse(JSON.stringify(gd))
 	
 	
-	const departments = api({url:'/admin/hub/departments'});
+	const departments = api({url:'/api-console/departments'});
 	
 	if(departments){
 		l_data.table.columns[2].render = (record)=><Link href={"/api-console/departments/modify/"+record._id}>Edit</Link>;

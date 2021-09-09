@@ -23,7 +23,7 @@ export default function Insert(props){
 		console.log(l_data);
 
 		var notice = {};
-		var results = await client({url:"/admin/hub/users",params:{method:"POST",body:data}})
+		var results = await client({url:"/api-console/users",params:{method:"POST",body:data}})
 		if(results._id){
 			notice.duration    = l_data.notices.insert.complete.duration;
 			notice.message     = l_data.notices.insert.complete.message.replace('_$name',results.name);
@@ -60,7 +60,7 @@ export default function Insert(props){
 	var l_data = JSON.parse(JSON.stringify(ld))
 	var g_data = JSON.parse(JSON.stringify(gd))
 	
-	var users = api({url:'/admin/hub/users'});
+	var users = api({url:'/api-console/users'});
 	
 	if(users){ 
 		l_data.title   = "Insert";
@@ -78,7 +78,7 @@ export default function Insert(props){
 export async function handleSubmit(data) {
 	var notice = {};
 
-	var results = api({url:"/admin/hub/departments",method:"POST",body:data})
+	var results = api({url:"/api-console/departments",method:"POST",body:data})
 	if(results._id){
 		notice.duration    = l_data.notices.insert.complete.duration;
 		notice.message     = l_data.notices.insert.complete.message.replace('_$name',results.name);

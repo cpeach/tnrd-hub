@@ -16,8 +16,8 @@ export default function _Index(props) {
 	
 	var data = {}
 
-	const applications = api({url:'/admin/hub/applications/'});
-	const departments  = api({url:'/admin/hub/departments/'});
+	const applications = api({url:'/api-console/applications/'});
+	const departments  = api({url:'/api-console/departments/'});
 
 	const [filters, setFilters] = useState({});
 	const [count, setCount] = useState();

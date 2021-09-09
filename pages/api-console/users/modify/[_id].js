@@ -16,7 +16,7 @@ function Update(props){
 	
 	const {_id} = props.router.query
 	console.log(_id)
-	var user = api({url:"/admin/hub/users/"+_id})
+	var user = api({url:"/api-console/users/"+_id})
 	
 	if(user){
 		l_data.title   = "Update"
@@ -38,7 +38,7 @@ export async function handleSubmit(data) {
 	var notice = {duration:4}
 
 	data._id = this.props.user._id;
-	var results = api({url:"/admin/hub/users",method:"PUT",body:data})
+	var results = api({url:"/api-console/users",method:"PUT",body:data})
 
 	if(results.nModified===1){
 		notice.message = 'user Updated';
@@ -54,7 +54,7 @@ export async function handleSubmit(data) {
 export async function handleDelete(user){
 
 	//var results = await api.users.delete(this.props.user._id);
-	var results = api({url:"/admin/hub/users"+user._id,method:"DELETE"})
+	var results = api({url:"/api-console/users"+user._id,method:"DELETE"})
 	this.props.router.push('/api-console/users');
 	
 	if(results.ok){

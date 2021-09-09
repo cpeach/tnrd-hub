@@ -20,7 +20,7 @@ export default function Departments(props) {
 	
 	useEffect(async () => {
 		let isMounted = true;
-		let _applications = await client({url:'/admin/hub/applications'});
+		let _applications = await client({url:'/api-console/applications'});
 		isMounted?setApplications(_applications):null;
 		return () => (isMounted = false)
 	},[]);

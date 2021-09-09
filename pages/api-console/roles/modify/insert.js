@@ -24,7 +24,7 @@ export default function Insert(props){
 		console.log(data);
 
 		var notice  = {};
-		var results = await client({url:"/admin/hub/roles",params:{method:"POST",body:data}});
+		var results = await client({url:"/api-console/roles",params:{method:"POST",body:data}});
 
 		if(results._id){
 			notice.duration    = l_data.notices.insert.complete.duration;
@@ -43,7 +43,7 @@ export default function Insert(props){
 
 	}
 
-	var applications = api({url:'/admin/hub/applications'});
+	var applications = api({url:'/api-console/applications'});
 
 	if(applications){
 		l_data.title   = "Insert";

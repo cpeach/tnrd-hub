@@ -13,7 +13,7 @@ export default function Roles(props) {
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
 	
-	const roles = api({url:'/admin/hub/roles'});
+	const roles = api({url:'/api-console/roles'});
 	if(roles){
 		
 		roles.sort((a,b)=>{return a.application.localeCompare(b.application);});

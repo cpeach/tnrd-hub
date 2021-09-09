@@ -13,8 +13,8 @@ export default function Hub({ Component, pageProps }) {
   useEffect(async () => {
     let isMounted = true;
     var ref   = localStorage.getItem('user');
-    var _user = await client({url:"/admin/hub/users/"+ref});
-    var _apps = await client({url:"/admin/hub/applications"});
+    var _user = await client({url:"/api-console/users/"+ref});
+    var _apps = await client({url:"/api-console/applications"});
     if(_user.length<1&&router.pathname!=='/signin'){router.push('/signin')}
     if(isMounted){
       setUser(_user);
