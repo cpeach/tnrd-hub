@@ -17,11 +17,13 @@ export default function _Index(props) {
 	
 	var data = {}
 
-	const applications = api({url:'/api-console/applications/'});
+	
 	const departments  = api({url:'/api-console/departments/'});
 
 	const [filters, setFilters] = useState({});
 	const [count, setCount] = useState();
+	const [applications, setApplications] = useState();
+	const [cards, setCards] = useState();
 
 	const clear =  (e)=>{}
 
@@ -56,14 +58,11 @@ export default function _Index(props) {
 		setCount(_count);
 	}
 
- 	
-
-	const cards = (p)=>{
+	const getCards = (p)=>{
 		var out;
 		if(p && p.length>0){
 			out = p.map((card,i)=>(
         
-				 
 				<Container id={card.id?card.id:''} name={card.name?card.name:''} key={card.name} size="4" padding={{all:"xs"}} visable={card.visable} >
 					<div className={style.card} onClick={()=>{Router.push("api-console/applications/profile/"+card._id)}}>
 						<Container  key={card.name} size="12" padding={{all:"md"}} align="left" >
@@ -79,31 +78,36 @@ export default function _Index(props) {
 		}else{
 			out = <Empty key="empty" image={Empty.PRESENTED_IMAGE_SIMPLE} />
 		}
-		return out;
+		setCards(out);
 	}
-  
-  const search = async (s)=>{
-    var cardWrapper = document.getElementById("cards");
-    var cardsnodes = document.getElementById("cards").children;
-    if (s.target.value.length > 2){
-     var results = await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:s.target.value}}})
-      for(var i=0; i<cardsnodes.length;i++){
-        cardsnodes[i].remove();
-      }
-      return cards(results);
-      
-    } else {
-      return false
-    }
-    
-  }
 
-	
-	if(departments && applications && applications.unauthorized !== true){
+ 	const search = async (e)=>{
+		 let value = e.currentTarget.value
+		 if (value.trim(" ").length > 2){
+			setApplications(await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:e.currentTarget.value}}}));
+			getCards(applications);
+		 }
+	 }
+
+
+	useEffect(async () => {
+		let isMounted = true;
+		let apps = await client({url:'/api-console/applications/'});
+		if(isMounted){
+			setApplications(apps);
+			getCards(apps);
+		}
+		return () => (isMounted = false)
+  	},[]);
+
+
+	if(departments){
 		
-		applications.map((item)=>{
+		
+
+		/*  applications.map((item)=>{
 			filters[item._id] = item.departments.map(dep=>(dep._id));
-		});
+		});  */
 		data.content = (
 			<>
 				<Container valign="top" size="12" align="center" color="primary" >
@@ -130,7 +134,9 @@ export default function _Index(props) {
 
 				<Container id="cards" valign="top" size="12" align="center" padding={{"y":"md"}} color="light">
 				
-					<div className={style.cards}>{cards(applications)}</div>
+					<div className={style.cards}>
+						{cards}
+					</div>
 						
 					<div className="overlay"></div>
 				</Container>
