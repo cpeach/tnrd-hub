@@ -3,7 +3,11 @@
 	Frames - Admin
 */
 
-.frame{height:100%;} 
+.frame{height:100%;animation: fadein 100ms;} 
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 .frame_header{height:96px;}
 .frame_path{height:48px;background-color: rgb(117, 158, 46)}
 .frame_body{

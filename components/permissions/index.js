@@ -5,7 +5,6 @@ export default function Permissions(props){
    
    let role,app;
    let app_name = router.route.split("/")[1];
-   console.log(props.app)
    if(props.apps && props.apps.length>0){
    
       props.apps.map((item,i)=>{

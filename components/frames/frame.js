@@ -10,7 +10,7 @@ import Image  from 'next/image';
 
 import { Drawer, Button, Tooltip, Popover } from 'antd';
 import AntIcon 	from '/components/icons/antd/icons.js';
-import { CloseCircleFilled,RightOutlined  } from '@ant-design/icons';
+import { CloseCircleFilled,RightOutlined,CaretLeftOutlined  } from '@ant-design/icons';
 
 export default function Frame(props) {
 
@@ -41,13 +41,15 @@ export default function Frame(props) {
 			return (<></>)
 		}
 	};
+	const getBack = (path) => {
+		return (<div><span><CaretLeftOutlined /></span><a href={path.href}>{path.label}</a></div>)
+	}
 	const onClose    = () => {setVisible(false);};
 
 	var data = props.data?props.data:{};
 	data.header = {account:{},"title":{"sub":"TNRD","label":"Application Hub"}}
 	data.header.account 	  = {}
 	data.header.account.hover = showDrawer
-	
 	
 	if(user && apps){
 		
@@ -93,14 +95,14 @@ export default function Frame(props) {
 						</header>
 					</div>
 					{
-						props.path!==false?
+						props.data.path ? props.data.path.back ?
 							<div className={style.frame_body_path}>
-								<div></div>
-								{
-									getPath(props.data.path)
-								}
-								
-							</div> : <></>
+								<div></div>{getBack(props.data.path.back)}
+							</div> : 
+							<div className={style.frame_body_path}>
+								<div></div>{getPath(props.data.path)}
+							</div> :
+							<></>
 					}
 					<Permission user={user} apps={apps}>
 
@@ -147,7 +149,7 @@ export default function Frame(props) {
 			
 		)
 	 }else{
-		return <div>Set User Frame props</div>
+		return <div></div>
 	 }
 }
 

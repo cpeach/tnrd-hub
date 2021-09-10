@@ -67,13 +67,12 @@ function Update(props){
 			form.fields[1].attributes.defaultValue = data.short;
 			form.fields[2].options = departments.map(item=>({label:item.name,name:item.short,value:item._id}));
 			form.fields[2].attributes.defaultValue = data.departments.map(item=>(item._id));
-			form.fields[3].attributes.defaultValue = data.path;
-			form.fields[4].attributes.defaultValue = data.link;
-			form.fields[5].attributes.defaultValue = data.description;
-			form.fields[6].attributes.defaultValue = data.image?data.image:'';
-			form.fields[6].meta = data.image_meta;
-			form.fields[7].attributes.defaultValue = data.ui&&data.ui.menu?data.ui.menu:'';
-			form.fields[8].attributes.defaultValue = data.ui&&data.ui.resources?data.ui.resources:'';
+
+			form.fields[3].attributes.defaultValue = data.description;
+			form.fields[4].attributes.defaultValue = data.image?data.image:'';
+			form.fields[4].meta = data.image_meta;
+			form.fields[5].attributes.defaultValue = data.ui&&data.ui.menu?data.ui.menu:'';
+			form.fields[6].attributes.defaultValue = data.ui&&data.ui.resources?data.ui.resources:'';
 
 			return (<Form key="form" size="10" form={form} onSubmit={handleSubmit} onDelete={handleDelete} ></Form>);
 	}
