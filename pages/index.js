@@ -2,6 +2,7 @@
 
 import style     from '/styles/Index.module.css';
 import api     from '/scripts/api.js';
+import client 	from '/scripts/client-api.js';
 import Link    from 'next/link';
 import Router from 'next/router';
 import Image from 'next/image';
@@ -10,7 +11,7 @@ import Card    from '/components/layout/cards/card.js';
 import Container from '/components/layout/containers/index.js';
 import { SearchOutlined } from '@ant-design/icons';
 import { Empty,Divider  } from 'antd';	
-import { useState,useEffect  } from 'react';
+import { useState,useEffect,ReactDOM  } from 'react';
 
 export default function _Index(props) { 
 	
@@ -21,7 +22,6 @@ export default function _Index(props) {
 
 	const [filters, setFilters] = useState({});
 	const [count, setCount] = useState();
-
 
 	const clear =  (e)=>{}
 
@@ -59,10 +59,10 @@ export default function _Index(props) {
  	
 
 	const cards = (p)=>{
-		
 		var out;
 		if(p && p.length>0){
 			out = p.map((card,i)=>(
+        
 				 
 				<Container id={card.id?card.id:''} name={card.name?card.name:''} key={card.name} size="4" padding={{all:"xs"}} visable={card.visable} >
 					<div className={style.card} onClick={()=>{Router.push("api-console/applications/profile/"+card._id)}}>
@@ -82,11 +82,19 @@ export default function _Index(props) {
 		return out;
 	}
   
-  const search = (s)=>{
-    console.log(s);
-    var cards = document.getElementById("cards").children;
-    var results = {};
-    return results;
+  const search = async (s)=>{
+    var cardWrapper = document.getElementById("cards");
+    var cardsnodes = document.getElementById("cards").children;
+    if (s.target.value.length > 2){
+     var results = await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:s.target.value}}})
+      for(var i=0; i<cardsnodes.length;i++){
+        cardsnodes[i].remove();
+      }
+      return cards(results);
+      
+    } else {
+      return false
+    }
     
   }
 
@@ -104,7 +112,7 @@ export default function _Index(props) {
 						<h2>Applications and Online Services</h2>
 						<div className={style.main_search_wrapper}>
 							<SearchOutlined key="icon"  style={{"fontSize":"21px","width":"8%","paddingTop":"5px"}} />
-							<input type="text" placeholder="Search for Applications..." onkeyup={search}/>
+							<input type="text" placeholder="Search for Applications..." onKeyUp={search}/>
 						</div>
 					</div>
 				</Container>
