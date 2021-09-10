@@ -22,12 +22,12 @@ function User(props){
 	const [current,setCurrent] = useState('');
 	const [selectRole,setSelectRole] = useState();
 
-	var applications = api({url:"/admin/hub/applications/"})
-	var user		 = api({url:"/admin/hub/users/profile/"+_id});
+	var applications = api({url:"/api-console/applications/"})
+	var user		 = api({url:"/api-console/users/profile/"+_id});
 
 	const onBlock  = async (checked,e)=>{
 		var app = e.currentTarget.id.split("-")[1];
-		var results = await client({url:"/admin/hub/users/blocked/"+_id+"/"+app,params:{method:"PUT",body:{"blocked":checked}}})
+		var results = await client({url:"/api-console/users/blocked/"+_id+"/"+app,params:{method:"PUT",body:{"blocked":checked}}})
 		if(results.n===0){
 			message.error('Failed');
 		}
@@ -39,7 +39,7 @@ function User(props){
 		setIsModalVisible(true);
 
 		var id    = e.currentTarget.id;
-		var roles = await client({url:"/admin/hub/roles/application/"+id});
+		var roles = await client({url:"/api-console/roles/application/"+id});
 		var current_role = user.applications[current] ? user.applications[current].role._id:roles[0]._id
 		
 		setCurrent(id);
@@ -60,7 +60,7 @@ function User(props){
 		
 		var data    = user.applications[current] || {}
 		data.role   = selectRole;
-		var results = await client({url:"/admin/hub/users/role/"+_id+"/"+current,params:{method:"PUT",body:data}})
+		var results = await client({url:"/api-console/users/role/"+_id+"/"+current,params:{method:"PUT",body:data}})
 		
 		window.location.reload();
 	}

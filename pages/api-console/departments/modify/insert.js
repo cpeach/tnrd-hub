@@ -22,7 +22,7 @@ import { Empty } from 'antd';
 	const handleSubmit = async (data) =>{
 		var notice = {};
 
-		var results = await client({url:"/admin/hub/departments",params:{method:"POST",body:data}})
+		var results = await client({url:"/api-console/departments",params:{method:"POST",body:data}})
 		if(results._id){
 			notice.duration    = l_data.notices.insert.complete.duration;
 			notice.message     = l_data.notices.insert.complete.message.replace('_$name',results.name);

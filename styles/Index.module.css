@@ -172,7 +172,7 @@
 	
 	.landing_title{color:white !important;font-size: 36px;padding:15px}
 	.landing_dash{display:none;height:1px;width:36px;background-color: white;margin:15px 0px 15px 0px;}
-	.landing_description{margin:0px;padding:0px 0px;text-align:left;font-weight:300; font-size: 18px;line-height: 26px;letter-spacing: 0.6px;}
+	.landing_description{margin:0px;padding:0px 0px;text-align:left;font-weight:300; font-size: 18px;line-height: 26px;letter-spacing: 0.6px;display: inline-block;}
 	.landing_actions{padding:48px 0px 0px 0px  }
 	.landing_actions>a{
 		font-size:14px;
@@ -208,7 +208,7 @@
 		color:black !important;
 	}
 
-	.landing_options{width:600px;display:inline-block;margin:15px 0px}
+	.landing_options{width:600px;display:none;margin:15px 0px}
 	.landing_options>span{padding:6px 0px;display:inline-block;font-size:14px;font-weight:600;cursor: pointer;}
 	.landing_options>span:hover{color:rgb(99, 134, 39)}
 	.landing_options>i{margin:0px 24px;display: inline-block;height:12px; width:2px;background-color: rgb(140,140,140);}

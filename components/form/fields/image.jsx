@@ -4,7 +4,6 @@ import style      			from '../Form.module.css';
 import { Upload, message }  from 'antd';
 import { InboxOutlined }   	from '@ant-design/icons';
 import ImgCrop 				from 'antd-img-crop';
-import client				from '/scripts/client-api.js';
 const { Dragger } = Upload;
 
 export default class _Image extends React.Component {
@@ -56,12 +55,12 @@ export default class _Image extends React.Component {
 			const fd = new FormData();
 			fd.append("image", this.state.file);
 			var params = {method:"POST",body:fd,headers:{'x-application':this.state.application}}
-			var res = await fetch("https://api.tnrdit.ca/admin/hub/images",params);
+			var res = await fetch("https://api.tnrdit.ca/api-console/images",params);
 			var out = await res.json();
 			
 			if(original){
 				var params = {method:"DELETE",headers:{'x-application':this.state.application}}
-				await fetch("https://api.tnrdit.ca/admin/hub/images/"+original,params);
+				await fetch("https://api.tnrdit.ca/api-console/images/"+original,params);
 			}
 			this.state.value = out._id 
 			return this.state.value;

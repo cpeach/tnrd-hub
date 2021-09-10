@@ -15,7 +15,7 @@
 */
 	.field,.field_invalid{padding:6px 0px;display:inline-block;vertical-align: top}
 	.field>label,.field_invalid>label{font-size:14px;display: block}
-	.field>div,.field_invalid>div{border:1px solid rgb(200,200,200);border-radius:4px;padding:12px 6px;margin:12px 0px;background-color:rgb(250,250,250)}
+	.field>div,.field_invalid>div{border:1px solid rgb(200,200,200);border-radius:4px;padding:12px 6px;margin:12px 0px;background-color:rgb(253,253,253)}
 	.field_invalid>div{border-color:rgba(193,64,12,0.80)}
 	.field>span,.field_invalid>span{font-size:13px;display: block;}
 	.field_invalid>span{color:rgba(193,64,12,0.80)}

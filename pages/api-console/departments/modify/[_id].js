@@ -20,7 +20,7 @@ function Update(props){
 		var notice = {duration:4}
 
 		data._id = _id;
-		var results = await client({url:"/admin/hub/departments",params:{method:"PUT",body:data}})
+		var results = await client({url:"/api-console/departments",params:{method:"PUT",body:data}})
 		if(results.nModified===1){
 			notice.message = 'Department Updated';
 			notice.description = 'The contents of '+data.name+' have been sucessfully updated!' 
@@ -34,12 +34,12 @@ function Update(props){
 		props.router.push('/api-console/departments') 
 	}
 	const handleDelete = async ()=>{
-		var results = await client({url:"/admin/hub/departments/"+_id,params:{method:'DELETE'}})
+		var results = await client({url:"/api-console/departments/"+_id,params:{method:'DELETE'}})
 		props.router.push('/api-console/departments');
 		results.ok ? message.success('Record deleted') : message.error('Record could not be deleted');
 	}
 	
-	var department = api({url:"/admin/hub/departments/"+_id})
+	var department = api({url:"/api-console/departments/"+_id})
 	
 	if(department){
 		l_data.title   = "Update"

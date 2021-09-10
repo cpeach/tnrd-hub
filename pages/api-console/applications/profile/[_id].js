@@ -28,9 +28,10 @@ function _Application(props) {
 		return items; 
 	}
 
-	var _application     = api({url:'/admin/hub/applications/'+_id});
+	var _application     = api({url:'/api-console/applications/'+_id});
 	
 		if(_application){
+			
 			data.content = (
 			<>
 				<Container key="heading" size="12" color="primary" align="center" padding={{y:"sm",x:"xxl"}}>
@@ -38,7 +39,7 @@ function _Application(props) {
 						
 						<div  className={style.landing_icon}>
 							<div></div>
-							<img src={(_application.image?_application.image.url:'')===''?"/icons/app.png":_application.image} width={30} height={30} />
+							<img src={(_application.image_meta?_application.image_meta.url:'')===''?"/icons/app.png":_application.image_meta.url} width={40} height={40} />
 						</div>
 						<h1 className={style.landing_title}>{_application.name}</h1>
 						<div  className={style.landing_dash}></div>

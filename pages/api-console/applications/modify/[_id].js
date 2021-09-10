@@ -29,7 +29,7 @@ function Update(props){
 		delete data.menu;
 		delete data.resources;
 	
-		var results = await client({url:"/admin/hub/applications",params:{method:"PUT",body:data}})
+		var results = await client({url:"/api-console/applications",params:{method:"PUT",body:data}})
 		if(results.nModified===1){
 			notice.message = 'Application Updated';
 			notice.description = 'The contents of '+data.name+' have been sucessfully updated!' 
@@ -44,7 +44,7 @@ function Update(props){
 	
 	const handleDelete = async ()=>{
 
-		var results = await client({url:"/admin/hub/applications/"+_id,params:{method:"DELETE"}})
+		var results = await client({url:"/api-console/applications/"+_id,params:{method:"DELETE"}})
 
 		props.router.push('/api-console/applications');
 		if(results.ok){
@@ -62,10 +62,11 @@ function Update(props){
 
 			form.id = data._id;
 
-			form.fields[0].options = departments.map(item=>({label:item.name,name:item.short,value:item._id}));
-			form.fields[0].attributes.defaultValue = data.departments.map(item=>(item._id));
-			form.fields[1].attributes.defaultValue = data.name;
-			form.fields[2].attributes.defaultValue = data.short;
+			
+			form.fields[0].attributes.defaultValue = data.name;
+			form.fields[1].attributes.defaultValue = data.short;
+			form.fields[2].options = departments.map(item=>({label:item.name,name:item.short,value:item._id}));
+			form.fields[2].attributes.defaultValue = data.departments.map(item=>(item._id));
 			form.fields[3].attributes.defaultValue = data.path;
 			form.fields[4].attributes.defaultValue = data.link;
 			form.fields[5].attributes.defaultValue = data.description;
@@ -77,8 +78,8 @@ function Update(props){
 			return (<Form key="form" size="10" form={form} onSubmit={handleSubmit} onDelete={handleDelete} ></Form>);
 	}
 	
-	var application = api({url:"/admin/hub/applications/"+_id})
-	var departments = api({url:"/admin/hub/departments/"})
+	var application = api({url:"/api-console/applications/"+_id})
+	var departments = api({url:"/api-console/departments/"})
 	
 	if(application && departments && departments.length>0){
 		l_data.title   = "Update"

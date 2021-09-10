@@ -20,7 +20,7 @@ export default function Departments(props) {
 	
 	useEffect(async () => {
 		let isMounted = true;
-		let _applications = await client({url:'/admin/hub/applications'});
+		let _applications = await client({url:'/api-console/applications'});
 		isMounted?setApplications(_applications):null;
 		return () => (isMounted = false)
 	},[]);
@@ -46,8 +46,8 @@ export function getContent(applications,data){
 				applications[i].departments = names;
 			}
 		})	
-
-		data.table.columns[3].render = (record)=><Link href={"/api-console/applications/modify/"+record._id}>Edit</Link>;
+		data.table.columns[0].render = (record)=><img src={(record.image?record.image.url:'')===''?"/icons/app.png":record.image.url} width={36} height={36} />;
+		data.table.columns[4].render = (record)=><Link href={"/api-console/applications/modify/"+record._id}>Edit</Link>;
 		data.table.dataSource = applications;
 		data.table.dataSource.forEach((item)=>{
 			item.key=item.short;

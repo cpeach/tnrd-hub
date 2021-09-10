@@ -10,6 +10,7 @@
 	"table":{
 		"buttons" : {"action" : {"label":"New Application","href":"/api-console/applications/modify/insert"}},
 		"columns" : [
+			{"key":"icon","title":"Icon","dataIndex":""},
 			{"key":"name","title":"Full Name","dataIndex":"name"},
 			{"key":"code","title":"Code","dataIndex":"short"},
 			{"key":"dept","title":"Departments","dataIndex":"departments"},

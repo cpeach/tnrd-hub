@@ -13,7 +13,7 @@ export default function Users(props) {
 	const l_data = JSON.parse(JSON.stringify(ld))
 	const g_data = JSON.parse(JSON.stringify(gd))
 	
-	const users = api({url:'/admin/hub/users'});
+	const users = api({url:'/api-console/users'});
 	
 	if(users){
 		l_data.table.columns[3].render = (record)=><Link href={"/api-console/users/modify/"+record._id}>Edit</Link>;
