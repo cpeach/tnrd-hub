@@ -9,7 +9,7 @@ import Image from 'next/image';
 import Frame   from '/components/frames/frame.js';
 import Card    from '/components/layout/cards/card.js';
 import Container from '/components/layout/containers/index.js';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined,CloseCircleOutlined } from '@ant-design/icons';
 import { Empty,Divider  } from 'antd';	
 import { useState,useEffect,ReactDOM  } from 'react';
 
@@ -82,12 +82,38 @@ export default function _Index(props) {
 	}
 
  	const search = async (e)=>{
-		 let value = e.currentTarget.value
-		 if (value.trim(" ").length > 2){
-			setApplications(await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:e.currentTarget.value}}}));
-			getCards(applications);
-		 }
+    let value = e.currentTarget.value;
+    if (value.trim(" ").length > 0){
+      e.currentTarget.parentElement.style.background = 'white';
+      e.currentTarget.parentElement.style.color = 'black';
+    } else {
+      e.currentTarget.parentElement.removeAttribute('style');
+    }
+    
+     var clearsearch = document.querySelector('#clearsearch');
+		 
+    console.log(value.trim(" ").length);
+    console.log(value);
+		 if (value.trim(" ").length > 3){
+       var apps = await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:e.currentTarget.value}}})
+			setApplications(apps);
+			getCards(apps);
+       clearsearch.style.opacity = 1;
+		 } else {
+       clearsearch.style.opacity = 0;
+       let apps = await client({url:'/api-console/applications/'});
+       setApplications(apps);
+			 getCards(apps);
+     }
 	 }
+  
+  const clearSearch = async (e)=>{
+    var input = document.querySelector('.searchinput');
+    input.value = '';
+    let apps = await client({url:'/api-console/applications/'});
+    setApplications(apps);
+		getCards(apps);
+  }
 
 
 	useEffect(async () => {
@@ -116,7 +142,8 @@ export default function _Index(props) {
 						<h2>Applications and Online Services</h2>
 						<div className={style.main_search_wrapper}>
 							<SearchOutlined key="icon"  style={{"fontSize":"21px","width":"8%","paddingTop":"5px"}} />
-							<input type="text" placeholder="Search for Applications..." onKeyUp={search}/>
+							<input type="text" className="searchinput" placeholder="Search for Applications..." onKeyUp={search} required/>
+              <CloseCircleOutlined key="icon-1" id="clearsearch" className={style.clearsearch} onClick={clearSearch}/>
 						</div>
 					</div>
 				</Container>

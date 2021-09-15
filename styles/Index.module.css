@@ -58,17 +58,33 @@
 	font-size: 20px;
 	padding:15px 0px 15px 0px;
 	background-color: transparent;
-	width: 92%;
+	width: 84%;
 	display: inline-block;
 	color:rgba(255,255,255,0.7);
 	letter-spacing: 0.3px;
 	font-family:'Lato' !important;
 	
 }
+
+
+.main_search_wrapper>input:valid{
+  color:black !important;
+  background: white !important;
+}
+
 .main_search_wrapper>input::placeholder{
 	font-weight: 300;
 	color:white;
 }
+
+.clearsearch{
+  font-size: 21px;
+  width:8%;
+  padding-top: 5px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
 
 .main_filters{
 	width:960px;
