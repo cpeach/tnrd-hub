@@ -2,26 +2,28 @@
 
 import style     from '/styles/Index.module.css';
 import api     from '/scripts/api.js';
+import client 	from '/scripts/client-api.js';
 import Link    from 'next/link';
 import Router from 'next/router';
 import Image from 'next/image';
 import Frame   from '/components/frames/frame.js';
 import Card    from '/components/layout/cards/card.js';
 import Container from '/components/layout/containers/index.js';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined,CloseCircleOutlined } from '@ant-design/icons';
 import { Empty,Divider  } from 'antd';	
-import { useState,useEffect  } from 'react';
+import { useState,useEffect,ReactDOM  } from 'react';
 
 export default function _Index(props) { 
 	
 	var data = {}
 
-	const applications = api({url:'/api-console/applications/'});
+	
 	const departments  = api({url:'/api-console/departments/'});
 
 	const [filters, setFilters] = useState({});
 	const [count, setCount] = useState();
-
+	const [applications, setApplications] = useState();
+	const [cards, setCards] = useState();
 
 	const clear =  (e)=>{}
 
@@ -56,14 +58,11 @@ export default function _Index(props) {
 		setCount(_count);
 	}
 
- 	
-
-	const cards = (p)=>{
-		
+	const getCards = (p)=>{
 		var out;
 		if(p && p.length>0){
 			out = p.map((card,i)=>(
-				 
+        
 				<Container id={card.id?card.id:''} name={card.name?card.name:''} key={card.name} size="4" padding={{all:"xs"}} visable={card.visable} >
 					<div className={style.card} onClick={()=>{Router.push("api-console/applications/profile/"+card._id)}}>
 						<Container  key={card.name} size="12" padding={{all:"md"}} align="left" >
@@ -79,16 +78,62 @@ export default function _Index(props) {
 		}else{
 			out = <Empty key="empty" image={Empty.PRESENTED_IMAGE_SIMPLE} />
 		}
-		return out;
+		setCards(out);
 	}
 
+ 	const search = async (e)=>{
+    let value = e.currentTarget.value;
+    if (value.trim(" ").length > 0){
+      e.currentTarget.parentElement.style.background = 'white';
+      e.currentTarget.parentElement.style.color = 'black';
+    } else {
+      e.currentTarget.parentElement.removeAttribute('style');
+    }
+    
+     var clearsearch = document.querySelector('#clearsearch');
+		 
+    console.log(value.trim(" ").length);
+    console.log(value);
+		 if (value.trim(" ").length > 3){
+       var apps = await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:e.currentTarget.value}}})
+			setApplications(apps);
+			getCards(apps);
+       clearsearch.style.opacity = 1;
+		 } else {
+       clearsearch.style.opacity = 0;
+       let apps = await client({url:'/api-console/applications/'});
+       setApplications(apps);
+			 getCards(apps);
+     }
+	 }
+  
+  const clearSearch = async (e)=>{
+    var input = document.querySelector('.searchinput');
+    input.value = '';
+    let apps = await client({url:'/api-console/applications/'});
+    setApplications(apps);
+		getCards(apps);
+  }
 
-	
-	if(departments && applications && applications.unauthorized !== true){
+
+	useEffect(async () => {
+		let isMounted = true;
+		let apps = await client({url:'/api-console/applications/'});
+		if(isMounted){
+			setApplications(apps);
+			getCards(apps);
+		}
+		return () => (isMounted = false)
+  	},[]);
+
+
+	if(departments){
 		
-		applications.map((item)=>{
+		
+
+		/*  applications.map((item)=>{
 			filters[item._id] = item.departments.map(dep=>(dep._id));
-		});
+		});  */
 		data.content = (
 			<>
 				<Container valign="top" size="12" align="center" color="primary" >
@@ -97,7 +142,8 @@ export default function _Index(props) {
 						<h2>Applications and Online Services</h2>
 						<div className={style.main_search_wrapper}>
 							<SearchOutlined key="icon"  style={{"fontSize":"21px","width":"8%","paddingTop":"5px"}} />
-							<input type="text" placeholder="Search for Applications..." />
+							<input type="text" className="searchinput" placeholder="Search for Applications..." onKeyUp={search} required/>
+              <CloseCircleOutlined key="icon-1" id="clearsearch" className={style.clearsearch} onClick={clearSearch}/>
 						</div>
 					</div>
 				</Container>
@@ -115,7 +161,9 @@ export default function _Index(props) {
 
 				<Container id="cards" valign="top" size="12" align="center" padding={{"y":"md"}} color="light">
 				
-					<div className={style.cards}>{cards(applications)}</div>
+					<div className={style.cards}>
+						{cards}
+					</div>
 						
 					<div className="overlay"></div>
 				</Container>
