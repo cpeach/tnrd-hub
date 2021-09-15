@@ -1,28 +1,44 @@
-import {forwardRef,useState,useImperativeHandle} from 'react';
+import {forwardRef,useRef,useState,useImperativeHandle,useEffect} from 'react';
 import style from '../Form.module.css';
 
 const Text = forwardRef((props, ref) => {
-	
-	const [value, setValue]     = useState(props.data.attributes.defaultValue);
+
+	//const inputRef = useRef();
+
+	const [initial, setInitial] = useState(true);
+	const [value, setValue]     = useState(props.data.attributes.value||"");
 	const [name, setName]       = useState(props.data.attributes.name);
-	const [description, setDescription]   = useState("");
-
-	const handleChange = (e) => {
-		props.onChange(validate(e.currentTarget.value))
-	}
 	
-	const validate = (v)=>{
 
-        var valid = props.data.required?v.trim()===""?false:true:true;
+	const update = () => {
 		
-		setValue(v);
-		setDescription(valid ? "" : "This field requires a value");
-		
-		return {valid:valid,value:v,description:description};
+		var valid = validate();
+		var error = valid?"":"This field requires a value";
+		var _value =  {value:value,name:name,valid:valid,error:error};
+		!initial?props.onChange(_value):null;
+		setInitial(false);
+		return _value;
 	}
-	useImperativeHandle(ref, () => ({getValue() {return value}}));
 
-	return (<input  className={style.input} {...props.data.attributes} onChange={handleChange}/>)
+	const validate = ()=>{
+		let valid = true;
+		if(props.data.required&&!initial){
+			valid = value.trim()===""?false:true;
+		}
+		return valid
+	}
+
+	useEffect((e) => {update();},[value]);
+
+	useImperativeHandle(ref, () => ({
+		getName : ()=>{return name},
+		clearField : ()=>{setInitial(true);setValue("")},
+		setField : (v)=>{setInitial(true);setValue(v) },
+		getField : ()=>{return update();}
+	}));
+	
+	
+	return (<input  className={style.input} value={value} {...props.data.attributes} onChange={update}/>)
 	 
 })
 

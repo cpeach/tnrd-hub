@@ -1,48 +1,66 @@
 
 import style from './Form.module.css';
 
-import {useRef,useState} from 'react';
+import {forwardRef,useState,useImperativeHandle,useRef} from 'react';
 import Frame from '/components/frames/frame.js';
 import Field from './fields/field.js';
 
-import {message,Popconfirm,Divider} from 'antd';
+import {message,notification,Modal,Popconfirm,Divider} from 'antd';
 
-export default function Form(props)  {
-
-	var data = props.data;
-	var form = props.data.form;
+const Form = forwardRef((props, ref) => {
+	
+	const [data,setData] = useState(props.data);
 
 	const fieldRefs = useRef(new Array());
+
+	useImperativeHandle(ref, () => ({
+		clear:()=>{
+
+			var refs = fieldRefs.current
+			for(var i=0;i<refs.length;i++){
+				refs[i].clearField();
+			} 
+		},
+		set:(d)=>{
+			var refs = fieldRefs.current
+			for(var i=0;i<refs.length;i++){
+				refs[i].setField(d[refs[i].getName()]);
+				//refs[i].setField();
+			} 
+		}
+	}));
 
 	const handleSubmit = async(e)=>{
 		
 		e.preventDefault();
-		console.log("handleSubmit");
-		console.log(fieldRefs.current[0].getValue())
-		
-		/* 
-		let valid = true;
-		let data = {};
-		for(let ref in this.refs){
-			data[this.refs[ref].getName()] = await this.refs[ref].getValue();
-			valid = this.refs[ref].validate().valid ? valid : false;
+		let data = {},field,valid=true;
+		var refs = fieldRefs.current
+		for(var i=0;i<refs.length;i++){
+			field = await refs[i].getField();
+			data[field.name] = field.value;
+			valid = !field.valid ? false : valid;
 		}
-		console.log(data)
-		valid ? this.props.onSubmit(data) : alert("You have issues") */
-		
+		if(valid){
+			console.log(data)
+			props.onSubmit(data)
+		}else{
+			message.warning("Please address field errors")
+		}
+
 	}
 
+	
 	const handleChange = (p)=>{
-		console.log("FORM CHANGE")
+		//console.log("FORM CHANGE")
 	}
 
 	const getSection=(section,s)=>{
 		
 		return(
 			<div key={"section-"+s}>
-				<Divider key={"s-"+s}>{section.label}</Divider>
+				{section.label?<Divider key={"s-"+s} >{section.label}</Divider>:<></>}
 				{
-					form.containers.map((container,i)=>{
+					data.containers.map((container,i)=>{
 						if(container.section===s){
 							return getContainers(container,i)
 						}
@@ -57,7 +75,7 @@ export default function Form(props)  {
 		return (
 			<div className={style.container} key={"container-fields-"+i}>
 			{	
-				form.fields.map((field,k)=>{
+				data.fields.map((field,k)=>{
 					return field.container==i? getField(field,i,k) : "" 
 				})
 			}
@@ -65,26 +83,14 @@ export default function Form(props)  {
 		)
 	}
 	const getField = (field,i,k)=>{
-		
-		return <Field ref={(element) => fieldRefs.current.push(element)} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
-/* 		return (
-
-			<div key={"field-"+i+"-"+k} className={style.field} >
-				<label>First Name</label>
-				<p>Provide a name to reference this application. Without a name users will not know what this is for.</p>
-				<div>
-					<input className={style.input} type="text" />
-				</div>
-			</div>
-
-		) */
+		return <Field ref={(element) => {fieldRefs.current[k]=element}} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
 	}
 
 
 	data.content = (
 		<>
 		<div className={style.form_heading}>
-			<div className={style.form}>
+			<div className={style.form_heading_wrapper}>
 				<img src="/icons/form.png" />
 				<div>
 					<label>{data.subtitle}</label>
@@ -97,25 +103,44 @@ export default function Form(props)  {
 			<div className={style.form_panel}>
 				
 				{
-					form.sections.map((section,s)=>(
+					data.sections.map((section,s)=>(
 						getSection(section,s)
 					))
 				}
 	
-				<hr/>
-
-				<div className={style.form_actions}>
-					<input className={style.submit} type="submit" defaultValue="Submit" />
-					<div className={style.cancel}><a href={data.path.back.href}>Cancel</a></div>
-				</div>			
+				{	
+				!props.dialog?
+					(<>
+					<hr/>
+					<div className={style.form_actions}>
+						<input className={style.submit} type="submit" defaultValue="Submit" />
+						<div className={style.cancel}><a href={data.path.back.href}>Cancel</a></div>
+					</div></>) 
+					: 
+					<></>	
+				}	
 				
 			</div>
 
 		</form>
 		</>
 	)
-	return ( <Frame user={props.user} apps={props.apps} path={data.path} background="light" data={data} active="1"  navigation="false" />)
-}
 
+	return props.dialog ? 
+		(<Modal visible={props.visible} onOk={handleSubmit} onCancel={props.cancel}>{data.content}</Modal>)
+		:
+		(<Frame user={props.user} apps={props.apps} path={data.path} background="light" data={data} active="1"  navigation="false" />)
+	 
 
+	 
+})
 
+export default Form;
+
+export function success(data){
+		notification['success']({duration:4,message:data[0],description:data[1]});
+	}
+export function error(data){
+		notification['error']({duration:4,message:data[0],description:data[1]});
+	}
+ 

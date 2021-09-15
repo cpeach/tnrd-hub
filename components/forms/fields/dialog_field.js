@@ -12,20 +12,18 @@ const Field = forwardRef((props, ref) => {
 	const data = props.data;
 
 	const [valid, setvalid]   = useState(true);
-	const [_style, setStyle]  = useState(style.field);
+	const [_style, setStyle]  = useState(style.dialog_field);
 	const [description, setDescription]   = useState(data.description?data.description:"");
 	const [error, setError]   = useState("");
 
 	const update = (p)=>{
-		setStyle(p.valid?style.field:style.field_invalid);
+		setStyle(p.valid?style.dialog_field:style.dialog_field_invalid);
 		setError(p.error);
 		props.onChange(p);	
 	}
 
 	useImperativeHandle(ref, () => ({
-		getName    : ()=>{return fieldRef.current.getName()},
-		getField   : ()=>{return fieldRef.current.getField()},
-		setField   : (v)=>{fieldRef.current.setField(v)},
+		getField : ()=>{return fieldRef.current.getField()},
 		clearField : ()=>{return fieldRef.current.clearField();},
 	}));
 	
@@ -43,7 +41,12 @@ const Field = forwardRef((props, ref) => {
 	return (
 		<div className={_style + " _"+data.size}>
 			<label>{data.label}</label>
-			<div>{inputs()}</div>
+			
+			<div>
+				{
+					inputs()
+				}
+			</div>
 			<span>{error}</span>
 			{data.description?<p>{data.description}</p>:<></>}
 			

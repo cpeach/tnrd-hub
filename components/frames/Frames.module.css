@@ -3,7 +3,7 @@
 	Frames - Admin
 */
 
-.frame{height:100%;animation: fadein 100ms;} 
+.frame{height:100%;animation: fadein 200ms;} 
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }

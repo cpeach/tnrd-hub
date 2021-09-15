@@ -257,7 +257,10 @@ div#__next{height: 100%;}
 	.ant-upload-list-item-info{padding:12px 0px !important}
 	
 /*	divider */
-	.ant-divider-inner-text{}
+	.ant-divider-horizontal.ant-divider-with-text{font-size:13px !important}
+	.ant-divider-inner-text{
+
+	}
 
 /*	switch */
 	.ant-switch-checked{background-color:rgb(117, 158, 46) !important ;}
