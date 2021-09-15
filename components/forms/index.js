@@ -83,7 +83,7 @@ const Form = forwardRef((props, ref) => {
 		)
 	}
 	const getField = (field,i,k)=>{
-		return <Field ref={(element) => {fieldRefs.current[k]=element}} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
+		return <Field ref={(element) => {fieldRefs.current[k]=element}} dialog={props.dialog} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
 	}
 
 

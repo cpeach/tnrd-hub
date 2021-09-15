@@ -33,7 +33,7 @@ const Field = forwardRef((props, ref) => {
 		var options = {
 			'text':(<Text ref={fieldRef} data={data} onChange={update} />),
 			'multi_select':(<MultiSelect ref={fieldRef} data={data} onChange={update} />),
-			'image':(<Image ref={fieldRef} data={data} onChange={update} />),
+			'image':(<Image ref={fieldRef} dialog={props.dialog} data={data} onChange={update} />),
 			'list' :(<List ref={fieldRef} data={data} onChange={update} />)
 		}
 		return options[data.tag];

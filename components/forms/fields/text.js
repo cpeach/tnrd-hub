@@ -11,7 +11,6 @@ const Text = forwardRef((props, ref) => {
 	
 
 	const update = () => {
-		
 		var valid = validate();
 		var error = valid?"":"This field requires a value";
 		var _value =  {value:value,name:name,valid:valid,error:error};
@@ -38,7 +37,7 @@ const Text = forwardRef((props, ref) => {
 	}));
 	
 	
-	return (<input  className={style.input} value={value} {...props.data.attributes} onChange={update}/>)
+	return (<input  className={style.input} value={value} {...props.data.attributes} onChange={(e)=>{setValue(e.currentTarget.value)}}/>)
 	 
 })
 

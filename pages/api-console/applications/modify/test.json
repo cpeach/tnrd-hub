@@ -28,7 +28,8 @@
 						"fields":[
 							{"tag":"text","label":"Label","required":true,"container":0,"size":12,"attributes":{"name":"label","type":"text"}},
 							{"tag":"text","label":"Link","required":true,"container":0,"size":12,"attributes":{"name":"link","type":"text"}},
-							{"tag":"multi_select","label":"Navigation","required":true,"container":0,"size":12,"attributes":{"name":"nav","showSearch":false,"showArrow":true,"bordered":false,"options":[{"label":"Admin","name":"admin","value":"12d"}]}}
+							{"tag":"multi_select","label":"Navigation","required":true,"container":0,"size":12,"attributes":{"name":"nav","showSearch":false,"showArrow":true,"bordered":false,"options":[{"label":"Admin","name":"admin","value":"12d"}]}},
+							{"tag":"image","container":0,"required":true,"size":12,"application":"60906b4cf5e24d7d2498642b","types":["image/jpg","image/jpeg","image/svg","image/png","image/gif","image/tiff"],"crop":{"rotate":true,"aspect":1},"attributes":{"name":"image"}}	
 			
 						]
 					}

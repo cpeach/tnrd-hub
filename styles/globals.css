@@ -253,8 +253,9 @@ div#__next{height: 100%;}
 
 /*	upload */
 
-	.ant-upload-drag-icon{margin:24px 0px !important;}
-	.ant-upload-list-item-info{padding:12px 0px !important}
+	.ant-upload-drag-icon{margin:15px 0px !important;}
+	.ant-upload-list-item-info{padding:12px 12px !important}
+	.ant-upload-hint{padding:6px}
 	
 /*	divider */
 	.ant-divider-horizontal.ant-divider-with-text{font-size:13px !important}

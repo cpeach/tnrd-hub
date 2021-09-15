@@ -30,7 +30,6 @@ const Multi_Select = forwardRef((props, ref) => {
 		return valid
 	}
 	useEffect(() => {update()},[value]);
-	useImperativeHandle(ref, () => ({getField(){return update();}}));
 	useImperativeHandle(ref, () => ({
 		getName    : ()=>{return name},
 		clearField : ()=>{setInitial(true);setValue([])},
@@ -38,7 +37,6 @@ const Multi_Select = forwardRef((props, ref) => {
 		getField   : ()=>{return update();}
 	}));
 
-	console.log(props.data.attributes)
 	return (
 		<Select key="select" mode="multiple" value={value} className={style.multi_select} {...props.data.attributes}  style={{ width: '100%'}} placeholder="Select one or more items" onChange={(e)=>{setValue(e)}}>
 			{
