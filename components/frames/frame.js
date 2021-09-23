@@ -42,6 +42,10 @@ export default function Frame(props) {
 			return (<></>)
 		}
 	};
+	const getBack = (path) => {
+		return (<div><span><CaretLeftOutlined /></span><a href={path.href}>{path.label}</a></div>)
+	}
+	const onClose    = () => {setVisible(false);};
   const getLogo = (path) => {
         return (
           <>
@@ -55,12 +59,7 @@ export default function Frame(props) {
 					</div>
           </>
         )
-      }            
-              
-	const getBack = (path) => {
-		return (<div><span><CaretLeftOutlined /></span><a href={path.href}>{path.label}</a></div>)
-	}
-	const onClose    = () => {setVisible(false);};
+      } 
 
 	var data = props.data?props.data:{};
 	data.header = {account:{},"title":{"sub":"TNRD","label":"Application Hub"}}
@@ -80,9 +79,8 @@ export default function Frame(props) {
 						<header className={style.header}>
 							<div className={style.header_left}>
 								<div className="vam"></div>
+                  {getLogo(data.home)}
 
-									{getLogo(data.home)}
-			
 							</div>
 							<div className={style.header_right}>
 								<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
