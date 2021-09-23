@@ -9,8 +9,7 @@ const List = forwardRef((props, ref) => {
 	//var _attributes = JSON.parse(JSON.stringify(props.data.attributes.form))
 	const [initial, setInitial] = useState(true);
 	const [isModalVisible, setModalVisible] = useState(false);
-	const [values, setValues]   = useState(props.data.attributes.defaultValue||[]);
-	const [value, setValue]     = useState(props.data.attributes.defaultValue||[]);
+	const [value, setValue]     = useState(props.data.value||[]);
 	const [index, setIndex]     = useState(0);
 	const [action, setAction]   = useState('');
 	const [current, setCurrent] = useState({});
@@ -18,7 +17,7 @@ const List = forwardRef((props, ref) => {
 	const [attributes,setAttributes] = useState(props.data.attributes.form);
 
 
-	const formRef = useRef();
+	const formRef  = useRef();
 	const itemRefs = useRef(new Array());
 
 
@@ -61,7 +60,7 @@ const List = forwardRef((props, ref) => {
 
 	const edit = (e)=>{
 		setAction('edit'); 
-		formRef.current.set(value[index]);
+		formRef.current.set({...value[index]});
 		setModalVisible(true);
 	}
 
@@ -73,7 +72,7 @@ const List = forwardRef((props, ref) => {
 	}
 
 	const cancel = ()=>{
-		formRef.current.clear()
+		formRef.current.clear();
 		setModalVisible(false);
 	}
 
@@ -98,7 +97,7 @@ const List = forwardRef((props, ref) => {
 									</label>
 									<div data-index={i} >
 										<EditOutlined onClick={edit}/>
-										<div ></div>
+										<div></div>
 										 <Popconfirm title="Are you sure to delete this item?" onConfirm={_delete} okText="Yes" cancelText="No" >
 											<DeleteFilled />	
 										</Popconfirm>

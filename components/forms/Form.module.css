@@ -19,8 +19,8 @@
 	
 	.form_heading_wrapper>div {display: inline-block;vertical-align:middle;text-align: left;margin-left:15px;}
 	.form_heading_wrapper>img {display: inline-block;vertical-align: middle;width:42px;opacity: 0.6;}
-	.form_heading_wrapper label {color:rgb(117, 158, 46);font-size:13px;display: block;line-height: 13px;padding:3px 0px}
-	.form_heading_wrapper h1 {line-height:28px;font-size:28px}
+	.form_heading_wrapper label {color:rgb(117, 158, 46);font-size:13px;display: block;line-height: 13px;}
+	.form_heading_wrapper h1 {line-height:28px;font-size:27px;padding-bottom:6px;padding-top:6px}
 
 	.form {display: inline-block;width:100%;max-width:744px;text-align: left;}
 
@@ -54,7 +54,7 @@
 
 	.field,.field_invalid{padding:9px 12px;display:inline-block;vertical-align: top;}
 	.field>label,.field_invalid>label{font-size:14px;font-weight:600;display: block;letter-spacing:0.8px;}
-	.field>div,.field_invalid>div{border:1px solid rgb(150,150,150);border-radius:4px;padding:9px 6px;margin:9px 0px;background-color: white;}
+	.field>div,.field_invalid>div{overflow:hidden;border:1px solid rgb(150,150,150);border-radius:4px;margin:9px 0px;background-color: white;}
 	.field_invalid>div{border-color:rgba(193,64,12,0.80)}
 	.field>span,.field_invalid>span{font-size:13px;display: block;}
 	.field>span,.field_invalid>span{font-size:13px;display: block;}
@@ -66,7 +66,19 @@
 	Input
 */
 
-	.input{background-color:transparent; border:none;outline:none;font-size:16px;letter-spacing:0px;font-weight:400;font-family:'Lato';display: block;width:100%;}
+	.input{padding:12px 12px;background-color:transparent; border:none;outline:none;font-size:15px;letter-spacing:0px;font-weight:400;font-family:'Lato';display: block;width:100%;}
+/*
+	Description
+*/
+
+	.textarea{padding:15px 12px;background-color:transparent; border:none;outline:none;font-size:15px;letter-spacing:0px;font-weight:400;font-family:'Lato';display: block;width:100%;}
+
+/*
+	URL
+*/
+	.url{}
+	.url>div{padding:12px 12px;width:10%;text-align:left;background-color:rgb(248,248,248);color:rgb(120,120,120); border-left:1px solid rgb(220,220,220);font-size:15px;font-weight:400;display: inline-block;}
+	.url>input{padding:11px 12px;width:90%;border:none;outline:none;font-size:15px;letter-spacing:0px;display:inline-block;}
 
 /*
 	List
@@ -88,7 +100,7 @@
 	}
 	.list>ul>li>div:first-child{border-right:1px solid rgb(220,220,220);width: 8%;text-align: center;}
 	.list>ul>li>div:last-child{
-		width: 8%;
+		width: 16%;
 		text-align: right;
 	}
 	.list>ul>li>div>div{
@@ -97,7 +109,7 @@
 		width:12px;
 		
 	}
-	.list>ul>li>label{font-size:15px;display: inline-block;vertical-align: middle;cursor: pointer;width:84%;padding:0px 24px}
+	.list>ul>li>label{font-size:15px;display: inline-block;vertical-align: middle;cursor: pointer;width:76%;padding:0px 24px}
 
 	.list_field{
 		width: 100%;
@@ -137,15 +149,18 @@
 	.list_add:hover{background-color: transparent !important;}
 	.list_add>div{width:180px !important;text-align: center !important; padding:9px;color:white !important;background-color:rgb(117, 158, 46);font-size:14px !important}
 	.list_add>div:hover{background-color:rgb(98, 133, 40);cursor: pointer;}
-	
+
+/*
+	Image
+*/	
+
+	.image{padding-bottom:9px}
 
 /*
 	Multi Select
 */
 
-   
-
-
+  
 /*
 	Submit
 */

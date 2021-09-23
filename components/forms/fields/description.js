@@ -9,7 +9,6 @@ const Text = forwardRef((props, ref) => {
 	const [value, setValue]     = useState(props.data.value||"");
 	const [name, setName]       = useState(props.data.attributes.name);
 	
-
 	const update = () => {
 		var valid = validate();
 		var error = valid?"":"This field requires a value";
@@ -32,14 +31,12 @@ const Text = forwardRef((props, ref) => {
 	useImperativeHandle(ref, () => ({
 		getName : ()=>{return name},
 		clearField : ()=>{setInitial(true);setValue("")},
-		setField : (v)=>{
-			setInitial(true);setValue(v+"") 
-		},
+		setField : (v)=>{setInitial(true);setValue(v) },
 		getField : ()=>{return update();}
 	}));
 	
 	
-	return (<input  className={style.input} value={value} {...props.data.attributes} onChange={(e)=>{setValue(e.currentTarget.value)}}/>)
+	return (<textarea  className={style.textarea} value={value} {...props.data.attributes} onChange={(e)=>{setValue(e.currentTarget.value)}} />)
 	 
 })
 

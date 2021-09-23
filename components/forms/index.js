@@ -22,11 +22,15 @@ const Form = forwardRef((props, ref) => {
 			} 
 		},
 		set:(d)=>{
-			var refs = fieldRefs.current
-			for(var i=0;i<refs.length;i++){
-				refs[i].setField(d[refs[i].getName()]);
-				//refs[i].setField();
-			} 
+			setTimeout(()=>{
+				console.log("set from field")
+				console.log(fieldRefs.current);
+				var refs = fieldRefs.current
+				for(var i=0;i<refs.length;i++){
+					refs[i].setField(d[refs[i].getName()]);
+				} 
+			}, 0);
+			
 		}
 	}));
 
@@ -41,7 +45,6 @@ const Form = forwardRef((props, ref) => {
 			valid = !field.valid ? false : valid;
 		}
 		if(valid){
-			console.log(data)
 			props.onSubmit(data)
 		}else{
 			message.warning("Please address field errors")
@@ -93,8 +96,9 @@ const Form = forwardRef((props, ref) => {
 			<div className={style.form_heading_wrapper}>
 				<img src="/icons/form.png" />
 				<div>
-					<label>{data.subtitle}</label>
 					<h1>{data.title}</h1>
+					<label>{data.subtitle}</label>
+					
 				</div>
 			</div>
 		</div>
@@ -111,11 +115,12 @@ const Form = forwardRef((props, ref) => {
 				{	
 				!props.dialog?
 					(<>
-					<hr/>
-					<div className={style.form_actions}>
-						<input className={style.submit} type="submit" defaultValue="Submit" />
-						<div className={style.cancel}><a href={data.path.back.href}>Cancel</a></div>
-					</div></>) 
+						<hr/>
+						<div className={style.form_actions}>
+							<input className={style.submit} type="submit" defaultValue="Submit" />
+							<div className={style.cancel}><a href={data.path.back.href}>Cancel</a></div>
+						</div>
+					</>) 
 					: 
 					<></>	
 				}	
@@ -138,9 +143,9 @@ const Form = forwardRef((props, ref) => {
 export default Form;
 
 export function success(data){
-		notification['success']({duration:4,message:data[0],description:data[1]});
+		notification['success']({duration:6,message:data[0],description:data[1]});
 	}
 export function error(data){
-		notification['error']({duration:4,message:data[0],description:data[1]});
+		notification['error']({duration:6,message:data[0],description:data[1]});
 	}
  

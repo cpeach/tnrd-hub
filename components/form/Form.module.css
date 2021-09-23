@@ -25,7 +25,7 @@
 	Input
 */
 
-	.input{background-color:transparent; border:none;outline:none;font-size:17px;letter-spacing:0px;font-weight:300;font-family:'Lato';display: block;width:100%;}
+	.input{background-color:transparent; border:none;outline:none;font-size:16px;letter-spacing:0px;font-weight:300;font-family:'Lato';display: block;width:100%;}
 
 
 /*
@@ -48,7 +48,7 @@
 	}
 	.list>ul>li>div:first-child{border-right:1px solid rgb(220,220,220);width: 8%;text-align: center;}
 	.list>ul>li>div:last-child{
-		width: 8%;
+		width: 16%;
 		text-align: right;
 	}
 	.list>ul>li>div>div{
@@ -57,7 +57,7 @@
 		width:12px;
 		
 	}
-	.list>ul>li>label{font-size:15px;display: inline-block;vertical-align: middle;cursor: pointer;width:84%;padding:0px 24px}
+	.list>ul>li>label{font-size:15px;display: inline-block;vertical-align: middle;cursor: pointer;width:76%;padding:0px 24px}
 
 	.list_field{
 		width: 100%;

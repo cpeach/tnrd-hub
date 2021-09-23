@@ -87,6 +87,9 @@ div#__next{height: 100%;}
 	.paper span{font-size:15px;font-weight: 400;}
 	.paper hr{border:none;border-top:1px solid rgb(230,230,230);margin:15px 15px;display: block}
 
+/* seperator*/
+
+	.sep{display: inline-block;font-size:12px;padding:0px 5px;color:rgb(180,180,180);vertical-align: middle;padding-bottom:3px}
 /*
 	DISPLAY
 */
@@ -234,7 +237,7 @@ div#__next{height: 100%;}
 
 /*	descriptions */
 	.ant-descriptions-title{margin-bottom:7px}
-
+	.ant-descriptions{box-shadow: 0 0px 9px rgb(0 0 0 / 7%);}
 /*	breadcrumb */
 	.ant-breadcrumb a:hover{color:rgb(117, 158, 46) !important}
 	.ant-breadcrumb a{font-size:13px}
@@ -252,11 +255,13 @@ div#__next{height: 100%;}
 	.ant-drawer-body{padding:0px !important}
 
 /*	upload */
-
+.ant-upload.ant-upload-drag{background-color: white !important;}
 	.ant-upload-drag-icon{margin:15px 0px !important;}
 	.ant-upload-list-item-info{padding:12px 12px !important}
 	.ant-upload-hint{padding:6px}
-	
+	.ant-upload-list-item-info a{font-size:13px;color:rgb(117, 158, 46);}
+	.ant-upload-list-item-info a:hover{color:rgb(117, 158, 46)}
+
 /*	divider */
 	.ant-divider-horizontal.ant-divider-with-text{font-size:13px !important}
 	.ant-divider-inner-text{
@@ -267,4 +272,4 @@ div#__next{height: 100%;}
 	.ant-switch-checked{background-color:rgb(117, 158, 46) !important ;}
 
 /*	select */
-	.ant-select{width:100%}
+   .ant-select{width:100%;padding:12px 9px !important}

@@ -36,7 +36,8 @@ export default function Frame(props) {
 	};
 	const getPath = (path) =>{
 		if(path){
-			return path.map((item,i)=>((<div key={"link"+i} ><a href={item.href}>{item.label}</a><span><RightOutlined /></span></div>)));
+			return path.map((item,i)=>((<div key={"link-"+i} ><a href={item.href}>{item.label}</a>{i<path.length-1?<span><RightOutlined /></span>:<></>}</div>)));
+			
 		}else{
 			return (<></>)
 		}
@@ -64,7 +65,7 @@ export default function Frame(props) {
 								<div className="vam"></div>
 
 								<div className={style.header_logo}>
-									<Image src="/icons/tnrd-logo.png" width="84" height="60" />
+									<Image src="/icons/tnrd-logo.png" width="86" height="62" />
 								</div>
 
 								<div className={style.header_title}>
@@ -131,12 +132,12 @@ export default function Frame(props) {
 							>
 								<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>
 									<div className={style.frame_menu_profile} >
-										<Image src="/icons/profile.png" width="90px" height="90px" />
+										<img className={style.frame_menu_profile_image} src={props.user&&props.user.profile.image_meta?props.user.profile.image_meta.url:"/icons/profile.png"} width="108px" height="108px" />
 									</div>
 									<ul className={style.frame_menu_nav}>
-										<li><Link href="/profile/">Profile</Link></li>
-										<li>Notifications</li>
-										<li>Signout</li>
+										<li><Link href="/content/profile/">Profile</Link></li>
+										<li><Link href="/content/profile/">Notifications</Link></li>
+										<li><Link href="/content/profile/">Signput</Link></li>
 									</ul>
 								</div>
 							</Drawer>
