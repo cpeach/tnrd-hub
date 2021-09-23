@@ -10,11 +10,11 @@
 	"table":{
 		"buttons" : {"action" : {"label":"New Application","href":"/api-console/applications/modify/insert"}},
 		"columns" : [
-			{"key":"icon","title":"Icon","dataIndex":""},
+			{"key":"icon","title":"Icon","align":"center","dataIndex":""},
 			{"key":"name","title":"Full Name","dataIndex":"name"},
 			{"key":"code","title":"Code","dataIndex":"short"},
 			{"key":"dept","title":"Departments","dataIndex":"departments"},
-			{"key":"action","title":"Action","dataIndex":""}
+			{"key":"action","title":"Action","align":"center","dataIndex":""}
 		],
 		"expandable":{
 			"title":"Details",

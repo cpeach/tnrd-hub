@@ -7,7 +7,8 @@ import 'antd/lib/pagination/style/index.css';
 import {Select}   from 'antd';
 const {Option} = Select;
 
-const Multi_Select = forwardRef((props, ref) => {
+const _Select = forwardRef((props, ref) => {
+
 	const [initial, setInitial] = useState(true);
 	const [value, setValue]     = useState(props.data.value);
 	const [name, setName]       = useState(props.data.attributes.name);
@@ -36,9 +37,9 @@ const Multi_Select = forwardRef((props, ref) => {
 		setField   : (v)=>{setInitial(true);setValue(v)},
 		getField   : ()=>{return update();}
 	}));
-	//delete props.data.attributes.value
+
 	return (
-		<Select mode="multiple" className={style.multi_select} value={value} {...props.data.attributes}  style={{ width: '100%'}} placeholder="Select one or more items" onChange={(e)=>{setValue(e)}}>
+		<Select className={style.multi_select} value={value} {...props.data.attributes}  style={{ width: '100%'}} placeholder="Select an item." onChange={(e)=>{setValue(e)}}>
 			{
 				props.data.options.map((option,i)=>(
 					<Option key={option.name+"-"+i} value={option.value}>{option.label}</Option>
@@ -48,4 +49,4 @@ const Multi_Select = forwardRef((props, ref) => {
 	)
 })
 
-export default Multi_Select;
+export default _Select;

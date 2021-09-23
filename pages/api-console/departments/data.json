@@ -13,7 +13,8 @@
 		"columns" : [
 			{"key":"name","title":"Name","dataIndex":"name"},
 			{"key":"code","title":"Short Code","dataIndex":"short"},
-			{"key":"action","title":"Action","dataIndex":""}
+			{"key":"Edit","title":"Action","align":"center","dataIndex":""},
+			{"key":"Delete","title":"","align":"center","dataIndex":""}
 		],
 		"expandable":{
 			"title":"Details",

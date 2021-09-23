@@ -11,18 +11,13 @@ export default function Update(props){
 	let {_id} =  router.query
 	
 	const handleSubmit = async(data) => {
-		
-		data._id = _id;
-		data.ui = data.ui ? data.ui : {};
-		data.ui.menu = data.menu || [];
-		data.ui.resources = data.resources || []
-		delete data.menu;
-		delete data.resources;
+	
 
-		var results = await client({url:"/api-console/applications",params:{method:"PUT",body:data}})
+		//var results = await client({url:"/api-console/applications",params:{method:"PUT",body:data}})
 		success(["Success","Application record was updated."]);
 		
-		window.location.href = '/api-console/applications' 
+		 
+		//window.location.href = '/api-console/applications' 
 	}
 
 	var application = api({url:"/api-console/applications/"+_id})
@@ -43,15 +38,10 @@ export default function Update(props){
 		form.fields[2].value = application.departments.map(item=>(item._id));
 
 		form.fields[3].value = application.description;
-
-		form.fields[4].value = application.publisher || "";
-		form.fields[5].value = application.platform || "";
-		form.fields[6].value = application.hosted || false;
-
-		form.fields[7].value = application.image?application.image:'';
-		form.fields[7].meta  = application.image_meta;
-		form.fields[8].value = application.ui&&application.ui.menu?application.ui.menu:'';
-		form.fields[9].value = application.ui&&application.ui.resources?application.ui.resources:'';
+		form.fields[4].value = application.image?application.image:'';
+		form.fields[4].meta  = application.image_meta;
+		form.fields[5].value = application.ui&&application.ui.menu?application.ui.menu:'';
+		form.fields[6].value = application.ui&&application.ui.resources?application.ui.resources:'';
 
 		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} />
 	}else{

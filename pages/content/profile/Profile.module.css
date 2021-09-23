@@ -12,11 +12,10 @@
 	text-align:center;
 }
 .profile_image{
-	padding:30px;
 	border-bottom: 1px solid rgb(220,220,220);
 }
 .profile_image img{
-	opacity: 0.7;
+
 }
 .profile_image>a{
 	display: block;
@@ -62,4 +61,10 @@
 .profile_right > h1{
 	padding-bottom:30px;
 	display: block;
+}
+
+.image{
+	width:144px;
+	margin:30px 0px;
+	border-radius: 50%;
 }

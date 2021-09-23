@@ -22,8 +22,10 @@ export default function Hub({ Component, pageProps }) {
     }
     return () => (isMounted = false)
   },[]);
-  
-  return <Component {...pageProps} user={user} apps={apps} />
+
+  let content = user&&apps ? <Component {...pageProps} user={user} apps={apps} /> : <></>
+
+  return content;
 
 }
 

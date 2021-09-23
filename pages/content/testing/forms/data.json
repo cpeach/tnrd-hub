@@ -11,11 +11,8 @@
 			{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
 			{"tag":"text","label":"Short Name","required":true,"container":0,"size":12,"description":"The short name must be a url safe value. Replace spaces with '-' ","attributes":{"name":"short"}},
 			{"tag":"multi_select","label":"Departments","required":true,"container":0,"size":12,"attributes":{"name":"departments","showSearch":false,"showArrow":true,"bordered":false}},
-			{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description","key":"name"}},
-			{"tag":"text","label":"Publisher","required":false,"container":0,"size":12,"attributes":{"name":"publisher"}},
-			{"tag":"text","label":"Platform","required":false,"container":0,"size":12,"attributes":{"name":"platform"}},
-			{"tag":"select","label":"Internally Hosted","required":true,"container":0,"size":12,"options":[{"label":"Yes","name":"yes","value":true},{"label":"No","name":"no","value":false}],"attributes":{"name":"hosted","showSearch":false,"showArrow":true,"bordered":false}},
-			{"tag":"image","container":1,"required":true,"size":12,"types":["image/jpg","image/jpeg","image/svg","image/png","image/gif","image/tiff"],"attributes":{"name":"image"}},		
+			{"tag":"description","label":"Description","container":0,"size":12,"attributes":{"name":"description","key":"name"}},
+			{"tag":"image","container":1,"required":true,"size":12,"application":"60906b4cf5e24d7d2498642b","types":["image/jpg","image/jpeg","image/svg","image/png","image/gif","image/tiff"],"crop":{"rotate":true,"aspect":1},"attributes":{"name":"image"}},		
 			{"tag":"list","ref":"label","required":true,"label":"Menu Options","max":2,"container":2,"size":12,
 				"attributes":{
 					"name":"menu",

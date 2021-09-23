@@ -19,7 +19,7 @@
 .frame_body_light{background-color:rgba(250,250,250,0.5)}
 
 
-.frame_body_path{height: 50px;background-color: rgb(117, 158, 46);width: 100%;color:white;text-align: left;padding:0px 48px;}
+.frame_body_path{height: 50px;background-color: rgb(117, 158, 46);width: 100%;color:white;text-align: left;padding:0px 30px;}
 .frame_body_path>div:first-child{height:100%;display: inline-block !important;vertical-align: middle;}
 .frame_body_path>div{display: inline-block !important;vertical-align: middle;}
 .frame_body_path>div>a{color:white !important;font-size:12px;font-weight:400 !important;display: inline-block !important;}
@@ -66,6 +66,7 @@
 	.frame_menu{height:100%}
 	
 	.frame_menu_profile{padding:21px 12px;text-align:center;font-size: 18px;border-bottom:1px solid rgb(220,220,220);background-color:rgb(240, 240, 240)}
+	.frame_menu_profile_image{border-radius: 50%;}
 	.frame_menu_nav{
 		padding:0px;
 		margin:0px;
@@ -75,7 +76,7 @@
 		width:100%;
 		border-left:2px solid transparent;
 		transition: 0.3s border;
-		padding:24px 24px;
+		
 		font-size:15px;
 		font-family: 'Lato';
 		border-bottom:1px solid rgb(220,220,220);
@@ -83,7 +84,11 @@
 		color:rgb(120,120,120)
 	}
 	.frame_menu_nav>li>a{
-		color:rgb(120,120,120)
+		color:rgb(120,120,120);
+		display: block;
+		width:100%;
+		height: 100%;
+		padding:24px 24px;
 	}
 	.frame_menu_nav>li:hover{
 		border-left:2px solid rgb(117, 158, 46);
