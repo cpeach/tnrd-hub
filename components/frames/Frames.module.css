@@ -113,8 +113,10 @@
 .header_right{display: inline-block;height:100%;width:50%;text-align: right}
 .header_logo{display: inline-block;vertical-align: middle;}
 .header_title{display:inline-block; vertical-align: middle;margin-left:15px}
-.header_title>label{line-height:21px;display:block;box-sizing:border-box;vertical-align: middle;margin-right:6px;font-size: 17px}
-.header_title>.label_bold{font-weight: 900;color:black;font-size: 19px}
+.header_title>a{display: block;}
+.header_title>a>label{line-height:21px;display:block;box-sizing:border-box;vertical-align: middle;margin-right:6px;font-size: 17px;color:black;}
+.header_title>a>label:hover{cursor:pointer}
+.header_title>a>.label_bold{font-weight: 900;color:black;font-size: 19px}
 
 .header_sep{width: 1px; height:100%;vertical-align: middle;background-color: rgb(220,220,220);display: inline-block}
 .header_btn{display:inline-block;height:100%;cursor: pointer; text-align: center;padding:0px 28px}

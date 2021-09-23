@@ -41,6 +41,21 @@ export default function Frame(props) {
 			return (<></>)
 		}
 	};
+  const getLogo = (path) => {
+        return (
+          <>
+          <div className={style.header_logo}>
+            <a href={path.href}><Image src="/icons/tnrd-logo.png" width="84" height="60" /></a>
+          </div>
+          
+          <div className={style.header_title}>
+						<a href={path.href}><label className={style.label_bold}>{data.header.title.sub}</label></a>
+						<a href={path.href}><label>{data.header.title.label}</label></a>			
+					</div>
+          </>
+        )
+      }            
+              
 	const getBack = (path) => {
 		return (<div><span><CaretLeftOutlined /></span><a href={path.href}>{path.label}</a></div>)
 	}
@@ -50,6 +65,8 @@ export default function Frame(props) {
 	data.header = {account:{},"title":{"sub":"TNRD","label":"Application Hub"}}
 	data.header.account 	  = {}
 	data.header.account.hover = showDrawer
+  data.home = {}
+  data.home.href = 'https://hub.tnrdit.ca'
 	
 	if(user && apps){
 		
@@ -63,15 +80,8 @@ export default function Frame(props) {
 							<div className={style.header_left}>
 								<div className="vam"></div>
 
-								<div className={style.header_logo}>
-									<Image src="/icons/tnrd-logo.png" width="84" height="60" />
-								</div>
-
-								<div className={style.header_title}>
-									<label className={style.label_bold}>{data.header.title.sub}</label>
-									<label>{data.header.title.label}</label>						
-								</div>
-
+									{getLogo(data.home)}
+			
 							</div>
 							<div className={style.header_right}>
 								<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
