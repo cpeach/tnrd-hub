@@ -56,10 +56,7 @@ function _Application(props) {
 		if(_application){
 
 			console.log(_application)
-			data.path = [
-				{"label":"Applications","href":"/"},
-				{"label":_application.name},
-			]
+			
 
 			data.content = (
 			<div className={style.content}>

@@ -24,8 +24,6 @@ export default function Departments(props) {
 		isMounted?setApplications(_applications):null;
 		return () => (isMounted = false)
 	},[]);
-
-	g_data.path = l_data.path;
 	
 	l_data.content 	= getContent(applications,l_data);
 	g_data.content  = (<Content data={l_data} />);
