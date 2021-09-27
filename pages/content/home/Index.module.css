@@ -53,7 +53,8 @@
 	color:white !important;
 	font-weight: 300;
 }
-.home_search_field:hover{background-color: rgba(255,255,255,1);color:black}
+.home_search_field:hover{background-color: rgba(255,255,255,1);color:black !important}
+.home_search_field:hover>input{color:black !important}
 .home_search_field:hover>input:hover{color:black !important}
 .home_search_field:hover>input::placeholder{color:rgb(109, 109, 109) !important;font-weight: 400;}
 
