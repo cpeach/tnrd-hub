@@ -173,7 +173,7 @@ export default function Frame(props) {
 									<ul className={style.frame_menu_nav}>
 										<li><Link href="/content/profile/">Profile</Link></li>
 										<li><Link href="/content/profile/">Notifications</Link></li>
-										<li><Link href="/content/profile/">Signput</Link></li>
+										<li><Link href="/content/profile/">Signout</Link></li>
 									</ul>
 								</div>
 							</Drawer>

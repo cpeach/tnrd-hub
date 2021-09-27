@@ -28,10 +28,10 @@
 .frame_body_path>div>span:last-child{display: none;}
 
 
-.frame_body_left{display:flex;flex-direction: column;flex-shrink:0;width:300px;padding:0px;overflow-x: hidden;text-align: center; }
+.frame_body_left{border-right:1px solid rgb(220,220,220);display:flex;flex-direction: column;flex-shrink:0;width:300px;padding:0px;overflow-x: hidden;text-align: center; }
 .frame_body_left_hide{display:none;}
 
-.frame_body_right{padding-bottom:144px;border-left:1px solid rgb(220,220,220);flex-grow:1;display:flex;flex-direction: column;text-align: center;align-items: center;overflow-y: scroll;}
+.frame_body_right{padding-bottom:144px;flex-grow:1;display:flex;flex-direction: column;text-align: center;align-items: center;overflow-y: scroll;}
 
 
 

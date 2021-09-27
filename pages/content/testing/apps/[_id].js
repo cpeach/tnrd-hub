@@ -18,17 +18,22 @@ function _Application(props) {
 
 
 	const menu = (menu,type)=>{
-		var items = menu.map((item,i)=>{
-			if(item.type===type){
-				return <Link key={"link-"+i} href={item.link}>{item.label}</Link>
-			}
-		});
+		let items
+		if(menu){
+			items = menu.map((item,i)=>{
+				if(item.type===type){
+					return <Link key={"link-"+i} href={item.link}>{item.label}</Link>
+				}
+			});
+		}else{
+			items = <></>
+		}
 		return items; 
 	}
 
 	const tags = (data)=>{
 		var items = data.departments.map((item,i)=>{
-				return <><span key={"link-"+i}>{item.name}</span><i></i></>
+				return <span key={"link-"+i}>{item.name}</span>
 		});
 		return items; 
 	}
@@ -51,55 +56,51 @@ function _Application(props) {
 		if(_application){
 
 			console.log(_application)
-			data.path = [
-				{"label":"Applications","href":"/"},
-				{"label":_application.name},
-			]
+			
 
 			data.content = (
-			<div className={style.content}>
-				<div className={style.left_panel}>
-					<div className={style.img_wrapper}>
-					<div></div>
-						<img src={(_application.image_meta?_application.image_meta.url:'')===''?"/icons/app.png":_application.image_meta.url} />
+			<>	
+			<div className={style.panel}>
+				<div className={style.content}>
+				
+					<div className={style.left_panel}>
+						<div className={style.img_wrapper}>
+						<div></div>
+							<img src={(_application.image_meta?_application.image_meta.url:'')===''?"/icons/app.png":_application.image_meta.url} />
+						</div>
 					</div>
-				</div>
-				<div className={style.center_panel}>
-					<h1 className={style.title}>{_application.name}</h1>
-					<div className={style.tags}>{tags(_application)}</div>
-					<p className={style.description}>{_application.description}</p>
-					<Descriptions layout="vertical" bordered>
-						
-						<Descriptions.Item label="Application ID" span={3} >{_application._id}</Descriptions.Item>
-						<Descriptions.Item label="Publisher"  >Thompson-Nicola Regional District</Descriptions.Item>
-						<Descriptions.Item label="Platform" >AWS</Descriptions.Item>
-						<Descriptions.Item label="Internally Hosted" >Yes</Descriptions.Item>
-						
-					</Descriptions>
-
+					<div className={style.center_panel}>
+						<div className={style.img_wrapper}>
+							<div></div>
+							<img src={(_application.image_meta?_application.image_meta.url:'')===''?"/icons/app.png":_application.image_meta.url} />
+						</div>
+						<div className={style.details_wrapper}>
+							<h1 className={style.title}>{_application.name}</h1>
+							<div className={style.tags}>{tags(_application)}</div>
+							
+						</div>			
+						<p className={style.description}>{_application.description}</p>			
+					</div>
+					<div className={style.right_panel}>
 					
-					<div className={style.resources}>
-						<Divider style={{fontSize:"19px","marginBottom":"30px"}} >Resources</Divider>
-
-						<ul>
-							{resources(_application.ui.resources)}					
-						</ul>
-								
+						<div className={style.actions}>
+							{menu(_application.ui.menu,"primary")}
+							{menu(_application.ui.menu,"secondary")}
+						</div>
+					
 					</div>
-				</div>
-				<div className={style.right_panel}>
-				
-					<div className={style.actions}>
-						{menu(_application.ui.menu,"primary")}
-						{menu(_application.ui.menu,"secondary")}
-					</div>
-				
 				</div>
 			</div>
+			<div className={style.resources}>
+					
+					<div>Resources</div>
+								
+			</div>
+			</>
 		)
 	}
 		
-	return ( <Frame user={props.user} apps={props.apps} key="frame" data={data} active="1" navigation="false"  />)		
+	return ( <Frame user={props.user} apps={props.apps} background="light" key="frame" data={data} active="1" navigation="false"  />)		
 } 
 
 export default withRouter(_Application)

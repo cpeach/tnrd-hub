@@ -188,6 +188,6 @@
 
 
 
-@media screen and (max-width: 1080px) {
-	.home_results_wrapper,.home_search_wrapper,.home_filters{width:1260px}
+@media screen and (min-width: 1300px) {
+	.home_results_wrapper,.home_search_wrapper,.home_filters{width:1200px}
 }
