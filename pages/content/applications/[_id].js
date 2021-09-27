@@ -56,10 +56,7 @@ function _Application(props) {
 		if(_application){
 
 			console.log(_application)
-			data.path = [
-				{"label":"Applications","href":"/"},
-				{"label":_application.name},
-			]
+			
 
 			data.content = (
 			<div className={style.content}>
@@ -73,6 +70,7 @@ function _Application(props) {
 					<h1 className={style.title}>{_application.name}</h1>
 					<div className={style.tags}>{tags(_application)}</div>
 					<p className={style.description}>{_application.description}</p>
+					<div style={{display:"none"}}>
 					<Descriptions layout="vertical" bordered>
 						
 						<Descriptions.Item label="Application ID" span={3} >{_application._id}</Descriptions.Item>
@@ -81,7 +79,7 @@ function _Application(props) {
 						<Descriptions.Item label="Internally Hosted" >{_application.hosted||"--"}</Descriptions.Item>
 						
 					</Descriptions>
-
+					</div>
 					
 					<div className={style.resources}>
 						{_application.ui&&_application.ui.resources.length>0?

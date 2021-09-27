@@ -1,7 +1,13 @@
 .home{width: 100%;}
+
+
+
+.home_results_wrapper,.home_search_wrapper,.home_filters{width:1080px}
+
+
 .home_search{padding:15px 0px;background-color: rgb(117, 158, 46);color:white;}
+
 .home_search_wrapper{
-	width:1200px;
 	text-align: left;
 	display: inline-block;
 	margin:48px 0px 48px 0px;
@@ -54,7 +60,6 @@
 
 
 .home_filters{
-	width:960px;
 	display: inline-block;
 	text-align: center;
 	margin:30px 0px;
@@ -100,7 +105,7 @@
 	border-top:1px solid rgb(220,220,220)
 }
 .home_results_wrapper{
-	width:1200px;display: inline-block;text-align: left;
+	display: inline-block;text-align: left;
 }
 .home_results_total,.home_results_label{
 	text-align: left;
@@ -179,4 +184,10 @@
 	height: 60px;   
 	overflow: hidden;
 	margin-top:15px
+}
+
+
+
+@media screen and (min-width: 1300px) {
+	.home_results_wrapper,.home_search_wrapper,.home_filters{width:1200px}
 }

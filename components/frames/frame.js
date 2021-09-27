@@ -1,6 +1,6 @@
 import style  from './Frames.module.css';
 import client from '/scripts/client-api.js';
-import Router from 'next/router';
+import {useRouter} from 'next/router';
 
 import Permission from '/components/permissions/index.js';
 
@@ -18,6 +18,8 @@ export default function Frame(props) {
 	const [drawerWidth, setdrawerWidth] = useState('300');
 	const user = props.user;
 	const apps = props.apps;
+
+	const router = useRouter()
 
 	const background=()=>{
 		switch(props.background){
@@ -45,6 +47,12 @@ export default function Frame(props) {
 	const getBack = (path) => {
 		return (<div><span><CaretLeftOutlined /></span><a href={path.href}>{path.label}</a></div>)
 	}
+
+	const getApplication = (apps,short)=>{
+		let app;
+		apps.map(item=>{app = item.short===short?item:app});
+		return app;
+	}
 	const onClose    = () => {setVisible(false);};
   const getLogo = (path) => {
         return (
@@ -67,9 +75,38 @@ export default function Frame(props) {
 	data.header.account.hover = showDrawer
   data.home = {}
   data.home.href = 'https://hub.tnrdit.ca'
-	
+
+	var path = [];
+
 	if(user && apps){
-		
+
+			if(props.path !== false){
+				let pathname = router.pathname;
+				let parts,app;
+				var href = "";
+				if(pathname.indexOf("/apps") === 0){
+					parts = pathname.replace('/apps','').split('/');
+					parts.shift();
+					app = getApplication(apps,parts[0]);
+					parts?parts.map((item,i)=>{
+						let str = item.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+						href = href +"/"+ item;
+						path.push(i===0?{"label":app.name,"href":"/applications/"+app._id}:{"label":str,"href":href});
+					}):null
+
+				}else if(pathname.indexOf("/content") === 0){
+					parts = pathname.replace('/content','').split('/');
+					parts.shift();
+					parts?parts.map((item,i)=>{
+						let str = item.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+						href = href +"/"+ item;
+						str = str.indexOf("[")>-1?router.query[str.replace('[','').replace(']','')]:str;
+						path.push({"label":str,"href":href});
+					}):null
+				}
+			}
+	
+
 		return (
 			
 				<div className={style.frame}>
@@ -84,7 +121,7 @@ export default function Frame(props) {
 							</div>
 							<div className={style.header_right}>
 								<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
-									<div className={style.header_btn} onClick={()=>{Router.push('/')}}>
+									<div className={style.header_btn} onClick={()=>{router.push('/')}}>
 										<div className={style.header_btn_inner}>
 											<Image src="/icons/applications.svg" width={38} height={38} />
 										</div>
@@ -104,12 +141,12 @@ export default function Frame(props) {
 						</header>
 					</div>
 					{
-						props.data.path ? props.data.path.back ?
+						props.path !== false?props.data.path&&props.data.path.back ?
 							<div className={style.frame_body_path}>
 								<div></div>{getBack(props.data.path.back)}
 							</div> : 
 							<div className={style.frame_body_path}>
-								<div></div>{getPath(props.data.path)}
+								<div></div>{getPath(path)}
 							</div> :
 							<></>
 					}
@@ -145,7 +182,7 @@ export default function Frame(props) {
 									<ul className={style.frame_menu_nav}>
 										<li><Link href="/content/profile/">Profile</Link></li>
 										<li><Link href="/content/profile/">Notifications</Link></li>
-										<li><Link href="/content/profile/">Signput</Link></li>
+										<li><Link href="/content/profile/">Signout</Link></li>
 									</ul>
 								</div>
 							</Drawer>
