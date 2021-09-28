@@ -75,7 +75,7 @@ export default function Home(props) {
 			setCardsStyle(style.home_results_cards_out)
 			_cards = results.map((item,i)=>(
 				<div key={"card-"+i} className={style.home_results_card}>
-					<div className={style.home_results_card_wrapper} onClick={()=>{Router.push("/content/applications/"+item._id)}}>
+					<div className={style.home_results_card_wrapper} onClick={()=>{Router.push("/applications/"+item._id)}}>
 						<div size="12" padding={{all:"md"}} align="left" >
 							<img src={(item.image?item.image.url:'')===''?"/icons/app.png":item.image.url} s height={42} />
 							<h3  className={style.home_results_card_title}>{item.name}</h3>
