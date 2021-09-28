@@ -54,13 +54,30 @@ export default function Frame(props) {
 		return app;
 	}
 	const onClose    = () => {setVisible(false);};
+  const getLogo = (path) => {
+        return (
+          <>
+          <div className={style.header_logo}>
+            <a href={path.href}><Image src="/icons/tnrd-logo.png" width="84" height="60" /></a>
+          </div>
+          
+          <div className={style.header_title}>
+						<a href={path.href}><label className={style.label_bold}>{data.header.title.sub}</label></a>
+						<a href={path.href}><label>{data.header.title.label}</label></a>			
+					</div>
+          </>
+        )
+      } 
 
 	var data = props.data?props.data:{};
 	data.header = {account:{},"title":{"sub":"TNRD","label":"Application Hub"}}
 	data.header.account 	  = {}
 	data.header.account.hover = showDrawer
+  data.home = {}
+  data.home.href = 'https://hub.tnrdit.ca'
 
 	var path = [];
+
 	if(user && apps){
 
 			if(props.path !== false){
@@ -108,15 +125,7 @@ export default function Frame(props) {
 						<header className={style.header}>
 							<div className={style.header_left}>
 								<div className="vam"></div>
-
-								<div className={style.header_logo}>
-									<Image src="/icons/tnrd-logo.png" width="86" height="62" />
-								</div>
-
-								<div className={style.header_title}>
-									<label className={style.label_bold}>{data.header.title.sub}</label>
-									<label>{data.header.title.label}</label>						
-								</div>
+                  {getLogo(data.home)}
 
 							</div>
 							<div className={style.header_right}>

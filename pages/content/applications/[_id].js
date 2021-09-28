@@ -15,13 +15,17 @@ function _Application(props) {
 	const {_id}  = props.router.query
 	const data   = {};
 
-
+  var _application     = api({url:'/api-console/applications/'+_id});
 
 	const menu = (menu,type)=>{
 		let items
+    
 		if(menu){
 			items = menu.map((item,i)=>{
 				if(item.type===type){
+          if(typeof _application.hosted !== 'undefined' && !_application.hosted){
+            return <a target="_blank" href={item.link}>{item.label}</a>
+          }
 					return <Link key={"link-"+i} href={item.link}>{item.label}</Link>
 				}
 			});
@@ -51,7 +55,7 @@ function _Application(props) {
 		return items; 
 	}
 
-	var _application     = api({url:'/api-console/applications/'+_id});
+	
 	
 		if(_application){
 
