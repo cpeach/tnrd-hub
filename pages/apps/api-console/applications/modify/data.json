@@ -11,7 +11,7 @@
 			{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
 			{"tag":"text","label":"Short Name","required":true,"container":0,"size":12,"description":"The short name must be a url safe value. Replace spaces with '-' ","attributes":{"name":"short"}},
 			{"tag":"multi_select","label":"Departments","required":true,"container":0,"size":12,"attributes":{"name":"departments","showSearch":false,"showArrow":true,"bordered":false}},
-			{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description","key":"name"}},
+			{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description"}},
 			{"tag":"text","label":"Publisher","required":false,"container":0,"size":12,"attributes":{"name":"publisher"}},
 			{"tag":"text","label":"Platform","required":false,"container":0,"size":12,"attributes":{"name":"platform"}},
 			{"tag":"select","label":"Internally Hosted","required":true,"container":0,"size":12,"options":[{"label":"Yes","name":"yes","value":true},{"label":"No","name":"no","value":false}],"attributes":{"name":"hosted","showSearch":false,"showArrow":true,"bordered":false}},
@@ -43,7 +43,10 @@
 						"containers":[{"section":0,"size":"12"}],
 						"fields":[
 							{"tag":"text","label":"Title","required":true,"container":0,"size":12,"attributes":{"name":"title"}},
-							{"tag":"url","label":"Link","required":true,"container":0,"size":12,"attributes":{"name":"link"}}
+							{"tag":"url","label":"Link","required":true,"container":0,"size":12,"attributes":{"name":"link"}},
+							{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description"}},
+							{"tag":"select","label":"Type","required":true,"container":0,"size":12,"options":[{"label":"Downloads","name":"Downloads","value":"downloads"},{"label":"Guide","name":"Guide","value":"guide"},{"label":"FAQ","name":"FAQ","value":"faq"},{"label":"Documentation","name":"Documentation","value":"documentation"},{"label":"Licensing","name":"Licensing","value":"licensing"}],"attributes":{"name":"type","showSearch":false,"showArrow":true,"bordered":false}}
+			
 						]
 					}
 					

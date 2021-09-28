@@ -83,6 +83,15 @@ export default function Frame(props) {
 					parts?parts.map((item,i)=>{
 						let str = item.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
 						href = href +"/"+ item;
+						/* 
+						
+						if(parts[1]==="apps" && str.indexOf("[")>-1){
+							apps.map(item=>{str = item._id===str?item:str});
+							console.log(str)
+							//app = getApplication(apps,str);
+							str = str.name;
+							console.log(str)
+						} */
 						str = str.indexOf("[")>-1?router.query[str.replace('[','').replace(']','')]:str;
 						path.push({"label":str,"href":href});
 					}):null
