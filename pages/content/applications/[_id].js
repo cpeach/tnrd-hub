@@ -9,7 +9,7 @@ import client 	   	from '/scripts/client-api.js';
 import Frame    from '/components/frames/frame.js';
 import { FileTextOutlined } from '@ant-design/icons';
 import { Popconfirm, message,Divider,Descriptions,Empty } from 'antd';
-
+ 
 import style from './Index.module.css';
 
 function _Application(props) { 
