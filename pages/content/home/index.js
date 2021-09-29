@@ -29,6 +29,7 @@ export default function Home(props) {
 	const inputRef = useRef();
 	const filtersRef = useRef();
 	const filterAllRef = useRef();
+	const filterBookmarkRef = useRef();
 
 	var data = {}
 
@@ -38,9 +39,7 @@ export default function Home(props) {
 		setSearching(true);
 		setSearchValue(inputRef.current.value);
 	}
-	const clear = ()=>{
-		filter()
-	}
+	const clear = ()=>{filter();}
 
 	useEffect(async ()=>{
 		if(searching && (searchValue && searchValue!=="")){
@@ -55,7 +54,6 @@ export default function Home(props) {
 				search()
 			}else if(inputRef.current.value){
 				setSearchIcon(<Tooltip title="Clear Search" color="rgba(0,0,0,0.7)" ><CloseOutlined onClick={clear}/></Tooltip>);
-		
 			}else{
 				clear();
 			}
@@ -63,9 +61,7 @@ export default function Home(props) {
 			setSearching(false);
 		}
 
-	},[searching]);
-
-
+	},[searching])
 
 
 	useEffect(()=>{
@@ -77,7 +73,7 @@ export default function Home(props) {
 				<div key={"card-"+i} className={style.home_results_card}>
 					<div className={style.home_results_card_wrapper} onClick={()=>{Router.push("/applications/"+item._id)}}>
 						<div size="12" padding={{all:"md"}} align="left" >
-							<img src={(item.image?item.image.url:'')===''?"/icons/app.png":item.image.url} s height={42} />
+							<img src={(item.image?item.image.url:'')===''?"/icons/app.png":item.image.url} height={42} />
 							<h3  className={style.home_results_card_title}>{item.name}</h3>
 							<p   className={style.home_results_card_details}>{item.description}</p>
 						</div>
@@ -100,14 +96,45 @@ export default function Home(props) {
 		if(!e || (e&&e.target.getAttribute("name")==="all")){
 			currentFilter?currentFilter.className = style.home_filter : null
 			filterAllRef.current.className = style.home_filter_active;
+			filterBookmarkRef.current.className = style.home_filter;
+			filterBookmarkRef.current.firstElementChild.src=filterBookmarkRef.current.className.indexOf("active")>-1?'/icons/bookmark_solid_white.svg':'/icons/bookmark.svg';
+			
 			currentFilter = filterAllRef.current;
 			setResults(props.apps);
 			setResultsLabel("Filter: All")
+		}else if(e.target.getAttribute("name")==="bookmark"){
+			
+			currentFilter?currentFilter.className = style.home_filter : null
+			filterBookmarkRef.current.className = style.home_filter_active;
+			filterAllRef.current.className = style.home_filter;
+			currentFilter = e.target;
+			filterBookmarkRef.current.firstElementChild.src=filterBookmarkRef.current.className.indexOf("active")>-1?'/icons/bookmark_solid_white.svg':'/icons/bookmark.svg';
+			
+			if(props.user.profile){
+				console.log(props.user.profile.bookmarks);
+
+				var _results = [];
+				props.apps.map((item,i)=>{
+					var valid = false;
+					props.user.profile.bookmarks.map((mark,m)=>{
+						valid = mark === item._id ? true : valid;
+					})
+					valid ? _results.push(item) : null;
+				})
+				setResults([..._results])
+				setResultsLabel("Filter: Bookmarks")
+			}
+			
+
+
 		}else{	
 			var _apps = props.apps
 			currentFilter?currentFilter.className = style.home_filter : null
 			e.target.className = style.home_filter_active;
 			filterAllRef.current.className = style.home_filter;
+			filterBookmarkRef.current.className = style.home_filter;
+			filterBookmarkRef.current.firstElementChild.src=filterBookmarkRef.current.className.indexOf("active")>-1?'/icons/bookmark_solid_white.svg':'/icons/bookmark.svg';
+			
 			currentFilter = e.target;
 			
 			var _results = [];
@@ -119,7 +146,6 @@ export default function Home(props) {
 				valid ? _results.push(item) : null;
 			})
 			setResults([..._results])
-
 			setResultsLabel("Filter: "+e.target.innerText)
 		}
 		inputRef.current.value = "";
@@ -146,7 +172,9 @@ export default function Home(props) {
 			let _filters = departments.map((item,i)=>(
 				<span key={"filter-"+i} name={item.short} className={style.home_filter} onClick={filter}>{item.name}</span>
 			))
+			_filters.unshift((<span ref={filterBookmarkRef} key="filter-bookmark" onClick={filter} className={style.home_filter} name="bookmark"><img style={{width:"18px"}} src="/icons/bookmark.svg" /> Bookmarks</span>))
 			_filters.unshift((<span ref={filterAllRef} key="filter-all" onClick={filter} className={style.home_filter} name="all">{"All"}</span>))
+				
 			setFilters(_filters)
 			filter();			
 		}
@@ -195,7 +223,7 @@ export default function Home(props) {
 	)
 
 
-	return ( <Frame user={props.user} apps={props.apps} data={data} navigation="false" path={false} />)
+	return ( <Frame user={props.user} apps={props.apps} data={data} navigation={false} path={false} />)
 } 
 
 

@@ -163,8 +163,7 @@ export default function Frame(props) {
 
 						<div className={style.frame_body +" "+ background()}>
 							
-
-							<div key="left" className={props.navigation!=="false"?style.frame_body_left:style.frame_body_left_hide}>
+							<div key="left" className={props.navigation!=="false"&&props.navigation!==false?style.frame_body_left:style.frame_body_left_hide}>
 								{data.navigation ? navigation(data.navigation,props.active) : null}
 							</div>
 							
