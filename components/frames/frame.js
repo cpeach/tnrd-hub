@@ -130,7 +130,7 @@ export default function Frame(props) {
 							</div>
 							<div className={style.header_right}>
 								<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
-									<div className={style.header_btn} onClick={()=>{router.push('/')}}>
+									<div className={[style.header_btn,style.all_apps]} onClick={()=>{router.push('/')}}>
 										<div className={style.header_btn_inner}>
 											<Image src="/icons/applications.svg" width={38} height={38} />
 										</div>

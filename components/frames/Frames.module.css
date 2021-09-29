@@ -125,7 +125,7 @@
 
 .header_sep{width: 1px; height:100%;vertical-align: middle;background-color: rgb(220,220,220);display: inline-block}
 .header_btn{display:inline-block;height:100%;cursor: pointer; text-align: center;padding:0px 28px}
-/* .header_btn:hover{background-color:rgb(248,248,248)} */
+.header_btn.all_apps:hover{background-color:rgb(248,248,248)}
 .header_btn>.header_btn_inner{display:inline-block;vertical-align: middle}
 .header_btn .header_btn_label{padding:0px 15px 0px 21px;font-size: 15px;font-weight: 400;letter-spacing: 0.6px}
 
