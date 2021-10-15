@@ -39,13 +39,15 @@ const Form = forwardRef((props, ref) => {
 		e.preventDefault();
 		let data = {},field,valid=true;
 		var refs = fieldRefs.current
+		
 		for(var i=0;i<refs.length;i++){
 			field = await refs[i].getField();
-			data[field.name] = field.value;
+			data[field.name] = field.value
 			valid = !field.valid ? false : valid;
 		}
 		if(valid){
-			props.onSubmit(data)
+			
+			props.onSubmit(data);
 		}else{
 			message.warning("Please address field errors")
 		}
@@ -86,7 +88,7 @@ const Form = forwardRef((props, ref) => {
 		)
 	}
 	const getField = (field,i,k)=>{
-		return <Field ref={(element) => {fieldRefs.current[k]=element}} dialog={props.dialog} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
+		return <Field ref={(element) => {fieldRefs.current[k]=element}} defer={props.dialog?true:false} dialog={props.dialog} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
 	}
 
 

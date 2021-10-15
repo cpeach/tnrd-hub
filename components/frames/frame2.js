@@ -1,4 +1,4 @@
-import style  from './Frames.module.css';
+import style  from './Frames2.module.css';
 import client from '/scripts/client-api.js';
 import {useRouter} from 'next/router';
 
@@ -27,7 +27,14 @@ export default function Frame(props) {
 			return style.frame_body_light;
 		}
 	}
-
+	const align=()=>{
+		let align = {
+			left   : style.left,
+			right  : style.right,
+			center : style.center
+		}
+		return align[props.align?props.align:"left"]
+	}
 	const showDrawer = () =>{
 		setVisible(true);
 		var e = document.getElementById('header_account_label');
@@ -54,7 +61,7 @@ export default function Frame(props) {
 		return app;
 	}
 	const onClose    = () => {setVisible(false);};
-  const getLogo = (path) => {
+  	const getLogo = (path) => {
         return (
           <>
           <div className={style.header_logo}>
@@ -67,7 +74,7 @@ export default function Frame(props) {
 					</div>
           </>
         )
-      } 
+    } 
 
 	const signout = ()=>{
 		localStorage.removeItem('user');
@@ -132,7 +139,7 @@ export default function Frame(props) {
 						<header className={style.header}>
 							<div className={style.header_left}>
 								<div className="vam"></div>
-                  {getLogo(data.home)}
+                  				{getLogo(data.home)}
 
 							</div>
 							<div className={style.header_right}>
@@ -158,28 +165,20 @@ export default function Frame(props) {
 					</div>
 					{
 						props.path !== false?props.data.path&&props.data.path.back ?
-							<div className={style.frame_body_path}>
+							<div className={style.path}>
 								<div></div>{getBack(props.data.path.back)}
 							</div> : 
-							<div className={style.frame_body_path}>
+							<div className={style.path}>
 								<div></div>{getPath(path)}
 							</div> :
 							<></>
 					}
 					<Permission user={user} apps={apps}>
 
-						<div className={style.frame_body +" "+ background()}>
+						<div className={style.frame_body +" "+ background() +" "+  align()}>
 							
-							<div key="left" className={props.navigation!=="false"&&props.navigation!==false?style.frame_body_left:style.frame_body_left_hide}>
-								{data.navigation ? navigation(data.navigation,props.active) : null}
-							</div>
-							
-							<div key="right" className={style.frame_body_right}>
-									
-									{data.content}
+							{data.content}
 								
-							</div>	
-
 							<Drawer
 								placement="right"
 								closable={false}
@@ -187,7 +186,7 @@ export default function Frame(props) {
 								visible={visible}
 								getContainer={false}
 								width={drawerWidth}
-								style={{marginTop:"87px"}}
+								style={{marginTop:"93px"}}
 								maskStyle={{backgroundColor:"rgba(0,0,0,0.0)",overflow:"hidden"}}	
 							>
 								<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>
@@ -215,26 +214,5 @@ export default function Frame(props) {
 }
 
 
-export function navigation(data,active){
-	
-	return (
-	
-		<nav key="name" className={style.nav}>
 
-			{
-				data.items.map((item,i)=>(
-					<Link key={"link-"+i} href={item.href}>
-						<div className={parseInt(active)===i ?style.nav_item_active:style.nav_item}>
-							<i><AntIcon name={item.icon?item.icon:"t"} /></i>
-							<div>{item.label}</div>
-						</div>
-					</Link>
-				))
-			}
-
-		</nav>
-	
-	)
-	
-}
 

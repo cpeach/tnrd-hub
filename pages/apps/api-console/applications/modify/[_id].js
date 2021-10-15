@@ -12,7 +12,13 @@ export default function Update(props){
 	
 	const handleSubmit = async(data) => {
 		
-		data._id = _id;
+		data.resources = [];
+		data.resources = data.resources.concat(data['resources-links']);
+		data.resources = data.resources.concat(data['resources-docs']);
+		delete data['resources-links'];
+		delete data['resources-docs'];
+		
+		/* data._id = _id;
 		data.ui = data.ui ? data.ui : {};
 		data.ui.menu = data.menu || [];
 		data.ui.resources = data.resources || []
@@ -22,7 +28,7 @@ export default function Update(props){
 		var results = await client({url:"/api-console/applications",params:{method:"PUT",body:data}})
 		success(["Success","Application record was updated."]);
 		
-		window.location.href = '/api-console/applications' 
+		window.location.href = '/api-console/applications'  */
 	}
 
 	var application = api({url:"/api-console/applications/"+_id})

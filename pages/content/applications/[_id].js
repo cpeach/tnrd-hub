@@ -1,12 +1,11 @@
 //import { Button } from 'tnrd-components';
 
-import Container from '/components/layout/containers/index.js';
 import {useState,useEffect,useRef} from 'react';
 import Link      from 'next/link';
 import {withRouter} from 'next/router';
 import api 	   	from '/scripts/api.js';
 import client 	   	from '/scripts/client-api.js';
-import Frame    from '/components/frames/frame.js';
+import Frame    from '/components/frames/frame2.js';
 import { FileTextOutlined } from '@ant-design/icons';
 import { Popconfirm, message,Divider,Descriptions,Empty } from 'antd';
  

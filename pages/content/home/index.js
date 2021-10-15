@@ -50,9 +50,9 @@ export default function Home(props) {
 			setSearching(false);
 			setResultsLabel("Search Term: "+searchValue)
 		}else{
-			if(inputRef.current.value !== searchValue){
+			if(inputRef.current && inputRef.current.value !== searchValue){
 				search()
-			}else if(inputRef.current.value){
+			}else if(inputRef.current && inputRef.current.value){
 				setSearchIcon(<Tooltip title="Clear Search" color="rgba(0,0,0,0.7)" ><CloseOutlined onClick={clear}/></Tooltip>);
 			}else{
 				clear();
@@ -164,9 +164,10 @@ export default function Home(props) {
 	useEffect(async()=>{
 
 		let isMounted    = true;
-		setRecordsTotal(props.apps.length);
 		
-		if(isMounted){
+		
+		if(isMounted && props.apps){
+			setRecordsTotal(props.apps.length);
 			let departments = await client({url:'/api-console/departments/'});
 		
 			let _filters = departments.map((item,i)=>(

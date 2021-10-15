@@ -8,7 +8,7 @@
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-.frame_header{height:96px;}
+.frame_header{height:87px;}
 .frame_path{height:48px;background-color: rgb(117, 158, 46)}
 .frame_body{
 	width: 100%; 

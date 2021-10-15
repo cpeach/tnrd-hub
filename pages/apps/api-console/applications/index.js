@@ -4,7 +4,7 @@ import gd      from '../data.json'; // global data
 import ld      from './data.json';  // local data
 import api 	   from '/scripts/api.js';
 import client  from '/scripts/client-api.js';
-import Frame   from '/components/frames/frame.js';
+import Frame   from '/components/frames/frame2.js';
 import Table   from '/components/layout/tables/table.js';
 import Description from '/components/layout/descriptions/description.js';
 import Content from '/components/layout/stacks/index.js';
@@ -28,7 +28,7 @@ export default function Departments(props) {
 	l_data.content 	= getContent(applications,l_data);
 	g_data.content  = (<Content data={l_data} />);
 
-	return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1"  />)
+	return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1" align="center"  />)
 } 
 									
 export function getContent(applications,data){

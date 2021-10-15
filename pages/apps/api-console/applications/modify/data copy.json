@@ -52,6 +52,26 @@
 					}
 					
 				}
+			},
+			{"tag":"list","ref":"title","label":"Resource Documents","container":2,"size":12,
+				"attributes":{
+					"name":"resources-docs",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Resource Document",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"hidden","container":0,"value":true,"attributes":{"name":"document"}},
+							{"tag":"text","label":"Title","required":true,"container":0,"size":12,"attributes":{"name":"title"}},
+							{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description"}},
+							{"tag":"document","container":0,"required":true,"size":12,"attributes":{"name":"file"}},		
+							{"tag":"select","label":"Type","required":true,"container":0,"size":12,"options":[{"label":"Downloads","name":"Downloads","value":"downloads"},{"label":"Guide","name":"Guide","value":"guide"},{"label":"FAQ","name":"FAQ","value":"faq"},{"label":"Documentation","name":"Documentation","value":"documentation"},{"label":"Licensing","name":"Licensing","value":"licensing"}],"attributes":{"name":"type","showSearch":false,"showArrow":true,"bordered":false}}
+			
+						]
+					}
+					
+				}
 			}
 				
 		]

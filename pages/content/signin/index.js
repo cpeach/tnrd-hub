@@ -4,6 +4,7 @@ import {useState} from 'react';
 import Router from 'next/router';
 import Container from '/components/layout/containers/index.js';
 import { LoadingOutlined } from '@ant-design/icons';
+
 export default function Signin(props) { 
 	
 	const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ export default function Signin(props) {
 	const [loading, setLoading] = useState('none');
 
 	const onSubmit = async(e)=>{
-	setLoading('');
+		setLoading('');
 
 		var application = "60906b4cf5e24d7d2498642b";
 		var p = {
@@ -27,7 +28,7 @@ export default function Signin(props) {
 		if(res.code){
 			localStorage.setItem("token",res.payload.token);
 			localStorage.setItem("user",res.payload.identity.sub);
-			Router.push('/');
+			window.location.href = '/';
 			//this.props.setUser(res.payload.refresh)
 		} 
 		//console.log(res)

@@ -28,6 +28,18 @@ const List = forwardRef((props, ref) => {
 		getField   : ()=>{
 			var v = validate(value);
 			props.onChange(v);
+
+			if(v.valid){
+				value.map(async(item,i)=>{
+					for(let k in item){
+						if(item[k].defer){
+							item[k] = await item[k].method(item[k].params);
+						}
+					}
+					
+				})
+			}
+			console.log(value)
 			v.value = value;
 			v.name  = name;
 			return v;
@@ -75,6 +87,7 @@ const List = forwardRef((props, ref) => {
 		formRef.current.clear();
 		setModalVisible(false);
 	}
+
 
 	const validate = (v)=>{
 		let valid=true,error="";

@@ -12,28 +12,34 @@ export default function Hub({ Component, pageProps }) {
 
   useEffect(async () => {
     let isMounted = true;
-    var ref   = localStorage.getItem('user');
+    var ref = localStorage.getItem('user');
+    
     var _user = await client({url:"/api-console/users/"+ref});
     var _apps = await client({url:"/api-console/applications"});
     if((_user.length<1&&router.pathname.indexOf('/signin')===-1)&&ref){
       router.push('/signin')
     }
-    if(isMounted){
+    if(isMounted && _apps){
       setInterval(async() => {
           if(!(localStorage.getItem('user')&&localStorage.getItem('token'))){
-             router.push('/signin')
+            router.push('/signin')
           }else{
-               var session = await client({url:"/api-console/validate"});
+              var session = await client({url:"/api-console/validate"});
           }
-      }, 10000);
+      }, 20000);
       setUser(_user);
       setApps(_apps);
     }
+    
     return () => (isMounted = false)
   },[]);
-
-  let content = user&&apps ? <Component {...pageProps} user={user} apps={apps} /> : <></>
-
+  
+  let content = <></>;
+  if(router.pathname.indexOf('/signin')>-1){
+    content = <Component {...pageProps} />
+  }else if(user&&apps){
+    content = <Component {...pageProps} user={user} apps={apps}/>
+  }
   return content;
 
 }
