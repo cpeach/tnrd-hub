@@ -1,0 +1,17 @@
+
+
+
+.page{
+    width:90%;
+    display: inline-block;
+}
+
+
+@media screen and (min-width: 900px) {
+	.page{width:900px}
+}
+
+
+@media screen and (min-width: 1300px) {
+	.page{width:1280px}
+}

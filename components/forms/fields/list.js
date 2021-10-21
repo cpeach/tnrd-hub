@@ -122,10 +122,10 @@ const List = forwardRef((props, ref) => {
 				</ul>
 				<Form ref={formRef} dialog={true} user={props.user} apps={props.apps} data={attributes} active="1" onSubmit={update} visible={isModalVisible} cancel={cancel} />
 					
-				
 			</div>
 	)
 	 
 })
 
 export default List;
+

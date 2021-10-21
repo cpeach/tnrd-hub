@@ -7,6 +7,18 @@
 		{"label":"Administration","href":"/api-console/applications"},
 		{"label":"Applications","href":"/api-console/applications"}
 	],
+	
+	"list":{
+		"actions" : {"action" : {"label":"New Application","href":"/api-console/applications/modify/insert"}},
+		"columns" : [
+			{"title":"Icon","ref":"image","align":"center"},
+			{"title":"Full Name","ref":"name"},
+			{"title":"Code","ref":"short"},
+			{"title":"Departments","ref":"departments"},
+			{"title":"Action","align":"center"}
+		]
+	},
+
 	"table":{
 		"buttons" : {"action" : {"label":"New Application","href":"/api-console/applications/modify/insert"}},
 		"columns" : [

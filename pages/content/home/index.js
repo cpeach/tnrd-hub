@@ -165,7 +165,6 @@ export default function Home(props) {
 
 		let isMounted    = true;
 		
-		
 		if(isMounted && props.apps){
 			setRecordsTotal(props.apps.length);
 			let departments = await client({url:'/api-console/departments/'});

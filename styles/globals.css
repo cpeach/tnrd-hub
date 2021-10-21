@@ -48,10 +48,10 @@ div#__next{height: 100%;}
 	
 	.container{
 		font-size: 0px;
+		overflow:hidden;
 	}
 	
 	.box{display:inline-block;}
-
 
 
 
@@ -88,7 +88,7 @@ div#__next{height: 100%;}
 	h1{font-size: 36px;line-height:33px;font-weight: 700 !important;letter-spacing: -1px;color: rgb(70,70,70) !important;}
 	h2{font-weight: 400;font-size:19px;color: rgb(80,80,80)}
 	h3{font-weight: 700;font-size:17px;color: rgb(80,80,80)}
-	h4{font-weight: 400;font-size:28px;color: rgb(80,80,80)}
+	h4{font-weight: 400;font-size:28px;color: rgb(80,80,80);letter-spacing:0px;}
 	h5{font-weight: 600 !important;font-size:19px;color: rgb(80,80,80)}
 
 
@@ -158,8 +158,13 @@ div#__next{height: 100%;}
 
 	._h12{height:100%}._h11{height:91.66%}._h10{height:83.33%}._h9{height:75%}._h8{height:66.66%}._h7{height:58.33%}._h6{height:50%}._h5{height:41.66%}._h4{height:33.33%}._h3{height:25%}._h2{height:16.66%}._h1{height:8.33%} 
 
-
-
+	._h_auto{height:auto}
+	._h_xs{height:60px}
+	._h_sm{height:120px}	
+	._h_md{height:240px}
+	._h_lg{height:360px}
+	._h_xl{height:480px}
+	._h_xxl{height:600px}
 /*
 	Padding
 */

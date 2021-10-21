@@ -22,7 +22,7 @@
 .right{text-align: right;}
 .left{text-align: left;}
 
-.path{height: 54px;background-color: rgb(117, 158, 46);width: 100%;color:white;text-align: left;padding:0px 30px;}
+.path{height: 48px;background-color: rgb(117, 158, 46);width: 100%;color:white;text-align: left;padding:0px 30px;}
 .path>div:first-child{height:100%;display: inline-block !important;vertical-align: middle;}
 .path>div{display: inline-block !important;vertical-align: middle;}
 .path>div>a{color:white !important;font-size:12px;font-weight:400 !important;display: inline-block !important;}

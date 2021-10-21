@@ -70,7 +70,7 @@ function _Application(props) {
 		setResultsStyle(style.results_out)
 		
 		if(resources && resources.length>0){
-			
+			console.log(resources)
 			_results = resources.map((item,i)=>(
 				<div key={"resource-"+i} className={style.resource}>
 					<a href={item.link} target={"_blank"} className={style.resource_wrapper}>

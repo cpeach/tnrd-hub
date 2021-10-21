@@ -1,0 +1,7 @@
+
+/*
+	Tile
+*/
+	.tile{display:inline-block;vertical-align: top;}
+	.tile>div{border:1px solid rgb(220,220,220);border-radius: 5px;overflow: hidden;box-shadow: 0px 0px 10px rgba(177, 177, 177, 0.4);}
+	
