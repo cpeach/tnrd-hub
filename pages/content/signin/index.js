@@ -22,12 +22,12 @@ export default function Signin(props) {
 		}
 		
 		//params.headers['Content-Type']   = params.headers['Content-Type'] || 'application/json';
-		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({params:p})}
-		var res    = await fetch('https://api.tnrdit.ca/accounts/signin',params);
+		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}
+		var res    = await fetch('https://api.tnrdit.ca/auth/signin',params);
 		res        = await res.json()
-		if(res.code){
-			localStorage.setItem("token",res.payload.token);
-			localStorage.setItem("user",res.payload.identity.sub);
+		if(res.token){
+			localStorage.setItem("token",res.token);
+			localStorage.setItem("user",res.user);
 			window.location.href = '/';
 			//this.props.setUser(res.payload.refresh)
 		} 

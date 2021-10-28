@@ -25,8 +25,9 @@ function _Application(props) {
 	const filterAllRef = useRef();
 
 	const tags = (data)=>{
+		console.log(data.departments)
 		var items = data.departments.map((item,i)=>{
-				return <span key={"link-"+i}>{item.name}</span>
+			return <span key={"link-"+i}>{item.name}</span>
 		});
 		return items; 
 	}
@@ -70,7 +71,7 @@ function _Application(props) {
 		setResultsStyle(style.results_out)
 		
 		if(resources && resources.length>0){
-			console.log(resources)
+		
 			_results = resources.map((item,i)=>(
 				<div key={"resource-"+i} className={style.resource}>
 					<a href={item.link} target={"_blank"} className={style.resource_wrapper}>
@@ -96,7 +97,7 @@ function _Application(props) {
 	useEffect(async()=>{
 
 		let isMounted    = true;
-		var _application = await client({url:'/api-console/applications/'+_id});
+		var _application = await client({url:'/hub-console/applications/'+_id});
 
 		if(isMounted && _application){
 			setApplication(_application)
@@ -115,7 +116,6 @@ function _Application(props) {
 			console.log(item+" "+app._id)
 			valid = item===app._id?true:valid;
 		});
-		console.log(valid)
 		return valid;
 	}
 
@@ -131,22 +131,21 @@ function _Application(props) {
 			bookmarks.map((item,i)=>{item === application._id ? bookmarks.splice(i,1):null;});
 			img.setAttribute('src','/icons/bookmark.svg');
 			span.textContent="Bookmark";
-			results = await client({url:"/api-console/users/bookmarks/"+props.user.profile._id,params:{method:"PUT",body:bookmarks}})
+			results = await client({url:"/hub-console/users/bookmarks/"+props.user.profile._id,params:{method:"PUT",body:bookmarks}})
 		}else{
 			bookmarks.push(application._id);
 			img.setAttribute('src','/icons/bookmark_solid_orange.svg');
 			span.textContent="Bookmarked";
-			results = await client({url:"/api-console/users/bookmarks/"+props.user.profile._id,params:{method:"PUT",body:bookmarks}})
+			results = await client({url:"/hub-console/users/bookmarks/"+props.user.profile._id,params:{method:"PUT",body:bookmarks}})
 		}
 		console.log(results);
 		console.log(bookmarks)
 	
 	}
 
-	var _application     = api({url:'/api-console/applications/'+_id});
+	var _application     = api({url:'/hub-console/applications/'+_id});
 	
 		if(_application){
-
 
 			data.content = (
 			<>	
@@ -169,7 +168,7 @@ function _Application(props) {
 						<div className={style.options}>
 							{
 								_application.ui.menu.map((item,i)=>(
-									(<a key={"option-"+i} href={item.link} target={item.link.indexOf('hub.tnrdit')>-1||item.link.indexOf('http')===-1?"_self":"_blank"} className={item.type==='primary'?style.option_primary:style.option_secondary}>{item.label}</a>))
+									(<a href={item.link} style={{width:"100%"}} target={item.link.indexOf('http')>-1?"_blank":"_self"} ><div key={"option-"+i} className={item.type==='primary'?style.option_primary:style.option_secondary}>{item.label}</div></a>))
 								)
 							}		
 							<div onClick={bookmark} className={style.option_more}>

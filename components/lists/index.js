@@ -1,64 +1,63 @@
 
 import client   from '/scripts/client-api.js';
 import style from './List.module.css';
+import Filter from './filters/filter.js';
 import {useState,useEffect,useRef} from 'react';
+import Link from 'next/link';
 import {CloseOutlined,SearchOutlined,FunnelPlotOutlined,CaretDownOutlined,LoadingOutlined } from '@ant-design/icons';
-import {Empty,Tooltip} from 'antd'
+import {Empty,Tooltip,Modal} from 'antd'
 
 export default function List(props)
 {	
 
-	console.log(props.data.rows)
-	
-	const [initial,setInitial] = useState(true)
-	const [rowsStyle,setRowsStyle] = useState(style.home_results_rows_in);
-	const [searching,setSearching]   = useState(false);
-	const [searchIcon,setSearchIcon] = useState();
-	const [searchValue,setSearchValue] = useState();
 
-	const [recordsTotal,setRecordsTotal] = useState(0);
+	const [rowsStyle,setRowsStyle]     = useState(style.home_results_rows_in);
+	const [searching,setSearching]     = useState(false);
+	const [searchIcon,setSearchIcon]   = useState();
+	const [searchValue,setSearchValue] = useState("");
+
 	const [resultsTotal,setResultsTotal] = useState(0);
-	const [resultsLabel,setResultsLabel] = useState(0);
-	const [results,setResults] = useState([]);
-	const [rows,setRows] = useState(<></>);
+	const [results,setResults]           = useState([]);
+	const [rows,setRows]                 = useState(<></>);
 	
-	const [filters,setFilters] = useState();
-	let currentFilter;
-	//const [applications,setApplications] = useState(props.apps);
-	
+	const [filtersVisable,setFiltersVisable] = useState(false);
+	const [filterCount,setFilterCount] = useState(0);
 
+	let currentFilter;
+	
 	const inputRef = useRef();
-	const filtersRef = useRef();
-	const filterAllRef = useRef();
-	const filterBookmarkRef = useRef();
+	const filterRefs = useRef(new Array());
 
 	var data = {}
 
 //	SEARCH
 
 	const search = ()=>{
+		console.log("searcg")
 		setSearching(true);
 		setSearchValue(inputRef.current.value);
 	}
-	const clear = ()=>{filter();}
+	const clear = async()=>{
+			setSearchIcon(<></>);
+			inputRef.current.value = ""
+			let apps = await props.onSearch({search:""});
+			setResults(apps);
+	}
 
 	useEffect(async ()=>{
 		if(searching && (searchValue && searchValue!=="")){
-			clearFilters();
 			setSearchIcon(<LoadingOutlined spin style={{paddingTop:"9px"}} />);
-			let apps = await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:inputRef.current.value}}})
+			let apps = await props.onSearch({search:inputRef.current.value});
 			setResults(apps);
 			setSearching(false);
-			setResultsLabel("Search Term: "+searchValue)
 		}else{
 			if(inputRef.current && inputRef.current.value !== searchValue){
 				search()
 			}else if(inputRef.current && inputRef.current.value){
 				setSearchIcon(<Tooltip title="Clear Search" color="rgba(0,0,0,0.7)" ><CloseOutlined onClick={clear} style={{paddingTop:"9px"}} /></Tooltip>);
 			}else{
-				//clear();
+				clear();
 			}
-			
 			setSearching(false);
 		}
 
@@ -94,45 +93,57 @@ export default function List(props)
 
 //	FILTER
 
-	const filter = async (e)=>{
-		let departments = await client({url:'/api-console/departments/'});
-		setResults(props.data.rows);
-		
-		inputRef.current.value = "";
-		setSearchIcon(<></>);
+	const loadFilters = async (e)=>{
+		let _filters = props.data.filters.map((item,i)=>{
+			return <Filter ref={(element) => {fieldRefs.current[k]=element}} key={"filter-"+i} data={item} onChange={change}/>
+		})
+		return _filters
 	}
 
-	const clearFilters = ()=>{
-/* 		let _filters = filtersRef.current.children;
-		for(var i = 0; i<_filters.length;i++){
-			_filters[i].className = style.home_filter;
-		} */
 
-	}
+	const filterChange = (p)=>{}	
 
 	useEffect(async()=>{
 
 		let isMounted = true;
 		
 		if(isMounted && props.data.rows){
-			setRecordsTotal(props.data.rows.length);
-			
-		
-	/* 		let _filters = departments.map((item,i)=>(
-				<span key={"filter-"+i} name={item.short} className={style.home_filter} onClick={filter}>{item.name}</span>
-			))
-			_filters.unshift((<span ref={filterBookmarkRef} key="filter-bookmark" onClick={filter} className={style.home_filter} name="bookmark"><img style={{width:"18px"}} src="/icons/bookmark.svg" /> Bookmarks</span>))
-			_filters.unshift((<span ref={filterAllRef} key="filter-all" onClick={filter} className={style.home_filter} name="all">{"All"}</span>))
-				 */
-			//setFilters(_filters)
-			filter();			
+			setResults(props.data.rows);			
 		}
 
 		return () => (isMounted = false);
 
 	},[])
 	
-	
+
+	const applyFilters = async ()=>{
+
+		let data = {},field,valid=true,count=0;
+		var refs = filterRefs.current
+		
+		for(var i=0;i<refs.length;i++){
+			let _filter = await refs[i].getFilter();
+			data[_filter.name] = _filter.value;
+		}  
+		for(let i in data){
+			switch (typeof data[i]) {
+				case "string":
+					break;
+				case "object":
+					data[i].length>0?count++:null;
+					break;			
+				default:
+					break;
+			}
+		};
+
+		let res = await props.onFilter({search:searchValue,filters:data});
+		setResults(res);
+		setFilterCount(count);
+		setFiltersVisable(false)
+
+	}
+	const cancelFilters = ()=>{setFiltersVisable(false)}
 	
 	return (
 		<>
@@ -140,22 +151,21 @@ export default function List(props)
 		<div className={style.list_heading+" mar_bottom_xl"}>
 			<h1>Applications</h1>
 			<div className={style.list_actions}>
-				<div>New Application</div>
+				<Link href={props.data.new.href}>{props.data.new.label}</Link>
 			</div>			
 		</div>
 		<div className={style.list_options+" mar_bottom_md"}>
 			
-
 			<div className={style.list_search}>
-				<SearchOutlined style={{paddingTop:"9px"}} />
+				<SearchOutlined style={{paddingTop:"9px",fontSize:"16px"}} />
 				<input ref={inputRef} type="text" placeholder="Search Items" onKeyUp={search} required  />
 				<span className={style.home_search_icon}>{searchIcon}</span>
 			</div>
 			<div className={style.list_results}>
-				{recordsTotal} Records
+				{resultsTotal} Records
 			</div>
-			<div className={style.list_filters}>
-				<div>Filters <FunnelPlotOutlined style={{marginLeft:"6px",color:"rgb(140,140,140)"}} /></div>
+			<div className={style.list_filters} onClick={()=>{setFiltersVisable(true)}}>
+				<div>Filters {filterCount} <FunnelPlotOutlined style={{marginLeft:"6px",fontSize:"16px",color:"rgb(140,140,140)"}} /></div>
 			</div>	
 			<div className={style.list_more}>
 				<div>Options <CaretDownOutlined style={{marginLeft:"6px",color:"rgb(140,140,140)"}} /></div>
@@ -171,14 +181,24 @@ export default function List(props)
 							{col.title}
 						</div>
 					))
-					
 				}
 			</div>
 			
 			{rows}
 
-			
 		</div>
+
+		<Modal visible={filtersVisable} title="Filters" onOk={applyFilters} onCancel={cancelFilters} width={360}>
+			{
+				props.data.filters?
+				props.data.filters.map((item,i)=>(
+					<Filter ref={(element) => {filterRefs.current[i]=element}} key={"filter-"+i} data={item} onChange={filterChange}/>
+				))
+				:
+				<div>No Filters</div>
+			}
+		</Modal>
+
 		</>
 	)
 }

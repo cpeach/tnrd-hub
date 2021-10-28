@@ -109,6 +109,23 @@ div#__next{height: 100%;}
 /*
 	LINKS
 */
+	.btn{
+		padding:9px 12px;
+		border-radius: 3px;
+		display: inline-block;
+		cursor:pointer;
+		text-align: center;
+		transition: 300ms;
+		letter-spacing: 0.4px;
+		font-size:12px;
+		vertical-align: middle;
+		background-color:rgb(117, 158, 46);
+		color:white;
+		border-radius: 4px;
+		font-weight: 400;
+	}
+	.btn:hover{color: white;background-color:rgb(108, 145, 43);}
+
 	a,a.button{cursor: pointer;display:inline-block;  border-radius: 6px; font-size: 15px; font-weight:400; color:rgb(117, 158, 46) ;letter-spacing: 0.4px;cursor: pointer}
 	a:hover{text-decoration: underline}
 
@@ -383,7 +400,7 @@ div#__next{height: 100%;}
 	.ant-drawer-body{padding:0px !important}
 
 /*	upload */
-.ant-upload.ant-upload-drag{background-color: white !important;}
+	.ant-upload.ant-upload-drag{background-color: white !important;}
 	.ant-upload-drag-icon{margin:15px 0px !important;}
 	.ant-upload-list-item-info{padding:12px 12px !important}
 	.ant-upload-hint{padding:6px}
@@ -392,12 +409,11 @@ div#__next{height: 100%;}
 
 /*	divider */
 	.ant-divider-horizontal.ant-divider-with-text{font-size:13px !important}
-	.ant-divider-inner-text{
-
-	}
+	.ant-divider-inner-text{}
 
 /*	switch */
 	.ant-switch-checked{background-color:rgb(117, 158, 46) !important ;}
 
 /*	select */
-   .ant-select{width:100%;padding:12px 9px !important}
+   .ant-select{width:100%;padding:0px 9px}
+   .form .ant-select{width:100%;padding:9px 9px !important}

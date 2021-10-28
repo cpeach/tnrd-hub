@@ -37,7 +37,10 @@ module.exports = {
         source : '/api-console/:path*',
         destination : '/apps/api-console/:path*'
       },
-
+      {
+        source : '/hub-console/:path*',
+        destination : '/apps/hub-console/:path*'
+      },
 
     ]
   },

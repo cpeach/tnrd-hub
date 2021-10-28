@@ -2,7 +2,7 @@
 import style from './Form.module.css';
 
 import {forwardRef,useState,useImperativeHandle,useRef} from 'react';
-import Frame from '/components/frames/frame.js';
+import Frame from '/components/frames/frame2.js';
 import Field from './fields/field.js';
 
 import {message,notification,Modal,Popconfirm,Divider} from 'antd';
@@ -30,7 +30,6 @@ const Form = forwardRef((props, ref) => {
 					refs[i].setField(d[refs[i].getName()]);
 				} 
 			}, 0);
-			
 		}
 	}));
 
@@ -93,44 +92,44 @@ const Form = forwardRef((props, ref) => {
 
 
 	data.content = (
-		<>
-		<div className={style.form_heading}>
-			<div className={style.form_heading_wrapper}>
-				<img src="/icons/form.png" />
-				<div>
-					<h1>{data.title}</h1>
-					<label>{data.subtitle}</label>
-					
+		<div className={"form center"}>
+			<div className={style.form_heading }>
+				<div className={style.form_heading_wrapper}>
+					<img src="/icons/form.png" />
+					<div>
+						<h1>{data.title}</h1>
+						<label>{data.subtitle}</label>
+						
+					</div>
 				</div>
 			</div>
+			<form onSubmit={handleSubmit} className={style.form}>
+
+				<div className={style.form_panel}>
+					
+					{
+						data.sections.map((section,s)=>(
+							getSection(section,s)
+						))
+					}
+		
+					{	
+					!props.dialog?
+						(<>
+							<hr/>
+							<div className={style.form_actions}>
+								<input className={style.submit} type="submit" defaultValue="Submit" />
+								<div className={style.cancel}><a href={data.path.back.href} align="center">Cancel</a></div>
+							</div>
+						</>) 
+						: 
+						<></>	
+					}	
+					
+				</div>
+
+			</form>
 		</div>
-		<form onSubmit={handleSubmit} className={style.form}>
-
-			<div className={style.form_panel}>
-				
-				{
-					data.sections.map((section,s)=>(
-						getSection(section,s)
-					))
-				}
-	
-				{	
-				!props.dialog?
-					(<>
-						<hr/>
-						<div className={style.form_actions}>
-							<input className={style.submit} type="submit" defaultValue="Submit" />
-							<div className={style.cancel}><a href={data.path.back.href}>Cancel</a></div>
-						</div>
-					</>) 
-					: 
-					<></>	
-				}	
-				
-			</div>
-
-		</form>
-		</>
 	)
 
 	return props.dialog ? 

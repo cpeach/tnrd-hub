@@ -18,8 +18,8 @@
 
 .list_actions{text-align: right;}
 
-.list_actions>div{
-	padding:8px 12px;
+.list_actions>a{
+	padding:12px 12px;
     border-radius: 3px;
     display: inline-block;
     cursor:pointer;
@@ -33,6 +33,7 @@
 	border-radius: 4px;
 	font-weight: 400;
 }
+.list_actions>a:hover{color:white;background-color:rgb(110, 149, 43);}
 
 .list_search,.list_options{
 	display: flex;
@@ -40,7 +41,7 @@
 }
 
 .list_results,.list_filters,.list_search,.list_more{
-	padding:12px 15px;
+	padding:12px 12px;
 	margin-left:9px;
 }
 
@@ -63,3 +64,19 @@
 .list>div>div{display: table-cell;padding:21px 12px;font-size: 13px;border-right:1px solid rgb(230,230,230)}
 .list>div>div>img{width:30px}
 .list>div>div>a{color:rgb(117, 158, 46);font-size: 13px; font-weight: bold; }
+
+
+
+
+/*
+	Filters
+*/
+
+.filter,.filter_invalid{padding:9px 12px;display:inline-block;vertical-align: top;}
+.filter>label,.filter_invalid>label{font-size:13px;font-weight:600;display: block;letter-spacing:0.8px;}
+.filter>div,.filter_invalid>div{overflow:hidden;border:1px solid rgb(150,150,150);border-radius:4px;margin:9px 0px;background-color: white;}
+.filter_invalid>div{border-color:rgba(193,64,12,0.80)}
+.filter>span,.filter_invalid>span{font-size:13px;display: block;}
+.filter>span,.filter_invalid>span{font-size:13px;display: block;}
+.filter_invalid>span{color:rgba(193,64,12,0.80)}
+.filter>p,.filter_invalid>p{font-size:12px;display: block;letter-spacing:0.8px;color:rgb(120,120,120);margin-top:6px;}

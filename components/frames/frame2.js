@@ -44,9 +44,11 @@ export default function Frame(props) {
 		setdrawerWidth(size);
 	};
 	const getPath = (path) =>{
-		if(path){
-			return path.map((item,i)=>((<div key={"link-"+i} ><a href={item.href}>{item.label}</a>{i<path.length-1?<span><RightOutlined /></span>:<></>}</div>)));
-			
+		
+		if(path && path[0].label==="Applications"){
+			return path.map((item,i)=>((<div key={"link-"+i} ><a>{item.label}</a>{i<path.length-1?<span><RightOutlined /></span>:<></>}</div>)));
+		}else if(path){
+			return path.map((item,i)=>((<div key={"link-"+i} ><Link href={item.href}>{item.label}</Link>{i<path.length-1?<span><RightOutlined /></span>:<></>}</div>)));
 		}else{
 			return (<></>)
 		}
@@ -95,6 +97,8 @@ export default function Frame(props) {
 	if(user && apps){
 
 			if(props.path !== false){
+
+
 				let pathname = router.pathname;
 				let parts,app;
 				var href = "";
@@ -143,19 +147,25 @@ export default function Frame(props) {
 
 							</div>
 							<div className={style.header_right}>
+								<Link href="/">
 								<Tooltip title="Applications" color="rgba(0,0,0,0.7)" >
-									<div className={[style.header_btn,style.all_apps]} onClick={()=>{router.push('/')}}>
-										<div className={style.header_btn_inner}>
-											<Image src="/icons/applications.svg" width={38} height={38} />
+									
+										<div className={[style.header_btn,style.all_apps]}>
+											
+												<div className={style.header_btn_inner}>
+													<Image src="/icons/applications.svg" width={38} height={38} />
+												</div>
+												<div className="vam"></div>
+											
 										</div>
-										<div className="vam"></div>
-									</div>
+									
 								</Tooltip>
+								</Link>
 								<div className={style.header_sep}></div>
 								<div id="header_account_label" className={style.header_btn} onMouseEnter={data.header.account.hover} >
 									<div className={style.header_btn_inner}><Image src="/icons/account.svg" width={28} height={28} /></div>
 									<div className={style.header_btn_inner} >
-										<label className={style.header_btn_label}>{user.profile?user.profile.first_name +" "+ user.profile.last_name:'Account'}</label>
+										<label className={style.header_btn_label}>{user.profile?user.name:'Account'}</label>
 									</div>
 									<div className={style.header_btn_inner}><Image src="/icons/d-arrow.svg" width={28} height={28} /></div>
 									<div className="vam"></div>
@@ -191,7 +201,7 @@ export default function Frame(props) {
 							>
 								<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>
 									<div className={style.frame_menu_profile} >
-										<img className={style.frame_menu_profile_image} src={props.user&&props.user.profile.image_meta?props.user.profile.image_meta.url:"/icons/profile.png"} width="108px" height="108px" />
+										<img className={style.frame_menu_profile_image} src={props.user&&props.user.profile.image_meta?props.user.profile.image_meta.url:"/icons/profile.png"} width="84px" height="84px" />
 									</div>
 									<ul className={style.frame_menu_nav}>
 										<li><Link href="/content/profile/">Profile</Link></li>

@@ -2,10 +2,12 @@
 /*
 	Form
 */
+
 	.form_heading {
 		width:100%;
 		background-color: white;
-		border-bottom:1px solid rgb(220,220,220)
+		border-bottom:1px solid rgb(220,220,220);
+		text-align:center;
 
 	}
 	.form_heading_wrapper {
@@ -18,7 +20,7 @@
 	}
 	
 	.form_heading_wrapper>div {display: inline-block;vertical-align:middle;text-align: left;margin-left:15px;}
-	.form_heading_wrapper>img {display: inline-block;vertical-align: middle;width:50px;opacity: 0.6;}
+	.form_heading_wrapper>img {display: inline-block;vertical-align: middle;width:54px;opacity: 0.5;}
 	.form_heading_wrapper label {color:rgb(117, 158, 46);font-size:13px;display: block;line-height: 13px;}
 	.form_heading_wrapper h1 {line-height:28px;font-size:27px;padding-bottom:9px;}
 
