@@ -3,14 +3,12 @@
 {
 	
 	"list":{
-		"title" : "Users",
+		"title" : "Permissions",
 		"new" : {"label":"New User","href":"/hub-console/admin/users/modify/insert"},
 		
 		"columns" : [
 			{"title":"Name","ref":"name"},
-			{"title":"Email","ref":"email"},
-			{"title":"Active","ref":"active"},
-			{"title":"Permissions","align":"center","ref":"_id"}
+			{"title":"Role","align":"center","ref":"*"}
 		]
 	}
 	

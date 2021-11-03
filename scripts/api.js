@@ -28,6 +28,7 @@ export default function API(args){
 		if(res.status===401){
 			localStorage.removeItem("user");
 			localStorage.removeItem("token");
+			localStorage.setItem("previous",window.location.href);
 			Router.push('/signin')
 		}
 		return type.toLowerCase()!=='json'?await res.text():await res.json();

@@ -26,9 +26,10 @@ export default function Signin(props) {
 		var res    = await fetch('https://api.tnrdit.ca/auth/signin',params);
 		res        = await res.json()
 		if(res.token){
+			let previous = localStorage.getItem("previous");
 			localStorage.setItem("token",res.token);
 			localStorage.setItem("user",res.user);
-			window.location.href = '/';
+			window.location.href = previous ? previous : '/';
 			//this.props.setUser(res.payload.refresh)
 		} 
 		//console.log(res)
@@ -60,12 +61,12 @@ export default function Signin(props) {
 						Signin
 					</button>
 					<hr />
-					<a href="">Forgot your Password?</a>
+					
 				</div>
 
 			</div>
 			<div className={style.signin_right}>
-				<div className={style.signin_shim_bottom}></div>
+				<div className={style.signin_shim_middle}></div>
 				<img src="icons/signin.png" />
 			</div>
 		</div>

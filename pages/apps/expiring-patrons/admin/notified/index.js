@@ -10,33 +10,32 @@ import { Empty } from 'antd';
 
 import ld      from './data.json';  // local data
 
-export default function Users(props) { 
+export default function Departments(props) { 
 
 	let l_data = JSON.parse(JSON.stringify(ld))
 	
-	const [users, setUsers] = useState();
+	const [departments, setDepartments] = useState();
 	
 	useEffect(async () => {
 		let isMounted = true;
-		let _users  = await client({url:'/hub-console/users/list',params:{method:"POST","body":JSON.stringify({search:''})}});
+		let _departments  = await client({url:'/hub-console/departments'});
 		if(isMounted){
-			setUsers(_users)
+			setDepartments(_departments)
 		}
 		return () => (isMounted = false)
 	},[]);
 	
 	const onChange = async (p)=>{
-		return await client({url:'/hub-console/users/list',params:{method:"POST","body":JSON.stringify(p)}});
+		return await client({url:'/hub-console/departments/list',params:{method:"POST","body":JSON.stringify(p)}});
 	}	
 	const onDelete = async (p)=>{
-		//return await client({url:'/hub-console/users/list',params:{method:"POST","body":JSON.stringify(p)}});
+		//return await client({url:'/hub-console/departments/list',params:{method:"POST","body":JSON.stringify(p)}});
 	}		
-	if(users){
-
-		l_data.list.columns[2].render = (p)=>{return p.toString().toUpperCase()}
-		l_data.list.columns[3].render = (p)=>{return <Link href={"/hub-console/admin/permissions/"+p}>Edit</Link>}
+	if(departments){
 		
-		l_data.list.rows   = users;
+		l_data.list.columns[2].render = (p)=>{return <Link href={"/hub-console/admin/departments/modify/"+p}>Edit</Link>}
+		
+		l_data.list.rows   = departments;
 		
 		let data = {};
 		data.content  = 

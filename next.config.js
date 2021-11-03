@@ -41,7 +41,10 @@ module.exports = {
         source : '/hub-console/:path*',
         destination : '/apps/hub-console/:path*'
       },
-
+      {
+        source : '/expiring-patrons/:path*',
+        destination : '/apps/expiring-patrons/:path*'
+      },
     ]
   },
 

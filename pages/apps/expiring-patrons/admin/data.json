@@ -1,0 +1,29 @@
+
+{
+	"tiles":{
+		"expiring":{
+			"image"   : "/illustrations/expiring-patrons.png",
+			"link"    : "/expiring-patrons/admin/",
+			"title"   : "Expiring Patrons",
+			"details" : "Patrons that have library cards about to expire will need to be notified. Use this section to manage expiring patron contact details and to send out email notification."
+		},
+		"notified":{
+			"image"   : "/illustrations/notified-patrons.png",
+			"link"    : "/expiring-patrons/admin/",
+			"title"   : "Notified Patrons",
+			"details" : "This section provides a list of previously notified patrons. "
+		},
+		"settings":{
+			"image"   : "/illustrations/settings.png",
+			"link"    : "/expiring-patrons/admin/",
+			"title"   : "Settings",
+			"details" : "Use this section to manage general application settings."
+		},
+		"templates":{
+			"image"   : "/illustrations/email-templates.png",
+			"link"    : "/expriring-patrons/admin/",
+			"title"   : "Email Templates",
+			"details" : "Different patron type may required different templates. Manage Templates here."
+		}
+	}
+}

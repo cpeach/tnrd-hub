@@ -18,7 +18,6 @@ export default async function ClientAPI(args){
 	params.headers['x-application']  = params.headers['x-application'] || '60906b4cf5e24d7d2498642b';
 	params.headers['x-user']         = params.headers['x-user']        || localStorage.user;
 	params.headers['Authorization']  = params.headers['Authorization'] || 'Bearer '+localStorage.token;
-	console.log(typeof params.body==='object' && !params.ignore&&params.ignore!=='body')
 	params.body = typeof params.body==='object' && !params.ignore&&params.ignore!=='body'?JSON.stringify(params.body):params.body;
 	params.body = params.body||null;
 
@@ -27,6 +26,7 @@ export default async function ClientAPI(args){
 	if(res.status===401){
 		localStorage.removeItem("user");
 		localStorage.removeItem("token");
+		localStorage.setItem("previous",window.location.href);
 		Router.push('/signin')
 	}
 	

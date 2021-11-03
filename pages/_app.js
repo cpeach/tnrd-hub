@@ -14,25 +14,26 @@ export default function Hub({ Component, pageProps }) {
     let isMounted = true;
     var ref = localStorage.getItem('user');
     if(router.pathname.indexOf('/signin')===-1){
-      console.log(ref)
-      var _user = ref?await client({url:"/hub-console/users/"+ref}):undefined;
-      var _apps = ref?await client({url:"/hub-console/applications"}):undefined;
-      if(_user&&_user.length<1&&ref){
-        router.push('/signin')
-      }
-      if(isMounted && _apps){
-        setInterval(async() => {
-            if(!(localStorage.getItem('user')&&localStorage.getItem('token'))){
-              router.push('/signin');
-            }else{
-                await client({url:"/auth/validate"});
+      if(ref){
+            var _user = ref?await client({url:"/hub-console/users/"+ref}):undefined;
+            var _apps = ref?await client({url:"/hub-console/applications"}):undefined;
+            if(_user&&_user.length<1&&ref){
+              router.push('/signin')
             }
-        }, 20000);
+            if(isMounted && _apps){
+              setInterval(async() => {
+                  if(!(localStorage.getItem('user')&&localStorage.getItem('token'))){
+                    router.push('/signin');
+                  }else{
+                      await client({url:"/auth/validate"});
+                  }
+              }, 20000);
 
-        console.log(_user)
-        console.log(_apps)
-        setUser(_user);
-        setApps(_apps);
+              setUser(_user);
+              setApps(_apps);
+            }
+      }else{
+         router.push('/signin')
       }
     }
     return () => (isMounted = false)

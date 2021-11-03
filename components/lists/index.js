@@ -76,7 +76,7 @@ export default function List(props)
 							props.data.columns.map((col,c)=>{
 								return (
 									<div key={"col-"+c}  className={col.align||"left"}>
-										{col.render ? col.render(row[col.ref]) : typeof row[col.ref] === "string" ? row[col.ref] : ""}
+										{col.render ? col.render(col.ref==='*'?row:row[col.ref]) : typeof row[col.ref] === "string" ? row[col.ref] : ""}
 									</div>
 								)
 							})
@@ -149,7 +149,7 @@ export default function List(props)
 		<>
 		
 		<div className={style.list_heading+" mar_bottom_xl"}>
-			<h1>Applications</h1>
+			<h1>{props.data.title}</h1>
 			<div className={style.list_actions}>
 				<Link href={props.data.new.href}>{props.data.new.label}</Link>
 			</div>			
