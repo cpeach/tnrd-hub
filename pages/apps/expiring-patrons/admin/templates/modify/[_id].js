@@ -1,83 +1,63 @@
-import React        from 'react';
-import {withRouter} from 'next/router'
-import api 	   from '/scripts/api.js';
-import Form     from '/components/form/form.js';
-import Frame    from '/components/frames/frame.js';
-import Content  from '/components/layout/stacks/index.js';
-import {notification,message} from 'antd';
-import gd from '../../data.json';
-import ld from './data.json';
+import client 	from '/scripts/client-api.js';
+import {useRouter} from 'next/router';
+import {useEffect,useState} from 'react';
+import Form,{success,error} from '/components/forms/index.js';
+import ld   from './data.json';
 
 
-function Update(props){
+export default function Update(props){
+
+	const router = useRouter();
+	const data = JSON.parse(JSON.stringify(ld))
+	const {_id} =  router.query
 	
-	const l_data = JSON.parse(JSON.stringify(ld))
-	const g_data = JSON.parse(JSON.stringify(gd))
+	const [template, setTemplate] = useState();
+	const [types, setTypes] = useState();
+
+	const handleSubmit = async(data) => {
+		
+		data.id = _id
+		var results = await client({url:"/expiring-patrons/templates",params:{method:"PUT",body:data}})
+		success(["Success","This template record was updated."]);
+		
+		window.location.href = '/expiring-patrons/admin/expiring'  
+		
+	}
 	
-	const {_id} = props.router.query
-	console.log(_id)
-	var user = api({url:"/api-console/users/"+_id})
+	useEffect(async () => {
+		let isMounted = true;
+		let _template = await client({url:'/expiring-patrons/templates/'+_id});
+		let _types    = await client({url:"/expiring-patrons/settings/types"});
+
+		if(isMounted){
+			setTemplate(_template);
+			setTypes(_types);
+		}
+		return () => (isMounted = false)
+	},[]);
+
 	
-	if(user){
-		l_data.title   = "Update"
-		l_data.path[3] = {"label":"Update","href":"/api-console/user"}	
-		l_data.content = this.getForm(user);
-		g_data.content = (<Content data={l_data} />);	
-			
-			
-		return ( <Frame user={props.user} apps={props.apps} data={g_data} active="1" />)
+	if(template&&types){
+		
+		var form = data.form
+
+		form.subtitle = "Template : "+template._id;
+		form.title    = "Update";
+		
+		form.fields[0].value = template.name;
+		form.fields[1].value = template.description;
+		form.fields[2].options = types.map(item=>({label:item.name,name:item.ptype_id,value:item.ptype_id}));
+		form.fields[2].value   = template.types;
+
+		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} />
+		
 	}else{
 		return <></>
 	}
+
+	
 	
 }
 
 
-export async function handleSubmit(data) {
-
-	var notice = {duration:4}
-
-	data._id = this.props.user._id;
-	var results = api({url:"/api-console/users",method:"PUT",body:data})
-
-	if(results.nModified===1){
-		notice.message = 'user Updated';
-		notice.description = 'The contents of '+data.name+' have been sucessfully updated!' 
-		notification['success'](notice);
-	}else{
-		notice.message = 'Update Failed';
-		notice.description = 'The contents of '+data.name+' were not able to be updated!' 
-		notification['error'](notice);
-	}
-	this.props.router.push('/api-console/users') 
-}
-export async function handleDelete(user){
-
-	//var results = await api.users.delete(this.props.user._id);
-	var results = api({url:"/api-console/users"+user._id,method:"DELETE"})
-	this.props.router.push('/api-console/users');
-	
-	if(results.ok){
-		message.success('Record deleted');
-	}else{
-		message.error('Record could not be deleted');
-	}
-	console.log(results)
-
-}
-export function getForm(user){
-
-		var form = l_data.form
-		
-		form.id = user._id;
-		
-		form.fields[0].attributes.defaultValue = user.name;
-		form.fields[1].attributes.defaultValue = user.short;
-		
-		return (<Form ref="form" key="form" size="10" form={form} onSubmit={handleSubmit} onDelete={handleDelete} ></Form>);
-}
-
-
-
-export default withRouter(Update)
 

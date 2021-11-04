@@ -1,30 +1,18 @@
 
 {
-	"path":[
-		{"label":"Home","href":"/"},
-		{"label":"Administration","href":"/admin"},
-		{"label":"Console","href":"/api-console"},
-		{"label":"users","href":"/api-console/users"} 
-	],
-	"notices" : {
-		"insert" : {
-			"complete":{"duration":4,"message":"User Created","description":"The contents of this user have been sucessfully updated!"},
-			"failed"  :{"duration":0,"message":"Failed","description":"The contents of this user were not able to be updated!"}
-		}
-	},
+	
 	"form" : {
-		"id" : "",
-		"submit" : {"label":"Update"},
-		"cancel" : {"href":"/api-console/users"},
-		"sections":[{"label":"General Info"}],
+		"title":"Insert",
+		"subtitle":"New Application",
+		"path"  : {"back":{"label":"Back to Applications","href":"/expiring-patrons/admin/expiring"}},
+		"sections":[{"label":null}],
 		"containers":[{"section":0,"size":"12"}],
 		"fields":[
-			
-			{"tag":"text","label":"First Name","required":true,"container":0,"size":12,"attributes":{"name":"first","key":"first","type":"text","defaultValue":""}},
-			{"tag":"text","label":"Last Name","required":true,"container":0,"size":12,"attributes":{"name":"last","key":"last","type":"text","defaultValue":""}},
-			{"tag":"text","label":"Role","required":false,"container":0,"size":12,"attributes":{"name":"role","key":"role","type":"text","defaultValue":""}},
-			{"tag":"text","label":"Email","required":true,"container":0,"size":12,"attributes":{"name":"email","key":"email","type":"text","defaultValue":""}}
-			
+			{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
+			{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description"}},
+			{"tag":"multi_select","label":"Patron Types","description":"Select the patron types that you would like to recieve this template.","required":false,"container":0,"size":12,"attributes":{"name":"types","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"editor","label":"Template Content","required":true,"container":0,"size":12,"attributes":{"name":"content"}}
+				
 		]
 	}
 }

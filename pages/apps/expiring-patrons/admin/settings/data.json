@@ -1,16 +1,16 @@
 
-
 {
 	
-	"list":{
-		"title" : "Roles",
-		"new" : {"label":"New Roles","href":"/hub-console/admin/roles/modify/insert"},
-		"columns" : [
-			{"title":"Icon","ref":"application","align":"center"},
-			{"title":"Application","ref":"application"},
-			{"title":"Name","ref":"name"},
-			{"title":"Action","align":"center","ref":"_id"}
+	"form" : {
+		"title":"Update",
+		"subtitle":"Settings",
+		"path"  : {"back":{"label":"Back to Admin","href":"/expiring-patrons/admin"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			{"tag":"text","label":"Date Range","description":"Provide the previous number of days in which to query patrons with expiring cards.","required":false,"container":0,"size":12,"attributes":{"name":"range"}},
+			{"tag":"multi_select","label":"Patron Types","description":"Select the patron types that you would like to include in your expiring patrons query.","required":false,"container":0,"size":12,"attributes":{"name":"types","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"multi_select","label":"Administrators","description":"Select the users you would like to help administrator this application. Note, all administrators will receive a conformation email when notifications are sent out","required":false,"container":0,"size":12,"attributes":{"name":"administrators","showSearch":false,"showArrow":true,"bordered":false}}
 		]
 	}
-	
 }

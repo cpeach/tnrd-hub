@@ -1,0 +1,18 @@
+
+{
+	"list":{
+		"title" : "Endpoints",
+		"filters" : [],
+		"columns" : [
+			{"title":"Method","align":"left","ref":"method"},
+			{"title":"URL","align":"left","ref":"url"},
+			{"title":"Action","align":"center","ref":"*"}
+		]
+	},
+	"endpoints":[
+		
+		{"method":"Get" ,"url":"/expiring-patrons/expiring/1001306"},
+		{"method":"Post","url":"/expiring-patrons/expiring/list","params":{"method":"POST","body":{"":""}}},
+		{"method":"Get" ,"url":"/expiring-patrons/settings"}
+	]
+}

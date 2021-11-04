@@ -39,8 +39,8 @@ export default function List(props)
 	}
 	const clear = async()=>{
 			setSearchIcon(<></>);
-			inputRef.current.value = ""
-			let apps = await props.onSearch({search:""});
+			props.onFilter?inputRef.current.value = "":null
+			let apps = props.onSearch?await props.onSearch({search:""}):[];
 			setResults(apps);
 	}
 
@@ -67,7 +67,7 @@ export default function List(props)
 	useEffect(()=>{
 
 		let _rows = (<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />);
-		if(results.length>0){
+		if(results&&results.length>0){
 			//setRowsStyle(style.home_results_rows_out)
 
 			_rows = results.map((row,r)=>(
@@ -84,9 +84,10 @@ export default function List(props)
 					</div>
 			));
 			//setTimeout(() => {setRowsStyle(style.home_results_rows_in)},300);
+			setResultsTotal(results.length);
+			setRows(_rows); 
 		}
-		setResultsTotal(results.length);
-		setRows(_rows); 
+		
 		
 		
 	},[results])
@@ -151,22 +152,22 @@ export default function List(props)
 		<div className={style.list_heading+" mar_bottom_xl"}>
 			<h1>{props.data.title}</h1>
 			<div className={style.list_actions}>
-				<Link href={props.data.new.href}>{props.data.new.label}</Link>
+				{props.data.new&&props.data.new.href?<Link href={props.data.new.href}>{props.data.new.label}</Link>:<></>}
 			</div>			
 		</div>
 		<div className={style.list_options+" mar_bottom_md"}>
 			
-			<div className={style.list_search}>
+			{props.onSearch?<div className={style.list_search}>
 				<SearchOutlined style={{paddingTop:"9px",fontSize:"16px"}} />
 				<input ref={inputRef} type="text" placeholder="Search Items" onKeyUp={search} required  />
 				<span className={style.home_search_icon}>{searchIcon}</span>
-			</div>
+			</div>:<></>}
 			<div className={style.list_results}>
 				{resultsTotal} Records
 			</div>
-			<div className={style.list_filters} onClick={()=>{setFiltersVisable(true)}}>
+			{props.onFilter?<div className={style.list_filters} onClick={()=>{setFiltersVisable(true)}}>
 				<div>Filters {filterCount} <FunnelPlotOutlined style={{marginLeft:"6px",fontSize:"16px",color:"rgb(140,140,140)"}} /></div>
-			</div>	
+			</div>:<></>}	
 			<div className={style.list_more}>
 				<div>Options <CaretDownOutlined style={{marginLeft:"6px",color:"rgb(140,140,140)"}} /></div>
 			</div>

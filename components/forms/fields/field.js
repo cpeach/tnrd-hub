@@ -3,12 +3,14 @@ import style       from '../Form.module.css';
 import Hidden      from './hidden.js';
 import Text        from './text.js';
 import URL         from './url.js';
+import Email       from './email.js';
 import Description from './description.js';
 import Select      from './select.js';
 import MultiSelect from './multi_select.js';
 import Image       from './image.js';
 import Document    from './document.js';
 import List        from './list.js';
+import Editor      from './editor.js';
 
 const Field = forwardRef((props, ref) => {
 
@@ -38,12 +40,14 @@ const Field = forwardRef((props, ref) => {
 			'hidden':(<Text ref={fieldRef} data={data} onChange={update} />),
 			'text':(<Text ref={fieldRef} data={data} onChange={update} />),
 			'url':(<URL ref={fieldRef} data={data} onChange={update} />),
+			'email':(<Email ref={fieldRef} data={data} onChange={update} />),
 			'description':(<Description ref={fieldRef} data={data} onChange={update} />),
 			'select':(<Select ref={fieldRef} data={data} onChange={update} />),
 			'multi_select':(<MultiSelect ref={fieldRef} data={data} onChange={update} />),
 			'image':(<Image ref={fieldRef} dialog={props.dialog} data={data} defer={props.defer} onChange={update} />),
 			'document':(<Document ref={fieldRef} dialog={props.dialog} data={data} defer={props.defer} onChange={update} />),
-			'list' :(<List ref={fieldRef} data={data} onChange={update} />)
+			'list' :(<List ref={fieldRef} data={data} onChange={update} />),
+			'editor' :(<Editor ref={fieldRef} data={data} onChange={update} />)
 		}
 		return options[data.tag];
 	}

@@ -28,7 +28,10 @@ module.exports = {
         source : '/notifications',
         destination : '/content/notifications'
       },
-
+      {
+        source : '/testing',
+        destination : '/content/testing'
+      },
       {
         source : '/api-console',
         destination : '/apps/api-console'

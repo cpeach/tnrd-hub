@@ -2,17 +2,18 @@
 	
 	
 	"list":{
-		"title" : "Applications",
-		"new" : {"label":"New Application","href":"/hub-console/admin/applications/modify/insert"},
+		"title" : "Expiring Patrons",
+		"new" : {"label":"Send Notifications","href":"/hub-console/admin/applications/modify/insert"},
 		"filters" : [
-			{"tag":"multi_select","label":"Departments","name":"departments","options":[]}
+			{"tag":"multi_select","label":"Patrons Types","name":"types","options":[]}
 		],
 		"columns" : [
-			{"title":"Icon","ref":"image_meta","align":"center"},
-			{"title":"Full Name","ref":"name"},
-			{"title":"Code","ref":"short"},
-			{"title":"Departments","ref":"departments"},
-			{"title":"Action","align":"center","ref":"_id"}
+			{"title":"Name","ref":"name"},
+			{"title":"Email","ref":"email"},
+			{"title":"Valid Email","ref":"email"},
+			{"title":"Type","ref":"type"},
+			{"title":"Expiration Data","ref":"expiration"},
+			{"title":"Action","align":"center","ref":"patron_id"}
 		]
 	}
 

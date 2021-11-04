@@ -3,7 +3,7 @@ import client 	from '/scripts/client-api.js';
 import api 	from '/scripts/api.js';
 import {Descriptions,Badge,Upload,message  } from 'antd';	
 import ImgCrop from 'antd-img-crop';
-import Frame     from '/components/frames/frame.js';
+import Frame     from '/components/frames/frame2.js';
 import Container from '/components/layout/containers/index.js';
 
 import style  from './Profile.module.css';

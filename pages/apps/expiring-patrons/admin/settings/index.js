@@ -1,57 +1,72 @@
+import api 	from '/scripts/api.js';
+import client 	from '/scripts/client-api.js';
+import {useEffect,useState} from 'react';
+import Form,{success,error}     from '/components/forms/index.js';
+import ld   from './data.json';
 
-import api 	   from '/scripts/api.js';
-import client  from '/scripts/client-api.js';
-import Frame   from '/components/frames/frame2.js';
-import List    from '/components/lists/index.js';
-import Page    from '/components/layout/pages/index.js';
-import {useState,useEffect}    from 'react';
-import Link from 'next/link';
-import { Empty } from 'antd';
+export default function Update(props){
 
-import ld from './data.json';  // local data
+	const [settings, setSettings] = useState();
+	const [types, setTypes] = useState();
+	const [administrators, setAdministrators] = useState();
 
-export default function Roles(props) { 
-
-	let l_data = JSON.parse(JSON.stringify(ld))
+	const data = JSON.parse(JSON.stringify(ld))
 	
-	const [roles, setRoles] = useState();
+	const handleSubmit = async(data) => {
 	
+		data._id = settings._id;
+		console.log(data)
+
+		
+		var results = await client({url:"/expiring-patrons/settings",params:{method:"PUT",body:data}})
+		success(["Success","Your settings were updated."]);
+		 
+		window.location.href = '/expiring-patrons/admin/' 
+	}
+
+	const handleDelete = ()=>{
+		return null
+	}
+
 	useEffect(async () => {
 		let isMounted = true;
-		let _roles  = await client({url:'/hub-console/roles'});
+		var _settings = await client({url:"/expiring-patrons/settings"});
+		var _types = await client({url:"/expiring-patrons/settings/types"});
+		var _administrators = await client({url:"/expiring-patrons/settings/administrators"});
+
 		if(isMounted){
-			setRoles(_roles)
+			
+			setSettings(_settings);
+			setTypes(_types);
+			setAdministrators(_administrators);
+			
+			//var options = _departments.map(item=>({value:item._id,name:item.short,label:item.name}))
+			
 		}
 		return () => (isMounted = false)
 	},[]);
+
 	
-	const onChange = async (p)=>{
-		return await client({url:'/hub-console/roles/list',params:{method:"POST","body":JSON.stringify(p)}});
-	}	
-	const onDelete = async (p)=>{
-		//return await client({url:'/hub-console/roles/list',params:{method:"POST","body":JSON.stringify(p)}});
-	}		
-	if(roles){
-		l_data.list.columns[0].render = (p)=>{return <img src={p.image_meta?p.image_meta.url:""} />}
-		l_data.list.columns[1].render = (p)=>{return p.name}
-		l_data.list.columns[3].render = (p)=>{return <Link href={"/hub-console/admin/roles/modify/"+p}>Edit</Link>}
-		l_data.list.rows = roles;
+	if(settings&&types&&administrators){
+	
+		var form = data.form
+
+		form.fields[0].value = settings.range;
+		form.fields[1].options = types.map(item=>({label:item.name,name:item.ptype_id,value:item.ptype_id}));
+		form.fields[2].options = administrators.map(item=>({label:item.name,name:item.short,value:item._id}));
 		
-		let data = {};
-		data.content  = 
-					(
-						<Page><List data={l_data.list} onFilter={onChange} onSearch={onChange}><div>List</div></List></Page>
-					);
-		
-		return ( <Frame user={props.user} apps={props.apps} data={data} active="1" align="center"  />)
+		form.fields[1].value = settings.types
+		form.fields[2].value = settings.administrators
+
+		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 
 	}else{
-		return ( <></>)
+		return <></>
 	}
 
+	
+	
 }
-
-
 
 
 
