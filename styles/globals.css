@@ -1,5 +1,5 @@
 html{height: 100%;}
-body {height: 100%;margin: 0px;font-family:'Lato' !important;overflow-y: hidden}
+body {height: 100%;margin: 0px;font-family:'Lato' ;overflow-y: hidden}
 div#__next{height: 100%;}
 .box{display:inline-block;box-sizing:border-box;}
 *{box-sizing: border-box;}
@@ -85,10 +85,10 @@ div#__next{height: 100%;}
 
 	h1,h2,h4,h5{margin-bottom:0px !important}
 
-	h1{font-size: 36px;line-height:33px;font-weight: 700 !important;letter-spacing: -1px;color: rgb(70,70,70) !important;}
-	h2{font-weight: 400;font-size:19px;color: rgb(80,80,80)}
-	h3{font-weight: 700;font-size:17px;color: rgb(80,80,80)}
-	h4{font-weight: 400;font-size:28px;color: rgb(80,80,80);letter-spacing:0px;}
+	h1{font-size: 36px;line-height:33px;font-weight: 500 !important;letter-spacing: -1.3px;color: rgb(50,50,50) !important;}
+	h2{font-weight: 400;font-size:19px;color: rgb(80,80,80);letter-spacing: -1.3px;}
+	h3{font-weight: 700;font-size:17px;color: rgb(80,80,80);letter-spacing: -1.3px;}
+	h4{font-weight: 400;font-size:28px;color: rgb(80,80,80);letter-spacing:-.7px;}
 	h5{font-weight: 600 !important;font-size:19px;color: rgb(80,80,80)}
 
 

@@ -178,7 +178,7 @@
 	color: rgb(117, 158, 46);
 	text-decoration: underline;
 }
-.home_results_card_title{font-size: 17px;font-weight: 900; letter-spacing:0.8px;margin:15px 0px 0px 0px !important;line-height: 27px}
+.home_results_card_title{font-size: 17px;font-weight: 700; letter-spacing:0.2px;margin:15px 0px 0px 0px !important;line-height: 27px}
 .home_results_card_details{
 	font-size: 13px;
 	letter-spacing:0.8px;
