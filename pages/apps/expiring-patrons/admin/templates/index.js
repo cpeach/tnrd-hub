@@ -31,8 +31,8 @@ export default function Templates(props) {
 	}	
 	
 	if(templates){
-		l_data.list.columns[1].render = (p)=>{return p&&p.length>0?p.map(item=>item+''):'N/A'}
-		l_data.list.columns[2].render = (p)=>{return <Link href={"/expiring-patrons/admin/templates/modify/"+p}>Edit</Link>}
+		//l_data.list.columns[1].render = (p)=>{return p&&p.length>0?p.map(item=>item+''):'N/A'}
+		l_data.list.columns[1].render = (p)=>{return <Link href={"/expiring-patrons/admin/templates/modify/"+p}>Edit</Link>}
 		
 
 		l_data.list.rows   = templates;

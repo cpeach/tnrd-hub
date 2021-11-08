@@ -20,6 +20,7 @@
   "homepage": "https://github.com/tnrdit/tnrd-hub#readme",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "alloyeditor": "^2.14.4",
     "antd": "^4.16.13",
     "antd-img-crop": "^3.16.0",
     "fd": "^0.0.3",

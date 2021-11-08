@@ -13,7 +13,7 @@ const List = forwardRef((props, ref) => {
 	const [index, setIndex]     = useState(0);
 	const [action, setAction]   = useState('');
 	const [current, setCurrent] = useState({});
-	const [name, setName]       = useState(props.data.attributes.name);
+	const [name, setName]       = useState(props.data.name||props.data.attributes.name);
 	const [attributes,setAttributes] = useState(props.data.attributes.form);
 
 

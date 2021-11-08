@@ -16,10 +16,6 @@ export default function Expiring(props) {
 	
 	const [patrons, setPatrons] = useState();
 
-	const validate = (email)=>{
-    	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    	return re.test(String(email).toLowerCase());
-	}
 	
 	useEffect(async () => {
 		let isMounted = true;
@@ -33,15 +29,16 @@ export default function Expiring(props) {
 		return () => (isMounted = false)
 	},[]);
 	
-	const onChange = async (p)=>{
-		//return await client({url:'/hub-console/applications/list',params:{method:"POST","body":JSON.stringify(p)}});
+	const onFilter = async (p)=>{
+		console.log(p)
+		return await client({url:'/expiring-patrons/expiring/list',params:{method:"POST","body":JSON.stringify(p)}});
 	}	
 	
 	if(patrons){
-		l_data.list.columns[2].render = (p)=>{return p ? validate(p)+'': 'false'}
+		l_data.list.columns[2].render = (p)=>{return p.toString()}
 		l_data.list.columns[3].render = (p)=>{return p}
-		
-		l_data.list.columns[5].render = (p)=>{return <Link href={"/expiring-patrons/admin/expiring/modify/"+p}>Edit</Link>}
+		l_data.list.columns[4].render = (p)=>{return p.name}
+		l_data.list.columns[6].render = (p)=>{return <Link href={"/expiring-patrons/admin/expiring/modify/"+p}>Edit</Link>}
 		
 
 		l_data.list.rows   = patrons;
@@ -49,7 +46,7 @@ export default function Expiring(props) {
 		let data = {};
 		data.content  = 
 					(
-						<Page><List data={l_data.list} ><div>List</div></List></Page>
+						<Page><List data={l_data.list} onFilter={onFilter}><div>List</div></List></Page>
 					);
 		
 		return ( <Frame user={props.user} apps={props.apps} data={data} active="1" align="center"  />)

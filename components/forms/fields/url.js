@@ -8,7 +8,7 @@ const URL = forwardRef((props, ref) => {
 
 	const [initial, setInitial] = useState(true);
 	const [value, setValue]     = useState(props.data.value||"");
-	const [name, setName]       = useState(props.data.attributes.name);
+	const [name, setName]       = useState(props.data.name||props.data.attributes.name);
 	
 
 	const update = () => {

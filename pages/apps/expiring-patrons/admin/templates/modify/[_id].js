@@ -16,11 +16,11 @@ export default function Update(props){
 
 	const handleSubmit = async(data) => {
 		
-		data.id = _id
+		data._id = _id
 		var results = await client({url:"/expiring-patrons/templates",params:{method:"PUT",body:data}})
 		success(["Success","This template record was updated."]);
-		
-		window.location.href = '/expiring-patrons/admin/expiring'  
+
+		window.location.href = '/expiring-patrons/admin/templates' 
 		
 	}
 	
@@ -44,11 +44,11 @@ export default function Update(props){
 		form.subtitle = "Template : "+template._id;
 		form.title    = "Update";
 		
-		form.fields[0].value = template.name;
-		form.fields[1].value = template.description;
+		form.fields[0].value   = template.name;
+		form.fields[1].value   = template.description;
 		form.fields[2].options = types.map(item=>({label:item.name,name:item.ptype_id,value:item.ptype_id}));
 		form.fields[2].value   = template.types;
-
+		form.fields[3].value   = template.content;
 		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} />
 		
 	}else{

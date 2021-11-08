@@ -3,15 +3,16 @@
 	
 	"list":{
 		"title" : "Expiring Patrons",
-		"new" : {"label":"Send Notifications","href":"/hub-console/admin/applications/modify/insert"},
+		"new" : {"label":"Send Notifications","href":"/expiring-patrons/admin/expiring/notify"},
 		"filters" : [
-			{"tag":"multi_select","label":"Patrons Types","name":"types","options":[]}
+			{"tag":"select","label":"Valid Email","name":"valid","options":[{"value":true,"name":"true","label":"True"},{"value":false,"name":"false","label":"False"}]}
 		],
 		"columns" : [
 			{"title":"Name","ref":"name"},
 			{"title":"Email","ref":"email"},
-			{"title":"Valid Email","ref":"email"},
+			{"title":"Valid Email","ref":"valid_email"},
 			{"title":"Type","ref":"type"},
+			{"title":"Template","ref":"template"},
 			{"title":"Expiration Data","ref":"expiration"},
 			{"title":"Action","align":"center","ref":"patron_id"}
 		]

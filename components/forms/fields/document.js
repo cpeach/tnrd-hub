@@ -17,7 +17,7 @@ const Document = forwardRef((props, ref) => {
 
 	const [original, setOriginal] = useState(props.data.value);
 	const [value, setValue]     = useState(props.data.value);
-	const [name, setName]       = useState(props.data.attributes.name);
+	const [name, setName]       = useState(props.data.name||props.data.attributes.name);
 	const [fileList,setFileList] = useState([...defaultFileList])
 
 

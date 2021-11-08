@@ -39,7 +39,7 @@ export default function List(props)
 	}
 	const clear = async()=>{
 			setSearchIcon(<></>);
-			props.onFilter?inputRef.current.value = "":null
+			props.onSearch?inputRef.current.value = "":null
 			let apps = props.onSearch?await props.onSearch({search:""}):[];
 			setResults(apps);
 	}

@@ -2,12 +2,10 @@
 	
 	
 	"list":{
-		"title" : "Expiring Patrons",
-		"new" : {"label":"New Template","href":"/expiring-patrons/admin/templates/modify/insert"},
+		"title" : "Email Templates",
 		
 		"columns" : [
 			{"title":"Name","ref":"name"},
-			{"title":"Patron Types","ref":"types"},
 			{"title":"Action","align":"center","ref":"_id"}
 		]
 	}

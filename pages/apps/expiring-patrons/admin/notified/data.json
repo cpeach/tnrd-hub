@@ -4,7 +4,6 @@
 	
 	"list":{
 		"title" : "Departments",
-		"new" : {"label":"New Department","href":"/hub-console/admin/departments/modify/insert"},
 		
 		"columns" : [
 			{"title":"Name","ref":"name"},
