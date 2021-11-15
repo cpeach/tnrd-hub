@@ -22,6 +22,7 @@ export default async function ClientAPI(args){
 	params.body = typeof params.body==='object'?JSON.stringify(params.body):params.body;
 	params.body = params.body||null;
 
+  console.log(params);
 	var res = await fetch(url,params);
 	
 	if(res.status===401){Router.push('/signin')}
