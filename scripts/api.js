@@ -16,7 +16,9 @@ export default function API(args){
 		params.headers = params.headers || {};
 		params.headers['Content-Type']   = params.headers['Content-Type']   || 'application/json';
 		params.headers['x-application']  = params.headers['x-application']  || app_id;
-		params.headers['Authorization'] = params.headers['Authorization']   || 'Bearer '+localStorage.token;
+		
+		params.headers['x-user']         = params.headers['x-user']          || localStorage.user;
+		params.headers['Authorization']  = params.headers['Authorization']   || 'Bearer '+localStorage.token;
 
 		params.body = typeof params.body==='object'?JSON.stringify(params.body):params.body;
 		params.body = params.body||null;
@@ -24,6 +26,9 @@ export default function API(args){
 		var res = await fetch(url,params);
 		
 		if(res.status===401){
+			localStorage.removeItem("user");
+			localStorage.removeItem("token");
+			localStorage.setItem("previous",window.location.href);
 			Router.push('/signin')
 		}
 		return type.toLowerCase()!=='json'?await res.text():await res.json();

@@ -1,0 +1,29 @@
+
+{
+	"tiles":{
+		"applications":{
+			"image"   : "/illustrations/applications3.png",
+			"link"    : "/hub-console/admin/applications",
+			"title"   : "Applications",
+			"details" : "The primary purpose of Application Hub is to provide single point of access for all internal and external applications. Use this section to manage all applications."
+		},
+		"departments":{
+			"image"   : "/illustrations/dept.png",
+			"link"    : "/hub-console/admin/departments",
+			"title"   : "Departments",
+			"details" : "Application can belong to one or more departments. Manage all department filters here"
+		},
+		"users":{
+			"image"   : "/illustrations/role.png",
+			"link"    : "/hub-console/admin/users",
+			"title"   : "Users",
+			"details" : "Application Hub is limited to TNRD staff through Active Directory. Manage all system users here."
+		},
+		"roles":{
+			"image"   : "/illustrations/user.png",
+			"link"    : "/hub-console/admin/roles",
+			"title"   : "Roles",
+			"details" : "Internal Hub applications may limit access based on role type. Manage all user roles here."
+		}
+	}
+}

@@ -13,7 +13,6 @@ export default function Permissions(props){
       role = app ? app.role.name : app;
    }
    
-
    return (
      <>    
         {props.children}

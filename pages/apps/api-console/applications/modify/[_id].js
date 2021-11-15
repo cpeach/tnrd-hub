@@ -12,6 +12,12 @@ export default function Update(props){
 	
 	const handleSubmit = async(data) => {
 		
+		/* data.resources = [];
+		data.resources = data.resources.concat(data['resources-links']);
+		data.resources = data.resources.concat(data['resources-docs']);
+		delete data['resources-links'];
+		delete data['resources-docs']; */
+		
 		data._id = _id;
 		data.ui = data.ui ? data.ui : {};
 		data.ui.menu = data.menu || [];

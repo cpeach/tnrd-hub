@@ -10,7 +10,7 @@ const {Option} = Select;
 const Multi_Select = forwardRef((props, ref) => {
 	const [initial, setInitial] = useState(true);
 	const [value, setValue]     = useState(props.data.value);
-	const [name, setName]       = useState(props.data.attributes.name);
+	const [name, setName]       = useState(props.data.name||props.data.attributes.name);
 	
 	const update = (e) => {
 		
@@ -40,9 +40,9 @@ const Multi_Select = forwardRef((props, ref) => {
 	return (
 		<Select mode="multiple" className={style.multi_select} value={value} {...props.data.attributes}  style={{ width: '100%'}} placeholder="Select one or more items" onChange={(e)=>{setValue(e)}}>
 			{
-				props.data.options.map((option,i)=>(
+				props.data.options?props.data.options.map((option,i)=>(
 					<Option key={option.name+"-"+i} value={option.value}>{option.label}</Option>
-				))
+				)):<></>
 			}
 		</Select>
 	)

@@ -1,8 +1,10 @@
 import style    from './Index.module.css';
 import api      from '/scripts/api.js';
 import Router   from 'next/router';
+import Link     from 'next/link';
 import client   from '/scripts/client-api.js';
-import Frame    from '/components/frames/frame.js';
+import Frame    from '/components/frames/frame2.js';
+import Page     from '/components/layout/pages/index.js';
 import {useState,useEffect,useRef} from 'react';
 import { SearchOutlined,CloseOutlined,LoadingOutlined } from '@ant-design/icons';
 import { Empty,Divider,Tooltip  } from 'antd';	
@@ -45,14 +47,14 @@ export default function Home(props) {
 		if(searching && (searchValue && searchValue!=="")){
 			clearFilters();
 			setSearchIcon(<LoadingOutlined spin />);
-			let apps = await client({url:"/api-console/applications/search",params:{method:"POST",body:{term:inputRef.current.value}}})
+			let apps = await client({url:"/hub-console/applications/list",params:{method:"POST",body:{search:inputRef.current.value}}})
 			setResults(apps);
 			setSearching(false);
 			setResultsLabel("Search Term: "+searchValue)
 		}else{
-			if(inputRef.current.value !== searchValue){
+			if(inputRef.current && inputRef.current.value !== searchValue){
 				search()
-			}else if(inputRef.current.value){
+			}else if(inputRef.current && inputRef.current.value){
 				setSearchIcon(<Tooltip title="Clear Search" color="rgba(0,0,0,0.7)" ><CloseOutlined onClick={clear}/></Tooltip>);
 			}else{
 				clear();
@@ -68,16 +70,18 @@ export default function Home(props) {
 
 		let _cards = (<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />);
 		if(results.length>0){
-			setCardsStyle(style.home_results_cards_out)
+			setCardsStyle(style.home_results_cards_out);
+			console.log(results)
 			_cards = results.map((item,i)=>(
 				<div key={"card-"+i} className={style.home_results_card}>
-					<div className={style.home_results_card_wrapper} onClick={()=>{Router.push("/applications/"+item._id)}}>
+					<Link href={"/applications/"+item._id}><div className={style.home_results_card_wrapper} >
 						<div size="12" padding={{all:"md"}} align="left" >
-							<img src={(item.image?item.image.url:'')===''?"/icons/app.png":item.image.url} height={42} />
+							<img src={(item.image_meta?item.image_meta.url:'')===''?"/icons/app.png":item.image_meta.url} height={42} />
 							<h3  className={style.home_results_card_title}>{item.name}</h3>
 							<p   className={style.home_results_card_details}>{item.description}</p>
+							<Link href={"/applications/"+item._id} ><div className={style.home_results_card_link}>View</div></Link>
 						</div>
-					</div>
+					</div></Link>
 				</div>
 			));
 			setTimeout(() => {setCardsStyle(style.home_results_cards_in)},300);
@@ -91,7 +95,7 @@ export default function Home(props) {
 //	FILTER
 
 	const filter = async (e)=>{
-		let departments = await client({url:'/api-console/departments/'});
+		let departments = await client({url:'/hub-console/departments/'});
 		
 		if(!e || (e&&e.target.getAttribute("name")==="all")){
 			currentFilter?currentFilter.className = style.home_filter : null
@@ -164,14 +168,14 @@ export default function Home(props) {
 	useEffect(async()=>{
 
 		let isMounted    = true;
-		setRecordsTotal(props.apps.length);
 		
-		if(isMounted){
-			let departments = await client({url:'/api-console/departments/'});
+		if(isMounted && props.apps){
+			setRecordsTotal(props.apps.length);
+			let departments = await client({url:'/hub-console/departments/'});
 		
 			let _filters = departments.map((item,i)=>(
 				<span key={"filter-"+i} name={item.short} className={style.home_filter} onClick={filter}>{item.name}</span>
-			))
+			)) 
 			_filters.unshift((<span ref={filterBookmarkRef} key="filter-bookmark" onClick={filter} className={style.home_filter} name="bookmark"><img style={{width:"18px"}} src="/icons/bookmark.svg" /> Bookmarks</span>))
 			_filters.unshift((<span ref={filterAllRef} key="filter-all" onClick={filter} className={style.home_filter} name="all">{"All"}</span>))
 				
@@ -185,7 +189,7 @@ export default function Home(props) {
 
 
 	data.content = (
-
+		
 		<div className={style.home}>
 
 			<div className={style.home_search}>
@@ -219,7 +223,6 @@ export default function Home(props) {
 			</div>
 
 		</div>
-
 	)
 
 

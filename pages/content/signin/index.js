@@ -4,6 +4,7 @@ import {useState} from 'react';
 import Router from 'next/router';
 import Container from '/components/layout/containers/index.js';
 import { LoadingOutlined } from '@ant-design/icons';
+
 export default function Signin(props) { 
 	
 	const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ export default function Signin(props) {
 	const [loading, setLoading] = useState('none');
 
 	const onSubmit = async(e)=>{
-	setLoading('');
+		setLoading('');
 
 		var application = "60906b4cf5e24d7d2498642b";
 		var p = {
@@ -21,13 +22,14 @@ export default function Signin(props) {
 		}
 		
 		//params.headers['Content-Type']   = params.headers['Content-Type'] || 'application/json';
-		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({params:p})}
-		var res    = await fetch('https://api.tnrdit.ca/accounts/signin',params);
+		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}
+		var res    = await fetch('https://api.tnrdit.ca/auth/signin',params);
 		res        = await res.json()
-		if(res.code){
-			localStorage.setItem("token",res.payload.token);
-			localStorage.setItem("user",res.payload.identity.sub);
-			Router.push('/');
+		if(res.token){
+			let previous = localStorage.getItem("previous");
+			localStorage.setItem("token",res.token);
+			localStorage.setItem("user",res.user);
+			window.location.href = previous ? previous : '/';
 			//this.props.setUser(res.payload.refresh)
 		} 
 		//console.log(res)
@@ -59,12 +61,12 @@ export default function Signin(props) {
 						Signin
 					</button>
 					<hr />
-					<a href="">Forgot your Password?</a>
+					
 				</div>
 
 			</div>
 			<div className={style.signin_right}>
-				<div className={style.signin_shim_bottom}></div>
+				<div className={style.signin_shim_middle}></div>
 				<img src="icons/signin.png" />
 			</div>
 		</div>

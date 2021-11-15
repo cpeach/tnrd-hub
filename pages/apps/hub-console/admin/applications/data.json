@@ -1,0 +1,19 @@
+{
+	
+	
+	"list":{
+		"title" : "Applications",
+		"new" : {"label":"New Application","href":"/hub-console/admin/applications/modify/insert"},
+		"filters" : [
+			{"tag":"multi_select","label":"Departments","name":"departments","options":[]}
+		],
+		"columns" : [
+			{"title":"Icon","ref":"image_meta","align":"center"},
+			{"title":"Full Name","ref":"name"},
+			{"title":"Code","ref":"short"},
+			{"title":"Departments","ref":"departments"},
+			{"title":"Action","align":"center","ref":"_id"}
+		]
+	}
+
+}

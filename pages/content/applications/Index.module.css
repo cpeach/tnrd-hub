@@ -5,7 +5,8 @@
 .panel{
 	box-shadow: 0px 0px 24px rgba(0,0,0, 0.2);  
 	width:100%;
-	border-bottom:1px solid rgb(220,220,220)
+	border-bottom:1px solid rgb(220,220,220);
+	text-align: center;
 }
 
 
@@ -42,7 +43,7 @@
 	height:100%
 }
 .img_wrapper > img{
-	width:64px;
+	width:74px;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -57,12 +58,12 @@
 .tags{padding-top:21px}
 .tags > span{margin:9px 3px;display:inline-block;font-size:12px;color:rgb(100,100,100);letter-spacing: 0.6px;background-color:rgb(245,245,245);padding:3px 15px}
 
-.description{width:100%;padding:0px !important;margin:36px 0px 0px 0px;color:rgb(90,90,90);text-align:left; font-size: 15px;line-height: 27px;letter-spacing: 0.6px;}
+.description{width:100%;padding:0px !important;margin:36px 0px 0px 0px !important;color:rgb(90,90,90);text-align:left; font-size: 15px;line-height: 27px;letter-spacing: 0.6px;}
  
-.options{
-	width:100%;
+.options{width:100%;}
+.options a{
+	font-size:15px;
 }
-
 .option_primary,.option_secondary,.option{
 	font-size:13px;
 	color:rgb(117, 158, 46) ;
@@ -124,11 +125,14 @@ text-decoration: underline;
 	width: 100%;
 }
 
-.resources{width:100%; background-color: rgb(248,248,248);font-size: 0px;}
+.resources{width:100%; background-color: rgb(248,248,248);font-size: 0px;text-align: center;}
 .resources_wrapper{display: inline-block;width:960px;margin:60px 0px;text-align:left;font-size: 0px;}
 
 .resources h2{font-size:26px; font-weight: 600;width:50%;display: inline-block;}
+
 .resources label{font-size:13px; font-weight: 600;width:50%;display: inline-block;text-align: right;color:rgb(120,120,120)}
+
+
 
 .resources_filters{width:25%;margin:30px 0px;display: inline-block;}
 .resources_filter_active,.resources_filter{cursor:pointer;margin:12px 0px;font-size: 14px;letter-spacing: 0.6px;padding-left: 15px;border-left:3px solid transparent}

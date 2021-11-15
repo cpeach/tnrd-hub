@@ -28,7 +28,10 @@ module.exports = {
         source : '/notifications',
         destination : '/content/notifications'
       },
-
+      {
+        source : '/testing',
+        destination : '/content/testing'
+      },
       {
         source : '/api-console',
         destination : '/apps/api-console'
@@ -37,8 +40,14 @@ module.exports = {
         source : '/api-console/:path*',
         destination : '/apps/api-console/:path*'
       },
-
-
+      {
+        source : '/hub-console/:path*',
+        destination : '/apps/hub-console/:path*'
+      },
+      {
+        source : '/expiring-patrons/:path*',
+        destination : '/apps/expiring-patrons/:path*'
+      },
     ]
   },
 

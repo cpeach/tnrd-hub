@@ -13,7 +13,7 @@ const List = forwardRef((props, ref) => {
 	const [index, setIndex]     = useState(0);
 	const [action, setAction]   = useState('');
 	const [current, setCurrent] = useState({});
-	const [name, setName]       = useState(props.data.attributes.name);
+	const [name, setName]       = useState(props.data.name||props.data.attributes.name);
 	const [attributes,setAttributes] = useState(props.data.attributes.form);
 
 
@@ -28,6 +28,18 @@ const List = forwardRef((props, ref) => {
 		getField   : ()=>{
 			var v = validate(value);
 			props.onChange(v);
+
+			if(v.valid){
+				value.map(async(item,i)=>{
+					for(let k in item){
+						if(item[k].defer){
+							item[k] = await item[k].method(item[k].params);
+						}
+					}
+					
+				})
+			}
+			console.log(value)
 			v.value = value;
 			v.name  = name;
 			return v;
@@ -76,6 +88,7 @@ const List = forwardRef((props, ref) => {
 		setModalVisible(false);
 	}
 
+
 	const validate = (v)=>{
 		let valid=true,error="";
 		props.data.min = props.data.min?0:props.data.required?1:0;
@@ -109,10 +122,10 @@ const List = forwardRef((props, ref) => {
 				</ul>
 				<Form ref={formRef} dialog={true} user={props.user} apps={props.apps} data={attributes} active="1" onSubmit={update} visible={isModalVisible} cancel={cancel} />
 					
-				
 			</div>
 	)
 	 
 })
 
 export default List;
+

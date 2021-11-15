@@ -2,7 +2,7 @@
 import style from './Form.module.css';
 
 import {forwardRef,useState,useImperativeHandle,useRef} from 'react';
-import Frame from '/components/frames/frame.js';
+import Frame from '/components/frames/frame2.js';
 import Field from './fields/field.js';
 
 import {message,notification,Modal,Popconfirm,Divider} from 'antd';
@@ -30,7 +30,6 @@ const Form = forwardRef((props, ref) => {
 					refs[i].setField(d[refs[i].getName()]);
 				} 
 			}, 0);
-			
 		}
 	}));
 
@@ -39,13 +38,15 @@ const Form = forwardRef((props, ref) => {
 		e.preventDefault();
 		let data = {},field,valid=true;
 		var refs = fieldRefs.current
+		
 		for(var i=0;i<refs.length;i++){
 			field = await refs[i].getField();
-			data[field.name] = field.value;
+			data[field.name] = field.value
 			valid = !field.valid ? false : valid;
 		}
 		if(valid){
-			props.onSubmit(data)
+			
+			props.onSubmit(data);
 		}else{
 			message.warning("Please address field errors")
 		}
@@ -86,49 +87,49 @@ const Form = forwardRef((props, ref) => {
 		)
 	}
 	const getField = (field,i,k)=>{
-		return <Field ref={(element) => {fieldRefs.current[k]=element}} dialog={props.dialog} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
+		return <Field ref={(element) => {fieldRefs.current[k]=element}} defer={props.dialog?true:false} dialog={props.dialog} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
 	}
 
 
 	data.content = (
-		<>
-		<div className={style.form_heading}>
-			<div className={style.form_heading_wrapper}>
-				<img src="/icons/form.png" />
-				<div>
-					<h1>{data.title}</h1>
-					<label>{data.subtitle}</label>
-					
+		<div className={"form center"}>
+			<div className={style.form_heading }>
+				<div className={style.form_heading_wrapper}>
+					<img src="/icons/form.png" />
+					<div>
+						<h1>{data.title}</h1>
+						<label>{data.subtitle}</label>
+						
+					</div>
 				</div>
 			</div>
+			<form onSubmit={handleSubmit} className={style.form}>
+
+				<div className={style.form_panel}>
+					
+					{
+						data.sections.map((section,s)=>(
+							getSection(section,s)
+						))
+					}
+		
+					{	
+					!props.dialog?
+						(<>
+							<hr/>
+							<div className={style.form_actions}>
+								<input className={style.submit} type="submit" defaultValue="Submit" />
+								<div className={style.cancel}><a href={data.path.back.href} align="center">Cancel</a></div>
+							</div>
+						</>) 
+						: 
+						<></>	
+					}	
+					
+				</div>
+
+			</form>
 		</div>
-		<form onSubmit={handleSubmit} className={style.form}>
-
-			<div className={style.form_panel}>
-				
-				{
-					data.sections.map((section,s)=>(
-						getSection(section,s)
-					))
-				}
-	
-				{	
-				!props.dialog?
-					(<>
-						<hr/>
-						<div className={style.form_actions}>
-							<input className={style.submit} type="submit" defaultValue="Submit" />
-							<div className={style.cancel}><a href={data.path.back.href}>Cancel</a></div>
-						</div>
-					</>) 
-					: 
-					<></>	
-				}	
-				
-			</div>
-
-		</form>
-		</>
 	)
 
 	return props.dialog ? 

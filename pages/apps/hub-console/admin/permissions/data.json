@@ -1,0 +1,15 @@
+
+
+{
+	
+	"list":{
+		"title" : "Permissions",
+		"new" : {"label":"New User","href":"/hub-console/admin/users/modify/insert"},
+		
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Role","align":"center","ref":"*"}
+		]
+	}
+	
+}

@@ -1,0 +1,16 @@
+
+
+{
+	
+	"list":{
+		"title" : "Roles",
+		"new" : {"label":"New Roles","href":"/hub-console/admin/roles/modify/insert"},
+		"columns" : [
+			{"title":"Icon","ref":"application","align":"center"},
+			{"title":"Application","ref":"application"},
+			{"title":"Name","ref":"name"},
+			{"title":"Action","align":"center","ref":"_id"}
+		]
+	}
+	
+}

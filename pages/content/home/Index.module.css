@@ -1,11 +1,10 @@
-.home{width: 100%;}
+.home{width: 100%;text-align: center;}
 
 
 
 .home_results_wrapper,.home_search_wrapper,.home_filters{width:1080px}
 
-
-.home_search{padding:15px 0px;background-color: rgb(117, 158, 46);color:white;}
+.home_search{padding:15px 0px;background-color: rgb(117, 158, 46);color:white;text-align: center;}
 
 .home_search_wrapper{
 	text-align: left;
@@ -110,7 +109,7 @@
 }
 .home_results_total,.home_results_label{
 	text-align: left;
-	padding:15px 9px 6px 9px;
+	padding:6px 9px 6px 9px;
 	background-color: rgb(248,248,248);
 	width: 100%;
 	min-height: 100%;
@@ -175,8 +174,11 @@
 	/* border:1px solid rgba(101, 145, 43,0.6); 
 	*/
 }
-
-.home_results_card_title{font-size: 17px;font-weight: 900; letter-spacing:0.8px;margin:15px 0px 0px 0px !important;line-height: 27px}
+.home_results_card_wrapper:hover > div > a{
+	color: rgb(117, 158, 46);
+	text-decoration: underline;
+}
+.home_results_card_title{font-size: 17px;font-weight: 700; letter-spacing:0.2px;margin:15px 0px 0px 0px !important;line-height: 27px}
 .home_results_card_details{
 	font-size: 13px;
 	letter-spacing:0.8px;
@@ -186,9 +188,15 @@
 	overflow: hidden;
 	margin-top:15px
 }
-
-
-
+.home_results_card_link{
+	font-size: 14px;
+	margin-top:15px;
+	color: rgb(117, 158, 46);
+}
+.home_results_card_link:hover{
+	color: rgb(117, 158, 46);
+	text-decoration: underline;
+}
 @media screen and (min-width: 1300px) {
 	.home_results_wrapper,.home_search_wrapper,.home_filters{width:1200px}
 }

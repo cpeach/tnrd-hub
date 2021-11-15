@@ -69,12 +69,19 @@ export default function Frame(props) {
         )
       } 
 
+	const signout = ()=>{
+		localStorage.removeItem('user');
+		localStorage.removeItem('token');
+		window.location.href = '/signin'
+	}
+
+
 	var data = props.data?props.data:{};
 	data.header = {account:{},"title":{"sub":"TNRD","label":"Application Hub"}}
 	data.header.account 	  = {}
 	data.header.account.hover = showDrawer
-  data.home = {}
-  data.home.href = 'https://hub.tnrdit.ca'
+	data.home = {}
+	data.home.href = 'https://hub.tnrdit.ca'
 
 	var path = [];
 
@@ -180,7 +187,7 @@ export default function Frame(props) {
 								visible={visible}
 								getContainer={false}
 								width={drawerWidth}
-								style={{marginTop:"96px"}}
+								style={{marginTop:"87px"}}
 								maskStyle={{backgroundColor:"rgba(0,0,0,0.0)",overflow:"hidden"}}	
 							>
 								<div className={style.frame_menu} onMouseLeave={()=>{setVisible(false);}}>
@@ -190,7 +197,7 @@ export default function Frame(props) {
 									<ul className={style.frame_menu_nav}>
 										<li><Link href="/content/profile/">Profile</Link></li>
 										<li><Link href="/content/profile/">Notifications</Link></li>
-										<li><Link href="/content/profile/">Signout</Link></li>
+										<li><a onClick={signout}>Signout</a></li>
 									</ul>
 								</div>
 							</Drawer>
