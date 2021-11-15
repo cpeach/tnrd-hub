@@ -5,11 +5,11 @@
 			"image"   : "/illustrations/expiring-patrons.png",
 			"link"    : "/expiring-patrons/admin/expiring",
 			"title"   : "Expiring Patrons",
-			"details" : "Patrons that have library cards about to expire will need to be notified. Use this section to manage expiring patron contact details and to send out email notification."
+			"details" : "Patrons that have library cards about to expire will need to be notified. Use this section to manage expiring patron contact details and to send out email notifications."
 		},
 		"notified":{
 			"image"   : "/illustrations/notified-patrons.png",
-			"link"    : "/expiring-patrons/admin/",
+			"link"    : "/expiring-patrons/admin/notified",
 			"title"   : "Notified Patrons",
 			"details" : "This section provides a list of previously notified patrons. "
 		},

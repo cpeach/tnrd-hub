@@ -5,12 +5,16 @@
 		"title":"Update",
 		"subtitle":"Settings",
 		"path"  : {"back":{"label":"Back to Admin","href":"/expiring-patrons/admin"}},
-		"sections":[{"label":null}],
-		"containers":[{"section":0,"size":"12"}],
+		"sections":[{"label":null},{"label":"Email Settings"}],
+		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"}],
 		"fields":[
-			{"tag":"text","label":"Date Range","description":"Provide the previous number of days in which to query patrons with expiring cards.","required":false,"container":0,"size":12,"attributes":{"name":"range"}},
+			{"tag":"text","label":"Date Range","description":"How many days in the future would you like to query?","required":false,"container":0,"size":12,"attributes":{"name":"range"}},
+			{"tag":"text","label":"Date Window","description":"How many days would you like to include in the query?","required":false,"container":0,"size":12,"attributes":{"name":"window"}},
 			{"tag":"multi_select","label":"Patron Types","description":"Select the patron types that you would like to include in your expiring patrons query.","required":false,"container":0,"size":12,"attributes":{"name":"types","showSearch":false,"showArrow":true,"bordered":false}},
-			{"tag":"multi_select","label":"Administrators","description":"Select the users you would like to help administrator this application. Note, all administrators will receive a conformation email when notifications are sent out","required":false,"container":0,"size":12,"attributes":{"name":"administrators","showSearch":false,"showArrow":true,"bordered":false}}
+			{"tag":"multi_select","label":"Administrators","description":"Select the users that you would like to help administrator this application.","required":false,"container":0,"size":12,"attributes":{"name":"administrators","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"text","label":"Source","description":"This will be the from sender value in each email notification.","required":false,"container":1,"size":12,"attributes":{"name":"email_source"}},
+			{"tag":"text","label":"Subject","description":"This will be the notification email subject line.","required":false,"container":1,"size":12,"attributes":{"name":"email_subject"}}
+			
 		]
 	}
 }

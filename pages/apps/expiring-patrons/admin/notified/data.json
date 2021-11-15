@@ -3,12 +3,12 @@
 {
 	
 	"list":{
-		"title" : "Departments",
+		"title" : "Previously Notified",
 		
 		"columns" : [
-			{"title":"Name","ref":"name"},
-			{"title":"Code","ref":"short"},
-			{"title":"Action","align":"center","ref":"_id"}
+			{"title":"Date","ref":"date"},
+			{"title":"Patron Count","ref":"patrons"},
+			{"title":"View","ref":"_id"}
 		]
 	}
 	

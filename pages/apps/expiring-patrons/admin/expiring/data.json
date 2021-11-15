@@ -3,9 +3,10 @@
 	
 	"list":{
 		"title" : "Expiring Patrons",
-		"new" : {"label":"Send Notifications","href":"/expiring-patrons/admin/expiring/notify"},
+		"new" : {"label":"Review Notifications","href":"/expiring-patrons/admin/expiring/notify"},
 		"filters" : [
-			{"tag":"select","label":"Valid Email","name":"valid","options":[{"value":true,"name":"true","label":"True"},{"value":false,"name":"false","label":"False"}]}
+			{"tag":"select","label":"Valid Email","name":"valid","options":[{"value":true,"name":"true","label":"True"},{"value":false,"name":"false","label":"False"}]},
+			{"tag":"select","label":"Template","name":"template","options":[]}
 		],
 		"columns" : [
 			{"title":"Name","ref":"name"},

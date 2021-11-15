@@ -52,11 +52,15 @@ export default function Update(props){
 		var form = data.form
 
 		form.fields[0].value = settings.range;
-		form.fields[1].options = types.map(item=>({label:item.name,name:item.ptype_id,value:item.ptype_id}));
-		form.fields[2].options = administrators.map(item=>({label:item.name,name:item.short,value:item._id}));
+		form.fields[1].value = settings.window;
+		form.fields[2].options = types.map(item=>({label:item.ptype_id+" : "+item.name,name:item.ptype_id,value:item.ptype_id}));
+		form.fields[3].options = administrators.map(item=>({label:item.name,name:item.short,value:item._id}));
 		
-		form.fields[1].value = settings.types
-		form.fields[2].value = settings.administrators
+		form.fields[2].value = settings.types
+		form.fields[3].value = settings.administrators
+
+		form.fields[4].value = settings.email_source;
+		form.fields[5].value = settings.email_subject;
 
 		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 
