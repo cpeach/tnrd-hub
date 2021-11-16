@@ -32,14 +32,7 @@ module.exports = {
         source : '/testing',
         destination : '/content/testing'
       },
-      {
-        source : '/api-console',
-        destination : '/apps/api-console'
-      },
-      {
-        source : '/api-console/:path*',
-        destination : '/apps/api-console/:path*'
-      },
+    
       {
         source : '/hub-console/:path*',
         destination : '/apps/hub-console/:path*'
@@ -47,6 +40,10 @@ module.exports = {
       {
         source : '/expiring-patrons/:path*',
         destination : '/apps/expiring-patrons/:path*'
+      },
+      {
+        source : '/stats-counter/:path*',
+        destination : '/apps/stats-counter/:path*'
       },
     ]
   },
