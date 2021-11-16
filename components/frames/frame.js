@@ -81,7 +81,7 @@ export default function Frame(props) {
 	data.header.account 	  = {}
 	data.header.account.hover = showDrawer
 	data.home = {}
-	data.home.href = 'https://hub.tnrdit.ca'
+	data.home.href = '/'
 
 	var path = [];
 

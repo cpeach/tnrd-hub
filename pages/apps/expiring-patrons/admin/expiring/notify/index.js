@@ -18,6 +18,7 @@ export default function Update(props){
 		let summary = await client({url:'/expiring-patrons/expiring/summary'});
 		
 		if(isMounted){
+			console.log(summary)
 			setSummary(summary)
 		}
 
@@ -54,7 +55,7 @@ export default function Update(props){
 		//console.log(summary)
 
 		data.content = (
-			<Page size="">
+			<Page type="narrow">
 				<h1 className="pad_bottom_md">Notification Summary</h1>
 				<div className="mar_y_lg border touch pad_md light">
 					<div className="box pad_right_sm left middle _1" style={{minWidth:"60px"}} >
@@ -70,17 +71,26 @@ export default function Update(props){
 				{totals()}
 
 				<hr className="mar_y_md" />
-
-				<div className="pad_top_md">
-					<div className="_6 box pad_x_md">
-						<h6 >Total: {summary.items.length}</h6>
-					</div>
-					<div className="_6 box right">
-						<div className="btn" onClick={send}>{label}</div>
-					</div>
-				</div>
-
-				
+				{
+					!summary.notifications_sent?
+						<div className="pad_top_md">
+							<div className="_6 box pad_x_md">
+								<h6 >Total: {summary.items.length}</h6>
+							</div>
+							<div className="_6 box right">
+								<div className="btn" onClick={send}>{label}</div>
+							</div>
+						</div>
+						:
+						<div className="pad_top_md">
+							<div className="_6 box pad_x_md">
+								<h6 >Total: {summary.items.length}</h6>
+							</div>
+							<div className="_6 box right">
+								Expiring patron notices have been sent for the week.
+							</div>
+						</div>
+				}
 
 			</Page>
 		)

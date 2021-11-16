@@ -1,12 +1,11 @@
 //import { Button } from 'tnrd-components';
 
 import {useState,useEffect,useRef} from 'react';
-import Link      from 'next/link';
 import {withRouter} from 'next/router';
-import api 	   	from '/scripts/api.js';
+import api 	   	    from '/scripts/api.js';
 import client 	   	from '/scripts/client-api.js';
-import Frame    from '/components/frames/frame2.js';
-import { FileTextOutlined } from '@ant-design/icons';
+import Frame        from '/components/frames/frame2.js';
+import Page        from '/components/layout/pages/index.js';
 import { Popconfirm, message,Divider,Descriptions,Empty } from 'antd';
  
 import style from './Index.module.css';
@@ -149,73 +148,78 @@ function _Application(props) {
 
 			data.content = (
 			<>	
-			<div className={style.panel}>
-				<div className={style.content}>
-				
-					<div className={style.left_panel}>
-						<div className={style.img_wrapper}>
-							<div></div>
-							<img src={(_application.image_meta?_application.image_meta.url:'')===''?"/icons/app.png":_application.image_meta.url} />
-						</div>
-						<div className={style.details_wrapper}>
-							<h1 className={style.title}>{_application.name}</h1>
-							<div className={style.tags}>{tags(_application)}</div>
-						</div>			
-						<p className={style.description}>{_application.description}</p>			
-					</div>
-					<div className={style.right_panel}>
+			<Page>
+				<div className={style.panel}>
+					<div className={style.content}>
 					
-						<div className={style.options}>
-							{
-								_application.ui.menu.map((item,i)=>(
-									(<a href={item.link} style={{width:"100%"}} target={item.link.indexOf('http')>-1?"_blank":"_self"} ><div key={"option-"+i} className={item.type==='primary'?style.option_primary:style.option_secondary}>{item.label}</div></a>))
-								)
-							}		
-							<div onClick={bookmark} className={style.option_more}>
+						<div className={style.left_panel}>
+							<div className={style.img_wrapper}>
+								<div></div>
+								<img src={(_application.image_meta?_application.image_meta.url:'')===''?"/icons/app.png":_application.image_meta.url} />
+							</div>
+							<div className={style.details_wrapper}>
+								<h1 className={style.title}>{_application.name}</h1>
+								<div className={style.tags}>{tags(_application)}</div>
+							</div>			
+							<p className={style.description}>{_application.description}</p>			
+						</div>
+						<div className={style.right_panel}>
+						
+							<div className={style.options}>
 								{
-									bookmarked(_application) ? 
-									(<><img src={"/icons/bookmark_solid_orange.svg"} /><span>Bookmarked</span></>) : 
-									(<><img src={"/icons/bookmark.svg"} /><span>Bookmark</span></>)
-								}
+									_application.ui.menu.map((item,i)=>(
+										(<a href={item.link} style={{width:"100%"}} target={item.link.indexOf('http')>-1?"_blank":"_self"} ><div key={"option-"+i} className={item.type==='primary'?style.option_primary:style.option_secondary}>{item.label}</div></a>))
+									)
+								}		
+								<div onClick={bookmark} className={style.option_more}>
+									{
+										bookmarked(_application) ? 
+										(<><img src={"/icons/bookmark_solid_orange.svg"} /><span>Bookmarked</span></>) : 
+										(<><img src={"/icons/bookmark.svg"} /><span>Bookmark</span></>)
+									}
+									
+								</div>
 								
-							</div>
-							
-							<div className={style.option_sep}></div>	
-							<div className={style.option_more}>
-								<img src="/icons/lock.svg" />Request Access
-							</div>
-							<div className={style.option_more}>
-								<img src="/icons/bug.svg" />Report an Issue
-							</div>
-							<div className={style.option_more}>
-								<img src="/icons/support.svg" />Get Help
-							</div>							
+								<div className={style.option_sep}></div>	
+								<div className={style.option_more}>
+									<img src="/icons/lock.svg" />Request Access
+								</div>
+								<div className={style.option_more}>
+									<img src="/icons/bug.svg" />Report an Issue
+								</div>
+								<div className={style.option_more}>
+									<img src="/icons/support.svg" />Get Help
+								</div>							
 
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</Page>
+
 			<div className={style.resources}>
-				<div className={style.resources_wrapper}>	
-					<h2>Resources</h2><label>{resultsTotal} Item(s)</label>
-					<div className={style.resources_filters}>
-						<div name="all" ref={filterAllRef} className={style.resources_filter_active} onClick={filter}>All</div>
-						<div name="guide" className={style.resources_filter} onClick={filter}>Guides</div>
-						<div name="faq" className={style.resources_filter} onClick={filter}>FAQs</div>
-						<div name="documentation" className={style.resources_filter} onClick={filter}>Documentation</div>
-						<div name="download" className={style.resources_filter} onClick={filter}>Downloads</div>
-						<div name="licensing" className={style.resources_filter} onClick={filter}>Licensing</div>
+				<Page>
+					<div className={style.resources_wrapper}>	
+						<h2>Resources</h2><label>{resultsTotal} Item(s)</label>
+						<div className={style.resources_filters}>
+							<div name="all" ref={filterAllRef} className={style.resources_filter_active} onClick={filter}>All</div>
+							<div name="guide" className={style.resources_filter} onClick={filter}>Guides</div>
+							<div name="faq" className={style.resources_filter} onClick={filter}>FAQs</div>
+							<div name="documentation" className={style.resources_filter} onClick={filter}>Documentation</div>
+							<div name="download" className={style.resources_filter} onClick={filter}>Downloads</div>
+							<div name="licensing" className={style.resources_filter} onClick={filter}>Licensing</div>
+						</div>
+						<div className={resultsStyle}>
+							{results}					
+						</div>
 					</div>
-					<div className={resultsStyle}>
-						{results}					
-					</div>
-				</div>				
+				</Page>				
 			</div>
 			</>
 		)
 	}
 		
-	return ( <Frame user={props.user} apps={props.apps} background="light" key="frame" data={data} active="1" navigation="false"  />)		
+	return ( <Frame user={props.user} apps={props.apps}  align="center" data={data} active="1" navigation="false"  />)		
 } 
 
 export default withRouter(_Application)
