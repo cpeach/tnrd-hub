@@ -178,24 +178,27 @@
 	color: rgb(117, 158, 46);
 	text-decoration: underline;
 }
-.home_results_card_title{font-size: 17px;font-weight: 700; letter-spacing:0.2px;margin:15px 0px 0px 0px !important;line-height: 27px}
+.home_results_card_title{font-size: 18px;font-weight: 700; letter-spacing:0.2px;margin:9px 0px 0px 0px !important;line-height: 27px}
 .home_results_card_details{
 	font-size: 13px;
-	letter-spacing:0.8px;
-	line-height: 22px;
+	letter-spacing:0.6px;
+	line-height: 20px;
 	margin:0px;
-	height: 60px;   
+	height: 64px;   
 	overflow: hidden;
-	margin-top:15px
+	margin-top:9px;
 }
 .home_results_card_link{
-	font-size: 14px;
-	margin-top:15px;
-	color: rgb(117, 158, 46);
+	font-size: 12px;
+	border-radius: 4px;
+	padding:4px 10px;
+	color: white;
+	background-color: rgb(117, 158, 46);
+	display: inline-block;
+	margin-top:12px;
 }
 .home_results_card_link:hover{
-	color: rgb(117, 158, 46);
-	text-decoration: underline;
+	background-color: rgb(107, 145, 42);
 }
 @media screen and (min-width: 1300px) {
 	.home_results_wrapper,.home_search_wrapper,.home_filters{width:1200px}

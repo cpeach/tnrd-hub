@@ -90,7 +90,7 @@ export default function Frame(props) {
 	data.header.account 	  = {}
 	data.header.account.hover = showDrawer
 	data.home = {}
-	data.home.href = 'https://hub.tnrdit.ca'
+	data.home.href = '/'
 
 	var path = [];
 
@@ -205,7 +205,7 @@ export default function Frame(props) {
 									</div>
 									<ul className={style.frame_menu_nav}>
 										<li><Link href="/content/profile/">Profile</Link></li>
-										<li><Link href="/content/profile/">Notifications</Link></li>
+										<li><Link href="/content/notifications/">Notifications</Link></li>
 										<li><a onClick={signout}>Signout</a></li>
 									</ul>
 								</div>
