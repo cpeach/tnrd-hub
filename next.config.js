@@ -44,7 +44,7 @@ module.exports = {
       {
         source : '/stats-counter/:path*',
         destination : '/apps/stats-counter/:path*'
-      },
+      }
     ]
   },
 

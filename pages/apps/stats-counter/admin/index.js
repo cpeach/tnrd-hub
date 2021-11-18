@@ -12,11 +12,11 @@ export default function Index(props) {
 	data.content  = (
 
         <Page>
-            <h1 className="mar_md pad_bottom_sm">Welcome to Expiring Patrons</h1>
-            <p className="mar_md pad_bottom_xl _11">The purpose of this application is to list, notifiy and manage TNRL patrons that have expiring library cards. </p>
-            <Tile size="12" margin="md" type="lg" data={data.tiles.expiring} />
-            <Tile  size="4" margin="md" type="md" data={data.tiles.notified} />
-            <Tile  size="4" margin="md" type="md" data={data.tiles.templates} />  
+            <h1 className="mar_md pad_bottom_sm">Welcome to The Daily Stats Counter</h1>
+            <p className="mar_md pad_bottom_xl _11">The purpose of this application is to provide staff with a way of keeping track of incremental stats</p>
+            <Tile size="12" margin="md" type="lg" data={data.tiles.insights} />
+            <Tile  size="4" margin="md" type="md" data={data.tiles.groups} />
+            <Tile  size="4" margin="md" type="md" data={data.tiles.items} />  
             <Tile  size="4" margin="md" type="md" data={data.tiles.settings} />
         </Page>
     

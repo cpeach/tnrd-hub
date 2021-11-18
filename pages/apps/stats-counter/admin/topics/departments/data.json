@@ -1,0 +1,14 @@
+
+{
+	
+	"form" : {
+		"title":"Insert",
+		"subtitle":"New Department",
+		"path"  : {"back":{"label":"Back to Departments","href":"/stats-counter/admin/collections/"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
+		]
+	}
+}
