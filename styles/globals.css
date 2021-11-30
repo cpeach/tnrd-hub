@@ -13,6 +13,7 @@ div#__next{height: 100%;}
 *::-webkit-scrollbar-track{background: white; }
 *::-webkit-scrollbar-thumb{background: rgb(120,120,120); }
 
+.noselect{user-select: none;}
 
 
 /*
@@ -26,7 +27,7 @@ div#__next{height: 100%;}
 	.bottom{vertical-align: bottom;}
 	.middle{vertical-align: middle;}
 	
-	.vam{vertical-align: middle;height: 100%;display: inline-block;}
+	.vam,.shim{vertical-align: middle;height: 100%;display: inline-block;}
 
 /*
 	LAYOUT
@@ -53,8 +54,14 @@ div#__next{height: 100%;}
 	
 	.box{display:inline-block;}
 
+	
+/*
+	CURSOR
+*/
 
-
+	.hand{cursor: pointer}
+	.hand-primary{cursor:pointer}
+	.hand-primary:hover{color:rgb(117, 158, 46) !important;}
 
 /*
 	FONTS
@@ -73,6 +80,7 @@ div#__next{height: 100%;}
 	Color
 */
 	.light{background-color: rgb(248,248,248);}
+	.highlight{background-color: rgb(108, 145, 43);}
 	.white{background-color: white;}
 	.primary{background-color:rgb(117, 158, 46) !important}
 	.text-white{color:white !important}
@@ -86,8 +94,8 @@ div#__next{height: 100%;}
 	h1,h2,h4,h5,h6{margin-bottom:0px !important}
 
 	h1{font-size: 36px;line-height:33px;font-weight: 500 !important;letter-spacing: -1.3px;color: rgb(50,50,50) !important;}
-	h2{font-weight: 400;font-size:19px;color: rgb(80,80,80);letter-spacing: -1.3px;}
-	h3{font-weight: 700;font-size:17px;color: rgb(80,80,80);letter-spacing: -1.3px;}
+	h2{font-weight: 400;font-size:19px;color: rgb(80,80,80);letter-spacing: 0px;}
+	h3{font-weight: 700;font-size:17px;color: rgb(80,80,80);letter-spacing: -0px;}
 	h4{font-weight: 400;font-size:28px;color: rgb(80,80,80);letter-spacing:-.7px;}
 	h5{font-weight: 600 !important;font-size:19px;color: rgb(80,80,80)}
 	h6{font-weight: 700 !important;font-size:15px;color: rgb(80,80,80);letter-spacing: 0.2px;}
@@ -105,7 +113,7 @@ div#__next{height: 100%;}
 
 /*	paragraph*/
 	p{font-size:15px;line-height:24px;letter-spacing: 0.4px;margin-bottom:0px !important;color:rgb(90,90,90)}
-	p.small{font-size:13px;line-height:24px;letter-spacing: 0.6px;margin-bottom:0px !important;color:rgb(90,90,90)}
+	p.small{font-size:13px;line-height:19px;letter-spacing: 0.6px;margin-bottom:0px !important;color:rgb(90,90,90)}
 
 /*
 	LINKS
@@ -127,13 +135,44 @@ div#__next{height: 100%;}
 	}
 	.btn:hover{color: white;background-color:rgb(108, 145, 43);}
 
+	.btn_light{
+		padding:12px 12px;
+		border-radius: 3px;
+		display: inline-block;
+		cursor:pointer;
+		text-align: center;
+		transition: 300ms;
+		letter-spacing: 0.4px;
+		font-size:12px;
+		vertical-align: middle;
+		background-color:rgb(251,251,251);
+		color:rgb(60,60,60);
+		border-radius: 4px;
+		font-weight: 400;
+		border: 1px solid rgb(220,220,220);
+	}
+	.btn_light:hover{border: 1px solid rgb(160,160,160);}
+
 	a,a.button{cursor: pointer;display:inline-block;  border-radius: 6px; font-size: 15px; font-weight:400; color:rgb(117, 158, 46) ;letter-spacing: 0.4px;cursor: pointer}
 	a:hover{text-decoration: underline}
 
 	a.button{border: 1px solid rgb(210,210,210);padding:10px 15px;}
 	a.button{text-decoration:none;border: 1px solid rgb(117, 158, 46);}
 
+/*	input */
 
+	input{font-family: "lato";border: none; outline: none;font-size:16px}
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+	}
+
+	/* Firefox */
+	input[type=number] {
+	-moz-appearance: textfield;
+	}
 /* seperator*/
 
 	.sep{display: inline-block;font-size:12px;padding:0px 5px;color:rgb(180,180,180);vertical-align: middle;padding-bottom:3px}
@@ -161,6 +200,8 @@ div#__next{height: 100%;}
 
 .b,.border{border:1px solid rgb(230,230,230)}
 .b-r{border-right:1px solid rgb(230,230,230)}
+.b-l{border-left:1px solid rgb(230,230,230)}
+.b-b,.border-bottom{border-bottom:1px solid rgb(230,230,230)}
 .touch{border-radius: 6px;}
 
 
@@ -355,6 +396,35 @@ div#__next{height: 100%;}
 	color:rgb(60, 60, 60)
 }
 
+.menubar{
+	text-align: center;
+	padding:15px;
+	overflow: hidden;
+}
+
+.menubar>div{
+	background-color: rgb(117, 158, 46);
+	border-radius: 6px;
+	display: inline-block;
+	text-align: left;
+	width: 100%;
+	box-shadow: 0px 0px 10px rgba(177, 177, 177, 0.4);
+	overflow: hidden;
+
+}
+.menubar>div>span{
+	font-size: 15px;
+	color: white;
+	padding:12px 24px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.menubar>div>span:hover{
+	background-color: rgb(108, 145, 43);
+}
+
+
 /*
 117, 158, 46
 	ANT Overide
@@ -410,7 +480,7 @@ div#__next{height: 100%;}
 
 /*	divider */
 	.ant-divider-horizontal.ant-divider-with-text{font-size:13px !important}
-	.ant-divider-inner-text{}
+	.ant-divider-inner-text{color:rgb(60,60,60);font-size:19px}
 
 /*	switch */
 	.ant-switch-checked{background-color:rgb(117, 158, 46) !important ;}

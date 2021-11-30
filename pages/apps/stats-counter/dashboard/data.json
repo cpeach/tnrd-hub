@@ -1,0 +1,29 @@
+
+{
+	"tiles":{
+		"insights":{
+			"image"   : "/illustrations/stats.png",
+			"link"    : "/stats-counter/admin/insights",
+			"title"   : "Insights",
+			"details" : "This section provides an overview of stat results for branchs and items"
+		},
+		"groups":{
+			"image"   : "/illustrations/collections.png",
+			"link"    : "/stats-counter/admin/groups",
+			"title"   : "Stat Groups",
+			"details" : "Stat items are organized into various sub groups. Use this section to manage related departments, collections and categroes. "
+		},
+		"items":{
+			"image"   : "/illustrations/stat-items.png",
+			"link"    : "/stats-counter/admin/items",
+			"title"   : "Stat Items",
+			"details" : "This section provides a place to manage stat topics, categores and items."
+		},
+		"settings":{
+			"image"   : "/illustrations/settings.png",
+			"link"    : "/stats-counter/admin/settings",
+			"title"   : "Settings",
+			"details" : "Use this section to manage general settings."
+		}
+	}
+}

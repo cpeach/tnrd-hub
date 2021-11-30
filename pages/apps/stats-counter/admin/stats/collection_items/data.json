@@ -1,0 +1,13 @@
+
+
+{
+	
+	"list":{
+		"title" : "Collection Items",
+		"new" : {"label":"New Collection Item","href":"/stats-counter/admin/groups/collection_items/insert/"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Action","ref":"_id"}
+		]
+	}
+}

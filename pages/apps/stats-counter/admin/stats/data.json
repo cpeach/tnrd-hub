@@ -4,10 +4,10 @@
 	
 	"list":{
 		"title" : "Departments",
-		"new" : {"label":"New Department","href":"/stats-counter/admin/departments/insert"},
+		"new" : {"label":"New Department","href":"/stats-counter/admin/groups/departments/insert"},
 		"columns" : [
 			{"title":"Name","ref":"name"},
-			{"title":"Groups","ref":"*"},
+			{"title":"Collections","ref":"*"},
 			{"title":"Action","ref":"_id"}
 		]
 	}

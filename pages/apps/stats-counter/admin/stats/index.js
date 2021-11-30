@@ -26,12 +26,14 @@ export default function Departments(props) {
 		return () => (isMounted = false)
 	},[]);
 	
+
+		
 	if(departments){
 
-		l_data.list.columns[1].render = (p)=>{let count=p.groups.length;return <Link href={"/stats-counter/admin/departments/groups/"+p._id}>{"View ("+count+")"}</Link>}
-		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/departments/edit/"+p}>Edit</Link>}
+		l_data.list.columns[1].render = (p)=>{let count=p.collections.length;return <Link href={"/stats-counter/admin/groups/collections/"+p._id}>{"View ("+count+")"}</Link>}
+		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/groups/departments/edit/"+p}>Edit</Link>}
 		
-		l_data.list.rows = departments;
+		l_data.list.rows   = departments;
 		
 		let data = {};
 		data.content  = 

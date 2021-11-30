@@ -1,0 +1,14 @@
+
+
+{
+	
+	"list":{
+		"title" : "Location Groups",
+		"new" : {"label":"New Location Group","href":"/stats-counter/admin/departments/groups/insert/"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Locations","ref":"*"},
+			{"title":"Action","ref":"_id"}
+		]
+	}
+}

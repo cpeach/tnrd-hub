@@ -5,35 +5,40 @@ import Frame   from '/components/frames/frame2.js';
 import List    from '/components/lists/index.js';
 import Page    from '/components/layout/pages/index.js';
 import {useState,useEffect}    from 'react';
+import {useRouter} from 'next/router';
 import Link from 'next/link';
 import { Empty } from 'antd';
 
-import ld      from './data.json';  // local data
+import ld   from './data.json';
 
-export default function Departments(props) { 
+export default function Items(props) { 
 
 	let l_data = JSON.parse(JSON.stringify(ld))
+
+	const router = useRouter();
+	const data = JSON.parse(JSON.stringify(ld))
+	const {_id} =  router.query
 	
-	const [departments, setDepartments] = useState();
+	const [items, setItems] = useState();
 	
 	useEffect(async () => {
 		let isMounted = true;
-		let _departments = await client({url:'/stats-counter/departments/list',params:{method:'POST',body:{}}});
-		
-		if(isMounted){
-			setDepartments(_departments)
-		}
+		let _items = await client({url:'/stats-counter/items/list',params:{method:'POST',body:{filters:{category:_id}}}});
+		if(isMounted){setItems(_items)}
 		return () => (isMounted = false)
 	},[]);
 	
-	if(departments){
+	var item = api({url:"/stats-counter/categories/"+_id})
 
-		l_data.list.columns[1].render = (p)=>{let count=p.groups.length;return <Link href={"/stats-counter/admin/departments/groups/"+p._id}>{"View ("+count+")"}</Link>}
-		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/departments/edit/"+p}>Edit</Link>}
+	if(items && item){
+
+		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/groups/items/edit/"+p}>Edit</Link>}
 		
-		l_data.list.rows = departments;
+		l_data.list.rows = items;
+		l_data.list.new.href += _id;
 		
 		let data = {};
+		data.path = {"back":{"label":"Back to Topics","href":"/stats-counter/admin/groups/categories/"+item.topic}}
 		data.content  = 
 					(
 						<Page><List data={l_data.list} ><div>List</div></List></Page>

@@ -1,0 +1,14 @@
+
+
+{
+	
+	"list":{
+		"title" : "Items",
+		"new" : {"label":"New Item","href":"/stats-counter/admin/groups/items/insert/"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Description","ref":"description"},
+			{"title":"Action","ref":"_id"}
+		]
+	}
+}

@@ -7,18 +7,19 @@
 			"title"   : "Insights",
 			"details" : "This section provides an overview of stat results for branchs and items"
 		},
-		"groups":{
-			"image"   : "/illustrations/collections.png",
-			"link"    : "/stats-counter/admin/groups",
-			"title"   : "Stat Groups",
-			"details" : "Stat items are organized into various sub groups. Use this section to manage related departments, collections and categroes. "
+		"collections":{
+			"image"   : "/illustrations/stats.png",
+			"link"    : "/stats-counter/admin/departments",
+			"title"   : "Stat Locations",
+			"details" : "All stat items and stat results are based on individule locations. These location can be organized by department and location group. "
 		},
-		"items":{
-			"image"   : "/illustrations/stat-items.png",
-			"link"    : "/stats-counter/admin/items",
+		"stats":{
+			"image"   : "/illustrations/stats.png",
+			"link"    : "/stats-counter/admin/stats",
 			"title"   : "Stat Items",
-			"details" : "This section provides a place to manage stat topics, categores and items."
+			"details" : "Each of the stat items are grouped by topic and categories. Use this section to manage these collections."
 		},
+		
 		"settings":{
 			"image"   : "/illustrations/settings.png",
 			"link"    : "/stats-counter/admin/settings",
