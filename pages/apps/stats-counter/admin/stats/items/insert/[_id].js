@@ -15,7 +15,7 @@ export default function Insert(props){
 		delete data._id;
 		var results = await client({url:"/stats-counter/items",params:{method:"POST",body:data}})
 		success(["Success","A new Item record was inserted."]);
-		window.location.href = '/stats-counter/admin/groups/items/'+_id; 
+		window.location.href = '/stats-counter/admin/stats/items/'+_id; 
 	}
 
 	data.form.path.back.href += _id;

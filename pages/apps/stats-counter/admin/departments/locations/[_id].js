@@ -32,7 +32,9 @@ export default function Locations(props) {
 	var item = api({url:"/stats-counter/groups/"+_id})
 
 	if(items&&item){
-		l_data.list.columns[1].render = (p)=>{return <Link href={"/stats-counter/admin/departments/locations/edit/"+p}>Edit</Link>}
+
+		l_data.list.columns[1].render = (p)=>{let count = p.items.length;return <Link href={"items/"+p._id}>{"Edit ("+count+")"}</Link>}
+		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/departments/locations/edit/"+p}>Edit</Link>}
 		
 		l_data.list.rows   = items;
 		l_data.list.new.href += _id;

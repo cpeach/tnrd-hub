@@ -12,24 +12,34 @@ export default function Insert(props){
 
 	
 	const handleSubmit = async(data) => {
-		var results = await client({url:"/stats-counter/collection_items",params:{method:"PUT",body:data}})
-		success(["Success","Your Collection Item record was inserted."]);
-		window.location.href = '/stats-counter/admin/groups/collection_items/'+data._collection; 
+		var results = await client({url:"/stats-counter/locations",params:{method:"PUT",body:data}})
+		success(["Success","Your Location record was inserted."]);
+		window.location.href = '/stats-counter/admin/departments/locations/'+data.group; 
+	}
+
+	const handleDelete = async(data) => {
+		var results = await client({url:"/stats-counter/locations/"+_id,params:{method:"DELETE"}})
+		if(results.code){
+			success(["Success","Your Location record was deleted."]);
+			window.location.href = '/stats-counter/admin/departments/locations/'+data.group; 
+		}else{
+			error(["Failed",result.message]);
+		}
 	}
 
 	
-	var item = api({url:"/stats-counter/collection_items/"+_id})
+	var item = api({url:"/stats-counter/locations/"+_id})
 	
 
 	if(item){
-
-		data.form.path.back.href += item._collection;
+		console.log(item)
+		data.form.path.back.href += item.group;
 		data.form.subtitle = "ID : "+_id;
 		data.form.title = "Update";
 		data.form.fields[0].value = item.name;
 		data.form.fields[1].value = item._id;
-		data.form.fields[2].value = item._collection;
-		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
+		data.form.fields[2].value = item.group;
+		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 	}else{
 		return <></>
 	}

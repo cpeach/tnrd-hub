@@ -4,7 +4,7 @@
 	
 	"list":{
 		"title" : "Items",
-		"new" : {"label":"New Item","href":"/stats-counter/admin/groups/items/insert/"},
+		"new" : {"label":"New Item","href":"/stats-counter/admin/stats/items/insert/"},
 		"columns" : [
 			{"title":"Name","ref":"name"},
 			{"title":"Description","ref":"description"},

@@ -12,9 +12,9 @@ export default function Insert(props){
 
 	const handleSubmit = async(data) => {
 		delete data._id
-		var results = await client({url:"/stats-counter/collection_items",params:{method:"POST",body:data}})
-		success(["Success","A new Collection Item record was inserted."]);
-		window.location.href = '/stats-counter/admin/groups/collection_items/'+_id; 
+		var results = await client({url:"/stats-counter/locations",params:{method:"POST",body:data}})
+		success(["Success","A new locations record was inserted."]);
+		window.location.href = '/stats-counter/admin/departments/locations/'+_id; 
 	}
 
 	data.form.path.back.href += _id;

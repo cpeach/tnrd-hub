@@ -16,7 +16,7 @@ export default function Insert(props){
 		data._collection = _id;
 		var results = await client({url:"/stats-counter/topics",params:{method:"POST",body:data}})
 		success(["Success","A new Topic record was inserted."]);
-		window.location.href = '/stats-counter/admin/groups/topics/'+_id; 
+		window.location.href = '/stats-counter/admin/stats/topics/'+_id; 
 	}
 
 	data.form.path.back.href += _id;

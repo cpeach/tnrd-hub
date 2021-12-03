@@ -32,13 +32,13 @@ export default function Items(props) {
 
 	if(items && item){
 
-		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/groups/items/edit/"+p}>Edit</Link>}
+		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/stats/items/edit/"+p}>Edit</Link>}
 		
 		l_data.list.rows = items;
 		l_data.list.new.href += _id;
 		
 		let data = {};
-		data.path = {"back":{"label":"Back to Topics","href":"/stats-counter/admin/groups/categories/"+item.topic}}
+		data.path = {"back":{"label":"Back to Categories","href":"/stats-counter/admin/stats/categories/"+item.topic}}
 		data.content  = 
 					(
 						<Page><List data={l_data.list} ><div>List</div></List></Page>

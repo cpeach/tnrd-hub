@@ -26,6 +26,7 @@ const Field = forwardRef((props, ref) => {
 		setStyle(p.valid?style.field:style.field_invalid);
 		setError(p.error);
 		props.onChange(p);	
+		data.onChange ? data.onChange(p) : null;
 	}
 
 	useImperativeHandle(ref, () => ({

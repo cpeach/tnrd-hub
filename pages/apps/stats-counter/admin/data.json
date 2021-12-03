@@ -10,14 +10,14 @@
 		"collections":{
 			"image"   : "/illustrations/stats.png",
 			"link"    : "/stats-counter/admin/departments",
-			"title"   : "Stat Locations",
+			"title"   : "Locations",
 			"details" : "All stat items and stat results are based on individule locations. These location can be organized by department and location group. "
 		},
 		"stats":{
 			"image"   : "/illustrations/stats.png",
 			"link"    : "/stats-counter/admin/stats",
 			"title"   : "Stat Items",
-			"details" : "Each of the stat items are grouped by topic and categories. Use this section to manage these collections."
+			"details" : "Each of the Stat Items are grouped by topic and categories. Use this section to manage these collections."
 		},
 		
 		"settings":{

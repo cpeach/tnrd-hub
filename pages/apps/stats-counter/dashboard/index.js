@@ -18,20 +18,22 @@ export default function Index(props) {
     const [departmentsVisable,setDepartmentsVisable] = useState(false);
     const [department,setDepartment]             = useState();
     const [departments,setDepartments]           = useState();
-    const [departmentOptions,setDepartmentOptions]  = useState([]);
+    const [departmentsSelect,setDepartmentsSelect]  = useState([]);
 
-    const [collectionsVisable,setCollectionsVisable] = useState(false);
-    const [collection,setCollection]             = useState();
-    const [collections,setCollections]           = useState();
-    const [collectionOptions,setCollectionOptions]  = useState([]);
+    const [groupsVisable,setGroupsVisable] = useState(false);
+    const [group,setGroup]             = useState();
+    const [groups,setGroups]           = useState();
+    const [groupsSelect,setGroupsSelect]  = useState([]);
+    const [groupDefault,setGroupDefault]  = useState();
 
-    const [collectionItemsVisable,setCollectionItemsVisable] = useState(false);
-    const [collectionItem,setCollectionItem]             = useState();
-    const [collectionItems,setCollectionItems]           = useState();
-    const [collectionItemOptions,setCollectionItemOptions]  = useState([]);
+    const [locationsVisable,setLocationsVisable] = useState(false);
+    const [location,setLocation]             = useState();
+    const [locations,setLocations]           = useState();
+    const [locationsSelect,setLocationsSelect]  = useState([]);
  
     const [topicElements,setTopicElements] = useState();
     const [topicCurrent,setTopicCurrent] = useState(0);
+    const [topics,setTopics] = useState();
     const [topic,setTopic] = useState();
 
     const [categoryElements,setCategoryElements] = useState();
@@ -45,6 +47,8 @@ export default function Index(props) {
     const [date,setDate] = useState(moment().format('YYYY-MM-DD'));
 
     const [queues,setQueues] = useState({});
+
+
 
 //  UPDATE
     const update = (p,i)=>{
@@ -74,9 +78,9 @@ export default function Index(props) {
 
 //  DATE
     useEffect(async()=>{
-       console.log(collectionItem)
-        if(collectionItem && date){
-            let _values =  await client({url:'/stats-counter/values/list',params:{method:'POST',body:{filters:{date:date,collection_item:collectionItem._id}}}});
+       console.log(location)
+        if(location && date){
+            let _values =  await client({url:'/stats-counter/values/list',params:{method:'POST',body:{filters:{date:date,collection_item:location._id}}}});
             setValues(_values);
         }
 
@@ -85,40 +89,36 @@ export default function Index(props) {
 
 
 
-//  VALUES
+/* //  VALUES
     useEffect(async()=>{
       console.log("change value")
-      console.log(collection)
+      console.log(group)
      // console.log(items.length)
-      if(collection && collection.topics[topic]){
-          console.log(collection.topics[topic]);
-          let _categories = collection.topics[topic].categories
+      if(group && group.topics[topic]){
+          console.log(group.topics[topic]);
+          let _categories = group.topics[topic].categories
           _categories?_categories.map(cat=>{
               console.log(values.length)
               for(let i=0;i<values.length;i++){
                   console.log(values[i])
               }
-            /*  for(let i=0;i<values.length;i++){
-                for(let j=0;j<cat.items.length;j++){
-                    cat.items[j]._id===values[i].item?console.log([cat.items[j],values[i]]):null;
-                }
-            }     */         
+                  
           }):null
 
       }
       
 	},[values])
-
-
+ */
+/* 
 
 //  CATEGORIES
     useEffect(async()=>{
-       if(collection && topic !== undefined && topic > -1){
+       if(group && topic !== undefined && topic > -1){
 
-           // let index = typeof topic==='object'?0:topic;
+        //  let index = typeof topic==='object'?0:topic;
             let _categories = [];
             let _count = 0;
-            collection.topics[topic].categories?collection.topics[topic].categories.map((item,i)=>{
+            group.topics[topic].categories?group.topics[topic].categories.map((item,i)=>{
                 _categories.push((
                     <div key={"category-"+i} className="pad_x_md">
                         <Divider style={{margin:"48px 0px 48px 0px"}} key={'category-'+i} orientation="center" >{item.name}</Divider>
@@ -157,88 +157,148 @@ export default function Index(props) {
             window.document.getElementById("topic-"+topic).className = "highlight"
             setTopicCurrent(topic);
 
-            let _values = await client({url:'/stats-counter/values/list',params:{method:'POST',body:{filters:{date:date,collection_item:collectionItem._id}}}});
+            let _values = await client({url:'/stats-counter/values/list',params:{method:'POST',body:{filters:{date:date,collection_item:location._id}}}});
             setValues(_values);
 
         }
 
 
 	},[topic])
-   
+
+ */ 
+    useEffect(async()=>{
+        if(group && topic !== undefined && topic > -1){
+            console.log(topics)
+            console.log(topics[topic])
+            console.log(location.items)
+            let _categoryElements=[],itemElements=[];
+            topics[topic].categories.map((_cat,c)=>{
+                _categoryElements.push(<div className="pad_x_md pad_y_lg light">{_cat.name}</div>)
+                location.items.map((_item,i)=>{
+                    if(_cat._id === _item.category._id){
+                        _categoryElements.push((<div className="pad_x_md pad_y_lg">
+                            <div className="_9 box noselect">
+                                <b>{_item.name}</b>
+                                <p className="small">{_item.description}</p>
+                            </div>
+                            <div className="_3 box right middle">
+                                <div className="border touch box" style={{overflow:"hidden"}}>
+                                    <input ref={(element) => {valueRefs.current[_item._id]=element}} className="noselect box _6 center middle" data-loading={false} onChange={(e)=>{update(undefined,_item._id)}} type="number" defaultValue="0" style={{marginTop:"-6px",fontSize:"19px"}} />
+                                    <div className="b-r b-l hand-primary box pad_md _3 center" style={{lineHeight:"0px"}} onClick={()=>{update(1,_item._id)}} ><UpOutlined  style={{fontSize:"19px"}} /></div>
+                                    <div className="hand-primary box pad_md _3 center" style={{lineHeight:"0px"}} onClick={()=>{update(-1,_item._id)}} ><DownOutlined style={{fontSize:"19px"}} /></div>
+                                </div>
+
+                            </div>
+                        </div>))
+                        
+                    }
+                })
+            })
+            setCategoryElements(_categoryElements);
+        }
+	},[topic])
+
+
+/* 
+const loadContent = async()=>{
+
+    let topics = await client({url:'/stats-counter/topics/list',params:{method:'POST',body:{}}});
+    let _topicElements = [];
+    let _currentTopics = [];
+    
+    location.items.map(_item=>{
+        topics.map(_topic=>{
+            if(_topic._id === _item.category.topic && !_currentTopics.includes(_topic._id)){
+                _currentTopics.push(_topic._id);
+                _topicElements.push(<span id={"topic-"+i} key={'topic-'+i} data-index={i} className={i===0?'':''} onClick={()=>{setTopic(i)}}>{_topic.name}</span>)
+            }
+        })
+    })
+
+    setTopicElements(_topicElements)
+    setTopic(0);
+}
+ */
+
+
+
+
 //  TOPICS
     useEffect(async()=>{
+        if(location && location.name !== "--"){
+            let _items  = location.items;
+            let _topics = await client({url:'/stats-counter/topics/list',params:{method:'POST',body:{}}});
+            let _topicElements = [];
+            let _includeTopics = [];
+            let _currentTopics = [];
 
-        setCollectionItemsVisable(false);
-        
-        if(collection && collection.name !=="--"){
-            console.log(collection)
-            let _topics = [];
-            for(let i=0;i<collection.topics.length;i++){
-                collection.topics[i].categories = await client({url:'/stats-counter/categories/list',params:{method:'POST',body:{filters:{topic:collection.topics[i]._id}}}});
-            }
-          
-            //   Topic Elements
-            collection.topics.map((item,i)=>{
-                _topics.push(<span id={"topic-"+i} key={'topic-'+i} data-index={i} className={i===0?'':''} onClick={()=>{setTopic(i)}}>{item.name}</span>)
-               // i===0?setTopic(_topics[0]):null
-            });
-
-            setTopicElements(_topics)
-            setTopic(0);
-        }else{
-            setTopicElements(<></>)
-            setTopic(-1);
-        }
-        
-	},[collectionItem])
-
-//  COLLECTION ITEMS
-    useEffect(async()=>{
-        
-	    if(collection && collection.name !=="--"){
-
-            setCollectionsVisable(false);
-
-            // get-set collectionItems
-            let _items    = await client({url:'/stats-counter/collection_items/list',params:{method:'POST',body:{filters:{collection:collection._id}}}});
-           
-             let _options = [], _collectionItem,_collectionItems={};
-            _items.map((item,i)=>{
-                _collectionItems[item._id] = item;
-                _collectionItem = i === 0 ? item : _collectionItem;
-                _options.push(<Select.Option key={"collectionItem-"+i} value={item._id}>{item.name}</Select.Option>);
+            _items.map((_item,i)=>{
+                _topics.map((_topic,t)=>{
+                    if(_topic._id === _item.category.topic && !_includeTopics.includes(_topic._id)){
+                        _includeTopics.push(_topic._id);
+                        _currentTopics.push(_topic);
+                        _topicElements.push(<span id={"topic-"+i} key={'topic-'+i} data-index={i} className={i===0?'':''} onClick={()=>{setTopic(i)}}>{_topic.name}</span>)
+                    }
+                })
             })
-            setCollectionItem(_collectionItem);		
-            setCollectionItems(_collectionItems);		
-			setCollectionItemOptions(_options);	
-
            
-        }else{
-            setCollectionItem({name:"--"});
-            setCategoryElements(<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />)
+            setTopicElements(_topicElements);
+            setTopics(_currentTopics);
+            setTopic(0);
         }
 
-	},[collection])
+	},[location])
 
-//  COLLECTIONS
+//  LOCATONS
     useEffect(async()=>{
         
+	    if(group && group.name !=="--"){
+
+            setGroupsVisable(false);
+
+            // get-set locations
+            let _items    = await client({url:'/stats-counter/locations/list',params:{method:'POST',body:{filters:{group:group._id}}}});
+           
+             let _options = [], _location,_locations={};
+             for(let i=0;i<_items.length;i++){
+                _locations[_items[i]._id] = _items[i];
+                _location = i === 0 ? _items[i] : _location;
+                _options.push(<Select.Option key={"location-"+i} value={_items[i]._id}>{_items[i].name}</Select.Option>);
+             }
+
+            setLocation(_location);		
+            setLocations(_locations);		
+            setLocationsSelect(<div className="select_wrapper"><Select style={{padding:"9px 0px"}} bordered={false}  value={_location?_location._id:"--"}  onChange={(p)=>{setLocation(_locations[p])}}> {_options}</Select></div>);		
+            
+        }else{
+            setLocation({name:"--"});
+            setCategoryElements(<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />)
+            setLocationsSelect(<div className="select_wrapper"><Select style={{padding:"9px 0px"}} bordered={false}  value={"--"} ></Select></div>);
+        }
+        
+
+	},[group])
+
+//  GROUPS
+    useEffect(async()=>{
 	    if(department){
+            
             setDepartmentsVisable(false);
 
-            // get-set collections
-            let _items = await client({url:'/stats-counter/collections/list',params:{method:'POST',body:{filters:{department:department._id}}}});
+            // get-set groups
+            let _items = await client({url:'/stats-counter/groups/list',params:{method:'POST',body:{filters:{department:department._id}}}});
 
-             let _options = [], _collection,_collections={};
+             let _options = [], _group,_groups={};
             _items.map((item,i)=>{
-                _collections[item._id] = item;
-                _collection = i === 0 ? item : _collection;
-                _options.push(<Select.Option key={"collection-"+i}  value={item._id}>{item.name}</Select.Option>);
+                _groups[item._id] = item;
+                _group = i === 0 ? item : _group;
+                _options.push(<Select.Option key={"group-"+i}  value={item._id}>{item.name}</Select.Option>);
             })
 
-            setCollection(_collection || {name:"--"});		
-            setCollections(_collections);		
-			setCollectionOptions(_options);	
+            setGroup(_group || {name:"--"});		
+            setGroups(_groups);	
+            setGroupsSelect(<div className="select_wrapper"><Select style={{padding:"9px 0px"}} bordered={false} value={_group?_group._id:"--"}  onChange={(p)=>{ setGroup(_groups[p])}}> {_options}</Select></div>);		
+
         }
 
 	},[department])
@@ -247,7 +307,6 @@ export default function Index(props) {
     useEffect(async()=>{
 
 		let isMounted = true;
-        
 		let _items = await client({url:'/stats-counter/departments/list',params:{method:'POST',body:{}}});
 		if(isMounted && _items){
             let _options = [], _department,_departments={};
@@ -256,12 +315,11 @@ export default function Index(props) {
                 _department = item.name === 'Libraries' ? item : _department;
                 _options.push(<Select.Option key={"option-"+i} value={item._id}>{item.name}</Select.Option>);
             })
-            
             setDepartment(_department);		
-            setDepartments(_departments);		
-			setDepartmentOptions(_options);		
+            setDepartments(_departments);	
+            console.log(_department)	
+			setDepartmentsSelect(<div className="select_wrapper"><Select style={{padding:"9px 0px"}} defaultValue={_department._id} bordered={false} onChange={(p)=>{setDepartment(_departments[p])}} > {_options}</Select></div>);		
 
-            
 		}
        
 		return () => (isMounted = false);
@@ -273,36 +331,43 @@ export default function Index(props) {
         <>
             <Page>
                 <h1 className="mar_md mar_top_xs pad_bottom_lg">Daily Stats Counter</h1>
-                <DatePicker onChange={(d,s)=>{setDate(s)}} style={{verticalAlign:"middle",padding:"12px 12px",marginLeft:"15px",borderRadius:"5px"}} defaultValue={moment()} />
-                <div className="btn_light mar_left_sm " onClick={()=>{setDepartmentsVisable(true)}}>{!department||department.name} <CaretDownOutlined /></div>
-                <div className="btn_light mar_left_sm" onClick={()=>{setCollectionsVisable(true)}}>{!collection||collection.name} <CaretDownOutlined /></div>
-                <div className="btn_light mar_left_sm" onClick={()=>{setCollectionItemsVisable(true)}}>{!collectionItem||collectionItem.name} <CaretDownOutlined /></div>
+                <DatePicker onChange={(d,s)=>{setDate(s)}} style={{verticalAlign:"middle",marginLeft:"15px",padding:"12px 12px",marginRight:"12px",borderRadius:"5px"}} defaultValue={moment()} />
+                {departmentsSelect}
+                {groupsSelect}
+                {locationsSelect}
                 
                 <div className="menubar mar_y_md">
                     <div>{topicElements}</div>    
                 </div>
-
-                {categoryElements}
-               
+                <div className="mar_md border touch shadow">
+                    {categoryElements}
+                </div>
             </Page>
 
-            <Modal visible={departmentsVisable} title="Select Department" onOk={()=>{setDepartmentsVisable(false)}} onCancel={()=>{setDepartmentsVisable(false)}} width={360}>
-                <Select defaultValue={!department||department._id } onChange={(p)=>{setDepartment(departments[p])}}> {departmentOptions}</Select>
-            </Modal>
-            <Modal visible={collectionsVisable} title="Select Collection" onOk={()=>{setCollectionsVisable(false)}} onCancel={()=>{setCollectionsVisable(false)}} width={360}>
-                <Select defaultValue={!collection||collection._id } onChange={(p)=>{setCollection(collections[p])}}> {collectionOptions}</Select>
-            </Modal>
-            <Modal visible={collectionItemsVisable} title="Select Collection Items" onOk={()=>{setCollectionItemsVisable(false)}} onCancel={()=>{setCollectionItemsVisable(false)}} width={360}>
-                <Select defaultValue={!collectionItem||collectionItem._id } onChange={(p)=>{setCollectionItem(collectionItems[p])}}> {collectionItemOptions}</Select>
-            </Modal>            
+                   
         </>
     );
 
 	return ( <Frame user={props.user} apps={props.apps} data={data} active="1" align="center"  />)
 } 
 			
-
-
+ /* <div className="btn_light mar_left_sm " onClick={()=>{setDepartmentsVisable(true)}}>{!department||department.name} <CaretDownOutlined /></div>
+                <div className="btn_light mar_left_sm" onClick={()=>{setGroupsVisable(true)}}>{!group||group.name} <CaretDownOutlined /></div>
+                <div className="btn_light mar_left_sm" onClick={()=>{setLocationsVisable(true)}}>{!location||location.name} <CaretDownOutlined /></div>
+                
+ 
+ 
+  <Modal visible={departmentsVisable} title="Select Department" onOk={()=>{setDepartmentsVisable(false)}} onCancel={()=>{setDepartmentsVisable(false)}} width={360}>
+                <Select defaultValue={!department||department._id } onChange={(p)=>{setDepartment(departments[p])}}> {departmentOptions}</Select>
+            </Modal>
+            <Modal visible={groupsVisable} title="Select Collection" onOk={()=>{setGroupsVisable(false)}} onCancel={()=>{setGroupsVisable(false)}} width={360}>
+                <Select defaultValue={!group||group._id } onChange={(p)=>{setGroup(groups[p])}}> {groupOptions}</Select>
+            </Modal>
+            <Modal visible={locationsVisable} title="Select Collection Items" onOk={()=>{setLocationsVisable(false)}} onCancel={()=>{setLocationsVisable(false)}} width={360}>
+                <Select defaultValue={!location||location._id } onChange={(p)=>{setLocation(locations[p])}}> {locationOptions}</Select>
+            </Modal>    
+ 
+ */
 
 
 

@@ -6,6 +6,7 @@ import Frame from '/components/frames/frame2.js';
 import Field from './fields/field.js';
 
 import {message,notification,Modal,Popconfirm,Divider} from 'antd';
+import {DeleteFilled} from '@ant-design/icons';
 
 const Form = forwardRef((props, ref) => {
 	
@@ -23,8 +24,6 @@ const Form = forwardRef((props, ref) => {
 		},
 		set:(d)=>{
 			setTimeout(()=>{
-				console.log("set from field")
-				console.log(fieldRefs.current);
 				var refs = fieldRefs.current
 				for(var i=0;i<refs.length;i++){
 					refs[i].setField(d[refs[i].getName()]);
@@ -36,17 +35,18 @@ const Form = forwardRef((props, ref) => {
 	const handleSubmit = async(e)=>{
 		
 		e.preventDefault();
-		let data = {},field,valid=true;
+		let _data = {},field,valid=true;
 		var refs = fieldRefs.current
 		
 		for(var i=0;i<refs.length;i++){
 			field = await refs[i].getField();
-			data[field.name] = field.value
+			_data[field.name] = field.value
 			valid = !field.valid ? false : valid;
 		}
+		
 		if(valid){
-			
-			props.onSubmit(data);
+			props.onSubmit(_data);
+			data.onSubmit?data.onSubmit(_data):null;
 		}else{
 			message.warning("Please address field errors")
 		}
@@ -54,8 +54,9 @@ const Form = forwardRef((props, ref) => {
 	}
 
 	
-	const handleChange = (p)=>{
-		//console.log("FORM CHANGE")
+	const onChange = (p)=>{
+	//	console.log("FORM CHANGE")
+	//	console.log(p)
 	}
 
 	const getSection=(section,s)=>{
@@ -87,7 +88,7 @@ const Form = forwardRef((props, ref) => {
 		)
 	}
 	const getField = (field,i,k)=>{
-		return <Field ref={(element) => {fieldRefs.current[k]=element}} defer={props.dialog?true:false} dialog={props.dialog} key={"field-"+i+"-"+k} data={field} onChange={handleChange}/>
+		return <Field ref={(element) => {fieldRefs.current[k]=element}} defer={props.dialog?true:false} dialog={props.dialog} key={"field-"+i+"-"+k} data={field} onChange={onChange}/>
 	}
 
 
@@ -118,8 +119,19 @@ const Form = forwardRef((props, ref) => {
 						(<>
 							<hr/>
 							<div className={style.form_actions}>
-								<input className={style.submit} type="submit" defaultValue="Submit" />
-								<div className={style.cancel}><a href={data.path.back.href} align="center">Cancel</a></div>
+								<div className="_7 box">
+									<input className={style.submit} type="submit" defaultValue="Submit" />
+									<div className={style.cancel}><a href={data.path.back.href} align="center">Cancel</a></div>
+								</div>	
+								<div className="_5 box right">
+									{
+										props.onDelete ? 	
+										<Popconfirm title="Are you sure to delete this record?" onConfirm={props.onDelete} okText="Yes" cancelText="No" >
+											<div className={style.delete}><DeleteFilled /></div>	
+										</Popconfirm>
+										: ""
+									}
+								</div>
 							</div>
 						</>) 
 						: 

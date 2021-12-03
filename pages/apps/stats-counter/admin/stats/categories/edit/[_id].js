@@ -13,7 +13,7 @@ export default function Insert(props){
 	const handleSubmit = async(data) => {
 		var results = await client({url:"/stats-counter/categories",params:{method:"PUT",body:data}})
 		success(["Success","Your Category record was inserted."]);
-		window.location.href = '/stats-counter/admin/groups/categories/'+data.topic; 
+		window.location.href = '/stats-counter/admin/stats/categories/'+data.topic; 
 	}
 
 	

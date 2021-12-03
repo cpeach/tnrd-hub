@@ -12,22 +12,21 @@ export default function Insert(props){
 
 	
 	const handleSubmit = async(data) => {
-		var results = await client({url:"/stats-counter/collections",params:{method:"PUT",body:data}})
-		success(["Success","Your Collection Item record was inserted."]);
-		window.location.href = '/stats-counter/admin/groups/collections/'+data.department; 
+		var results = await client({url:"/stats-counter/topics",params:{method:"PUT",body:data}})
+		success(["Success","Your Topic record was inserted."]);
+		window.location.href = '/stats-counter/admin/stats/topics/'+data._collection; 
 	}
 
-	data.form.path.back.href += _id;
-	var item = api({url:"/stats-counter/collections/"+_id})
+	var item = api({url:"/stats-counter/topics/"+_id})
 	
 	if(item){
 
-		
+		data.form.path.back.href += item._collection;
 		data.form.subtitle = "ID : "+_id;
 		data.form.title = "Update";
 		data.form.fields[0].value = item.name;
 		data.form.fields[1].value = item._id;
-		data.form.fields[2].value = item.department;
+		data.form.fields[2].value = item._collection;
 		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
 	}else{
 		return <></>

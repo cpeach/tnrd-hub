@@ -12,8 +12,12 @@ div#__next{height: 100%;}
 *::-webkit-scrollbar{width: 5px;}
 *::-webkit-scrollbar-track{background: white; }
 *::-webkit-scrollbar-thumb{background: rgb(120,120,120); }
-
+input::selection {
+    background-color: transparent;
+	color:#000;
+}
 .noselect{user-select: none;}
+
 
 
 /*
@@ -61,7 +65,7 @@ div#__next{height: 100%;}
 
 	.hand{cursor: pointer}
 	.hand-primary{cursor:pointer}
-	.hand-primary:hover{color:rgb(117, 158, 46) !important;}
+	.hand-primary:hover{color:white;background-color:rgb(117, 158, 46) !important;}
 
 /*
 	FONTS
@@ -170,9 +174,8 @@ div#__next{height: 100%;}
 	}
 
 	/* Firefox */
-	input[type=number] {
-	-moz-appearance: textfield;
-	}
+	input[type=number] {-moz-appearance: textfield;}
+
 /* seperator*/
 
 	.sep{display: inline-block;font-size:12px;padding:0px 5px;color:rgb(180,180,180);vertical-align: middle;padding-bottom:3px}
@@ -331,7 +334,9 @@ div#__next{height: 100%;}
 .mar_right_xl{margin-right:60px;}
 .mar_right_xxl{margin-right:120px;}
 
+/*Select*/
 
+.select_wrapper{padding:0px 9px;vertical-align: middle;margin-right:12px;display:inline-block;min-width:120px;border-radius:5px;border:1px solid rgb(220,220,220)}
 
 
 /*

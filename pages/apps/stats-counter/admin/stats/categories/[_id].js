@@ -31,14 +31,14 @@ export default function Categories(props) {
 	var item = api({url:"/stats-counter/topics/"+_id})
 
 	if(items && item){
-		l_data.list.columns[1].render = (p)=>{let count=p.items.length;return <Link href={"/stats-counter/admin/groups/items/"+p._id}>{"View ("+count+")"}</Link>}
-		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/groups/categories/edit/"+p}>Edit</Link>}
+		l_data.list.columns[1].render = (p)=>{let count=p.items.length;return <Link href={"/stats-counter/admin/stats/items/"+p._id}>{"View ("+count+")"}</Link>}
+		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/stats/categories/edit/"+p}>Edit</Link>}
 		
 		l_data.list.rows = items;
 		l_data.list.new.href += _id;
 		
 		let data = {};
-		data.path = {"back":{"label":"Back to Topics","href":"/stats-counter/admin/groups/topics/"+item._collection}}
+		data.path = {"back":{"label":"Back to Topics","href":"/stats-counter/admin/stats/"}}
 		data.content  = 
 					(
 						<Page><List data={l_data.list} ><div>List</div></List></Page>

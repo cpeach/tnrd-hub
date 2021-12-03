@@ -5,7 +5,7 @@
 	"form" : {
 		"title":"Insert",
 		"subtitle":"New Category",
-		"path"  : {"back":{"label":"Back to Categories","href":"/stats-counter/admin/groups/categories/"}},
+		"path"  : {"back":{"label":"Back to Categories","href":"/stats-counter/admin/stats/categories/"}},
 		"sections":[{"label":null}],
 		"containers":[{"section":0,"size":"12"}],
 		"fields":[

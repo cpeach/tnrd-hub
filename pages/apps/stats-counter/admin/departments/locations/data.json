@@ -7,6 +7,7 @@
 		"new" : {"label":"New Location","href":"/stats-counter/admin/departments/locations/insert/"},
 		"columns" : [
 			{"title":"Name","ref":"name"},
+			{"title":"Items","ref":"*"},
 			{"title":"Action","ref":"_id"}
 		]
 	}

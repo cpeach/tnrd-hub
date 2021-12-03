@@ -17,11 +17,12 @@ export default function Insert(props){
 		window.location.href = '/stats-counter/admin/departments/groups/'+data.department; 
 	}
 
-	data.form.path.back.href += _id;
+	
 	var item = api({url:"/stats-counter/groups/"+_id})
 	
 	if(item){
-
+		
+		data.form.path.back.href += item.department;
 		
 		data.form.subtitle = "ID : "+_id;
 		data.form.title = "Update";

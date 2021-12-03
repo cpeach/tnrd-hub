@@ -5,7 +5,7 @@
 	"form" : {
 		"title":"Insert",
 		"subtitle":"New Item",
-		"path"  : {"back":{"label":"Back to Items","href":"/stats-counter/admin/groups/items/"}},
+		"path"  : {"back":{"label":"Back to Items","href":"/stats-counter/admin/stats/items/"}},
 		"sections":[{"label":null}],
 		"containers":[{"section":0,"size":"12"}],
 		"fields":[
