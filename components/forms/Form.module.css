@@ -172,7 +172,14 @@
 	Multi Select
 */
 
-  
+ 
+/*
+	Input
+*/
+
+.date{padding:12px 12px;background-color:transparent; border:none;outline:none;font-size:15px;letter-spacing:0px;font-weight:400;font-family:'Lato';display: block;width:100%;}
+
+
 /*
 	Submit
 */

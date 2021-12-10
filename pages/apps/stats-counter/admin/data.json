@@ -1,10 +1,10 @@
 
 {
 	"tiles":{
-		"insights":{
+		"reporting":{
 			"image"   : "/illustrations/stats.png",
-			"link"    : "/stats-counter/admin/insights",
-			"title"   : "Insights",
+			"link"    : "/stats-counter/admin/reporting",
+			"title"   : "Reporting",
 			"details" : "This section provides an overview of stat results for branchs and items"
 		},
 		"collections":{
@@ -19,7 +19,6 @@
 			"title"   : "Stat Items",
 			"details" : "Each of the Stat Items are grouped by topic and categories. Use this section to manage these collections."
 		},
-		
 		"settings":{
 			"image"   : "/illustrations/settings.png",
 			"link"    : "/stats-counter/admin/settings",

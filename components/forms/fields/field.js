@@ -7,6 +7,7 @@ import Email       from './email.js';
 import Description from './description.js';
 import Select      from './select.js';
 import MultiSelect from './multi_select.js';
+import Date        from './date.js';
 import Image       from './image.js';
 import Document    from './document.js';
 import List        from './list.js';
@@ -45,6 +46,7 @@ const Field = forwardRef((props, ref) => {
 			'description':(<Description ref={fieldRef} data={data} onChange={update} />),
 			'select':(<Select ref={fieldRef} data={data} onChange={update} />),
 			'multi_select':(<MultiSelect ref={fieldRef} data={data} onChange={update} />),
+			'date':(<Date ref={fieldRef} data={data} onChange={update} />),
 			'image':(<Image ref={fieldRef} dialog={props.dialog} data={data} defer={props.defer} onChange={update} />),
 			'document':(<Document ref={fieldRef} dialog={props.dialog} data={data} defer={props.defer} onChange={update} />),
 			'list' :(<List ref={fieldRef} data={data} onChange={update} />),

@@ -14,7 +14,7 @@ export default function Index(props) {
         <Page>
             <h1 className="mar_md pad_bottom_sm">Welcome to The Daily Stats Counter</h1>
             <p className="mar_md pad_bottom_xl _11">The purpose of this application is to provide staff with a way of keeping track of incremental stats</p>
-            <Tile size="12" margin="md" type="lg" data={data.tiles.insights} />
+            <Tile size="12" margin="md" type="lg" data={data.tiles.reporting} />
             <Tile  size="4" margin="md" type="md" data={data.tiles.collections} />
             <Tile  size="4" margin="md" type="md" data={data.tiles.stats} />
             <Tile  size="4" margin="md" type="md" data={data.tiles.settings} />

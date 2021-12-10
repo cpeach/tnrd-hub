@@ -30,6 +30,7 @@ export default function Insert(props){
 		data.form.fields[1].value = item._id;
 		data.form.fields[2].value = item.department;
 		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
+	
 	}else{
 		return <></>
 	}

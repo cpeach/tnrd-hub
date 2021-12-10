@@ -485,7 +485,7 @@ input::selection {
 
 /*	divider */
 	.ant-divider-horizontal.ant-divider-with-text{font-size:13px !important}
-	.ant-divider-inner-text{color:rgb(60,60,60);font-size:19px}
+	.ant-divider-inner-text{color:rgb(60,60,60);font-weight:400;font-size:13px;letter-spacing: 0.6px;}
 
 /*	switch */
 	.ant-switch-checked{background-color:rgb(117, 158, 46) !important ;}

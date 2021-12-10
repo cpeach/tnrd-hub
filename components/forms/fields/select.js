@@ -34,7 +34,7 @@ const _Select = forwardRef((props, ref) => {
 	const getOptions = (group)=>{
 		let options = [];
 		let disabled = props.data.disabled,_disabled;
-		props.data.options.map((option,o)=>{
+		!props.data.options||props.data.options.map((option,o)=>{
 			_disabled = disabled&&disabled.includes(option.value)?true:false;
 			if(group){
 				group.value === option.group?options.push(<Option key={option.name+"-"+o} disabled={_disabled} value={option.value}>{option.label}</Option>):null;
