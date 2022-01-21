@@ -1,0 +1,20 @@
+{
+	
+	
+	"list":{
+		"title" : "Images",
+		"new" : {"label":"New Image","href":"/hub-console/admin/images/modify/insert"},
+		"filters" : [
+			{"tag":"multi_select","label":"Images","name":"images","options":[]}
+		],
+		"columns" : [
+			{"title":"Image","ref":"url","align":"center"},
+			{"title":"File Name","ref":"filename"},
+			{"title":"Original Name","ref":"originalname"},
+			{"title":"Size","ref":"size"},
+			{"title":"Create Date","ref":"created"},
+			{"title":"Action","align":"center","ref":"_id"}
+		]
+	}
+
+}

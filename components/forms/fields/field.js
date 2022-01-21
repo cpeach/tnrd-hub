@@ -8,8 +8,10 @@ import Description from './description.js';
 import Select      from './select.js';
 import MultiSelect from './multi_select.js';
 import Date        from './date.js';
+import Time        from './time.js';
 import Image       from './image.js';
 import Document    from './document.js';
+import File        from './file.js';
 import List        from './list.js';
 import Editor      from './editor.js';
 
@@ -47,7 +49,9 @@ const Field = forwardRef((props, ref) => {
 			'select':(<Select ref={fieldRef} data={data} onChange={update} />),
 			'multi_select':(<MultiSelect ref={fieldRef} data={data} onChange={update} />),
 			'date':(<Date ref={fieldRef} data={data} onChange={update} />),
+			'time':(<Time ref={fieldRef} data={data} onChange={update} />),
 			'image':(<Image ref={fieldRef} dialog={props.dialog} data={data} defer={props.defer} onChange={update} />),
+			'file':(<File ref={fieldRef} dialog={props.dialog} data={data} defer={props.defer} onChange={update} />),
 			'document':(<Document ref={fieldRef} dialog={props.dialog} data={data} defer={props.defer} onChange={update} />),
 			'list' :(<List ref={fieldRef} data={data} onChange={update} />),
 			'editor' :(<Editor ref={fieldRef} data={data} onChange={update} />)
@@ -60,9 +64,9 @@ const Field = forwardRef((props, ref) => {
 	return (
 		<div className={data.tag!=="hidden"?(_style + " _"+(data.size||"")):style.hidden}>
 			<label>{data.label}</label>
+			{data.description?<p>{data.description}</p>:<></>}
 			<div>{inputs()}</div>
 			<span>{error}</span>
-			{data.description?<p>{data.description}</p>:<></>}
 			
 		</div>		
 	)

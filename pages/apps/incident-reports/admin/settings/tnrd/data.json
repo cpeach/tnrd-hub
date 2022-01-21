@@ -1,0 +1,77 @@
+
+{
+	
+	"form" : {
+		"title":"Update",
+		"subtitle":"Settings",
+		"path"  : {"back":{"label":"Back to Admin","href":"/incident-reports/admin/settings"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			{"tag":"multi_select","label":"CUPE Recipients","description":"Select the users that you would like to recieve notification when a CUPE incident has been submitted","required":false,"container":0,"size":12,"attributes":{"name":"recipients-cupe","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"multi_select","label":"BCGEU Recipients","description":"Select the users that you would like to recieve notification when a BCGEU incident has been submitted","required":false,"container":0,"size":12,"attributes":{"name":"recipients-bcgeu","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"list","label":"General Incident Types","ref":"name","description":"A list of incident types.","required":true,"max":30,"container":0,"size":12,
+				"attributes":{
+					"name":"general-types",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Incident Type Item",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
+							
+						]
+					}
+					
+				}
+			},
+			{"tag":"list","label":"Critical Incident Types","ref":"name","description":"A list of incident types.","required":true,"max":30,"container":0,"size":12,
+				"attributes":{
+					"name":"critical-types",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Incident Type Item",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
+						]
+					}
+					
+				}
+			},
+			{"tag":"list","label":"Departments","ref":"name","description":"A list of departments from which an incident could occur.","required":true,"max":30,"container":0,"size":12,
+				"attributes":{
+					"name":"departments",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Location Item",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
+						]
+					}
+					
+				}
+			},
+			{"tag":"list","label":"Locations","ref":"name","description":"A list of locations in which an incident could occur.","required":true,"max":30,"container":0,"size":12,
+				"attributes":{
+					"name":"locations",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Location Item",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
+						]
+					}
+					
+				}
+			}
+			
+		]
+	}
+}

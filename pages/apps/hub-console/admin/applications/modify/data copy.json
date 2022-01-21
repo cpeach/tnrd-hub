@@ -1,0 +1,57 @@
+
+{
+	
+	"form" : {
+		"title":"Insert",
+		"subtitle":"New Application",
+		"path"  : {"back":{"label":"Back to Applications","href":"/hub-console/admin/applications"}},
+		"sections":[{"label":null},{"label":"Application Image"},{"label":"UI - Actions"}],
+		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"},{"section":2,"size":"12"}],
+		"fields":[
+			{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
+			{"tag":"text","label":"Short Name","required":true,"container":0,"size":12,"description":"The short name must be a url safe value. Replace spaces with '-' ","attributes":{"name":"short"}},
+			{"tag":"multi_select","label":"Departments","required":true,"container":0,"size":12,"attributes":{"name":"departments","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description"}},
+			{"tag":"select","label":"Internally Hosted","required":true,"container":0,"size":12,"options":[{"label":"Yes","name":"yes","value":true},{"label":"No","name":"no","value":false}],"attributes":{"name":"hosted","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"image","container":1,"required":false,"size":12,"attributes":{"name":"image"}},		
+			{"tag":"list","ref":"label","required":true,"label":"Menu Options","max":2,"container":2,"size":12,
+				"attributes":{
+					"name":"menu",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Menu Item",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"text","label":"Label","required":true,"container":0,"size":12,"attributes":{"name":"label"}},
+							{"tag":"text","label":"Link","required":true,"container":0,"size":12,"attributes":{"name":"link"}},
+							{"tag":"select","label":"Type","required":true,"container":0,"size":12,"options":[{"label":"Primary","name":"primary","value":"primary"},{"label":"Secondary","name":"secondary","value":"secondary"}],"attributes":{"name":"type","showSearch":false,"showArrow":true,"bordered":false}}
+						]
+					}
+					
+				}
+			},
+			{"tag":"list","ref":"title","label":"Resource Links","container":2,"size":12,
+				"attributes":{
+					"name":"resources-links",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Resource Link",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"hidden","container":0,"value":false,"attributes":{"name":"document"}},
+							{"tag":"text","label":"Title","required":true,"container":0,"size":12,"attributes":{"name":"title"}},
+							{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description"}},
+							{"tag":"url","label":"Link","required":true,"container":0,"size":12,"attributes":{"name":"link"}},
+							{"tag":"select","label":"Type","required":true,"container":0,"size":12,"options":[{"label":"Downloads","name":"Downloads","value":"downloads"},{"label":"Guide","name":"Guide","value":"guide"},{"label":"FAQ","name":"FAQ","value":"faq"},{"label":"Documentation","name":"Documentation","value":"documentation"},{"label":"Licensing","name":"Licensing","value":"licensing"}],"attributes":{"name":"type","showSearch":false,"showArrow":true,"bordered":false}}
+			
+						]
+					}
+					
+				}
+			}
+				
+		]
+	}
+}

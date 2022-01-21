@@ -59,13 +59,13 @@
 */
 
 	.field,.field_invalid{padding:9px 12px;display:inline-block;vertical-align: top;}
-	.field>label,.field_invalid>label{font-size:14px;font-weight:600;display: block;letter-spacing:0.8px;}
+	.field>label,.field_invalid>label{font-size:16px;font-weight:600;display: block;letter-spacing:0.4px;}
 	.field>div,.field_invalid>div{overflow:hidden;border:1px solid rgb(150,150,150);border-radius:4px;margin:9px 0px;background-color: white;}
 	.field_invalid>div{border-color:rgba(193,64,12,0.80)}
 	.field>span,.field_invalid>span{font-size:13px;display: block;}
 	.field>span,.field_invalid>span{font-size:13px;display: block;}
 	.field_invalid>span{color:rgba(193,64,12,0.80)}
-	.field>p,.field_invalid>p{font-size:12px;display: block;letter-spacing:0.8px;color:rgb(120,120,120);margin-top:6px;}
+	.field>p,.field_invalid>p{line-height:19px;font-size:14px;display: block;letter-spacing:0.4px;color:rgb(120,120,120);margin-top:6px;}
 	
 /*
 	Hidden

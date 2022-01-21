@@ -1,0 +1,20 @@
+
+
+{
+	
+	"list":{
+		"title" : "Patrons",
+		"new"   : {"label":"New Patron","href":"/hashad/admin/insert"},
+		"filters" : [
+			{"tag":"multi_select","label":"Patron Types","name":"types","options":[]}
+		],
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Barcode","ref":"barcode"},
+			{"title":"Type","ref":"type"},
+			{"title":"History","ref":"_id"},
+			{"title":"Action","ref":"_id"}
+		]
+	}
+	
+}

@@ -4,7 +4,6 @@
 	
 	"list":{
 		"title" : "Results",
-		
 		"columns" : [
 			{"title":"Name","ref":"name"},
 			{"title":"Email","ref":"email"},

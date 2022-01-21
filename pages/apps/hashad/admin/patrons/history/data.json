@@ -1,0 +1,16 @@
+
+
+{
+	
+	"list":{
+		"title" : "Patron History",
+		
+		"columns" : [
+			
+			{"title":"Id","ref":"_id"},
+			{"title":"Checkout Date","ref":"date"},
+			{"title":"Item","ref":"item"}
+		]
+	}
+	
+}

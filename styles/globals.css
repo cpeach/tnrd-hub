@@ -12,11 +12,11 @@ div#__next{height: 100%;}
 *::-webkit-scrollbar{width: 5px;}
 *::-webkit-scrollbar-track{background: white; }
 *::-webkit-scrollbar-thumb{background: rgb(120,120,120); }
-input::selection {
+/*input::selection {
     background-color: transparent;
 	color:#000;
 }
-.noselect{user-select: none;}
+ .noselect{user-select: none;} */
 
 
 
@@ -66,6 +66,7 @@ input::selection {
 	.hand{cursor: pointer}
 	.hand-primary{cursor:pointer}
 	.hand-primary:hover{color:white;background-color:rgb(117, 158, 46) !important;}
+	.hand-border-primary:hover{cursor:pointer;border-color:rgb(117, 158, 46) !important;}
 
 /*
 	FONTS
@@ -157,7 +158,8 @@ input::selection {
 	}
 	.btn_light:hover{border: 1px solid rgb(160,160,160);}
 
-	a,a.button{cursor: pointer;display:inline-block;  border-radius: 6px; font-size: 15px; font-weight:400; color:rgb(117, 158, 46) ;letter-spacing: 0.4px;cursor: pointer}
+	a,a.button,a.link{cursor: pointer;display:inline-block;  border-radius: 6px; font-size: 15px; font-weight:400; color:rgb(117, 158, 46);letter-spacing: 0.4px;cursor: pointer}
+	.link:hover{text-decoration: underline; color:rgb(117, 158, 46) !important;}
 	a:hover{text-decoration: underline}
 
 	a.button{border: 1px solid rgb(210,210,210);padding:10px 15px;}
@@ -205,6 +207,7 @@ input::selection {
 .b-r{border-right:1px solid rgb(230,230,230)}
 .b-l{border-left:1px solid rgb(230,230,230)}
 .b-b,.border-bottom{border-bottom:1px solid rgb(230,230,230)}
+.b-t,.border-top{border-top:1px solid rgb(230,230,230)}
 .touch{border-radius: 6px;}
 
 
@@ -463,12 +466,10 @@ input::selection {
 	.ant-breadcrumb a:hover{color:rgb(117, 158, 46) !important}
 	.ant-breadcrumb a{font-size:13px}
 
-/*	popconfirm */
+/*	popconfirm 
 	.ant-btn-primary,.ant-btn-primary:active,.ant-btn-primary:hover{background-color:rgb(117, 158, 46) !important;border-color:rgb(117, 158, 46) !important}
+*/
 
-	.ant-select-multiple .ant-select-selection-item{background-color: white !important;}
-	.ant-divider-inner-text{color:rgb(180,180,180)}
-	.ant-upload-drag:hover{border:1px solid rgb(117, 158, 46) !important}
 
 /*	drawer */
 
@@ -476,6 +477,7 @@ input::selection {
 	.ant-drawer-body{padding:0px !important}
 
 /*	upload */
+	.ant-upload-drag:hover{border:1px solid rgb(117, 158, 46) !important}
 	.ant-upload.ant-upload-drag{background-color: white !important;}
 	.ant-upload-drag-icon{margin:15px 0px !important;}
 	.ant-upload-list-item-info{padding:12px 12px !important}
@@ -491,5 +493,6 @@ input::selection {
 	.ant-switch-checked{background-color:rgb(117, 158, 46) !important ;}
 
 /*	select */
-   .ant-select{width:100%;padding:0px 9px}
-   .form .ant-select{width:100%;padding:9px 9px !important}
+	.ant-select-multiple .ant-select-selection-item{background-color: white !important;}
+    .ant-select{width:100%;padding:0px 0px}
+    .form .ant-select{width:100%;padding:9px 0px !important}

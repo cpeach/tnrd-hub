@@ -42,6 +42,14 @@ module.exports = {
         destination : '/apps/expiring-patrons/:path*'
       },
       {
+        source : '/hashad/:path*',
+        destination : '/apps/hashad/:path*'
+      },
+      {
+        source : '/incident-reports/:path*',
+        destination : '/apps/incident-reports/:path*'
+      },
+      {
         source : '/stats-counter/:path*',
         destination : '/apps/stats-counter/:path*'
       }

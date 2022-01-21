@@ -204,7 +204,6 @@ export default function Frame(props) {
 										<img className={style.frame_menu_profile_image} src={props.user&&props.user.profile.image_meta?props.user.profile.image_meta.url:"/icons/profile.png"} width="84px" height="84px" />
 									</div>
 									<ul className={style.frame_menu_nav}>
-										<li><Link href="/content/profile/">Profile</Link></li>
 										<li><Link href="/content/notifications/">Notifications</Link></li>
 										<li><a onClick={signout}>Signout</a></li>
 									</ul>

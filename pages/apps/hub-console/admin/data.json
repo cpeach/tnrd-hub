@@ -24,6 +24,12 @@
 			"link"    : "/hub-console/admin/roles",
 			"title"   : "Roles",
 			"details" : "Internal Hub applications may limit access based on role type. Manage all user roles here."
+		},
+		"notices":{
+			"image"   : "/illustrations/email-templates.png",
+			"link"    : "/hub-console/admin/notices",
+			"title"   : "Notices",
+			"details" : "Use this section to manage notification related templates."
 		}
 	}
 }

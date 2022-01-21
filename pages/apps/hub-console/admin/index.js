@@ -14,10 +14,12 @@ export default function Index(props) {
         <Page>
             <h1 className="mar_md pad_bottom_sm">Welcome to Hub Console</h1>
             <p className="mar_md pad_bottom_xl _11">Below you will find all the resources you need to manage the applications, departments, users, and roles that are used to build out content in TNRD's Application Hub  </p>
+           
             <Tile size="12" margin="md" type="lg" data={data.tiles.applications} />
             <Tile  size="4" margin="md" type="md" data={data.tiles.departments} />
             <Tile  size="4" margin="md" type="md" data={data.tiles.users} />
             <Tile  size="4" margin="md" type="md" data={data.tiles.roles} />
+            <Tile  size="4" margin="md" type="md" data={data.tiles.notices} />
         </Page>
     
     );

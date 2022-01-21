@@ -57,8 +57,7 @@ export default function Update(props){
 		form.fields[5].value = application.image?application.image:'';
 		form.fields[5].meta  = application.image_meta;
 		form.fields[6].value = application.ui&&application.ui.menu?application.ui.menu:'';
-		form.fields[7].value = application.ui&&application.ui.resources?application.ui.resources:'';
-
+		
 		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} />
 	}else{
 		return <></>

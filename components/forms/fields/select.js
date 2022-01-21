@@ -39,7 +39,12 @@ const _Select = forwardRef((props, ref) => {
 			if(group){
 				group.value === option.group?options.push(<Option key={option.name+"-"+o} disabled={_disabled} value={option.value}>{option.label}</Option>):null;
 			}else{
-				options.push(<Option key={option.name+"-"+o} disabled={_disabled} value={option.value}>{option.label}</Option>)	
+				if(option.icon){
+					options.push(<Option key={option.name+"-"+o} disabled={_disabled} value={option.value}><img src={option.icon} style={{width:"20px",height:"20px",marginRight:"12px"}} />{option.label}</Option>)
+				}else{
+					options.push(<Option key={option.name+"-"+o} disabled={_disabled} value={option.value}>{option.label}</Option>)
+				}
+					
 			}
 			
 		});

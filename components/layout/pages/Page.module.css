@@ -5,13 +5,18 @@
     display: inline-block;
 }
 
-@media screen and (min-width: 900px) {
-	.page{width:900px}
-    .narrow{width:600px}
+.page{width:98%}
+.narrow{width:98%}
+
+
+@media screen and (min-width: 720px) {
+	.page{width:90%}
+	.narrow{width:80%}
 }
 
 
-@media screen and (min-width: 1300px) {
-	.page{width:1340px}
-	.narrow{width:1040px}
+@media screen and (min-width: 1100px) {
+	.page{width:930px}
+	.narrow{width:900px}
 }
+

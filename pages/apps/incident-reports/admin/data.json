@@ -1,0 +1,23 @@
+
+{
+	"tiles":{
+		"incidents":{
+			"image"   : "/illustrations/stats.png",
+			"link"    : "/incident-reports/admin/incidents",
+			"title"   : "Incidents",
+			"details" : "This section provides a historical view of active and inactive incidents."
+		},
+		"stats":{
+			"image"   : "/illustrations/stats.png",
+			"link"    : "/incident-reports/admin/stats",
+			"title"   : "Analytics & Reporting",
+			"details" : "Use this section to view insights and generate reports."
+		},
+		"settings":{
+			"image"   : "/illustrations/settings.png",
+			"link"    : "/incident-reports/admin/settings",
+			"title"   : "Settings",
+			"details" : "Use this section to manage general form settings for TNRD and Libraries."
+		}
+	}
+}

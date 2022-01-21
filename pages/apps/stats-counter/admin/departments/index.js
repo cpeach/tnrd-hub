@@ -8,7 +8,7 @@ import {useState,useEffect}    from 'react';
 import Link from 'next/link';
 import { Empty } from 'antd';
 
-import ld      from './data.json';  // local data
+import ld from './data.json';  // local data
 
 export default function Departments(props) { 
 
