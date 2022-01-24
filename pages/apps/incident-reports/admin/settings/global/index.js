@@ -15,9 +15,7 @@ export default function Update(props){
 	const handleSubmit = async(data) => {
 	
 		data._id = settings._id;
-		console.log(data)
 
-		 
 		var results = await client({url:"/incident-reports/settings/global",params:{method:"PUT",body:data}})
 		success(["Success","Your settings were updated."]);
 		
@@ -45,7 +43,7 @@ export default function Update(props){
 		var form = data.form
 
 		form.fields[0].options = administrators.map(item=>({label:item.name,name:item.short,value:item._id}));
-		form.fields[0].value = settings.["administrators"];
+		form.fields[0].value = settings["administrators"];
 
 		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit}  />
 
