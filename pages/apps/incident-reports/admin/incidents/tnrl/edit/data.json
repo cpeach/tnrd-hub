@@ -4,7 +4,7 @@
 	"form" : {
 		"title":"Incident Report",
 		"subtitle":"TNRL - Patrons",
-		"path"  : {"back":{"label":"Back to Reports","href":"/incident-reports/forms/"}},
+		"path"  : {"back":{"label":"Back to Incidents","href":"/incident-reports/admin/incidents/tnrl"}},
 		"sections":[{"label":null},{"label":"Witnesses and people involved"},{"label":"Incident Details"},{"label":"Actions"},{"label":"Other"}],
 		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"},{"section":2,"size":"12"},{"section":3,"size":"12"},{"section":4,"size":"12"}],
 		"fields":[

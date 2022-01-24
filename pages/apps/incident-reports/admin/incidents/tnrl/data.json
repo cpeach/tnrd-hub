@@ -3,7 +3,7 @@
 {
 	
 	"list":{
-		"title" : "Incidents - TNRD",
+		"title" : "Incidents - TNRL",
 		"columns" : [
 			{"title":"Submit Date","ref":"date"},
 			{"title":"Reported By","ref":"reported-by"},

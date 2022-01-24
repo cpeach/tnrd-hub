@@ -48,8 +48,8 @@ export default function Locations(props) {
 		})}
 		
 		l_data.list.columns[2].render = (p)=>{return settings.branches[p].name}
-		l_data.list.columns[3].render = (p)=>{return <Link href={"/incident-reports/admin/incidents/tnrd/details/"+p}>VIew</Link>}
-		l_data.list.columns[4].render = (p)=>{return <Link href={"/incident-reports/admin/incidents/tnrd/edit/"+p}>Edit</Link>}
+		l_data.list.columns[3].render = (p)=>{return <Link href={"/incident-reports/admin/incidents/tnrl/details/"+p}>VIew</Link>}
+		l_data.list.columns[4].render = (p)=>{return <Link href={"/incident-reports/admin/incidents/tnrl/edit/"+p}>Edit</Link>}
 		
 		l_data.list.rows   = items;
 		

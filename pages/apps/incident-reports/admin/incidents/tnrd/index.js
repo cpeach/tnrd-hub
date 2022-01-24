@@ -11,7 +11,7 @@ import { Empty } from 'antd';
 
 import ld      from './data.json';  // local data
 
-export default function Locations(props) { 
+export default function TNRD(props) { 
 
 	let l_data = JSON.parse(JSON.stringify(ld))
 
