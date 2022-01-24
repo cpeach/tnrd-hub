@@ -45,7 +45,7 @@ export default function Update(props){
 		var form = data.form
 
 		form.fields[0].options = administrators.map(item=>({label:item.name,name:item.short,value:item._id}));
-		form.fields[0].value = settings.["recipients"];
+		form.fields[0].value = settings["recipients"];
 
 		form.fields[1].value = settings.["branches"];
 		form.fields[2].value = settings.["action-list"];
