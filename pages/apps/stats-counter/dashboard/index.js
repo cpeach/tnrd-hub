@@ -5,6 +5,8 @@ import style   from '/styles/global.module.css';
 import Link    from 'next/link';
 import ld      from './data.json';  // local data
 import client  from '/scripts/client-api.js';
+
+import Image  from 'next/image';
 import moment from 'moment';
 import {useState,useEffect,useRef} from 'react';
 import {Empty,DatePicker,Divider,Modal,Select} from 'antd';
@@ -101,24 +103,25 @@ export default function Index(props) {
 //  CONTENT
     //useEffect(async()=>{
     const loadContent = ()=>{
-        
+        console.log(location);
+        console.log(topic)
         if(group && topic !== undefined && topic > -1){
             let _categoryElements=[],itemElements=[];
             let _categories = location.items.map(_item=>_item.category._id)
             
             topics[topic].categories.map((_cat,c)=>{
                 if(_categories.includes(_cat._id)){
-                    _categoryElements.push(<div key={"cat-"+c} className="pad_x_md pad_y_lg light">{_cat.name}</div>)
+                    _categoryElements.push(<div key={"cat-"+c} className="pad_x_md pad_y_lg light ">{_cat.name}</div>)
                     location.items.map((_item,i)=>{
                         if(_cat._id === _item.category._id){
-                            _categoryElements.push((<div key={"itemn-"+i} className="pad_x_md pad_y_lg">
+                            _categoryElements.push((<div key={"itemn-"+i} className="b-b pad_x_md pad_y_lg">
                                 <div className="_9 box noselect middle pad_right_lg">
-                                    <b>{_item.name}</b>
-                                    <p className="small">{_item.description}</p>
+                                    <h5 className="mar-bottom_sm" style={{fontSize:"21px"}} >{_item.name}</h5>
+                                    <p >{_item.description}</p>
                                 </div>
                                 <div className="_3 box right middle">
                                     <div className="border touch box shadow" style={{overflow:"hidden"}}>
-                                        <input ref={(element) => {valueRefs.current[_item._id]=element}} className="noselect box _6 center middle" data-loading={false} onChange={(e)=>{update(undefined,_item._id)}} type="number" defaultValue="0" style={{marginTop:"-6px",fontSize:"19px"}} />
+                                        <input ref={(element) => {valueRefs.current[_item._id]=element}} className="noselect box _6 center middle" data-loading={false} onChange={(e)=>{update(undefined,_item._id)}} type="number" defaultValue="0" style={{marginTop:"-6px",fontSize:"21px"}} />
                                         <div className="b-l hand-primary box pad_md _3 center" style={{lineHeight:"0px"}} onClick={()=>{update(-1,_item._id)}} ><DownOutlined style={{fontSize:"19px"}} /></div>
                                         <div className="b-l hand-primary box pad_md _3 center" style={{lineHeight:"0px"}} onClick={()=>{update(1,_item._id)}} ><UpOutlined  style={{fontSize:"19px"}} /></div>
                                     </div>
@@ -180,7 +183,7 @@ useEffect(async()=>{
 
 //  LOCATONS
     useEffect(async()=>{
-        
+
 	    if(group && group.name !=="--"){
 
             setGroupsVisable(false);
@@ -199,13 +202,19 @@ useEffect(async()=>{
             setLocationsSelect(<div className="select_wrapper"><Select style={{padding:"9px 0px"}} bordered={false} defaultValue={_location._id} dropdownMatchSelectWidth={false} onChange={(p)=>{setLocation(_locations[p]);}}> {_options}</Select></div>);		
            
         }
+        else{
+            setLocation({name:"--"});		
+            setLocations([]);		
+        }
         
 
 	},[group])
 
 //  GROUPS
     useEffect(async()=>{
-	    if(department){
+        console.log("Department change")
+        console.log(department)
+	    if(department && department.groups.length>0){
             
             setDepartmentsVisable(false);
 
@@ -223,6 +232,9 @@ useEffect(async()=>{
             setGroups(_groups);	
             setGroupsSelect(<div className="select_wrapper"><Select style={{padding:"9px 0px"}} bordered={false} defaultValue={_group._id} dropdownMatchSelectWidth={false} onChange={(p)=>{ setGroup(_groups[p])}}> {_options}</Select></div>);		
 
+        }else{
+            setGroup({name:"--"});		
+            setGroups([]);	
         }
 
 	},[department])
@@ -254,7 +266,20 @@ useEffect(async()=>{
         <>
             <Page>
                 <input id="dateRef" type="hidden"/>
-                <h1 className="mar_md mar_top_xs pad_bottom_lg">Daily Stats Counter</h1>
+
+                <div className="mar_x_md mar_bottom_lg ">
+                    <div className="box middle pad_top_md">
+                        <Image src="/icons/tnrd-logo.png" width="90" height="64" />
+                    </div>
+                    <div className="box _9 middle pad_x_md">
+                        <div className="mar_x_md mar_bottom_xs">Thompson-Nicola Regional District</div>
+                        <h1 className="mar_x_md ">Daily Stats Counter</h1>
+                    </div>
+                </div>
+
+
+
+                
                 <DatePicker onChange={(d,s)=>{setDate(s);document.getElementById("dateRef").value=s}} style={{verticalAlign:"middle",marginLeft:"15px",padding:"12px 12px",marginRight:"12px",borderRadius:"5px"}} defaultValue={moment()} />
                 {departmentsSelect}
                 {groupsSelect}
@@ -272,7 +297,7 @@ useEffect(async()=>{
         </>
     );
 
-	return ( <Frame user={props.user} apps={props.apps} data={data} active="1" align="center"  />)
+	return ( <Frame user={props.user} apps={props.apps} data={data} active="1" align="center" hide_headers={true}  />)
 } 
 			
 

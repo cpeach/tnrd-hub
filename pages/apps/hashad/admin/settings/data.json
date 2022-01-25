@@ -5,72 +5,10 @@
 		"title":"Update",
 		"subtitle":"Settings",
 		"path"  : {"back":{"label":"Back to Admin","href":"/expiring-patrons/admin"}},
-		"sections":[{"label":null},{"label":"Patron Preferences"}],
-		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"}],
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
 		"fields":[
-			{"tag":"multi_select","label":"Administrators","description":"Select the users that you would like to help administrator this application.","required":false,"container":0,"size":12,"attributes":{"name":"administrators","showSearch":false,"showArrow":true,"bordered":false}},
-			{"tag":"list","ref":"types","required":false,"label":"Patron Types","container":0,"size":12,
-				"attributes":{
-					"name":"menu",
-					"form" : {
-						"title":"Patron",
-						"subtitle":"Item",
-						"sections":[{"label":null}],
-						"containers":[{"section":0,"size":"12"}],
-						"fields":[
-							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
-						]
-					}
-					
-				}
-			},
-			{"tag":"list","ref":"name","required":false,"label":"Formats","container":1,"size":12,
-				"attributes":{
-					"name":"menu",
-					"form" : {
-						"title":"Format",
-						"subtitle":"Item",
-						"sections":[{"label":null}],
-						"containers":[{"section":0,"size":"12"}],
-						"fields":[
-							{"tag":"text","label":"Name","required":true,"container":1,"size":12,"attributes":{"name":"name"}}
-						]
-					}
-					
-				}
-			},
-			{"tag":"list","ref":"name","required":false,"label":"Subjects","container":1,"size":12,
-				"attributes":{
-					"name":"menu",
-					"form" : {
-						"title":"Subject",
-						"subtitle":"Item",
-						"sections":[{"label":null}],
-						"containers":[{"section":0,"size":"12"}],
-						"fields":[
-							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
-						]
-					}
-					
-				}
-			},
-			{"tag":"list","ref":"name","required":false,"label":"Authors","container":1,"size":12,
-				"attributes":{
-					"name":"menu",
-					"form" : {
-						"title":"Author",
-						"subtitle":"Item",
-						"sections":[{"label":null}],
-						"containers":[{"section":0,"size":"12"}],
-						"fields":[
-							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}}
-						]
-					}
-					
-				}
-			}
-		
-			
+			{"tag":"multi_select","label":"Administrators","description":"Select the users that you would like to help administrator this application.","required":false,"container":0,"size":12,"attributes":{"name":"administrators","showSearch":false,"showArrow":true,"bordered":false}}	
 		]
 	}
 }

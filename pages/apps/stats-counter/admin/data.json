@@ -8,13 +8,13 @@
 			"details" : "This section provides an overview of stat results for branchs and items"
 		},
 		"collections":{
-			"image"   : "/illustrations/stats.png",
+			"image"   : "/illustrations/location.png",
 			"link"    : "/stats-counter/admin/departments",
 			"title"   : "Locations",
 			"details" : "All stat items and stat results are based on individule locations. These location can be organized by department and location group. "
 		},
 		"stats":{
-			"image"   : "/illustrations/stats.png",
+			"image"   : "/illustrations/items.png",
 			"link"    : "/stats-counter/admin/stats",
 			"title"   : "Stat Items",
 			"details" : "Each of the Stat Items are grouped by topic and categories. Use this section to manage these collections."

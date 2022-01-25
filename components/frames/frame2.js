@@ -137,7 +137,10 @@ export default function Frame(props) {
 		return (
 			
 				<div className={style.frame}>
-
+					{
+					
+					!props.hide_headers ?
+					
 					<div className={style.frame_header}>
 					
 						<header className={style.header}>
@@ -173,7 +176,13 @@ export default function Frame(props) {
 							</div>
 						</header>
 					</div>
+					:
+					<></>
+
+					}
+					
 					{
+						!props.hide_headers ? 
 						props.path !== false?props.data.path&&props.data.path.back ?
 							<div className={style.path}>
 								<div></div>{getBack(props.data.path.back)}
@@ -182,7 +191,10 @@ export default function Frame(props) {
 								<div></div>{getPath(path)}
 							</div> :
 							<></>
+						:
+						<></>	
 					}
+
 					<Permission user={user} apps={apps}>
 
 						<div className={style.frame_body +" "+ background() +" "+  align()}>

@@ -4,12 +4,12 @@
 	
 	"list":{
 		"title" : "Patron History",
-		
 		"columns" : [
-			
-			{"title":"Id","ref":"_id"},
-			{"title":"Checkout Date","ref":"date"},
-			{"title":"Item","ref":"item"}
+			{"title":"Checkout Date","ref":"checkoutdate"},
+			{"title":"Barcode","ref":"barcode"},
+			{"title":"Author","ref":"author"},
+			{"title":"Title","ref":"title"},
+			{"title":"Media","ref":"materialType"}
 		]
 	}
 	
