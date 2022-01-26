@@ -66,7 +66,7 @@ export default function Signin(props) {
 							</div>
 							<div className={style.signin_field}>
 								<label>Password</label>
-								<input type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
+								<input type="password" onChange={(e)=>{setPassword(e.target.value)}} onKeyUp={(e)=>e.keyCode===13?onSubmit():null}/>
 							</div>
 							<button id="signin-btn" onClick={onSubmit}>
 								<LoadingOutlined style={{display:`${loading}`,marginRight:"9px",fontSize: 16 }} spin />
