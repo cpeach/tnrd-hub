@@ -4,7 +4,7 @@
 	"form" : {
 		"title":"Update",
 		"subtitle":"Settings",
-		"path"  : {"back":{"label":"Back to Admin","href":"/expiring-patrons/admin"}},
+		"path"  : {"back":{"label":"Back to Admin","href":"/hashad/admin"}},
 		"sections":[{"label":null}],
 		"containers":[{"section":0,"size":"12"}],
 		"fields":[

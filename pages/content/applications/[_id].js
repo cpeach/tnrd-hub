@@ -3,7 +3,6 @@
 import {useState,useEffect,useRef} from 'react';
 import {withRouter} from 'next/router';
 import Link from 'next/link';
-import api 	   	    from '/scripts/api.js';
 import client 	   	from '/scripts/client-api.js';
 import Frame        from '/components/frames/frame2.js';
 import Page         from '/components/layout/pages/index.js';
@@ -28,7 +27,7 @@ function _Application(props) {
 	const [isModalVisible, setModalVisible] = useState(false);
 	const [resourceTypes, setResourceTypes] = useState();
 	const filterAllRef = useRef();	
-	const formRef  = useRef();
+	const formRef      = useRef();
 
 	const tags = (data)=>{
 		var items = data.departments.map((item,i)=>{
@@ -108,7 +107,7 @@ function _Application(props) {
 		var links   = await client({url:'/hub-console/resource_links/application/'+_id});
 		var files   = await client({url:'/hub-console/resource_files/application/'+_id});
 		links = links.concat(files)
-		console.log(links)
+		
 		if(isMounted && _application && _resource_types){
 			setApplication(_application);
 			setResourceTypes(_resource_types);
