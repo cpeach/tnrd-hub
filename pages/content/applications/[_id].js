@@ -122,9 +122,9 @@ function _Application(props) {
 	const bookmarked = (app)=>{
 		let user = props.user.profile;
 		let valid = false;
-		user.bookmarks.map((item,i)=>{
+		user.bookmarks?user.bookmarks.map((item,i)=>{
 			valid = item===app._id?true:valid;
-		});
+		}):null;
 		return valid;
 	}
 
