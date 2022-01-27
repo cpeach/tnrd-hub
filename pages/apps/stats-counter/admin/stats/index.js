@@ -31,7 +31,7 @@ export default function Topics(props) {
 
 	if(items){
 		l_data.list.columns[1].render = (p)=>{let count=p.categories.length;return <Link href={"/stats-counter/admin/stats/categories/"+p._id}>{"View ("+count+")"}</Link>}
-		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/stats/topics/edit/"+p}>Edit</Link>}
+		l_data.list.columns[2].render = (p)=>{return <Link href={"/stats-counter/admin/stats/edit/"+p}>Edit</Link>}
 		
 		l_data.list.rows = items;
 		//l_data.list.new.href += _id;

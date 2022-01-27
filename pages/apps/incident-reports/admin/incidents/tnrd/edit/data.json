@@ -19,7 +19,7 @@
 			{"tag":"text","label":"Incident Location","required":true,"container":1,"size":12,"attributes":{"name":"location"}},
 			
 			{"tag":"text","label":"Property Damage Estimate","required":false,"container":2,"size":12,"attributes":{"name":"estimate"}},
-			{"tag":"description","label":"Inicdent Description","required":true,"container":2,"size":12,"description":"Detailed information leading to incident, associated operations, impact on operations & individuals' status.","attributes":{"name":"description"}},
+			{"tag":"description","label":"Incident Description","required":true,"container":2,"size":12,"description":"Detailed information leading to incident, associated operations, impact on operations & individuals' status.","attributes":{"name":"description"}},
 			
 			{"tag":"list","label":"Who was involved?","ref":"label","required":true,"max":10,"container":2,"size":12,
 				"attributes":{

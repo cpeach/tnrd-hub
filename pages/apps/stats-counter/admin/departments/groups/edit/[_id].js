@@ -10,6 +10,7 @@ export default function Insert(props){
 	const data = JSON.parse(JSON.stringify(ld))
 	const {_id} =  router.query
 
+	let department;
 	
 	const handleSubmit = async(data) => {
 		var results = await client({url:"/stats-counter/groups",params:{method:"PUT",body:data}})
@@ -17,7 +18,17 @@ export default function Insert(props){
 		window.location.href = '/stats-counter/admin/departments/groups/'+data.department; 
 	}
 
+	const handleDelete = async(data) => {
+		var results = await client({url:"/stats-counter/groups/"+_id,params:{method:"DELETE"}})
 	
+		if(results.code===1){
+			success(["Success","Your record record was deleted."]);
+			window.location.href = '/stats-counter/admin/departments/groups/'+department; 
+		}else{
+			error(["Failed",results.message]);
+		}
+	}
+
 	var item = api({url:"/stats-counter/groups/"+_id})
 	
 	if(item){
@@ -29,7 +40,10 @@ export default function Insert(props){
 		data.form.fields[0].value = item.name;
 		data.form.fields[1].value = item._id;
 		data.form.fields[2].value = item.department;
-		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
+
+		department = item.department;
+
+		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 	
 	}else{
 		return <></>

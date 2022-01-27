@@ -16,6 +16,17 @@ export default function Insert(props){
 		window.location.href = '/stats-counter/admin/departments/'; 
 	}
 
+	const handleDelete = async(data) => {
+		var results = await client({url:"/stats-counter/departments/"+_id,params:{method:"DELETE"}})
+	
+		if(results.code===1){
+			success(["Success","Your record record was deleted."]);
+			window.location.href = '/stats-counter/admin/departments/'; 
+		}else{
+			error(["Failed",results.message]);
+		}
+	}
+
 	var item = api({url:"/stats-counter/departments/"+_id})
 	
 	if(item){
@@ -25,7 +36,7 @@ export default function Insert(props){
 		data.form.title = "Update";
 		data.form.fields[0].value = item.name;
 		data.form.fields[1].value = item._id;
-		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
+		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 	}else{
 		return <></>
 	}

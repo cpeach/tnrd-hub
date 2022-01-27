@@ -13,15 +13,14 @@ export default function Insert(props){
 	
 	const handleSubmit = async(data) => {
 		delete data._id;
-		data._collection = _id;
 		var results = await client({url:"/stats-counter/topics",params:{method:"POST",body:data}})
 		success(["Success","A new Topic record was inserted."]);
-		window.location.href = '/stats-counter/admin/stats/topics/'+_id; 
+		window.location.href = '/stats-counter/admin/stats/'; 
 	}
 
-	data.form.path.back.href += _id;
 
-	return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
+
+	return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit}  />
 	
 
 	

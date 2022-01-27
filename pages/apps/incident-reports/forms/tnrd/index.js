@@ -45,8 +45,7 @@ export default function Update(props){
 		
 		form.fields[5].options = administrators.map((item,i)=>({label:item.name,name:item._id,value:item._id}));
 		form.fields[6].options = settings["departments"].map((item,i)=>({label:item.name,name:i,value:i}));
-		form.fields[7].options = settings["locations"].map((item,i)=>({label:item.name,name:i,value:i}));
-	
+		
 		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} />
 	}else{   
 		return <></>

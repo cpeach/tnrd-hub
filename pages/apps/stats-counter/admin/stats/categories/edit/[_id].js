@@ -10,16 +10,25 @@ export default function Insert(props){
 	const data = JSON.parse(JSON.stringify(ld))
 	const {_id} =  router.query
 
+	let topic;
+
 	const handleSubmit = async(data) => {
 		var results = await client({url:"/stats-counter/categories",params:{method:"PUT",body:data}})
 		success(["Success","Your Category record was inserted."]);
 		window.location.href = '/stats-counter/admin/stats/categories/'+data.topic; 
 	}
 
+	const handleDelete = async(data) => {
+		var results = await client({url:"/stats-counter/categories/"+_id,params:{method:"DELETE"}})
+		if(results.code===1){
+			success(["Success","Your record record was deleted."]);
+			window.location.href = '/stats-counter/admin/stats/categories/'+topic; 
+		}else{
+			error(["Failed",results.message]);
+		}
+	}
 	
 	var item = api({url:"/stats-counter/categories/"+_id})
-	console.log(item)
-	
 	
 	if(item){
 		data.form.path.back.href += item.topic;
@@ -28,7 +37,10 @@ export default function Insert(props){
 		data.form.fields[0].value = item.name;
 		data.form.fields[1].value = item._id;
 		data.form.fields[2].value = item.topic;
-		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
+
+		topic = item.topic;
+
+		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 	}else{
 		return <></>
 	}

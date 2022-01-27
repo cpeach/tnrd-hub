@@ -10,7 +10,7 @@ export default function Insert(props){
 	const data = JSON.parse(JSON.stringify(ld))
 	const {_id} =  router.query
 
-	
+	let group;
 	const handleSubmit = async(data) => {
 		var results = await client({url:"/stats-counter/locations",params:{method:"PUT",body:data}})
 		success(["Success","Your Location record was inserted."]);
@@ -21,7 +21,7 @@ export default function Insert(props){
 		var results = await client({url:"/stats-counter/locations/"+_id,params:{method:"DELETE"}})
 		if(results.code){
 			success(["Success","Your Location record was deleted."]);
-			window.location.href = '/stats-counter/admin/departments/locations/'+data.group; 
+			window.location.href = '/stats-counter/admin/departments/locations/'+group; 
 		}else{
 			error(["Failed",result.message]);
 		}
@@ -39,6 +39,9 @@ export default function Insert(props){
 		data.form.fields[0].value = item.name;
 		data.form.fields[1].value = item._id;
 		data.form.fields[2].value = item.group;
+
+		group = item.group
+
 		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 	}else{
 		return <></>
