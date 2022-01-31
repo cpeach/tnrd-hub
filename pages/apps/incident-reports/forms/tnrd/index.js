@@ -16,9 +16,9 @@ export default function Update(props){
 		console.log(data);
 
 		var results = await client({url:"/incident-reports/incidents/tnrd",params:{method:"POST",body:data}})
-		success(["Success","Application record was updated."]);
+		success(["Success","Incident Report was sent."]);
 		  
-		//window.location.href = '/hub-console/admin/applications'  
+		window.location.href = '/incident-reports/forms'  
 		
 	} 
 

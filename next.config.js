@@ -20,14 +20,15 @@ module.exports = {
         source : '/applications/:_id',
         destination : '/content/applications/:_id'
       },
+      {           
+        source : '/notifications/:_id',
+        destination : '/content/notifications/:_id'
+      },
       {
         source : '/profile',
         destination : '/content/profile'
       },
-      {
-        source : '/notifications',
-        destination : '/content/notifications'
-      },
+
       {
         source : '/testing',
         destination : '/content/testing'
@@ -52,6 +53,10 @@ module.exports = {
       {
         source : '/stats-counter/:path*',
         destination : '/apps/stats-counter/:path*'
+      },
+      {
+        source : '/archived-permits/:path*',
+        destination : '/apps/archived-permits/:path*'
       }
     ]
   },

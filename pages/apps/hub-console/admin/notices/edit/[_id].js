@@ -41,11 +41,11 @@ export default function Insert(props){
 		data.form.fields[0].value   = notice.application;
 
 		data.form.fields[1].value   = notice.name;
-		data.form.fields[2].value   = notice.details;
-		data.form.fields[3].value   = notice.filters;
-		data.form.fields[4].value   = notice.subject;
-		data.form.fields[5].value   = notice.sender;
-		data.form.fields[6].value   = notice.receiver;
+		data.form.fields[2].value   = notice.filters;
+		data.form.fields[3].value   = notice.subject;
+		data.form.fields[4].value   = notice.sender;
+		data.form.fields[5].value   = notice.receiver;
+		data.form.fields[6].value   = notice.message?notice.message:"";
 		data.form.fields[7].value   = notice.body;
 
 		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit}  />

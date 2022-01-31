@@ -1,14 +1,13 @@
 import style  from './Frames2.module.css';
 import client from '/scripts/client-api.js';
 import {useRouter} from 'next/router';
-
 import Permission from '/components/permissions/index.js';
 
 import { useEffect,useState } from 'react';
 import Link   from 'next/link';
 import Image  from 'next/image';
 
-import { Drawer, Button, Tooltip, Popover } from 'antd';
+import { Drawer, Button, Tooltip, Popover,Badge } from 'antd';
 import AntIcon 	from '/components/icons/antd/icons.js';
 import { CloseCircleFilled,RightOutlined,CaretLeftOutlined  } from '@ant-design/icons';
 
@@ -168,6 +167,7 @@ export default function Frame(props) {
 								<div id="header_account_label" className={style.header_btn} onMouseEnter={data.header.account.hover} >
 									<div className={style.header_btn_inner}><Image src="/icons/account.svg" width={28} height={28} /></div>
 									<div className={style.header_btn_inner} >
+										user.notices?<Badge color="rgb(117, 158, 46)"  style={{position:"absolute",marginLeft:"-6px",marginTop:"-8px"}} ></Badge>:<></>
 										<label className={style.header_btn_label}>{user.profile?user.profile.name:'Account'}</label>
 									</div>
 									<div className={style.header_btn_inner}><Image src="/icons/d-arrow.svg" width={28} height={28} /></div>
@@ -216,7 +216,7 @@ export default function Frame(props) {
 										<img className={style.frame_menu_profile_image} src={props.user&&props.user.profile.image_meta?props.user.profile.image_meta.url:"/icons/profile.png"} width="84px" height="84px" />
 									</div>
 									<ul className={style.frame_menu_nav}>
-										<li><Link href="/content/notifications/">Notifications</Link></li>
+										<li><a className="box _9" href={"/notifications/"+user.profile._id} >Notifications</a><span className="box _2 right">{user.notices?<Badge count={user.notices} style={{ backgroundColor: 'rgb(117, 158, 46)' }}></Badge>:<></>}</span></li>
 										<li><a onClick={signout}>Signout</a></li>
 									</ul>
 								</div>

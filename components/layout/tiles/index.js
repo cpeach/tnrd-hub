@@ -19,7 +19,7 @@ export default function Tile(props){
 				<div className={"box _9 middle pad_x_md" }>
 					<h4>{props.data.title}</h4>
 					<p className={"pad_y_xs pad_bottom_lg "}> {props.data.details}</p>
-					<Link href={props.data.link}><div className={"btn"}>Manage</div></Link>
+					<Link href={props.data.link}><div className={"btn"}>{props.data.button?props.data.button:"Manage"}</div></Link>
 				</div>
 					<div className={"box _3 middle center"}>
 					<img src={props.data.image} className={"box"} style={{"width":"144px","height":"144px"}}/>

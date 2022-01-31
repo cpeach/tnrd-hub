@@ -1,0 +1,20 @@
+
+{
+	"tiles":{
+		"tnrd":{
+			"image"   : "/illustrations/planning.png",
+			"link"    : "/archived-permits/search/",
+			"button"  : "Search",
+			"title"   : "Search - Planning Applications",
+			"details" : "Search archived planning application from 1970-to 2009"
+		},
+		"libraries":{
+			"image"   : "/illustrations/building.png",
+			"link"    : "/archived-permits/search/",
+			"button"  : "Search",
+			"title"   : "Search - Building Permits",
+			"details" : "Search archived planning application from 1970-to 1990"
+		}
+		
+	}
+}

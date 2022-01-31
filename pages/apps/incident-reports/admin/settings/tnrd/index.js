@@ -20,8 +20,8 @@ export default function Update(props){
 		 
 		var results = await client({url:"/incident-reports/settings/tnrd",params:{method:"PUT",body:data}})
 		success(["Success","Your settings were updated."]);
-		/*
-		window.location.href = '/incident-reports/admin/'  */
+		
+		window.location.href = '/incident-reports/admin/settings/' 
 	}
 
 

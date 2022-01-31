@@ -35,7 +35,6 @@ export default function List(props)
 //	SEARCH
 
 	const search = ()=>{
-		console.log("searcg")
 		setSearching(true);
 		setSearchValue(inputRef.current.value);
 	}

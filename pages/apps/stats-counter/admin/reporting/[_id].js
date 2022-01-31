@@ -39,7 +39,16 @@ export default function Insert(props){
 		return () => (isMounted = false)
 	},[]);
 
-	
+	const handleDelete = async(data) => {
+		var results = await client({url:"/stats-counter/reports/"+_id,params:{method:"DELETE"}})
+		console.log(results)
+		if(results.code===1){
+			success(["Success","Your report record was deleted."]);
+			window.location.href = '/stats-counter/admin/reporting/'; 
+		}else{
+			error(["Failed",results.message]);
+		}
+	}	
 	
 	if(report&&locations){
 
@@ -66,7 +75,7 @@ export default function Insert(props){
 		data.form.fields[4].value   = report.parameters.locations;
 		data.form.fields[5].value   = _id;
 		
-		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} />
+		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 	}else{
 		return <></>
 	}

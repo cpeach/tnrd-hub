@@ -1,10 +1,14 @@
 // JavaScript Document
 import Router  from 'next/router';
+import { message } from 'antd';
+import {useState} from 'react';
 
 export default async function ClientAPI(args){
 	var url    = args.url;
 	var params = args.params || {method:"GET"}
 	var type   = args.type   || "json"
+
+	let halt = 0;
 
 	url = url.indexOf('http')>-1?url:'https://api.tnrdit.ca'+url;
 		
@@ -21,15 +25,27 @@ export default async function ClientAPI(args){
 	params.body = typeof params.body==='object' && !params.ignore&&params.ignore!=='body'?JSON.stringify(params.body):params.body;
 	params.body = params.body||null;
 
-	var res = await fetch(url,params);
-
-	if(res.status===401){
-		localStorage.removeItem("user");
-		localStorage.removeItem("token");
-		localStorage.setItem("previous",window.location.href);
-		Router.push('/signin')
-	}
 	
-	return type.toLowerCase()!=='json'?await res.text():await res.json();
+	//try {
+		var res = await fetch(url,params);
+		if(res.status===401){
+			localStorage.removeItem("user");
+			localStorage.removeItem("token");
+			localStorage.setItem("previous",window.location.href);
+			Router.push('/signin')
+		}
+		return type.toLowerCase()!=='json'?await res.text():await res.json();
+	/* } catch (err) {
+		if(!halt){
+			console.log(err);
+			message.warning('IT is performing system updates. You may experience intermittent access at this time.',8);
+			setTimeout(()=>{location.reload()},8000);
+			halt = 1;
+		}
+	} */
+
+	
+	
+	
 	
 }
