@@ -1,0 +1,14 @@
+
+{
+	
+	"form" : {
+		"title":"Update",
+		"subtitle":"Settings",
+		"path"  : {"back":{"label":"Back to Admin","href":"/hashad/admin"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			{"tag":"multi_select","label":"Administrators","description":"Select the users that you would like to help administrator this application.","required":false,"container":0,"size":12,"attributes":{"name":"administrators","showSearch":false,"showArrow":true,"bordered":false}}	
+		]
+	}
+}

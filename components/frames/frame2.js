@@ -167,7 +167,7 @@ export default function Frame(props) {
 								<div id="header_account_label" className={style.header_btn} onMouseEnter={data.header.account.hover} >
 									<div className={style.header_btn_inner}><Image src="/icons/account.svg" width={28} height={28} /></div>
 									<div className={style.header_btn_inner} >
-										user.notices?<Badge color="rgb(117, 158, 46)"  style={{position:"absolute",marginLeft:"-6px",marginTop:"-8px"}} ></Badge>:<></>
+										{user.notices>0?<Badge color="rgb(117, 158, 46)"  style={{position:"absolute",marginLeft:"-6px",marginTop:"-8px"}} ></Badge>:<></>}
 										<label className={style.header_btn_label}>{user.profile?user.profile.name:'Account'}</label>
 									</div>
 									<div className={style.header_btn_inner}><Image src="/icons/d-arrow.svg" width={28} height={28} /></div>

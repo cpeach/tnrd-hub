@@ -1,64 +1,50 @@
 
 import client 	from '/scripts/client-api.js';
 import Form,{success,error} from '/components/forms/index.js';
+import { useRouter } from 'next/router'
 import {useState,useEffect} from 'react';
 import ld   from './data.json';
 
 export default function Update(props){
-
+   
+    const router = useRouter()
 	const data = JSON.parse(JSON.stringify(ld))
 	
-	const [settings, setSettings] = useState();
-	const [administrators, setAdministrators] = useState();
-	
+	let search = {};
+
 	const handleSubmit = async(data) => {
 	
 		console.log(data);
-
-		var results = await client({url:"/incident-reports/incidents/tnrl",params:{method:"POST",body:data}})
-		success(["Success","Application record was updated."]);
-		  
-		//window.location.href = '/hub-console/admin/applications'  
+		let qs = "?"
+		for(let d in data){
+			if(data[d] !== ""){
+				qs += d+"="+(data[d]?data[d]:"") + "&";
+			}
+		}
+		if(qs.lastIndexOf("&") === (qs.length-1)){
+			qs = qs.substring(0, qs.length - 1);
+		}
+		router.push('/archived-permits/list/planning' + qs);
 		
 	} 
 
-	useEffect(async () => {
-		let isMounted = true;
-		let _settings = await client({url:"/incident-reports/settings/tnrl"});
-		var _administrators = await client({url:"/incident-reports/settings/administrators"});
+	const handleChange = async(data) => {
 		
-		if(isMounted){
-			setSettings(_settings)
-			setAdministrators(_administrators);
-		}
-		return () => (isMounted = false)
-	},[]);
-
-
+		search[data.name] = data.value;
+		var results = await client({url:"/archived-permits/records/planning/search/count",params:{method:"POST",body:{data:search}}})
+		//console.log(results);
+		console.log(results);
+		document.getElementById("form_submit_btn").value = "View (" + results + ")"
+		
+		
+	} 
 	
-	if(settings && administrators){
-	
-		var form = data.form
-		console.log(settings)
-		form.fields[2].options = administrators.map((item,i)=>({label:item.name,name:item._id,value:item._id}));
-		form.fields[3].options = settings["branches"].map((item,i)=>({label:item.name,name:i,value:i}));
-		form.fields[6].options = administrators.map((item,i)=>({label:item.name,name:item._id,value:item._id}));
-		form.fields[9].options = settings["action-list"].map((item,i)=>({label:item.name,name:i,value:i}));
-		
+	var form = data.form
 
-		/* form.fields[2].options = settings["general-types"].map((item,i)=>({label:item.name,name:i,value:i}));
-		form.fields[3].options = settings["critical-types"].map((item,i)=>({label:item.name,name:i,value:i}));
-		
-		form.fields[5].options = administrators.map((item,i)=>({label:item.name,name:item._id,value:item._id}));
-		form.fields[6].options = settings["departments"].map((item,i)=>({label:item.name,name:i,value:i}));
-		form.fields[7].options = settings["locations"].map((item,i)=>({label:item.name,name:i,value:i}));
-	 */
-		
-		
-		return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} />
-	}else{
-		return <></>
-	}
+	form.submit = "View Records";
+
+	return <Form user={props.user} apps={props.apps} data={form} active="1" onSubmit={handleSubmit} onChange={handleChange} />
+
 
 	
 	

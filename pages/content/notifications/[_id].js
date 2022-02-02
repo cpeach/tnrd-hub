@@ -36,7 +36,7 @@ export default function TNRD(props) {
 	if(items){
 
 		l_data.list.columns[0].render = (p)=>{return <Badge status={p===0?"green":"gold"} />}
-		l_data.list.columns[1].render = (p)=>{var date = p.split('T');return moment(date,"YYYY-MM-DD").format("LL")}
+		l_data.list.columns[1].render = (p)=>{var date = p.split('T');return moment(date,"YYYY-MM-DD").format("LL") +" @"+p.split("T")[1].split('.')[0]}
 		l_data.list.columns[3].render = (p)=>{return <Link href={"/content/notifications/details/"+p}>View</Link>}
 		
 		l_data.list.rows   = items;

@@ -18,7 +18,7 @@ export default function Update(props){
 		var results = await client({url:"/incident-reports/incidents/tnrd",params:{method:"POST",body:data}})
 		success(["Success","Incident Report was sent."]);
 		  
-		window.location.href = '/incident-reports/forms'  
+		//window.location.href = '/incident-reports/forms'  
 		
 	} 
 

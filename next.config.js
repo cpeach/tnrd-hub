@@ -57,6 +57,10 @@ module.exports = {
       {
         source : '/archived-permits/:path*',
         destination : '/apps/archived-permits/:path*'
+      },
+      {
+        source : '/tnrl-stats/:path*',
+        destination : '/apps/tnrl-stats/:path*'
       }
     ]
   },

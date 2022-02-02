@@ -11,8 +11,11 @@ export default function Index(props) {
 	data.content  = (
 
         <Page>
-            <Tile size="12" margin="md" type="lg" data={data.tiles.planning} />
-            <Tile  size="12" margin="md" type="lg" data={data.tiles.building} />
+            <h1 className="mar_md pad_bottom_sm">Admin - TNRL Stats Dashboard</h1>
+            <p className="mar_md pad_bottom_xl _11">The purpose of this application is to ...</p>
+            <Tile size="12" margin="md" type="lg" data={data.tiles.forms} />
+            <Tile  size="6" margin="md" type="md" data={data.tiles.reports} />
+            <Tile  size="6" margin="md" type="md" data={data.tiles.settings} />
         </Page>
     
     );

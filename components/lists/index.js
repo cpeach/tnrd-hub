@@ -174,9 +174,12 @@ export default function List(props)
 				<input ref={inputRef} type="text" placeholder="Search Items" onKeyUp={search} required  />
 				<span className={style.home_search_icon}>{searchIcon}</span>
 			</div>:<></>}
+			{
+			!props.hideCount?
 			<div className={style.list_results}>
 				{resultsTotal} Records
-			</div>
+			</div>:<></>
+			}
 			{props.onFilter?<div className={style.list_filters} onClick={()=>{setFiltersVisable(true)}}>
 				<div>Filters {filterCount} <FunnelPlotOutlined style={{marginLeft:"6px",fontSize:"16px",color:"rgb(140,140,140)"}} /></div>
 			</div>:<></>}	

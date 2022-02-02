@@ -11,6 +11,7 @@ import {DeleteFilled} from '@ant-design/icons';
 const Form = forwardRef((props, ref) => {
 	
 	const [data,setData] = useState(props.data);
+	const [submitted,setSubmitted] = useState(false);
 
 	const fieldRefs = useRef(new Array());
 
@@ -35,6 +36,7 @@ const Form = forwardRef((props, ref) => {
 	const handleSubmit = async(e)=>{
 		
 		e.preventDefault();
+		setSubmitted(true);
 		let _data = {},field,valid=true;
 		var refs = fieldRefs.current
 		
@@ -55,8 +57,9 @@ const Form = forwardRef((props, ref) => {
 
 	
 	const onChange = (p)=>{
-	//	console.log("FORM CHANGE")
-	//	console.log(p)
+		if(props.onChange && !submitted){
+			props.onChange(p);
+		}
 	}
 
 	const getSection=(section,s)=>{
@@ -120,7 +123,7 @@ const Form = forwardRef((props, ref) => {
 							<hr/>
 							<div className={style.form_actions}>
 								<div className="_7 box">
-									<input className={style.submit} type="submit" defaultValue="Submit" />
+									<input id="form_submit_btn" className={style.submit} type="submit" value={data.submit?data.submit:"Submit"} />
 									<div className={style.cancel}><a href={data.path.back.href} align="center">Cancel</a></div>
 								</div>	
 								<div className="_5 box right">

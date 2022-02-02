@@ -1,0 +1,20 @@
+
+
+{
+	
+	"list":{
+		"title" : "Planning Applications",
+		"columns" : [
+			{"title":"LTO","ref":"lto"},
+			{"title":"Address","ref":"*"},
+			{"title":"Lot","ref":"lot"},
+			{"title":"Plan","ref":"plan"},
+			{"title":"Section","ref":"section"},
+			{"title":"Township","ref":"township"},
+			{"title":"Range","ref":"range"},
+			{"title":"Details","ref":"_id"}
+
+		]
+	}
+	
+}

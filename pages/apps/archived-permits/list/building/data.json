@@ -1,0 +1,19 @@
+
+
+{
+	
+	"list":{
+		"title" : "Building Permits",
+		"columns" : [
+			{"title":"Issue Date","ref":"issue_date"},
+			{"title":"Permit","ref":"permit_n"},
+			{"title":"Owner Name","ref":"owner_name"},
+			{"title":"Owner Address 1","ref":"owner_add1"},
+			{"title":"Owner Address 2","ref":"owner_add2"},
+			{"title":"Lot","ref":"lot"},
+			{"title":"Plan","ref":"plan"},
+			{"title":"Details","ref":"_id"}
+		]
+	}
+	
+}
