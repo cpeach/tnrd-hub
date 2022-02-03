@@ -5,15 +5,15 @@
 	"list":{
 		"title" : "Data Entry Forms",
 		"rows" : [
-			{"name":"Wifi Stats","source":"Cisco Meraki","link":"/tnrl-stats/admin/forms/wifi/"},
+			{"name":"Circulations","source":"Selfcheck, Sierra","link":"/tnrl-stats/admin/forms/circ-stats/"},
 			{"name":"Virtual Collections","source":"OverDrive","link":"/tnrl-stats/admin/forms/virtual-collections/"},
-			{"name":"Circulation Stats","source":"Selfcheck, Sierra","link":"/tnrl-stats/admin/forms/circ-stats/"},
+			{"name":"Wifi","source":"Cisco Meraki","link":"/tnrl-stats/admin/forms/wifi/"},
 			{"name":"PC Reservations","source":"Envisionware","link":"/tnrl-stats/admin/forms/circ-stats/"}
 
 		],
 			
 		"columns" : [
-			{"title":"Report Name","ref":"name"},
+			{"title":"Stats Name","ref":"name"},
 			{"title":"Source","ref":"source"},
 			{"title":"Forms","ref":"link"}
 		]

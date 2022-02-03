@@ -9,7 +9,7 @@
 		},
 		"reports":{
 			"image"   : "/illustrations/stats.png",
-			"link"    : "/tnrl-stats/admin/",
+			"link"    : "/tnrl-stats/admin/reports/",
 			"title"   : "Generate Reports",
 			"details" : "Create and manage tnrl reports. "
 		},

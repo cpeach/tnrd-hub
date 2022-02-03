@@ -1,0 +1,18 @@
+
+
+{
+	
+	"list":{
+		"title" : "Wifi Reports",
+		"rows" : [
+			{"name":"Usage","details":"Manage wifi usage reports","link":"/tnrl-stats/admin/reports/wifi/usage"}
+		],
+			
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

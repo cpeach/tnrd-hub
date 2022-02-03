@@ -1,0 +1,20 @@
+
+
+{
+	
+	"list":{
+		"title" : "Wifi Forms",
+		"rows" : [
+			{"name":"Usage","details":"Enter branch wifi stats one at a time.","link":"/tnrl-stats/admin/forms/wifi/usage"},
+			{"name":"Bulk Usage","details":"Enter wifi stats for all locations at once","link":"/tnrl-stats/admin/forms/wifi/usage-bulk/"}
+
+		],
+			
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

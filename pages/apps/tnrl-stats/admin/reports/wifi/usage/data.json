@@ -1,0 +1,33 @@
+
+
+{
+	
+	"list":{
+		"title" : "Reports",
+		"new" : {"label":"New Report","href":"/tnrl-stats/admin/reports/insert"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Description","ref":"description"},
+			{"title":"Created Date","ref":"created"},
+			{"title":"Results","ref":"url"},
+			{"title":"Action","ref":"_id"}
+		]
+	},
+	"form" : {
+		"title":"Insert",
+		"subtitle":"New Report",
+		"path"  : {"back":{"label":"Back to wifi usage reports","href":"/tnrl-stats/admin/reports/"}},
+		"sections":[{"label":null},{"label":"Parameters"}],
+		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"}],
+		"fields":[
+			{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
+			{"tag":"description","label":"Description","required":true,"container":0,"size":12,"attributes":{"name":"description"}},
+			{"tag":"date","label":"Date From","required":true,"container":1,"size":6,"attributes":{"name":"from"}},
+			{"tag":"date","label":"Date To","required":true,"container":1,"size":6,"attributes":{"name":"to"}},
+			{"tag":"multi_select","label":"Locations","required":true,"container":1,"size":12,"attributes":{"name":"locations"}},
+			{"tag":"hidden","container":0,"size":12,"attributes":{"name":"_id"}}
+		]
+	}
+	
+}
+
