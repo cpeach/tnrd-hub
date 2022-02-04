@@ -8,7 +8,7 @@
 			{"name":"Circulations","source":"Selfcheck, Sierra","link":"/tnrl-stats/admin/forms/circ-stats/"},
 			{"name":"Virtual Collections","source":"OverDrive","link":"/tnrl-stats/admin/forms/virtual-collections/"},
 			{"name":"Wifi","source":"Cisco Meraki","link":"/tnrl-stats/admin/forms/wifi/"},
-			{"name":"PC Reservations","source":"Envisionware","link":"/tnrl-stats/admin/forms/circ-stats/"}
+			{"name":"PC Reservations","source":"Envisionware","link":"/tnrl-stats/admin/forms/pc_res/"}
 
 		],
 			

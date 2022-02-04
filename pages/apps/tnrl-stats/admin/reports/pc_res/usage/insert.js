@@ -12,7 +12,7 @@ export default function Insert(props){
 
 	useEffect(async () => {
 		let isMounted = true;
-		let _locations = await client({url:'/tnrl-stats/wifi/locations'});
+		let _locations = await client({url:'/tnrl-stats/pc_res/locations'});
 		
 		if(isMounted){
 			setLocations(_locations);
@@ -35,14 +35,15 @@ export default function Insert(props){
 
 		console.log(data);
 
-		var results = await client({url:"/tnrl-stats/reports/wifi/usage",params:{method:"POST",body:data}})
+		var results = await client({url:"/tnrl-stats/reports/pc_res/usage",params:{method:"POST",body:data}})
 		success(["Success","A new Report record was inserted."]);
-		window.location.href = '/tnrl-stats/admin/reports/wifi/usage'; 
+		fwindow.location.href = '/tnrl-stats/admin/reports/pc_res/usage'; 
 	}
 
 	if(locations){
 		
 		data.form.fields[2].options = [
+			{label:"2012",name:"2012",value:"2012"},
 			{label:"2013",name:"2013",value:"2013"},
 			{label:"2014",name:"2014",value:"2014"},
 			{label:"2015",name:"2015",value:"2015"},

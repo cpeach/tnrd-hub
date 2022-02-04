@@ -1,0 +1,17 @@
+
+{
+	
+	"form" : {
+		"title":"PC Reservation Stats",
+		"subtitle":"Location Usage",
+		"path"  : {"back":{"label":"Back to PC Res forms","href":"/tnrl-stats/admin/forms/pc_reservations"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			
+			{"tag":"select","label":"Year","required":true,"container":0,"size":6,"attributes":{"name":"year","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"select","label":"Month","required":true,"container":0,"size":6,"attributes":{"name":"month","showSearch":false,"showArrow":true,"bordered":false}}
+		
+		]
+	}
+}

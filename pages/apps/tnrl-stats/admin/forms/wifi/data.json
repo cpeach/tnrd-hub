@@ -11,7 +11,7 @@
 		],
 			
 		"columns" : [
-			{"title":"Report Name","ref":"name"},
+			{"title":"Form Name","ref":"name"},
 			{"title":"Details","ref":"details"},
 			{"title":"Forms","ref":"link"}
 		]

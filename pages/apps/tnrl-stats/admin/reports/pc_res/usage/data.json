@@ -4,7 +4,7 @@
 	
 	"list":{
 		"title" : "Reports",
-		"new" : {"label":"New Report","href":"/tnrl-stats/admin/reports/wifi/usage/insert"},
+		"new" : {"label":"New Report","href":"/tnrl-stats/admin/reports/pc_res/usage/insert"},
 		"columns" : [
 			{"title":"Name","ref":"name"},
 			{"title":"Description","ref":"description"},
@@ -16,7 +16,7 @@
 	"form" : {
 		"title":"Insert",
 		"subtitle":"New Report",
-		"path"  : {"back":{"label":"Back to wifi usage reports","href":"/tnrl-stats/admin/reports/wifi/usage"}},
+		"path"  : {"back":{"label":"Back to pc res usage reports","href":"/tnrl-stats/admin/reports/pc_res/usage"}},
 		"sections":[{"label":null},{"label":"Parameters"}],
 		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"}],
 

@@ -18,8 +18,7 @@ export default function Reports(props) {
 	
 	useEffect(async () => {
 		let isMounted = true;
-		let _reports = await client({url:'/tnrl-stats/reports/wifi/usage'});
-		console.log(reports)
+		let _reports = await client({url:'/tnrl-stats/reports/pc_res/usage'});
 		if(isMounted){
 			setReports(_reports)
 		}
@@ -30,7 +29,7 @@ export default function Reports(props) {
 
 		l_data.list.columns[2].render = (p)=>{var date = p.split('T');return moment(date,"YYYY-MM-DD").format("LL")}
 		l_data.list.columns[3].render = (p)=>{return <Link href={p}>{"Download"}</Link>}
-		l_data.list.columns[4].render = (p)=>{return <Link href={"/tnrl-stats/admin/reports/wifi/usage/"+p}>Edit</Link>}
+		l_data.list.columns[4].render = (p)=>{return <Link href={"/tnrl-stats/admin/reports/pc_res/usage/"+p}>Edit</Link>}
 		
 		l_data.list.rows = reports;
 		
