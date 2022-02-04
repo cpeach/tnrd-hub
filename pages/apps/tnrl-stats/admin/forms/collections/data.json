@@ -1,0 +1,19 @@
+
+
+{
+	
+	"list":{
+		"title" : "Collection Forms",
+		"rows" : [
+			{"name":"Usage","details":"Enter Circ stats for online databases","link":"/tnrl-stats/admin/forms/collections/usage/"}
+
+		],
+			
+		"columns" : [
+			{"title":"Form Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

@@ -1,0 +1,37 @@
+
+
+{
+	
+	"list":{
+		"title" : "Reports",
+		"new" : {"label":"New Report","href":"/tnrl-stats/admin/reports/collections/usage/insert"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Description","ref":"description"},
+			{"title":"Created Date","ref":"created"},
+			{"title":"Results","ref":"url"},
+			{"title":"Action","ref":"_id"}
+		]
+	},
+	"form" : {
+		"title":"Insert",
+		"subtitle":"New Report",
+		"path"  : {"back":{"label":"Back to online circ reports","href":"/tnrl-stats/admin/reports/collections/usage"}},
+		"sections":[{"label":null},{"label":"Parameters"}],
+		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"}],
+
+		"fields":[
+			
+			{"tag":"text","label":"Name","description":"Provide a name for this report","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
+			{"tag":"description","label":"Description","description":"Provide some details about this report. What is the nature of its output.","container":0,"size":12,"attributes":{"name":"description"}},
+			
+			{"tag":"multi_select","label":"Years","required":true,"container":1,"size":6,"attributes":{"name":"years","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"multi_select","label":"Months","required":true,"container":1,"size":6,"attributes":{"name":"months","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"multi_select","label":"Types","required":true,"container":1,"size":12,"attributes":{"name":"types","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"hidden","container":0,"size":12,"attributes":{"name":"_id"}}
+			
+		]
+	}
+	
+}
+
