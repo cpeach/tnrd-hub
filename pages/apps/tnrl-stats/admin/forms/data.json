@@ -5,7 +5,7 @@
 	"list":{
 		"title" : "Data Entry Forms",
 		"rows" : [
-			{"name":"Circulations","source":"Selfcheck, Sierra","link":"/tnrl-stats/admin/forms/"},
+			{"name":"Circulations","source":"Selfcheck, Sierra","link":"/tnrl-stats/admin/forms/circs"},
 			{"name":"Online Collections","source":"Various Online Databases","link":"/tnrl-stats/admin/forms/collections/"},
 			{"name":"Wifi","source":"Cisco Meraki","link":"/tnrl-stats/admin/forms/wifi/"},
 			{"name":"PC Reservations","source":"Envisionware","link":"/tnrl-stats/admin/forms/pc_res/"}

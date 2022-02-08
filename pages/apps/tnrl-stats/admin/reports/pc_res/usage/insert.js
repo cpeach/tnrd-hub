@@ -33,11 +33,10 @@ export default function Insert(props){
 
 		data.parameters = params;
 
-		console.log(data);
 
 		var results = await client({url:"/tnrl-stats/reports/pc_res/usage",params:{method:"POST",body:data}})
 		success(["Success","A new Report record was inserted."]);
-		fwindow.location.href = '/tnrl-stats/admin/reports/pc_res/usage'; 
+		window.location.href = '/tnrl-stats/admin/reports/pc_res/usage'; 
 	}
 
 	if(locations){

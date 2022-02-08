@@ -34,15 +34,14 @@ export default function Update(props){
 	
 		let params = {years:data.years,months:data.months,locations:data.locations}
 
-		delete data._id
+		
 		delete data.years
 		delete data.months
 		delete data.locations
 
 		data.parameters = params;
-
-		console.log(data);
-
+		data._id = _id
+		
 		var results = await client({url:"/tnrl-stats/reports/pc_res/usage",params:{method:"PUT",body:data}})
 		success(["Success","A new Report record was inserted."]);
 		window.location.href = '/tnrl-stats/admin/reports/pc_res/usage'; 

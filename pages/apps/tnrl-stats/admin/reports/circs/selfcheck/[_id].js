@@ -34,12 +34,15 @@ export default function Insert(props){
 	
 		let params = {years:data.years,months:data.months,locations:data.locations}
 
+		delete data._id
 		delete data.years
 		delete data.months
 		delete data.locations
 
 		data.parameters = params;
-		data._id = _id
+
+		console.log(data);
+
 		var results = await client({url:"/tnrl-stats/reports/wifi/usage",params:{method:"PUT",body:data}})
 		success(["Success","A new Report record was inserted."]);
 		window.location.href = '/tnrl-stats/admin/reports/wifi/usage'; 
