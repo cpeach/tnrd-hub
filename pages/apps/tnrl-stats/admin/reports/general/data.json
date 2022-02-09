@@ -1,0 +1,18 @@
+
+
+{
+	
+	"list":{
+		"title" : "General Reports",
+		"rows" : [
+			{"name":"People","details":"Manage people stats from Daily Stats Counter","link":"/tnrl-stats/admin/reports/general/people"}
+		],
+			
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}
