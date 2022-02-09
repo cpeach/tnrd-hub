@@ -1,0 +1,21 @@
+
+
+{
+	
+	"list":{
+		"title" : "Circulation Forms",
+		"rows" : [
+			{"name":"Selfcheck","details":"Enter Selfcheck related circ stats .","link":"/tnrl-stats/admin/forms/circs/selfcheck"},
+			{"name":"Sierra","details":"Enter Sierra related circ stats","link":"/tnrl-stats/admin/forms/circs/sierra/"},
+			{"name":"Mobile Library","details":"Enter Mobile Library related circ stats","link":"/tnrl-stats/admin/forms/circs/mobile/"}
+
+		],
+			
+		"columns" : [
+			{"title":"Form Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

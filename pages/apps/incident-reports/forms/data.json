@@ -1,0 +1,18 @@
+
+{
+	"tiles":{
+		"tnrd":{
+			"image"   : "/illustrations/slip.png",
+			"link"    : "/incident-reports/forms/tnrd",
+			"title"   : "TNRD - All Staff",
+			"details" : "Use this online form to notify Safety of an Injury, Near Miss or Hazard encounter"
+		},
+		"libraries":{
+			"image"   : "/illustrations/caution.png",
+			"link"    : "/incident-reports/forms/tnrl",
+			"title"   : "Library - Patrons",
+			"details" : "This form is automatically sent to You, Library Leadership Team, TNRD Management, Facilities Department, and HR & Safety Advisor."
+		}
+		
+	}
+}

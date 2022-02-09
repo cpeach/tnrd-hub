@@ -39,7 +39,6 @@ const List = forwardRef((props, ref) => {
 					
 				})
 			}
-			console.log(value)
 			v.value = value;
 			v.name  = name;
 			return v;
@@ -66,7 +65,7 @@ const List = forwardRef((props, ref) => {
 			setModalVisible(true);
 			
 		}else{
-			props.onChange({valid:valid,error:error});
+			props.onChange({valid:valid,error:error,value:value});
 		}
 	}
 
@@ -94,7 +93,7 @@ const List = forwardRef((props, ref) => {
 		props.data.min = props.data.min?0:props.data.required?1:0;
 		valid = v.length<props.data.min?false:true;
 		error = valid ?"":"This field requires at least "+props.data.min+" item."
-		return {valid:valid,error:error}
+		return {valid:valid,error:error,value:v}
 	}
 
 	return (
@@ -103,9 +102,10 @@ const List = forwardRef((props, ref) => {
 					{
 						value && value.length>0 ? 
 							value.map((item,i)=>(
-								<li ref={(element) => {itemRefs.current[i]=element}} data-index={i} key={"item-"+i} name={"item-"+i} onMouseOver={(e)=>(setIndex(e.currentTarget.dataset.index))}>
+								<li ref={(element) => {itemRefs.current[i]=element}} data-index={i} key={"item-"+i} name={"item-"+i} onMouseOver={(e)=>(setIndex(parseInt(e.currentTarget.dataset.index)))}>
 									<div key="add" onClick={add}><PlusCircleFilled /></div>
 									<label key="label">
+										<i>{props.data.groupRef?value[i][props.data.groupRef]+' - ':''}</i>
 										{value[i][props.data.ref]}
 									</label>
 									<div data-index={i} >

@@ -1,0 +1,18 @@
+
+
+{
+	
+	"list":{
+		"title" : "PC Reservation Reports",
+		"rows" : [
+			{"name":"Usage","details":"Manage PC reservation usage reports","link":"/tnrl-stats/admin/reports/pc_res/usage"}
+		],
+			
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

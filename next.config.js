@@ -20,26 +20,20 @@ module.exports = {
         source : '/applications/:_id',
         destination : '/content/applications/:_id'
       },
+      {           
+        source : '/notifications/:_id',
+        destination : '/content/notifications/:_id'
+      },
       {
         source : '/profile',
         destination : '/content/profile'
       },
-      {
-        source : '/notifications',
-        destination : '/content/notifications'
-      },
+
       {
         source : '/testing',
         destination : '/content/testing'
       },
-      {
-        source : '/api-console',
-        destination : '/apps/api-console'
-      },
-      {
-        source : '/api-console/:path*',
-        destination : '/apps/api-console/:path*'
-      },
+    
       {
         source : '/hub-console/:path*',
         destination : '/apps/hub-console/:path*'
@@ -48,6 +42,26 @@ module.exports = {
         source : '/expiring-patrons/:path*',
         destination : '/apps/expiring-patrons/:path*'
       },
+      {
+        source : '/hashad/:path*',
+        destination : '/apps/hashad/:path*'
+      },
+      {
+        source : '/incident-reports/:path*',
+        destination : '/apps/incident-reports/:path*'
+      },
+      {
+        source : '/stats-counter/:path*',
+        destination : '/apps/stats-counter/:path*'
+      },
+      {
+        source : '/archived-permits/:path*',
+        destination : '/apps/archived-permits/:path*'
+      },
+      {
+        source : '/tnrl-stats/:path*',
+        destination : '/apps/tnrl-stats/:path*'
+      }
     ]
   },
 

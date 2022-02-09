@@ -23,6 +23,8 @@ export default function List(props)
 	const [filtersVisable,setFiltersVisable] = useState(false);
 	const [filterCount,setFilterCount] = useState(0);
 
+	const [currentSort,setCurrentSort] = useState();
+
 	let currentFilter;
 	
 	const inputRef = useRef();
@@ -33,7 +35,6 @@ export default function List(props)
 //	SEARCH
 
 	const search = ()=>{
-		console.log("searcg")
 		setSearching(true);
 		setSearchValue(inputRef.current.value);
 	}
@@ -42,6 +43,24 @@ export default function List(props)
 			props.onSearch?inputRef.current.value = "":null
 			let apps = props.onSearch?await props.onSearch({search:""}):[];
 			setResults(apps);
+	}
+
+	const getRows = (p)=>{
+		let _rows = (<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />);
+		_rows = p.map((row,r)=>(
+			<div key={"row-"+r}>
+				{
+					props.data.columns.map((col,c)=>{
+						return (
+							<div key={"col-"+c}  className={col.align||"left"}>
+								{col.render ? col.render(col.ref==='*'?row:row[col.ref]) : typeof row[col.ref] === "string" ? row[col.ref] : ""}
+							</div>
+						)
+					})
+				}
+			</div>
+		));
+		return _rows;
 	}
 
 	useEffect(async ()=>{
@@ -66,31 +85,14 @@ export default function List(props)
 
 	useEffect(()=>{
 
-		let _rows = (<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />);
 		if(results&&results.length>0){
-			//setRowsStyle(style.home_results_rows_out)
-
-			_rows = results.map((row,r)=>(
-					<div key={"row-"+r}>
-						{
-							props.data.columns.map((col,c)=>{
-								return (
-									<div key={"col-"+c}  className={col.align||"left"}>
-										{col.render ? col.render(col.ref==='*'?row:row[col.ref]) : typeof row[col.ref] === "string" ? row[col.ref] : ""}
-									</div>
-								)
-							})
-						}
-					</div>
-			));
-			//setTimeout(() => {setRowsStyle(style.home_results_rows_in)},300);
 			setResultsTotal(results.length);
-			setRows(_rows); 
+			setRows(getRows(results)); 
 		}
 		
-		
-		
 	},[results])
+
+	useEffect(()=>{console.log("rows have chnaged")},[rows])
 
 //	FILTER
 
@@ -146,6 +148,16 @@ export default function List(props)
 	}
 	const cancelFilters = ()=>{setFiltersVisable(false)}
 	
+	const sort = (e)=>{
+		console.log(e.target)
+		if(currentSort){currentSort.className= style.sort;}
+		e.target.className = style.sort_active;
+		setCurrentSort(e.target);
+		results.sort((a, b) => a[e.target.getAttribute("name")].trim().localeCompare(b[e.target.getAttribute("name")].trim()));
+		
+		setRows(getRows(results)); 
+	}
+
 	return (
 		<>
 		
@@ -162,9 +174,12 @@ export default function List(props)
 				<input ref={inputRef} type="text" placeholder="Search Items" onKeyUp={search} required  />
 				<span className={style.home_search_icon}>{searchIcon}</span>
 			</div>:<></>}
+			{
+			!props.hideCount?
 			<div className={style.list_results}>
 				{resultsTotal} Records
-			</div>
+			</div>:<></>
+			}
 			{props.onFilter?<div className={style.list_filters} onClick={()=>{setFiltersVisable(true)}}>
 				<div>Filters {filterCount} <FunnelPlotOutlined style={{marginLeft:"6px",fontSize:"16px",color:"rgb(140,140,140)"}} /></div>
 			</div>:<></>}	
@@ -177,10 +192,14 @@ export default function List(props)
 			<div>
 				{
 					props.data.columns.map((col,c)=>(
-						
-						<div key={"head-"+c} className={col.align||"left"}>
+						col.sort ? 
+						<div key={"head-"+c} className={col.align||"left " + style.sort } onClick={sort} name={col.ref}>
 							{col.title}
 						</div>
+						:
+						<div key={"head-"+c} className={col.align||"left "}  >
+							{col.title}
+						</div>						
 					))
 				}
 			</div>

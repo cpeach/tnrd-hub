@@ -1,0 +1,24 @@
+
+{
+	"tiles":{
+		"forms":{
+			"image"   : "/illustrations/patrons.png",
+			"link"    : "/tnrl-stats/admin/forms/",
+			"title"   : "Data Entry",
+			"details" : "This section provides a list of data sources and related data input forms"
+		},
+		"reports":{
+			"image"   : "/illustrations/stats.png",
+			"link"    : "/tnrl-stats/admin/reports/",
+			"title"   : "Generate Reports",
+			"details" : "Create and manage tnrl reports. "
+		},
+	
+		"settings":{
+			"image"   : "/illustrations/settings.png",
+			"link"    : "/tnrl-stats/admin/",
+			"title"   : "Settings",
+			"details" : "Use this section to manage general settings."
+		}
+	}
+}

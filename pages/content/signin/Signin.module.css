@@ -3,27 +3,37 @@
 	Signin
 */
 .signin{
-	font-size:0px;
+	width: 100%; 
+	display:flex;
 	height: 100%;
+}
+
+
+.signin>div:first-child{
+	display:flex;
+	flex-direction: column;
 	overflow-y: scroll;
+	flex-grow:1;
+	width:62%
 }
-.signin_left{
-	display: inline-block;
-	vertical-align: top;
-	width:60%;
-	height: 100%;
-	text-align: center;
+.signin>div:last-child{
+	background-color:rgb(249,249,249);
+	flex-direction: column;
+	flex-shrink:0;
+	display:flex;
+	width:38%;
+	border-left:1px solid rgb(240,240,240);
+	
 }
-.signin_shim_middle{
-	display: inline-block;
-	height:100%;
-	vertical-align: middle;
-}
-.signin_shim_bottom{
-	display: inline-block;
-	height:100%;
-	vertical-align: top;
-}
+
+
+
+
+/*	RIGHT */
+
+
+
+
 .signin_panel{
 	display: inline-block;
 	vertical-align: middle;
@@ -33,7 +43,7 @@
 .signin_panel>h2{
 	display: block;
 	padding-top:15px;
-	padding-bottom:48px;
+	padding-bottom:24px;
 	font-weight: 600;
 	color:rgb(117, 158, 46) !important
 
@@ -49,13 +59,13 @@
 }
 .signin_panel>label{
 	display: block;
-	margin-top:48px;
+	margin-top:30px;
 	margin-bottom:15px;
 	font-size:21px;
 }
 .signin_panel>button{
 	display: block;
-	margin-top:30px;
+	margin-top:36px;
 	margin-bottom:30px;
 	font-size:21px;
 	background-color:rgb(117, 158, 46,0.9);
@@ -85,6 +95,12 @@
 .signin_panel>button:hover{
 	background-color:rgb(117, 158, 46,1);
 }
+.signin_panel>span{
+	
+	width: 100%;
+	font-size: 15px;
+	color:chocolate
+}
 .signin_field{
 	margin-top:15px;
 	font-size:21px;
@@ -103,19 +119,8 @@
 	font-size: 14px;
 }
 
+/*	LEFT */
 
-.signin_right{
-	display: inline-block;
-	background-color:rgb(248,248,248);
-	width:40%;
-	height: 100%;
-	text-align: center;
-}
+.signin>div:last-child img{
 
-.signin_right>img{
-	display: inline-block;
-	vertical-align: bottom;
-	width:80%;
-	max-width: 600px;
-	opacity: 0.7;
 }

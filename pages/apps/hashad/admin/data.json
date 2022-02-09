@@ -1,0 +1,35 @@
+
+{
+	"tiles":{
+		"patrons":{
+			"image"   : "/illustrations/patrons.png",
+			"link"    : "/hashad/admin/patrons",
+			"title"   : "Patrons",
+			"details" : "View and manage all HasHad patrons and thier related preferences."
+		},
+		"checkouts":{
+			"image"   : "/illustrations/checkouts.png",
+			"link"    : "/hashad/admin/checkouts",
+			"title"   : "Checkouts",
+			"details" : "A list of all previously checked out items listed by item barcode and patron id."
+		},
+		"preferences":{
+			"image"   : "/illustrations/prefs.png",
+			"link"    : "/hashad/admin/preferences",
+			"title"   : "Preferences",
+			"details" : "Manage formats, subjects and author lists."
+		},
+		"reports":{
+			"image"   : "/illustrations/stats.png",
+			"link"    : "/hashad/admin/reports",
+			"title"   : "Reporting",
+			"details" : "Create and manage reports based on patrons and checkouts."
+		},
+		"settings":{
+			"image"   : "/illustrations/settings.png",
+			"link"    : "/hashad/admin/settings",
+			"title"   : "Settings",
+			"details" : "Use this section to manage general settings."
+		}
+	}
+}

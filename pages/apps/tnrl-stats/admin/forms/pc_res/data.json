@@ -1,0 +1,19 @@
+
+
+{
+	
+	"list":{
+		"title" : "PC Reservation Forms",
+		"rows" : [
+			{"name":"Usage","details":"Enter PC Res stats for all locations at once","link":"/tnrl-stats/admin/forms/pc_res/usage/"}
+
+		],
+			
+		"columns" : [
+			{"title":"Form Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

@@ -1,0 +1,17 @@
+
+
+{
+	
+	"list":{
+		"title" : "Incidents - TNRD",
+		"columns" : [
+			{"title":"Submit Date","ref":"date"},
+			{"title":"Reported By","ref":"issuer"},
+			{"title":"Type","ref":"type-general"},
+			{"title":"Department","ref":"department"},
+			{"title":"Details","ref":"_id"},
+			{"title":"Action","ref":"_id"} 
+
+		]
+	}
+}

@@ -1,0 +1,16 @@
+
+
+{
+	
+	"list":{
+		"title" : "Incidents - TNRD",
+		
+		"columns" : [
+			{"title":"-","ref":"status","align":"center"},
+			{"title":"Received","ref":"date"},
+			{"title":"Title","ref":"title"},
+			{"title":"Details","ref":"_id"}
+
+		]
+	}
+}

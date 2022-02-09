@@ -1,0 +1,14 @@
+
+
+{
+	
+	"list":{
+		"title" : "Incident Settings",
+		"rows" : [{"name":"Global","link":"/incident-reports/admin/settings/global/"},{"name":"TNRD - All Staff","link":"/incident-reports/admin/settings/tnrd/"},{"name":"Libraries - Patrons","link":"/incident-reports/admin/settings/tnrl/"}],
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Action","ref":"link"}
+		]
+	}
+	
+}

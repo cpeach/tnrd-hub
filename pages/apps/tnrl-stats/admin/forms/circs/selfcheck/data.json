@@ -1,0 +1,21 @@
+
+{
+	
+	"form" : {
+		"title":"Selfcheck ",
+		"subtitle":"Circ Stats",
+		"path"  : {"back":{"label":"Back to circ forms","href":"/tnrl-stats/admin/forms/circs"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			
+			
+			{"tag":"select","label":"Year","required":true,"container":0,"size":6,"attributes":{"name":"year","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"select","label":"Month","required":true,"container":0,"size":6,"attributes":{"name":"month","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"select","label":"Locations","required":true,"container":0,"size":12,"attributes":{"name":"lib_id","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"text","label":"Circ Count","required":false,"container":0,"size":4,"attributes":{"name":"circ"}}
+			
+			
+		]
+	}
+}

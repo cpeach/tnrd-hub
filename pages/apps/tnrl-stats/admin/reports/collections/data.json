@@ -1,0 +1,18 @@
+
+
+{
+	
+	"list":{
+		"title" : "Online Collection Reports",
+		"rows" : [
+			{"name":"Usage","details":"Manage online collection circ reports","link":"/tnrl-stats/admin/reports/collections/usage"}
+		],
+			
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

@@ -1,0 +1,14 @@
+
+
+{
+	
+	"list":{
+		"title" : "Incidents",
+		"rows" : [{"name":"TNRD - All Staff","link":"/incident-reports/admin/incidents/tnrd/"},{"name":"Libraries - Patrons","link":"/incident-reports/admin/incidents/tnrl/"}],
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Action","ref":"link"}
+		]
+	}
+	
+}

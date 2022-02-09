@@ -1,0 +1,16 @@
+
+
+{
+	
+	"list":{
+		"title" : "Patron History",
+		"columns" : [
+			{"title":"Checkout Date","ref":"checkoutdate"},
+			{"title":"Barcode","ref":"barcode"},
+			{"title":"Author","ref":"author","sort":true},
+			{"title":"Title","ref":"title","sort":true},
+			{"title":"Media","ref":"materialType"}
+		]
+	}
+	
+}

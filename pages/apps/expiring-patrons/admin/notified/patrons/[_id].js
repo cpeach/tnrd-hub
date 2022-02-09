@@ -35,15 +35,20 @@ export default function Notified(props) {
 		
 	if(notified){
 		
+		
 		l_data.list.columns[3].render = (p)=>{return !p?"Good":p}
 		
 		l_data.list.rows   = notified;
 		
 		let data = {};
+		data.path  = {"back":{"label":"Back to Previous Notices","href":"/expiring-patrons/admin/notified/"}},
+
 		data.content  = 
 					(
 						<Page><List data={l_data.list} ><div>List</div></List></Page>
 					);
+
+
 		
 		return ( <Frame user={props.user} apps={props.apps} data={data} active="1" align="center"  />)
 

@@ -5,7 +5,7 @@ import 'antd/lib/select/style/index.css';
 import 'antd/lib/pagination/style/index.css';
 
 import {Select}   from 'antd';
-const {Option} = Select;
+const {Option,OptGroup} = Select;
 
 const Multi_Select = forwardRef((props, ref) => {
 	const [initial, setInitial] = useState(true);
@@ -36,16 +36,44 @@ const Multi_Select = forwardRef((props, ref) => {
 		setField   : (v)=>{setInitial(true);setValue(v)},
 		getField   : ()=>{return update();}
 	}));
-	//delete props.data.attributes.value
+
+
+	const getOptions = (group)=>{
+		let options = [];
+		let disabled = props.data.disabled,_disabled;
+		!props.data.options||props.data.options.map((option,o)=>{
+			_disabled = disabled&&disabled.includes(option.value)?true:false;
+			if(group){
+				group.value === option.group?options.push(<Option key={option.name+"-"+o} disabled={_disabled} value={option.value}>{option.label}</Option>):null;
+			}else{
+				options.push(<Option key={option.name+"-"+o} disabled={_disabled} value={option.value}>{option.label}</Option>)	
+			}
+			
+		});
+		return options;
+	}
 	return (
 		<Select mode="multiple" className={style.multi_select} value={value} {...props.data.attributes}  style={{ width: '100%'}} placeholder="Select one or more items" onChange={(e)=>{setValue(e)}}>
 			{
-				props.data.options?props.data.options.map((option,i)=>(
-					<Option key={option.name+"-"+i} value={option.value}>{option.label}</Option>
-				)):<></>
+				props.data.groups ? 
+					props.data.groups.map((group,g)=>{
+						return (<OptGroup key={group.name+"-"+g} label={group.name}>
+									{
+										getOptions(group)
+									}
+								</OptGroup>
+								)
+					})
+					:
+					getOptions()
+
 			}
 		</Select>
 	)
 })
+
+/* props.data.options?props.data.options.map((option,i)=>(
+					<Option key={option.name+"-"+i} value={option.value}>{option.label}</Option>
+				)):<></> */
 
 export default Multi_Select;

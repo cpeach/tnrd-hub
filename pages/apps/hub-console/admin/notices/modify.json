@@ -1,0 +1,58 @@
+
+
+{
+	
+	"form" : {
+		"title":"Insert",
+		"subtitle":"New Notice Template",
+		"path"  : {"back":{"label":"Back to Notices","href":"/hub-console/admin/notices/"}},
+		"sections":[{"label":null},{"label":"Email Attributes"}],
+		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"}],
+		"fields":[
+			{"tag":"select","label":"Application","description":"Which application does this notice belong to?","required":true,"container":0,"size":12,"attributes":{"name":"application","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
+			
+			{"tag":"list","label":"Filters","description":"This attribute allows for applications to reference name/value pairs. Use as needed.","ref":"name","required":false,"max":30,"container":0,"size":12,
+				"attributes":{
+					"name":"filters",
+					"form" : {
+						"title":"Add",
+						"subtitle":"Filter",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"text","label":"Name","required":true,"container":0,"size":12,"attributes":{"name":"name"}},
+							{"tag":"text","label":"Value","required":true,"container":0,"size":12,"attributes":{"name":"value"}}
+							
+						]
+					}
+					
+				}
+			},
+
+			{"tag":"text","label":"Subject Line","required":true,"container":1,"size":12,"attributes":{"name":"subject"}},
+			{"tag":"text","label":"Sender Label","required":true,"container":1,"size":12,"attributes":{"name":"sender"}},
+			{"tag":"list","label":"To Addresses","description":"Incude any default recipients that you would like to include in the notification","ref":"email","required":false,"max":30,"container":1,"size":12,
+				"attributes":{
+					"name":"receiver",
+					"form" : {
+						"title":"Add",
+						"subtitle":"To Address",
+						"sections":[{"label":null}],
+						"containers":[{"section":0,"size":"12"}],
+						"fields":[
+							{"tag":"text","label":"Email","required":true,"container":0,"size":12,"attributes":{"name":"email"}}							
+						]
+					}
+					
+				}
+			},
+
+			{"tag":"description","label":"Message","description":"Provide a short message about why the receipents are receiving this notification.","required":true,"container":1,"size":12,"attributes":{"name":"message","rows":"3"}},
+			{"tag":"description","label":"Body","required":true,"container":1,"size":12,"attributes":{"name":"body","rows":"15"}},
+		
+			{"tag":"hidden","container":0,"size":12,"attributes":{"name":"_id"}}
+		]
+	}
+	
+}

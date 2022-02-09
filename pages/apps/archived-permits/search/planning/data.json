@@ -1,0 +1,23 @@
+
+{
+	
+	"form" : {
+		"title":"Search",
+		"subtitle":"Building Permits",
+		"path"  : {"back":{"label":"Back","href":"/archived-permits/search/"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			{"tag":"text","label":"LTO","required":false,"container":0,"size":12,"attributes":{"name":"lto"}},
+			
+			{"tag":"text","label":"Lot","required":false,"container":0,"size":4,"attributes":{"name":"lot"}},
+			{"tag":"text","label":"District Lot","required":false,"container":0,"size":4,"attributes":{"name":"distlot"}},
+			{"tag":"text","label":"Land District","required":false,"container":0,"size":4,"attributes":{"name":"landdist"}},
+			{"tag":"text","label":"Plan","required":false,"container":0,"size":3,"attributes":{"name":"plan"}},
+			{"tag":"text","label":"Section","required":false,"container":0,"size":3,"attributes":{"name":"section"}},
+			{"tag":"text","label":"Township","required":false,"container":0,"size":3,"attributes":{"name":"township"}},
+			{"tag":"text","label":"Range","required":false,"container":0,"size":3,"attributes":{"name":"range"}}
+			
+		]
+	}
+}

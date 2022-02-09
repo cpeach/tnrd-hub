@@ -1,0 +1,18 @@
+
+
+{
+	
+	"list":{
+		"title" : "Circulation Reports",
+		"rows" : [
+			{"name":"Selfcheck - All","details":"Manage Selfcheck circulation reports","link":"/tnrl-stats/admin/reports/circ/selfcheck"}
+		],
+			
+		"columns" : [
+			{"title":"Report Name","ref":"name"},
+			{"title":"Details","ref":"details"},
+			{"title":"Forms","ref":"link"}
+		]
+	}
+	
+}

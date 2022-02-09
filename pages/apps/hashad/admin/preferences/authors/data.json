@@ -1,0 +1,26 @@
+
+
+{
+	
+	"list":{
+		"title" : "Author Preferences",
+		"new" : {"label":"New Author","href":"/hashad/admin/preferences/authors/insert"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Action","ref":"_id"}
+		]
+	},
+	"form" : {
+		"title":"Insert",
+		"subtitle":"New Author",
+		"path"  : {"back":{"label":"Back to Formats","href":"/hashad/admin/preferences/authors"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			{"tag":"text","label":"Name","required":false,"container":0,"size":12,"attributes":{"name":"name"}},
+			{"tag":"hidden","container":0,"size":12,"attributes":{"name":"_id"}}
+		]
+	}
+	
+}
+

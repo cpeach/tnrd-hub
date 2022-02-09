@@ -1,0 +1,17 @@
+
+{
+	
+	"form" : {
+		"title":"Collection Stats",
+		"subtitle":"Online Usage",
+		"path"  : {"back":{"label":"Back to collection forms","href":"/tnrl-stats/admin/forms/collections"}},
+		"sections":[{"label":null},{"label":"Circulations"}],
+		"containers":[{"section":0,"size":"12"},{"section":1,"size":"12"}],
+		"fields":[
+			
+			{"tag":"select","label":"Year","required":true,"container":0,"size":6,"attributes":{"name":"year","showSearch":false,"showArrow":true,"bordered":false}},
+			{"tag":"select","label":"Month","required":true,"container":0,"size":6,"attributes":{"name":"month","showSearch":false,"showArrow":true,"bordered":false}}
+		
+		]
+	}
+}

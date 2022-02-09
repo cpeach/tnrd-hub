@@ -1,0 +1,14 @@
+
+
+{
+	
+	"list":{
+		"title" : "Categories",
+		"new" : {"label":"New Category","href":"/stats-counter/admin/stats/categories/insert/"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"Items","ref":"*"},
+			{"title":"Action","ref":"_id"}
+		]
+	}
+}

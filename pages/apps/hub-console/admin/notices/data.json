@@ -1,0 +1,14 @@
+
+
+{
+	
+	"list":{
+		"title" : "Notices",
+		"new" : {"label":"New Notice Template","href":"/hub-console/admin/notices/insert"},
+		"columns" : [
+			{"title":"Application","ref":"application"},
+			{"title":"Name","ref":"name"},
+			{"title":"Action","ref":"_id"}
+		]
+	}
+}

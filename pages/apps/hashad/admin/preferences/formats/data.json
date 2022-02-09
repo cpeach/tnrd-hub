@@ -1,0 +1,28 @@
+
+
+{
+	
+	"list":{
+		"title" : "Format Preferences",
+		"new" : {"label":"New Format","href":"/hashad/admin/preferences/formats/insert"},
+		"columns" : [
+			{"title":"Name","ref":"name"},
+			{"title":"code","ref":"code"},
+			{"title":"Action","ref":"_id"}
+		]
+	},
+	"form" : {
+		"title":"Insert",
+		"subtitle":"New Format",
+		"path"  : {"back":{"label":"Back to Formats","href":"/hashad/admin/preferences/formats"}},
+		"sections":[{"label":null}],
+		"containers":[{"section":0,"size":"12"}],
+		"fields":[
+			{"tag":"text","label":"Name","required":false,"container":0,"size":12,"attributes":{"name":"name"}},
+			{"tag":"text","label":"Code","required":true,"container":0,"size":12,"attributes":{"name":"code"}},
+			{"tag":"hidden","container":0,"size":12,"attributes":{"name":"_id"}}
+		]
+	}
+	
+}
+
