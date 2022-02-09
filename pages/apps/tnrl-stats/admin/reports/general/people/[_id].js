@@ -14,14 +14,22 @@ export default function Insert(props){
 
 
 	const [report, setReport] = useState();
+	const [departments, setDepartments] = useState();
+	const [department, setDepartment] = useState();
+	const [groups, setGroups] = useState();
+	const [group, setGroup] = useState();
 	const [locations, setLocations] = useState();
 
 	useEffect(async () => {
 		let isMounted = true;
 		let _report    = await client({url:'/hub-console/reports/'+_id});
-		let _locations = await client({url:'/tnrl-stats/wifi/locations'});
+		let _departments = await client({url:'/stats-counter/departments/'});
+		let _groups = await client({url:'/stats-counter/groups/'});
+		let _locations = await client({url:'/stats-counter/locations/'});
 		
 		if(isMounted){
+			setDepartments(_departments);
+			setGroups(_groups);
 			setLocations(_locations);
 			setReport(_report);
 			
@@ -32,17 +40,21 @@ export default function Insert(props){
 
 	const handleSubmit = async(data) => {
 	
-		let params = {years:data.years,months:data.months,locations:data.locations}
+		let params = {year:data.year,departments:data.departments,groups:data.groups,locations:data.locations}
 
-		delete data.years
-		delete data.months
+		delete data._id
+		delete data.year
+		delete data.departments
+		delete data.groups
 		delete data.locations
 
 		data.parameters = params;
-		data._id = _id
-		var results = await client({url:"/tnrl-stats/reports/wifi/usage",params:{method:"PUT",body:data}})
+		data._id = _id;
+
+
+		var results = await client({url:"/tnrl-stats/reports/general/people",params:{method:"PUT",body:data}})
 		success(["Success","A new Report record was inserted."]);
-		window.location.href = '/tnrl-stats/admin/reports/wifi/usage'; 
+		window.location.href = '/tnrl-stats/admin/reports/general/people';
 	}
 
 	const handleDelete = async(data) => {
@@ -50,20 +62,20 @@ export default function Insert(props){
 		var results = await client({url:"/hub-console/reports/"+_id,params:{method:"DELETE"}})
 		if(results.deletedCount===1){
 			success(["Success","Your Report record was deleted."]);
-			window.location.href = '/tnrl-stats/admin/reports/wifi/usage'; 
+			window.location.href = '/tnrl-stats/admin/reports/general/people'; 
 		}else{
 			error(["Failed",results.message]);
 		}
 	}
 
-	if(locations&&report){
+	if(departments && groups && locations && report){
+		console.log(report);
 
 		data.form.subtitle = "ID : "+_id;
-		data.form.title = "Update Wifi Usage Report";
+		data.form.title = "Update General People Report";
 		
 		data.form.fields[0].value = report.name;
 		data.form.fields[1].value = report.description;
-
 		data.form.fields[2].options = [
 			{label:"2013",name:"2013",value:"2013"},
 			{label:"2014",name:"2014",value:"2014"},
@@ -78,26 +90,29 @@ export default function Insert(props){
 			{label:"2023",name:"2023",value:"2023"},
 			{label:"2024",name:"2024",value:"2024"}
 		]
-		data.form.fields[2].value = report.parameters.years
+		data.form.fields[2].value = report.parameters.year;
+		
+		data.form.fields[3].options = departments.map((item,i)=>({label:item.name,name:item._id,value:item._id}));
+		data.form.fields[3].value = report.parameters.departments;
 
-		data.form.fields[3].options = [
-			{label:"January",name:"01",value:"01"},
-			{label:"Febuary",name:"02",value:"02"},
-			{label:"March",name:"03",value:"03"},
-			{label:"April",name:"04",value:"04"},
-			{label:"May",name:"05",value:"05"},
-			{label:"June",name:"06",value:"06"},
-			{label:"July",name:"07",value:"07"},
-			{label:"August",name:"08",value:"08"},
-			{label:"September",name:"09",value:"09"},
-			{label:"October",name:"10",value:"10"},
-			{label:"November",name:"11",value:"11"},
-			{label:"December",name:"12",value:"12"}
-		]
-		data.form.fields[3].value = report.parameters.months
+		let default_group;
+		data.form.fields[4].options = groups.map((group,g)=>{
+			if(group.department == report.parameters.departments){
+				default_group = report.parameters.groups || group._id;
+				return {label:group.name,name:group._id,value:group._id}
+			}
+		});
+		data.form.fields[4].value = report.parameters.groups
 
-		data.form.fields[4].options = locations.map((item,i)=>({label:item.name,name:item.lib_id,value:item.lib_id}));
-		data.form.fields[4].value = report.parameters.locations
+		let vals = [];
+		locations.map((location)=>{
+			if(location.group._id.toString() == default_group.toString()){
+				vals.push({label:location.name,name:location._id,value:location._id})
+			}
+			
+		})
+		data.form.fields[5].options = vals;
+		data.form.fields[5].value = report.parameters.locations;
 		
 		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onDelete={handleDelete} />
 
