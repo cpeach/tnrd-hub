@@ -7,7 +7,7 @@ export default function API(args){
 	var params = args.params || {method:"GET"}
 	var type   = args.type   || "json"
 	var app_id = '60906b4cf5e24d7d2498642b';
-	
+	 
 	const { data,error } = useSWR(url,async (url)=>{
 		url = url.indexOf('http')>-1?url:process.env.NEXT_PUBLIC_api_host+url;
 
