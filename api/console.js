@@ -7,7 +7,7 @@ class API extends request{
 	constructor(){
 		super();
 		 
-		this.path = 'https://api.tnrdit.ca/accounts';
+		this.path = process.env.NEXT_PUBLIC_api_host+'/accounts';
 		
 	// 	bind endpoints
 		

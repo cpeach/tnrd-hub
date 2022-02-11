@@ -49,11 +49,11 @@ export default function Profile(props){
 								const fd = new FormData();
 								fd.append("image", e.file.originFileObj);
 								var params = {method:"POST",body:fd,headers:{'x-application':'60906b4cf5e24d7d2498642b'}}
-								var res = await fetch("https://api.tnrdit.ca/api-console/images",params);
+								var res = await fetch(process.env.NEXT_PUBLIC_api_host+"/api-console/images",params);
 								var out = await res.json();
 								if(profile.image){
 									var params = {method:"DELETE",headers:{'x-application':'60906b4cf5e24d7d2498642b'}}
-									await fetch("https://api.tnrdit.ca/api-console/images/"+profile.image,params);
+									await fetch(process.env.NEXT_PUBLIC_api_host+"/api-console/images/"+profile.image,params);
 								}
 								profile.image = out._id;
 								delete profile.application;

@@ -58,7 +58,7 @@ const _Image = forwardRef((props, ref) => {
 			var out = await client({url:"/hub-console/images",params:{method:"POST",body:fd,ignore:'body',headers:{"Content-Type":"delete"}}})
 			
 			if(original){
-				var _del = await client({url:"https://api.tnrdit.ca/hub-console/images/"+original,params:{method:"DELETE"}})
+				var _del = await client({url:process.env.NEXT_PUBLIC_api_host+"/hub-console/images/"+original,params:{method:"DELETE"}})
 			}
 			_value.value = out._id
 		} 

@@ -9,8 +9,8 @@ export default async function ClientAPI(args){
 	var type   = args.type   || "json"
 
 	let halt = 0;
-
-	url = url.indexOf('http')>-1?url:'https://api.tnrdit.ca'+url;
+	console.log(process.env.NEXT_PUBLIC_api_host)
+	url = url.indexOf('http')>-1?url:process.env.NEXT_PUBLIC_api_host+url;
 		
 	params.method = params.method || 'GET';
 

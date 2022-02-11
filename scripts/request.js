@@ -3,7 +3,7 @@ export default class Request {
 	
 	constructor(cookies,host){
 		
-		this.host    = host?host:'https://api.tnrdit.ca';
+		this.host    = host?host:process.env.NEXT_PUBLIC_api_host;
 		this.cookies = cookies;
 		this.get     = this.get.bind(this);
 		this.post    = this.post.bind(this);

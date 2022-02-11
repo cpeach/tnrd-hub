@@ -86,21 +86,24 @@ export default function Insert(props){
 
 		let default_group;
 		data.form.fields[4].options = groups.map((group,g)=>{
-			if(group.department == default_department){
+			return {label:group.name,name:group._id,value:group._id}
+			/*if(group.department == default_department){
 				default_group = default_group || group._id;
 				return {label:group.name,name:group._id,value:group._id}
-			}
+			}*/
 		});
-		data.form.fields[4].value = default_group;
-
+		//data.form.fields[4].value = default_group;
+		
 		let vals = []
 		locations.map((location)=>{
+			/*
 			if(location.group._id.toString() == default_group.toString()){
 				vals.push({label:location.name,name:location._id,value:location._id})
 			}
+			*/
 			
 		})
-		data.form.fields[5].options = vals;
+		//data.form.fields[5].options = vals;
 		
 		return <Form user={props.user} apps={props.apps} data={data.form} active="1" onSubmit={handleSubmit} onChange={handleChange} />
 

@@ -60,7 +60,7 @@ const _Select = forwardRef((props, ref) => {
 	}));
 
 	return (
-		<Select className={style.multi_select} value={value} {...props.data.attributes}  style={{ width: '100%'}} placeholder="Select an item." onChange={(e)=>{setValue(e)}}>
+		<Select className={style.multi_select} value={value} {...props.data.attributes} style={{ width: '100%'}} placeholder="Select an item." onChange={(e)=>{setValue(e)}}>
 			{
 				props.data.groups ? 
 					props.data.groups.map((group,g)=>{

@@ -7,7 +7,7 @@ export default async function ClientAPI(args){
 	params.method = "POST";
 	params.body   = args.file;
 	console.log(params.body)
-	url = url.indexOf('http')>-1?url:'https://api.tnrdit.ca'+url;
+	url = url.indexOf('http')>-1?url:process.env.NEXT_PUBLIC_api_host+url;
 
 	params.headers =  {'Content-Type': 'multipart/form-data'};
 

@@ -23,7 +23,7 @@ export default function Signin(props) {
 		
 		//params.headers['Content-Type']   = params.headers['Content-Type'] || 'application/json';
 		var params = {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}
-		var res    = await fetch('https://api.tnrdit.ca/auth/signin',params);
+		var res    = await fetch(process.env.NEXT_PUBLIC_api_host+'/auth/signin',params);
 		res        = await res.json()
 		if(res.token){
 			let previous = localStorage.getItem("previous");

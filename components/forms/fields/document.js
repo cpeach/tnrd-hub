@@ -44,11 +44,11 @@ const Document = forwardRef((props, ref) => {
 		const fd = new FormData();
 		fd.append("application", p.file.originFileObj);
 		var params = {method:"POST",body:fd,headers:{'x-application':"60906b4cf5e24d7d2498642b"}}
-		var res = await fetch("https://api.tnrdit.ca/api-console/documents",params);
+		var res = await fetch(process.env.NEXT_PUBLIC_api_host+"/api-console/documents",params);
 		var out = await res.json();
 		if(p.original){
 			var params = {method:"DELETE",headers:{'x-application':"60906b4cf5e24d7d2498642b"}}
-			await fetch("https://api.tnrdit.ca/api-console/documents/"+p.original,params);
+			await fetch(process.env.NEXT_PUBLIC_api_host+"/api-console/documents/"+p.original,params);
 		}
 
 		_value.value = out._id
@@ -69,7 +69,7 @@ const Document = forwardRef((props, ref) => {
 			var out = await client({url:"/hub-console/documents",params:{method:"POST",body:fd,ignore:'body',headers:{"Content-Type":"delete"}}})
 			
 			if(original){
-				var _del = await client({url:"https://api.tnrdit.ca/hub-console/documents/"+original,params:{method:"DELETE"}})
+				var _del = await client({url:process.env.NEXT_PUBLIC_api_host+"/hub-console/documents/"+original,params:{method:"DELETE"}})
 			}
 			_value.value = out._id
 		} 
